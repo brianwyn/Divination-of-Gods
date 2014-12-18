@@ -17,9 +17,11 @@ public class NPCDrops {
 
 	public static HashMap<Integer, int[]> constantDrops = new HashMap<Integer, int[]>();
 	public static HashMap<Integer, Integer> dropRarity = new HashMap<Integer, Integer>();
+
 	public static void initialize() {
 		loadDrops();
 	}
+
 	@SuppressWarnings("resource")
 	public static void loadConstants() {
 		try {

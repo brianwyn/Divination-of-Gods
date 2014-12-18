@@ -21,7 +21,6 @@ import server.model.minigames.Gambling;
 import server.model.minigames.WarriorsGuild;
 import server.model.npcs.NPC;
 import server.model.npcs.NPCHandler;
-import server.model.players.SQL;
 import server.model.players.content.BankPin;
 import server.model.players.content.Dying;
 import server.model.players.content.Food;
@@ -512,6 +511,7 @@ public class Client extends Player {
 	public int boostTimer = 0;
 
 	public int chaoticCharges[] = { 3000, 3000, 3000 };
+
 	// Chaotic rapier first 18349, Chaotic longsword after 18351, Chaotic maul
 	// 18353
 
@@ -823,6 +823,7 @@ public class Client extends Player {
 					+ ((getLevelForXP(playerXP[0])) * 0.325) + ((getLevelForXP(playerXP[2])) * 0.325));
 		}
 	}
+
 	public int calcCombatDUNG() {
 		int mag = (int) ((getLevelForXP(playerXP[6])) * 1.5);
 		int ran = (int) ((getLevelForXP(playerXP[4])) * 1.5);
@@ -932,6 +933,7 @@ public class Client extends Player {
 			// anti-spamm :)
 		}
 	} // end of hunt , resume of starting
+
 	public void CatchimpNpc(String npcName, int Net, int npcId, int itemId,
 			int AmtExp, int Req, int playerId) {
 		npcName = Server.npcHandler.getNpcListName(npcId);
@@ -1042,6 +1044,7 @@ public class Client extends Player {
 		}
 		foodDelay = System.currentTimeMillis();
 	}
+
 	public boolean checkEmpty(Player player) {
 		for (int i = 0; i < player.playerEquipment.length; i++) {
 			if (player.playerEquipment[i] != -1)
@@ -1193,6 +1196,7 @@ public class Client extends Player {
 			vLegsLeft = 1000;
 		}
 	}
+
 	public void degradeVls() {
 		if (playerEquipment[playerWeapon] == 13901 && vlsLeft < 1) {
 			playerEquipment[playerWeapon] = -1;
@@ -1202,6 +1206,7 @@ public class Client extends Player {
 			vlsLeft = 1000;
 		}
 	}
+
 	public void degradeVSpear() {
 		if (playerEquipment[playerWeapon] == 13907 && vSpearLeft < 1) {
 			playerEquipment[playerWeapon] = -1;
@@ -1211,6 +1216,7 @@ public class Client extends Player {
 			vSpearLeft = 1000;
 		}
 	}
+
 	public void degradeVTop() {// vesta top
 		if (playerEquipment[playerChest] == 13889 && vTopLeft < 1) {
 			playerEquipment[playerChest] = -1;
@@ -1220,6 +1226,7 @@ public class Client extends Player {
 			vTopLeft = 1000;
 		}
 	}
+
 	public void degradeZBottom() {// zuriel hood
 		if (playerEquipment[playerLegs] == 13863 && zBottomLeft < 1) {
 			playerEquipment[playerLegs] = -1;
@@ -1229,6 +1236,7 @@ public class Client extends Player {
 			zBottomLeft = 1000;
 		}
 	}
+
 	public void degradeZHood() {// zuriel hood
 		if (playerEquipment[playerHat] == 13866 && zHoodLeft < 1) {
 			playerEquipment[playerHat] = -1;
@@ -1238,6 +1246,7 @@ public class Client extends Player {
 			zHoodLeft = 1000;
 		}
 	}
+
 	public void degradeZStaff() {// zuriel staff
 		if (playerEquipment[playerWeapon] == 13870 && zStaffLeft < 1) {
 			playerEquipment[playerWeapon] = -1;
@@ -1319,6 +1328,7 @@ public class Client extends Player {
 		buffer = null;
 		super.destruct();
 	}
+
 	public void FetchDice() {
 		int rnd;
 		String Message = "";
@@ -1363,6 +1373,7 @@ public class Client extends Player {
 		forcedChat("" + Misc.optimizeText(playerName.toLowerCase()) + " "
 				+ Message);
 	}
+
 	public int findBoBslot(int itemId) {
 		for (int i = 0; i < 28; i += 1) {
 			if (storeditems[i] == itemId) {
@@ -1372,6 +1383,7 @@ public class Client extends Player {
 		}
 		return -1;
 	}
+
 	public void FindItemKeptInfo() {
 		if (isSkulled && prayerActive[10])
 			ItemKeptInfo(1);
@@ -1386,6 +1398,7 @@ public class Client extends Player {
 			}
 		}
 	}
+
 	public void firstslot() {
 		for (summoningslot = 0; occupied[summoningslot] == true; summoningslot += 1) {
 
@@ -1413,18 +1426,22 @@ public class Client extends Player {
 			}
 		}
 	}
+
 	public void giverewards() {
-	if (getItems().playerHasItem(6199)) {
-	getItems().deleteItem(6199, 1);
-	getItems().addItem(randomprize(), 1);
-	} else {
-	sendMessage("You need 2 free slots.");
+		if (getItems().playerHasItem(6199)) {
+			getItems().deleteItem(6199, 1);
+			getItems().addItem(randomprize(), 1);
+		} else {
+			sendMessage("You need 2 free slots.");
+		}
 	}
-	}
-	
-	public static int randomprize[] = {15000, 15001, 15002, 15003, 15004, 15005, 15006, 15007, 15008, 15009, 15010, 15011, 15012, 15013, 15014, 15015, 15016, 15017, 15018, 15019, 15020, 11694};
+
+	public static int randomprize[] = { 15000, 15001, 15002, 15003, 15004,
+			15005, 15006, 15007, 15008, 15009, 15010, 15011, 15012, 15013,
+			15014, 15015, 15016, 15017, 15018, 15019, 15020, 11694 };
+
 	public static int randomprize() {
-	return randomprize[(int) (Math.random() * randomprize.length)];
+		return randomprize[(int) (Math.random() * randomprize.length)];
 	}
 
 	public void flushOutStream() {
@@ -1556,9 +1573,11 @@ public class Client extends Player {
 		}
 		return null;
 	}
+
 	public CombatAssistant getCombat() {
 		return combatAssistant;
 	}
+
 	public int getCombatLevel() {
 		int mag = (int) ((getLevelForXP(playerXP[6])) * 1.5);
 		int ran = (int) ((getLevelForXP(playerXP[4])) * 1.5);
@@ -1600,9 +1619,11 @@ public class Client extends Player {
 		}
 		return combatLevel;
 	}
+
 	public Crafting getCrafting() {
 		return crafting;
 	}
+
 	public Future<?> getCurrentTask() {
 		return currentTask;
 	}
@@ -1622,9 +1643,11 @@ public class Client extends Player {
 	public Farming getFarming() {
 		return farming;
 	}
+
 	public Fishing getFishing() {
 		return fish;
 	}
+
 	public FlaxStringer getFlaxStringer() {
 		return flax;
 	}
@@ -1640,12 +1663,15 @@ public class Client extends Player {
 	public Gambling getGamble() {
 		return gamble;
 	}
+
 	public Herblore getHerblore() {
 		return herblore;
 	}
+
 	public synchronized Stream getInStream() {
 		return inStream;
 	}
+
 	public ItemAssistant getItems() {
 		return itemAssistant;
 	}
@@ -1661,22 +1687,28 @@ public class Client extends Player {
 	public NPC getNpc(int index) {
 		return ((NPC) NPCHandler.npcs[index]);
 	}
+
 	public synchronized Stream getOutStream() {
 		return outStream;
 	}
+
 	public PlayerAssistant getPA() {
 		return playerAssistant;
 	}
+
 	public synchronized int getPacketSize() {
 		return packetSize;
 	}
+
 	public synchronized int getPacketType() {
 		return packetType;
 	}
+
 	public int getPayment() {
 		int l = 13157 * Misc.random(10);
 		return l;
 	}
+
 	public PkRewardSystem getPkRewardSystem() {
 		return pkReward;
 	}
@@ -1752,6 +1784,7 @@ public class Client extends Player {
 			return 10;
 		}
 	}
+
 	public int getStoredAmount(int itemId) {
 		if (!getItems().isStackable(itemId)) {
 			int toReturn = 0;
@@ -2735,50 +2768,55 @@ public class Client extends Player {
 			dialogueAction = 535;
 			return;
 		}
-		
-		if(playerRights == 3) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-			if (Server.playerHandler.players[j] !=null) {
-			Client c2 = (Client)Server.playerHandler.players[j];
-			c2.sendMessage("<shad=15733302><shad=0>[Head Staff] " +playerName+ " has just logged in. Ask them your questions!");
-			}
-			}
-			}
-		if(playerRights == 2) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-			if (Server.playerHandler.players[j] !=null) {
-			Client c2 = (Client)Server.playerHandler.players[j];
-			c2.sendMessage("<col=FFFF64><shad=0>[Staff] " +playerName+ " has just logged in. Ask them your questions!");
-			}
-			}
-			}
-		if(playerRights == 1) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-			if (Server.playerHandler.players[j] !=null) {
-			Client c2 = (Client)Server.playerHandler.players[j];
-			c2.sendMessage("<col=00FFFF><shad=0>[P-Mod] " +playerName+ " has just logged in. Ask them your questions!");
-			}
-			}
-			}
-		if(playerRights == 0) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-			if (Server.playerHandler.players[j] !=null) {
-			Client c2 = (Client)Server.playerHandler.players[j];
-			c2.sendMessage("<col=FF0000><shad=0>[Player] " +playerName+ " has just logged in.");
-			}
-			}
-			}
-		if(playerRights == 5) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-			if (Server.playerHandler.players[j] !=null) {
-			Client c2 = (Client)Server.playerHandler.players[j];
-			c2.sendMessage("<col=FF0000><shad=0>[Helper] " +playerName+ " has just logged in. Ask them any questions!");
-			}
-			}
-			}
-					
 
-			if (isMuted) {
+		if (playerRights == 3) {
+			for (int j = 0; j < Server.playerHandler.players.length; j++) {
+				if (Server.playerHandler.players[j] != null) {
+					Client c2 = (Client) Server.playerHandler.players[j];
+					c2.sendMessage("<shad=15733302><shad=0>[Head Staff] "
+							+ playerName
+							+ " has just logged in. Ask them your questions!");
+				}
+			}
+		}
+		if (playerRights == 2) {
+			for (int j = 0; j < Server.playerHandler.players.length; j++) {
+				if (Server.playerHandler.players[j] != null) {
+					Client c2 = (Client) Server.playerHandler.players[j];
+					c2.sendMessage("<col=FFFF64><shad=0>[Staff] " + playerName
+							+ " has just logged in. Ask them your questions!");
+				}
+			}
+		}
+		if (playerRights == 1) {
+			for (int j = 0; j < Server.playerHandler.players.length; j++) {
+				if (Server.playerHandler.players[j] != null) {
+					Client c2 = (Client) Server.playerHandler.players[j];
+					c2.sendMessage("<col=00FFFF><shad=0>[P-Mod] " + playerName
+							+ " has just logged in. Ask them your questions!");
+				}
+			}
+		}
+		if (playerRights == 0) {
+			for (int j = 0; j < Server.playerHandler.players.length; j++) {
+				if (Server.playerHandler.players[j] != null) {
+					Client c2 = (Client) Server.playerHandler.players[j];
+					c2.sendMessage("<col=FF0000><shad=0>[Player] " + playerName
+							+ " has just logged in.");
+				}
+			}
+		}
+		if (playerRights == 5) {
+			for (int j = 0; j < Server.playerHandler.players.length; j++) {
+				if (Server.playerHandler.players[j] != null) {
+					Client c2 = (Client) Server.playerHandler.players[j];
+					c2.sendMessage("<col=FF0000><shad=0>[Helper] " + playerName
+							+ " has just logged in. Ask them any questions!");
+				}
+			}
+		}
+
+		if (isMuted) {
 			sendMessage("You are currently muted.");
 		} else if (Connection.isIPMuted(connectedFrom)) {
 			sendMessage("You are currently IP-Muted.");
@@ -2901,6 +2939,7 @@ public class Client extends Player {
 			break;
 		}
 	}
+
 	public void jadSpawn() {
 		getDH().sendDialogues(41, 2618);
 		CycleEventHandler.getSingleton().addEvent(this, new CycleEvent() {
@@ -2920,6 +2959,7 @@ public class Client extends Player {
 			}
 		}, 20);
 	}
+
 	public void killGraveStone() {
 		/*
 		 * for (int j = 0; j < NPCHandler.npcs.length; j++) { if
@@ -2932,45 +2972,47 @@ public class Client extends Player {
 		// heightLevel, 0, 0, 0, 0, 0, false, true);
 
 	}
+
 	public void logout() {
-	if (playerRights >= 2) {
-	
-	} else {
-		SQL.saveHighScore(this);
-		SQL.destroyConnection();
-		PvPHandler.handleLogout(this);
-		if (inDung) {
-			if (Partner.equalsIgnoreCase("None")) {
-				getDungeoneering();
-				Dungeoneering.deleteKeys(this);
-				Server.npcHandler.killAllDungNPCs(this);
-			} else {
-				for (Player p : PlayerHandler.players) {
-					if (p != null) {
-						Client ALLPLAYERS = (Client) p;
-						if (ALLPLAYERS.playerName.equalsIgnoreCase(Partner)) {
-							Client c2 = (Client) p;
-							if (c2.inDung && inDung) {
-								c2.getPA().leaveDung(c2);
-								getPA().leaveDung(this);
-								c2.sendMessage("Your partner has logged out. The dungeon has been abandoned.");
-								getDungeoneering();
-								Dungeoneering.deleteKeys(this);
-								Server.npcHandler.killAllDungNPCs(this);
-								getDungeoneering();
-								Dungeoneering.deleteKeys(c2);
-								Server.npcHandler.killAllDungNPCs(c2);
-								getDungeoneering();
-								Dungeoneering.newDungeon(c2, false);
-								getDungeoneering();
-								Dungeoneering.newDungeon(this, false);
+		if (playerRights >= 2) {
+
+		} else {
+			SQL.saveHighScore(this);
+			SQL.destroyConnection();
+			PvPHandler.handleLogout(this);
+			if (inDung) {
+				if (Partner.equalsIgnoreCase("None")) {
+					getDungeoneering();
+					Dungeoneering.deleteKeys(this);
+					Server.npcHandler.killAllDungNPCs(this);
+				} else {
+					for (Player p : PlayerHandler.players) {
+						if (p != null) {
+							Client ALLPLAYERS = (Client) p;
+							if (ALLPLAYERS.playerName.equalsIgnoreCase(Partner)) {
+								Client c2 = (Client) p;
+								if (c2.inDung && inDung) {
+									c2.getPA().leaveDung(c2);
+									getPA().leaveDung(this);
+									c2.sendMessage("Your partner has logged out. The dungeon has been abandoned.");
+									getDungeoneering();
+									Dungeoneering.deleteKeys(this);
+									Server.npcHandler.killAllDungNPCs(this);
+									getDungeoneering();
+									Dungeoneering.deleteKeys(c2);
+									Server.npcHandler.killAllDungNPCs(c2);
+									getDungeoneering();
+									Dungeoneering.newDungeon(c2, false);
+									getDungeoneering();
+									Dungeoneering.newDungeon(this, false);
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-	};
+		;
 
 		if (cannonIsShooting && hasCannon) {
 			bankCannonBalls = true;
@@ -3083,6 +3125,7 @@ public class Client extends Player {
 			sendMessage("You Need " + Req + " Agility To Do This Obsticle");
 		}
 	}
+
 	public void overload() {
 		playerLevel[0] = (int) (getLevelForXP(playerXP[0]) + (getLevelForXP(playerXP[0]) * 0.27));
 		playerLevel[1] = (int) (getLevelForXP(playerXP[1]) + (getLevelForXP(playerXP[1]) * 0.27));
@@ -3553,6 +3596,7 @@ public class Client extends Player {
 		getPA().sendFrame246(4552, 250, 6830);
 		getPA().showInterface(4543);
 	}
+
 	public void queueMessage(Packet arg1) {
 		synchronized (queuedPackets) {
 			queuedPackets.add(arg1);
@@ -3580,6 +3624,7 @@ public class Client extends Player {
 	public void resetShaking() {
 		shakeScreen(1, 0, 0, 0);
 	}
+
 	public void restartDuelIntsAndBooleans() {
 		getTradeAndDuel().resetTrade();
 		inTrade = false;
@@ -3592,6 +3637,7 @@ public class Client extends Player {
 		tradeResetNeeded = false;
 		// o.getTradeAndDuel().resetTrade();
 	}
+
 	public void run(int EndX, int EndY, int Emote) {
 		walkToEmote(Emote);
 		getPA().walkTo2(EndX, EndY);
@@ -3614,6 +3660,7 @@ public class Client extends Player {
 		getOutStream().writeByte(i);// readUnsignedByte
 		getOutStream().endFrameVarSize();
 	}
+
 	public void sendDelayedMessage(String s, int secsUntilDisplay) {
 		if (getOutStream() != null) {
 			outStream.createFrameVarSize(253);
@@ -3676,9 +3723,11 @@ public class Client extends Player {
 		 * e.printStackTrace(); }
 		 */
 	}
+
 	public void setCurrentTask(Future<?> task) {
 		currentTask = task;
 	}
+
 	public void setSidebarInterface(int menuId, int form) {
 		if (getOutStream() != null) {
 			outStream.createFrame(71);
@@ -3686,6 +3735,7 @@ public class Client extends Player {
 			outStream.writeByteA(menuId);
 		}
 	}
+
 	/**
 	 * Shakes the player's screen. Parameters 1, 0, 0, 0 to reset.
 	 * 
@@ -3752,6 +3802,7 @@ public class Client extends Player {
 			return false;
 		}
 	}
+
 	public void spinFlax() {
 		turnPlayerTo(objectX, objectY);
 		isWalking = false;
@@ -3798,6 +3849,7 @@ public class Client extends Player {
 			sendMessage("You don't have any flax left to string.");
 		}
 	}
+
 	/**/
 	/*** Items kept on death ***/
 	public void StartBestItemScan() {
@@ -3809,6 +3861,7 @@ public class Client extends Player {
 		ResetKeepItems();
 		BestItem1();
 	}
+
 	public void startEvent7(final Client c) {
 		if (barbLeader > 0 && inBarbDef) {
 			CycleEventHandler.getSingleton().addEvent(this, new CycleEvent() {
@@ -3858,6 +3911,7 @@ public class Client extends Player {
 			}, 2);
 		}
 	}
+
 	public void startGSEvent() { // GRAVESTONE HANDLER
 		/*
 		 * if (GSTimer > 0) { if(playerDeathX != 0 && playerDeathY != 0) {
@@ -3874,15 +3928,18 @@ public class Client extends Player {
 		 * this.stop(); } } }); }
 		 */
 	}
+
 	public void stopEmote() {
 		playerWalkIndex = 0x333;
 		agilityEmote = false;
 		getPA().requestUpdates(); // this was needed to make the agility work
 	}
+
 	public void stopGuideEvent() {
 		CycleEventHandler.getSingleton().stopEvents(this, 13); // let's stop the
 																// event .
 	}
+
 	public void storesummon(int npcType) {
 		switch (npcType) {
 		case 6807:
@@ -3902,6 +3959,7 @@ public class Client extends Player {
 			break;
 		}
 	}
+
 	public void summonEvent(final Client c) {
 		if (hasFollower == 6870 || hasFollower == 6814 || hasFollower == 6823
 				&& eventRunning2 == false) {
@@ -3950,15 +4008,18 @@ public class Client extends Player {
 			}, 2);
 		}
 	}
+
 	public Summoning Summoning() {
 		return Summoning;
 	}
+
 	public void summoningTimeEvent(final Client c) {
 
 		if (c.summoningSpecTime == 0) {
 		}
 
 	}
+
 	public void summonVanish(final Client c) {
 		CycleEventHandler.getSingleton().addEvent(this, new CycleEvent() {
 			@Override
@@ -4018,6 +4079,7 @@ public class Client extends Player {
 		}, 2);
 
 	}
+
 	public int totalstored() {
 		int a = 0;
 		for (int i = 0; i < 28; i++) {
@@ -4028,6 +4090,7 @@ public class Client extends Player {
 		}
 		return a;
 	}
+
 	// HS
 	public int totalXP() {
 		return playerXP[0] + playerXP[1] + playerXP[2] + playerXP[3]
@@ -4038,6 +4101,7 @@ public class Client extends Player {
 				+ playerXP[20] + playerXP[21] + playerXP[22] + playerXP[23]
 				+ playerXP[24];
 	}
+
 	public void trade11() {
 		CycleEventHandler.getSingleton().addEvent(this, new CycleEvent() {
 			@Override
@@ -4067,11 +4131,13 @@ public class Client extends Player {
 		}, 2);
 
 	}
+
 	public void update() {
 		handler.updatePlayer(this, outStream);
 		handler.updateNPC(this, outStream);
 		flushOutStream();
 	}
+
 	public void updateWalkEntities() {
 
 		if (inWild() && !hasBountyIcon) {
@@ -4179,6 +4245,7 @@ public class Client extends Player {
 			 */
 		}
 	}
+
 	public void useDice(int itemId, boolean clan) {
 		if (System.currentTimeMillis() - diceDelay >= 3000) {
 			sendMessage("Rolling...");
@@ -4216,18 +4283,22 @@ public class Client extends Player {
 			}
 		}
 	}
+
 	public boolean validClient(Client client) {
 		return (client != null && !client.disconnected);
 	}
+
 	public boolean validClient(int id) {
 		if (id < 0 || id > Config.MAX_PLAYERS) {
 			return false;
 		}
 		return validClient(getClient(id));
 	}
+
 	public boolean validClient(String name) {
 		return validClient(getClient(name));
 	}
+
 	public boolean validNpc(int index) {
 		if (index < 0 || index >= Config.MAX_NPCS) {
 			return false;
@@ -4238,14 +4309,17 @@ public class Client extends Player {
 		}
 		return false;
 	}
+
 	public void walk(int EndX, int EndY, int Emote) {
 		walkToEmote(Emote);
 		getPA().walkTo2(EndX, EndY);
 	}
+
 	public void walk2(int EndX, int EndY, int Emote) {
 		// walkToEmote(Emote);
 		getPA().walkTo2(EndX, EndY);
 	}
+
 	public void WalkTo(int x, int y) {
 		newWalkCmdSteps = (Math.abs((x + y)));
 		if (newWalkCmdSteps % 1 != 0)
@@ -4271,11 +4345,13 @@ public class Client extends Player {
 			newWalkCmdY[q] += firstStepY;
 		}
 	}
+
 	public void walkToEmote(int id) {
 		isRunning2 = false;
 		playerWalkIndex = id;
 		getPA().requestUpdates();
 	}
+
 	public boolean wearingArmor() {
 		if (playerEquipment[playerHat] > 0)
 			return true;
@@ -4350,6 +4426,7 @@ public class Client extends Player {
 		isRunning = true;
 		isRunning2 = true;
 	}
+
 	public boolean withdrawConstructionItem(int itemID, int amount) {
 		// By Gabbe- withdraws a construction item from bank.
 

@@ -81,6 +81,7 @@ public class Crafting {
 			}
 		}
 	}
+
 	public int getItemToAdd() {
 		if (craftType == 1) {
 			return vambs[index];
@@ -91,6 +92,7 @@ public class Crafting {
 		}
 		return -1;
 	}
+
 	public void handleChisel(int id1, int id2) {
 		if (id1 == 1755)
 			cutGem(id2);

@@ -16,12 +16,14 @@ public class RandomEvents {
 	public static int lastX;
 	public static int lastY;
 	public static int lastH;
+
 	public static boolean hasCookedPheasent(Client c) {
 		if (c.getItems().playerHasItem(2140, 1)) {
 			return true;
 		}
 		return false;
 	}
+
 	public static boolean hasRawPheasent(Client c) {
 		if (c.getItems().playerHasItem(6178, 1)) {
 			return true;

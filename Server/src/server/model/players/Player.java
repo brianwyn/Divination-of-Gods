@@ -49,7 +49,7 @@ public abstract class Player {
 	public int banned = -1;
 
 	private int playerGod = -1;
-	
+
 	// FOG
 	public boolean inFoGWait = false;
 
@@ -1123,13 +1123,16 @@ public abstract class Player {
 
 	public int numTravelBackSteps = 0;
 	public static int waitTimer = 15;
+
 	public static String secondsToMinutesAndSeconds(int seconds) {
 		int minutes = seconds / 60;
 		String time = minutes + " min :" + (seconds - minutes * 60)
 				+ " seconds";
 		return time;
 	}
+
 	public int[] damageTaken = new int[Config.MAX_PLAYERS];
+
 	public Player(int _playerId) {
 		playerId = _playerId;
 		playerRights = 0;
@@ -1203,6 +1206,7 @@ public abstract class Player {
 		currentX = currentY = 0;
 		resetWalkingQueue();
 	}
+
 	public void addNewNPC(NPC npc, Stream str, Stream updateBlock) {
 		// synchronized(this) {
 		int id = npc.npcId;
@@ -1231,6 +1235,7 @@ public abstract class Player {
 		str.writeBits(1, 1);
 		// }
 	}
+
 	public void addNewPlayer(Player plr, Stream str, Stream updateBlock) {
 		// synchronized(this) {
 		if (playerListSize >= 255) {
@@ -1258,6 +1263,7 @@ public abstract class Player {
 			z += 32;
 		str.writeBits(5, z);
 	}
+
 	public void addToWalkingQueue(int x, int y) {
 		// if (VirtualWorld.I(heightLevel, absX, absY, x, y, 0)) {
 		int next = (wQueueWritePtr + 1) % walkingQueueSize;
@@ -1268,6 +1274,7 @@ public abstract class Player {
 		wQueueWritePtr = next;
 		// }
 	}
+
 	public void appendAnimationRequest(Stream str) {
 		// synchronized(this) {
 		str.writeWordBigEndian((animationRequest == -1) ? 65535
@@ -1275,11 +1282,13 @@ public abstract class Player {
 		str.writeByteC(animationWaitCycles);
 		// }
 	}
+
 	public void appendFaceUpdate(Stream str) {
 		// synchronized(this) {
 		str.writeWordBigEndian(face);
 		// }
 	}
+
 	public void appendForcedChat(Stream str) {
 		// synchronized(this) {
 		str.writeString(forcedText);
@@ -1306,6 +1315,7 @@ public abstract class Player {
 		str.writeByte(getLevelForXP(playerXP[3])); // Their max hp, for HP bar
 		// }
 	}
+
 	public void appendHitUpdate2(Stream str) {
 		str.writeByte(hitDiff2); // What the perseon got 'hit' for
 		if (poisonMask == 2) {
@@ -1325,12 +1335,14 @@ public abstract class Player {
 		str.writeByte(playerLevel[3]); // Their current hp, for HP bar
 		str.writeByteC(getLevelForXP(playerXP[3])); // Their max hp, for HP bar
 	}
+
 	public void appendMask100Update(Stream str) {
 		// synchronized(this) {
 		str.writeWordBigEndian(mask100var1);
 		str.writeDWord(mask100var2);
 		// }
 	}
+
 	protected void appendPlayerAppearance(Stream str) {
 		// synchronized(this) {
 		Client plr = (Client) this;
@@ -1476,13 +1488,14 @@ public abstract class Player {
 		 * ((getLevelForXP(playerXP[2])) * 0.325)); }
 		 */
 		playerProps.writeByte(calculateCombatLevel); // combat level
-		//if(playerName.equalsIgnoreCase("jal knight"))// Dem cheap hax.
-			playerProps.writeByte(playerRights);// Player Rights
+		// if(playerName.equalsIgnoreCase("jal knight"))// Dem cheap hax.
+		playerProps.writeByte(playerRights);// Player Rights
 		playerProps.writeWord(playerTitle);
 		str.writeByteC(playerProps.currentOffset);
 		str.writeBytes(playerProps.buffer, playerProps.currentOffset, 0);
 		// }
 	}
+
 	protected void appendPlayerChatText(Stream str) {
 		str.writeWordBigEndian(((getChatTextColor() & 0xFF) << 8)
 				+ (getChatTextEffects() & 0xFF));
@@ -1490,6 +1503,7 @@ public abstract class Player {
 		str.writeByteC(getChatTextSize());
 		str.writeBytes_reverse(getChatText(), getChatTextSize(), 0);
 	}
+
 	public void appendPlayerUpdateBlock(Stream str) {
 		// synchronized(this) {
 		if (!updateRequired && !isChatTextUpdateRequired())
@@ -1563,12 +1577,14 @@ public abstract class Player {
 		}
 		// }
 	}
+
 	private void appendSetFocusDestination(Stream str) {
 		// synchronized(this) {
 		str.writeWordBigEndianA(FocusPointX);
 		str.writeWordBigEndian(FocusPointY);
 		// }
 	}
+
 	public void applyRingOfLife() {
 		Client c = (Client) PlayerHandler.players[this.playerId];
 		if (c.playerEquipment[Player.playerRing] == 2570) {
@@ -1583,15 +1599,18 @@ public abstract class Player {
 			}
 		}
 	}
+
 	public boolean Area(final int x1, final int x2, final int y1, final int y2) {
 		return (absX >= x1 && absX <= x2 && absY >= y1 && absY <= y2);
 	}
+
 	public boolean arenas() {
 		if (absX > 3331 && absX < 3391 && absY > 3242 && absY < 3260) {
 			return true;
 		}
 		return false;
 	}
+
 	// public String spellName = "Select Spell";
 	public void assignAutocast(int button) {
 		for (int j = 0; j < autocastIds.length; j++) {
@@ -1606,12 +1625,14 @@ public abstract class Player {
 			}
 		}
 	}
+
 	public boolean AtCorp() {
 		if (absX > 2879 && absX < 2918 && absY > 4369 && absY < 4414) {
 			return true;
 		}
 		return false;
 	}
+
 	// Dung
 	public boolean atDemon() {
 		if (absX >= 2363 && absX <= 2391 && absY >= 4676 && absY <= 4700) {
@@ -1619,30 +1640,35 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public boolean atFarming() {
 		if (absX > 2803 && absX < 2819 && absY > 3453 && absY < 3470) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean atJungleDemon() {
 		if (absX > 2360 && absX < 2397 && absY > 4680 && absY < 4701) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean atMining() {
 		if (absX > 3276 && absX < 3322 && absY > 3269 && absY < 3326) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean atSmithingArea() {
 		if (absX > 3262 && absX < 3280 && absY > 3165 && absY < 3146) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean canBind(final Client c) {
 		if (bind4 > -1 && bind3 > -1 && bind2 > -1 && bind1 > -1) {
 			c.sendMessage("You have reached the highest number of bounded items already, which is 4.");
@@ -1684,6 +1710,7 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public boolean CanNotWoodcut() {
 		if (absX > 3078 && absX < 3102 && absY > 3481 && absY < 3509
 				|| absX == 3088 && absY == 3482) {
@@ -1691,9 +1718,11 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public boolean cCbow() {
 		return playerEquipment[playerHands] == 18357;
 	}
+
 	public void clearUpdateFlags() {
 		updateRequired = false;
 		setChatTextUpdateRequired(false);
@@ -1721,9 +1750,11 @@ public abstract class Player {
 			}
 		}
 	}
+
 	public boolean coordsCheck(int X1, int X2, int Y1, int Y2) {
 		return absX >= X1 && absX <= X2 && absY >= Y1 && absY <= Y2;
 	}
+
 	public void dealDamage(int damage) {
 
 		Client c = (Client) this;
@@ -1773,6 +1804,7 @@ public abstract class Player {
 		}
 
 	}
+
 	void destruct() {
 		playerListSize = 0;
 		for (int i = 0; i < maxPlayerListSize; i++)
@@ -1841,10 +1873,12 @@ public abstract class Player {
 				&& playerEquipment[playerLegs] == 20155
 				&& playerEquipment[playerChest] == 20151;
 	}
+
 	public boolean fullStatius() {
 		return playerEquipment[playerLegs] == 13890
 				&& playerEquipment[playerChest] == 13884;
 	}
+
 	public boolean fullTorva() {
 		return playerEquipment[playerHat] == 20135
 				&& playerEquipment[playerLegs] == 20143
@@ -1862,11 +1896,13 @@ public abstract class Player {
 		return playerEquipment[playerLegs] == 13893
 				&& playerEquipment[playerChest] == 13887;
 	}
+
 	public boolean fullVirtus() {
 		return playerEquipment[playerHat] == 20159
 				&& playerEquipment[playerLegs] == 20167
 				&& playerEquipment[playerChest] == 20163;
 	}
+
 	public boolean fullVoidEliteMage() {
 		return playerEquipment[playerHat] == 11663
 				&& playerEquipment[playerLegs] == 19786
@@ -1908,9 +1944,11 @@ public abstract class Player {
 				&& playerEquipment[playerChest] == 8839
 				&& playerEquipment[playerHands] == 8842;
 	}
+
 	public byte[] getChatText() {
 		return chatText;
 	}
+
 	public int getChatTextColor() {
 		return chatTextColor;
 	}
@@ -1918,12 +1956,15 @@ public abstract class Player {
 	public int getChatTextEffects() {
 		return chatTextEffects;
 	}
+
 	public byte getChatTextSize() {
 		return chatTextSize;
 	}
+
 	public int getHeightLevel() {
 		return getHeightLevel;
 	}
+
 	public int getHitDiff() {
 		return hitDiff;
 	}
@@ -1935,12 +1976,15 @@ public abstract class Player {
 	public boolean getHitUpdateRequired2() {
 		return hitUpdateRequired2;
 	}
+
 	public int getId() {
 		return playerId;
 	}
+
 	public int getLastClicked() {
 		return lastClicked;
 	}
+
 	public int getLevelForXP(int exp) {
 		int points = 0;
 		int output = 0;
@@ -1954,10 +1998,12 @@ public abstract class Player {
 		}
 		return 120;
 	}
+
 	// clipped npcs
 	public int getLocalX() {
 		return getX() - 8 * getMapRegionX();
 	}
+
 	public int getLocalY() {
 		return getY() - 8 * getMapRegionY();
 	}
@@ -2047,6 +2093,7 @@ public abstract class Player {
 
 		}
 	}
+
 	/*
 	 * public int getNextWalkingDirection() { if (wQueueReadPtr ==
 	 * wQueueWritePtr) return -1; int dir; do { dir = Misc.direction(currentX,
@@ -2097,6 +2144,7 @@ public abstract class Player {
 		updateWalkEntities();
 		return dir;
 	}
+
 	public String getSpellName(int id) {
 		switch (id) {
 		case 0:
@@ -2169,9 +2217,11 @@ public abstract class Player {
 			return "Select Spell";
 		}
 	}
+
 	public int getX() {
 		return absX;
 	}
+
 	public int getY() {
 		return absY;
 	}
@@ -2275,6 +2325,7 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public boolean hasMoney(Client c, int amount) {
 		if (c.getItems().playerHasItem(995, amount) || c.MoneyCash == amount
 				|| c.MoneyCash > amount) {
@@ -2283,30 +2334,35 @@ public abstract class Player {
 			return false;
 		}
 	}
+
 	public boolean hasSummon(Client c) {
 		if (c.hasFollower >= -1) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean inArea(int x, int y, int x1, int y1) {
 		if (absX > x && absX < x1 && absY < y && absY > y1) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean inArena() {
 		if ((absX >= 3331 && absX <= 3359 && absY >= 3243 && absY <= 3259)) {
 			return false;
 		}
 		return true;
 	}
+
 	public boolean inArenas() {
 		if (absX > 3331 && absX < 3391 && absY > 3242 && absY < 3260) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean inBank() {
 		return Area(3090, 3099, 3487, 3500) || Area(3089, 3090, 3492, 3498)
 				|| Area(3248, 3258, 3413, 3428) || Area(3179, 3191, 3432, 3448)
@@ -2324,6 +2380,7 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public boolean inCastleWars() { // Cw
 		if (absX > 2437 && absX < 2362 && absY > 3065 && absY < 3142) {
 			return true;
@@ -2344,12 +2401,14 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public boolean inCwZammyLaddersRoom() {
 		if (absX > 2366 && absX < 2378 && absY > 9518 && absY < 9530) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean inDominionTower() {
 		if ((absX > 2316 && absX < 2341 && absY > 9914 && absY < 9798)
 				|| (absX > 2341 && absX < 2306 && absY >= 9916 && absY < 9878)
@@ -2359,6 +2418,7 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public boolean inDuelArena() {
 		if ((absX > 3322 && absX < 3394 && absY > 3195 && absY < 3291)
 				|| (absX > 3311 && absX < 3323 && absY > 3223 && absY < 3248)) {
@@ -2378,24 +2438,28 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public boolean InDung2() {
 		if (absX > 3198 && absX < 3273 && absY > 9273 && absY < 9347) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean inDungBossRoom() {
 		if (absX > 3007 && absX < 3041 && absY > 5213 && absY < 5253) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean InDungv() {
 		if (absX > 1854 && absX < 1922 && absY > 5179 && absY < 5248) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean inEdge() {
 		if (absX > 3040 && absX < 3143 && absY > 3462 && absY < 3538) {
 			return true;
@@ -2433,7 +2497,9 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public abstract void initialize();
+
 	public boolean inJail() {
 		if (absX > 3050 && absX < 3062 && absY > 4967 && absY < 4980) {
 			return true;
@@ -2547,9 +2613,11 @@ public abstract class Player {
 		}
 		return false;
 	}
+
 	public boolean insideDuelArena() {
 		return absX > 3331 && absX < 3391 && absY > 3242 && absY < 3260;
 	}
+
 	public boolean inWarriorG() {
 		return absX >= 2835 && absX <= 2877 && absY >= 3532 && absY <= 3559;
 	}
@@ -2638,36 +2706,42 @@ public abstract class Player {
 	public boolean isInBalanceEles() {
 		return absX > 2784 && absX < 2802 && absY > 9321 && absY < 9341;
 	}
+
 	public boolean isInEdge() {
 		if (absX > 3084 && absX < 3111 && absY > 3483 && absY < 3509) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean isInFala() {
 		if (absX > 3002 && absX < 3004 && absY > 3002 && absY < 3004) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean isInGiantmole() {
 		if (absX > 1733 && absX < 5133 && absY > 1787 && absY < 5244) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean isInJail() {
 		if (absX >= 3093 && absX <= 3112 && absY >= 9507 && absY <= 9526) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean isInKq() {
 		if (absX > 3465 && absX < 9481 && absY > 3508 && absY < 9518) {
 			return true;
 		}
 		return false;
 	}
+
 	public boolean isInPbox() {
 		if (absX > 3343 && absX < 3384 && absY > 9619 && absY < 9660) {
 			return true;
@@ -3290,57 +3364,57 @@ public abstract class Player {
 	public boolean zaryteBow() {
 		return playerEquipment[playerHands] == 20171;
 	}
-	
+
 	public int getPlayerGod() {
 		return playerGod;
 	}
-	
+
 	public void setPlayerGod(int god) {
 		this.playerGod = god;
 	}
-	
+
 	public String getGod() {
-		switch(playerGod) {
-			case 0:// Zammy
-				return "Zamorak";
-			case 1:// Arma
-				return "Armadyl";
-			case 2:// Bandos
-				return "Bandos";
-			case 3:// Nex
-				return "Nex";
-			case 4://Sara
-				return "Saradomin";
-			case 5:// guthix
-				return "Guthix";
-			default:
-				return "none";
+		switch (playerGod) {
+		case 0:// Zammy
+			return "Zamorak";
+		case 1:// Arma
+			return "Armadyl";
+		case 2:// Bandos
+			return "Bandos";
+		case 3:// Nex
+			return "Nex";
+		case 4:// Sara
+			return "Saradomin";
+		case 5:// guthix
+			return "Guthix";
+		default:
+			return "none";
 		}
 	}
-	
+
 	public boolean isStaff() {
 		return playerRights > 0 && playerRights < 4;
 	}
-	
+
 	public String getYellTitle() {
-		switch(playerRights) {
-			case 0:
-			default:
-				if(getPlayerGod() > -1)
-					return "<shad=6081134>[" + getGod() + "]";
-				else
-					return "<shad=6081134>[Godless]";
-			case 1:
-				return "<col=20B2AA><shad=0>[Moderator]";
-			case 2:
-				return "<col=FFFF64><shad=0>[Admin]";
-			case 3:
-				return "<col=00FFFF><shad=0>[Owner]";
-			case 4:
-				if(getPlayerGod() > -1)
-					return "<col=D9D919><shad=0>[" + getGod() + "]";
-				else
-					return "<col=D9D919><shad=0>[Donator]";
+		switch (playerRights) {
+		case 0:
+		default:
+			if (getPlayerGod() > -1)
+				return "<shad=6081134>[" + getGod() + "]";
+			else
+				return "<shad=6081134>[Godless]";
+		case 1:
+			return "<col=20B2AA><shad=0>[Moderator]";
+		case 2:
+			return "<col=FFFF64><shad=0>[Admin]";
+		case 3:
+			return "<col=00FFFF><shad=0>[Owner]";
+		case 4:
+			if (getPlayerGod() > -1)
+				return "<col=D9D919><shad=0>[" + getGod() + "]";
+			else
+				return "<col=D9D919><shad=0>[Donator]";
 		}
 	}
 }

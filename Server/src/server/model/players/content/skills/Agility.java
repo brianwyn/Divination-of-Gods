@@ -55,6 +55,7 @@ public class Agility {
 			}
 		}
 	}
+
 	public Client client;
 	public int agtimer = 10;
 	public int ticketsid = 2996;

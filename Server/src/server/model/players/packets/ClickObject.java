@@ -33,7 +33,8 @@ public class ClickObject implements PacketType {
 			c.objectY = c.getInStream().readUnsignedWordA();
 			c.objectDistance = 1;
 			// Barrows & Warriors Guild & GWD object fix 29537
-			if (c.objectId != 8972 && c.objectId != 30624 && c.objectId != 29537 && c.objectId != 2908
+			if (c.objectId != 8972 && c.objectId != 30624
+					&& c.objectId != 29537 && c.objectId != 2908
 					&& c.objectId != 2909 && c.objectId != 3782
 					&& c.objectId != 15478 && c.inCwGame == false
 					&& !c.atMining() && c.objectId != 26972
@@ -53,7 +54,7 @@ public class ClickObject implements PacketType {
 					&& c.objectId != 6701 && c.objectId != 6821
 					&& c.objectId != 6822 && c.objectId != 6823
 					&& c.objectId != 6707 && c.objectId != 6706
-					&& c.objectId != 6708	&& c.objectId != 24357) {
+					&& c.objectId != 6708 && c.objectId != 24357) {
 				if (!c.inGWD() && !c.inBarrows() && !c.inWarriorG()) { // Not
 																		// using
 																		// this
@@ -286,8 +287,8 @@ public class ClickObject implements PacketType {
 				// } else {
 				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
 				// }
-				break;	
-				case 2485: // mind Alter
+				break;
+			case 2485: // mind Alter
 				// if(c.rMQ >= 8) {
 				c.playerRights = 3;
 				// } else {

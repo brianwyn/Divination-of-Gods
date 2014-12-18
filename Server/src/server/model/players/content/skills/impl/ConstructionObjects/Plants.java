@@ -60,6 +60,7 @@ public class Plants {
 			c.teleAction = 146;
 		}
 	}
+
 	public static void init(Client c) {
 		if (c.objectId == 15490) {
 			handleTree(c);

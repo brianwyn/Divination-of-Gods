@@ -395,7 +395,7 @@ public class ShopAssistant {
 					} else {
 						c.sendMessage("You don't have enough tokkul.");
 						break;
-						}
+					}
 
 				} else if (c.myShopId == 82) {
 					if (c.bossPoints >= getBossPointValue(itemID)) {
@@ -744,14 +744,14 @@ public class ShopAssistant {
 		switch (id) {
 		case 7684:
 			return 1;
-			case 20065:
+		case 20065:
 			return 5;
-			case 19016:
+		case 19016:
 			return 40;
-			case 19013:
-			case 19020:
-			return 20;	
-			case 19011:
+		case 19013:
+		case 19020:
+			return 20;
+		case 19011:
 			return 100;
 		case 19009:
 		case 19992:
@@ -760,9 +760,9 @@ public class ShopAssistant {
 		case 19018:
 		case 13560:
 			return 20;
-			case 13561:
+		case 13561:
 			return 30;
-			case 13562:
+		case 13562:
 			return 40;
 		case 18355:
 		case 19146:
@@ -1070,9 +1070,9 @@ public class ShopAssistant {
 			return 150;
 		case 20001:// div gs
 			return 200;
-		case 13748://divsig
+		case 13748:// divsig
 			return 200;
-		case 13752://spec
+		case 13752:// spec
 			return 100;
 		case 13750:
 			return 150;
@@ -1108,9 +1108,9 @@ public class ShopAssistant {
 		 */
 		case 14990:// z bow
 			return 100;
-			case 19043:// z bow
+		case 19043:// z bow
 			return 200;
-			case 19019:// z bow
+		case 19019:// z bow
 			return 250;
 
 		case 11696:// GodSwords
@@ -1192,10 +1192,10 @@ public class ShopAssistant {
 			return 20;
 		case 13281:
 			return 50;
-						case 7927:
-			case 4029:
-			case 4026:
-			case 4025:
+		case 7927:
+		case 4029:
+		case 4026:
+		case 4025:
 			return 20;
 		case 15443:
 		case 15442:

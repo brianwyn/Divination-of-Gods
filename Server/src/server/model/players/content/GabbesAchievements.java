@@ -375,6 +375,7 @@ public class GabbesAchievements {
 			sendDiary(c, c.bookName, c.bookPages[0]);
 		}
 	}
+
 	public static void sendDiary(Client c, String T, String[] P) {
 		if (P == null) {
 			c.sendMessage("This book has no pages...");
@@ -389,6 +390,7 @@ public class GabbesAchievements {
 		c.getPA().showInterface(837);
 		c.flushOutStream();
 	}
+
 	public static void vetCape(final Client c) {
 		c.sendMessage("Speak to Ace about this Cape ");
 
@@ -407,7 +409,8 @@ public class GabbesAchievements {
 		c.getPA().sendFrame126("", 444);
 		c.getPA().sendFrame126("<col=ffb000>Task points: " + c.TPoints + "",
 				33170);
-		// c.getPA().sendFrame126("<col=ff00ff>Divination of Gods Achievements", 33163);
+		// c.getPA().sendFrame126("<col=ff00ff>Divination of Gods Achievements",
+		// 33163);
 
 		c.getPA().sendFrame126("@yel@Advanced tasks", 33162);
 		c.getPA().sendFrame126("@yel@Elite tasks", 33163);

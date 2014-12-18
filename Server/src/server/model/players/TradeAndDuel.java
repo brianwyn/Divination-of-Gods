@@ -434,6 +434,7 @@ public class TradeAndDuel {
 		str1.replace("_", " ");
 		return str1;
 	}
+
 	public boolean fromDuel(int itemID, int fromSlot, int amount) {
 		Client o = (Client) PlayerHandler.players[c.duelingWith];
 		if (o == null) {

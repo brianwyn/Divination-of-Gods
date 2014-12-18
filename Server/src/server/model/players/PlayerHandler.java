@@ -18,6 +18,7 @@ public class PlayerHandler {
 	public static boolean updateRunning;
 	public static int updateSeconds;
 	public static long updateStartTime;
+
 	public static void giveAllSpins() {
 		for (Player p : PlayerHandler.players) {
 			if (p != null) {

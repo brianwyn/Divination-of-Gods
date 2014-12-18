@@ -131,9 +131,8 @@ public class Config {
 														// spawn here
 	public static final int DUELING_RESPAWN_Y = 3269;
 	public static final int RANDOM_DUELING_RESPAWN = 5; // random coords
-	
-	
-	public static final boolean YELL_FILTER = false;
+
+	public static boolean yellFilter = false;
 	public static final int NO_TELEPORT_WILD_LEVEL = 20; // level you can't tele
 															// on and above
 	public static final int SKULL_TIMER = 5000; // how long does the skull last?
@@ -273,8 +272,8 @@ public class Config {
 	/**
 	 * Slayer Variables
 	 */
-	public static final int[][] SLAYER_TASKS = { 
-			{ 1, 87, 90, 4, 5 }, // low tasks
+	public static final int[][] SLAYER_TASKS = { { 1, 87, 90, 4, 5 }, // low
+																		// tasks
 			{ 6, 7, 8, 9, 10 }, // med tasks
 			{ 11, 12, 13, 14, 15 }, // high tasks
 			{ 16, 17, 18, 19, 20 },// elite tasks

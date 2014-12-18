@@ -38,6 +38,7 @@ public class ActionHandler {
 	public ActionHandler(Client Client) {
 		this.c = Client;
 	}
+
 	public int donatorRitem() {
 		return donatorRitem[(int) (Math.random() * donatorRitem.length)];
 	}
@@ -71,9 +72,9 @@ public class ActionHandler {
 			c.fishtimer = c.getFishing().fishtime(c.fishies, c.fishreqt);
 		}
 		switch (npcType) {
-			
+
 		case 949:
-			if(c.getPlayerGod() < 0)
+			if (c.getPlayerGod() < 0)
 				c.getDH().sendDialogues(1125, npcType);
 			else
 				c.sendMessage("You already worship " + c.getGod());
@@ -82,7 +83,7 @@ public class ActionHandler {
 			c.getDH().sendOption2("Sell Artifacts", "View Pking shop");
 			c.teleAction = 428;
 			break;
-					case 8546:
+		case 8546:
 			c.getPA().movePlayer(2791, 9329, 0);
 			c.sendMessage("You teleport into a blazing fire and the Unholy Cursebearer is at it again!");
 			c.sendMessage("He has put 4 balance elemental under his control and they have taken this land!");
@@ -304,7 +305,7 @@ public class ActionHandler {
 		case 30:
 			c.getShops().openShop(15);
 			break;
-			
+
 		case 1861:
 			c.sendMessage("" + c.dialogueAction + "");
 			c.dialogueAction = 894;
@@ -659,7 +660,7 @@ public class ActionHandler {
 			break;
 		case 1699:
 			c.getShops().openShop(82);
-			c.sendMessage("You currently have <col=255>" +c.bossPoints
+			c.sendMessage("You currently have <col=255>" + c.bossPoints
 					+ "</col> Boss Points.");
 			break;
 
@@ -712,12 +713,12 @@ public class ActionHandler {
 		case 683:
 			c.getShops().openShop(3);
 			break;
-			
-			case 84:
+
+		case 84:
 			c.getShops().openShop(3);
 			break;
-			
-			case 595:
+
+		case 595:
 			c.getShops().openShop(98);
 			break;
 
@@ -1118,7 +1119,8 @@ public class ActionHandler {
 			break;
 		case 3192:
 			c.getPA().getHighscores("kills");
-			c.getPA().sendFrame126("Divination of Gods Highscores: Kills", 12102);
+			c.getPA().sendFrame126("Divination of Gods Highscores: Kills",
+					12102);
 			break;
 		case 50056:
 			c.getPA().movePlayer(3052, 3497, 1);
@@ -3803,7 +3805,7 @@ public class ActionHandler {
 		case 8591:
 			c.sendMessage("Kill me for rewards");
 			break;
-			
+
 		case 540:
 			c.getShops().openShop(27);
 			c.sendMessage("To find out what scroll does what/or what scroll for what npc u need");

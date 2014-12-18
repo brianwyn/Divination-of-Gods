@@ -37,6 +37,7 @@ public class Fletching {
 	public Fletching(Client c) {
 		this.c = c;
 	}
+
 	public void fletchBow(int index) {
 		int toAdd = getItemToAdd(index);
 		int amountToAdd = getAmountToAdd(toAdd);
@@ -61,12 +62,14 @@ public class Fletching {
 			}
 		}
 	}
+
 	public int getAmountToAdd(int id) {
 		if (id == 52)
 			return 15;
 		else
 			return 1;
 	}
+
 	public int getExp(int index) {
 		if (fletchType == 3)
 			return 5;
@@ -76,6 +79,7 @@ public class Fletching {
 			return exps[index] + 8;
 
 	}
+
 	public int getItemToAdd(int index) {
 		if (fletchType == 3)
 			return shaft;
@@ -85,6 +89,7 @@ public class Fletching {
 			return longbows[index];
 		return 0;
 	}
+
 	public void handleFletchingClick(int clickId) {
 		for (int j = 0; j < buttons.length; j++) {
 			if (buttons[j][0] == clickId) {

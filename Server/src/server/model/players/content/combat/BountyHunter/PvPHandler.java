@@ -303,6 +303,7 @@ public class PvPHandler {
 			// target.logoutTimer = 300;
 		}
 	}
+
 	public static void handleSafe(Client player) {
 		Client target = (Client) PlayerHandler.players[player.targetIndex];
 		if (target != null) {
@@ -336,6 +337,7 @@ public class PvPHandler {
 		return false;
 
 	}
+
 	public static void LogTimer(final Client player) {
 		if (!running2) {
 			CycleEventHandler.getSingleton().addEvent(player, new CycleEvent() {

@@ -23,6 +23,7 @@ public class RS2LoginProtocol extends FrameDecoder {
 
 	private static final int CONNECTED = 0;
 	private static final int LOGGING_IN = 1;
+
 	private static Client login(Channel channel, ISAACCipher inCipher,
 			ISAACCipher outCipher, int version, String name, String pass) {
 		int returnCode = 2;
@@ -97,6 +98,7 @@ public class RS2LoginProtocol extends FrameDecoder {
 		}
 		return cl;
 	}
+
 	public static void sendReturnCode(final Channel channel, final int code) {
 		channel.write(new PacketBuilder().put((byte) code).toPacket())
 				.addListener(new ChannelFutureListener() {

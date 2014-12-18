@@ -54,6 +54,7 @@ public class Hit {
 			return this.affinity;
 		}
 	}
+
 	public CombatType combatType;
 
 	public int damage;

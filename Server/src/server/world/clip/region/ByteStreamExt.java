@@ -89,6 +89,7 @@ public final class ByteStreamExt {
 		return ((buffer[currentOffset - 2] & 0xff) << 8)
 				+ (buffer[currentOffset - 1] & 0xff);
 	}
+
 	public void skip(int length) {
 		currentOffset += length;
 	}

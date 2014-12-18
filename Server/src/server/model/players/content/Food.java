@@ -41,6 +41,7 @@ public class Food {
 		public static FoodToEat forId(int id) {
 			return food.get(id);
 		}
+
 		private int id;
 		private int heal;
 

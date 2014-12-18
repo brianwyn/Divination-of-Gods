@@ -85,7 +85,7 @@ public class Item {
 		itemStackable[12851] = true;// runes
 		itemStackable[12850] = true;// runes
 		itemStackable[15262] = true;// shardpack
-		itemStackable[7684] = true;//death touch darts
+		itemStackable[7684] = true;// death touch darts
 		itemStackable[12437] = true;// Wolpertin summonin scroll
 		itemStackable[12825] = true;// steel titan summonin scroll
 		itemStackable[12833] = true;// geyser titan scroll
@@ -283,6 +283,7 @@ public class Item {
 		}
 		return item1;
 	}
+
 	public static boolean playerHats(int itemId) {
 		String[] data = { "boater", "cowl", "head", "peg", "coif", "helm",
 				"Coif", "mask", "hat", "headband", "hood", "disguise",
@@ -302,6 +303,7 @@ public class Item {
 		}
 		return item1;
 	}
+
 	public static boolean playerLegs(int itemId) {
 		String[] data = { "tassets", "chaps", "bottoms", "gown", "trousers",
 				"platelegs", "robe", "plateskirt", "legs", "leggings",
@@ -320,6 +322,7 @@ public class Item {
 		}
 		return item1;
 	}
+
 	public static boolean playerRings(int itemId) {
 		String[] data = { "ring", "rings", "Ring", "Rings", };
 		String item = getItemName(itemId);

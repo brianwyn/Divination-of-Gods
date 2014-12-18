@@ -18,6 +18,7 @@ public class FlaxStringer {
 	private final int FLAX[][] = { { 1779, 1777, 1777, 40, 120 } };
 
 	private final int EMOTE = 896;
+
 	public FlaxStringer(Client c) {
 		this.c = c;
 	}

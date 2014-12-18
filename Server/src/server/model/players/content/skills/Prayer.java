@@ -103,6 +103,7 @@ public class Prayer {
 			}
 		}, 2);
 	}
+
 	/** Author: Gabbe, 100% Prayer bones on altar ect **/
 	Client c;
 

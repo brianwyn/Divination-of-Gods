@@ -80,6 +80,7 @@ public class Mining {
 		c.sendMessage("You found a " + c.getItems().getItemName(reward) + "!");
 		lastGem = Misc.random(20);
 	}
+
 	public Mining(Client c) {
 		this.c = c;
 	}

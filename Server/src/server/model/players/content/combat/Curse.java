@@ -388,6 +388,7 @@ public class Curse {
 			c.setAppearanceUpdateRequired(true);
 		}
 	}
+
 	public void resetCurse() {
 		for (int p = 0; p < c.curseActive.length; p++) {
 			c.curseActive[p] = false;
@@ -396,6 +397,7 @@ public class Curse {
 		c.headIcon = -1;
 		c.getPA().requestUpdates();
 	}
+
 	public void resetPrayers() {
 		for (int p = 0; p < Player.PRAYER.length; p++) { //
 			c.prayerActive[p] = false;
@@ -404,6 +406,7 @@ public class Curse {
 		c.headIcon = -1;
 		c.getPA().requestUpdates();
 	}
+
 	public void rngCurse(int i) {
 		for (int j = 0; j < rng.length; j++) {
 			if (rng[j] != i) {
@@ -412,6 +415,7 @@ public class Curse {
 			}
 		}
 	}
+
 	public void sprtCurse(int i) {
 		for (int j = 0; j < sprt.length; j++) {
 			if (sprt[j] != i) {
@@ -420,6 +424,7 @@ public class Curse {
 			}
 		}
 	}
+
 	public void strCurse(int i) {
 		for (int j = 0; j < str.length; j++) {
 			if (str[j] != i) {

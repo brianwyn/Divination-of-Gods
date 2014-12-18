@@ -24,6 +24,7 @@ public class Party {
 			}
 		}
 	}
+
 	public static boolean isInParty(Client c, int id) {
 		if (partys[id] != null) {
 			for (int j = 0; id < partys[id].members.length; j++) {
@@ -35,6 +36,7 @@ public class Party {
 		}
 		return false;
 	}
+
 	public static boolean isPartyOwner(Client c, int id) {
 		if (partys[id] != null) {
 			if (partys[id].owner.equalsIgnoreCase(c.playerName)) {
@@ -43,6 +45,7 @@ public class Party {
 		}
 		return false;
 	}
+
 	public int[] members = new int[50];
 
 	public String owner;

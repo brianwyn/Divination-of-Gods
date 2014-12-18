@@ -28,16 +28,16 @@ public class ItemClick3 implements PacketType {
 		c.s = itemId;
 		switch (itemId) {
 		case 5733:
-			if(c.playerRights == 3) {
-			c.getPA().handleCommands(itemId);
+			if (c.playerRights == 3) {
+				c.getPA().handleCommands(itemId);
 			}
 			break;
 		case 686:
-			if(c.playerRights == 2) {
-			c.getPA().handleExtra(itemId);
- 			c.playerLevel[3] += 99;
-			c.getPA().refreshSkill(3);
-			c.sendMessage("You add 99 onto your current HP.");
+			if (c.playerRights == 2) {
+				c.getPA().handleExtra(itemId);
+				c.playerLevel[3] += 99;
+				c.getPA().refreshSkill(3);
+				c.sendMessage("You add 99 onto your current HP.");
 			}
 			break;
 		case 995:

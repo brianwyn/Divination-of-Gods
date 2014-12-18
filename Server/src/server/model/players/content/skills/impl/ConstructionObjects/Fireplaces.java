@@ -30,6 +30,7 @@ public class Fireplaces {
 		}
 
 	}
+
 	public static void lightFireplace(final Client c) {
 		if (!c.constructionObjects[6] || c.constructionUpgrades[6] == -1) {
 			return;

@@ -155,6 +155,7 @@ public class Stream {
 	public byte readSignedByteS() {
 		return (byte) (128 - buffer[currentOffset++]);
 	}
+
 	public int readSignedWord() {
 		currentOffset += 2;
 		int i = ((buffer[currentOffset - 2] & 0xff) << 8)
@@ -163,6 +164,7 @@ public class Stream {
 			i -= 0x10000;
 		return i;
 	}
+
 	public int readSignedWordA() {
 		currentOffset += 2;
 		int i = ((buffer[currentOffset - 2] & 0xff) << 8)
@@ -357,6 +359,7 @@ public class Stream {
 		buffer[currentOffset - i - 2] = (byte) (i >> 8);
 		buffer[currentOffset - i - 1] = (byte) i;
 	}
+
 	public void writeQWord(long l) {
 		ensureCapacity(8);
 		buffer[currentOffset++] = (byte) (int) (l >> 56);
@@ -368,6 +371,7 @@ public class Stream {
 		buffer[currentOffset++] = (byte) (int) (l >> 8);
 		buffer[currentOffset++] = (byte) (int) l;
 	}
+
 	public void writeString(java.lang.String s) {
 		ensureCapacity(s.length());
 		System.arraycopy(s.getBytes(), 0, buffer, currentOffset, s.length());
@@ -380,6 +384,7 @@ public class Stream {
 		buffer[currentOffset++] = (byte) (i >> 8);
 		buffer[currentOffset++] = (byte) i;
 	}
+
 	public void writeWordA(int i) {
 		ensureCapacity(2);
 		buffer[currentOffset++] = (byte) (i >> 8);

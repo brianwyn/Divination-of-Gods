@@ -2485,6 +2485,7 @@ public class ItemAssistant {
 		}
 		return NewID;
 	}
+
 	public int getUntradePrice(int item) {
 		switch (item) {
 		case 2518:
@@ -3860,22 +3861,22 @@ public class ItemAssistant {
 			}
 			boolean canWearItem = true;
 			switch (wearID) {
-			case 5733: //Rotten potato
-					if(c.playerRights <= 0) {
+			case 5733: // Rotten potato
+				if (c.playerRights <= 0) {
 					c.sendMessage("You do not have sufficient permissions to do that.");
 					c.sendMessage("Please send a message to Anfernio telling how you received this.");
 					return false;
+				} else {
+					if (c.playerRights > 1 && c.inWild()) {
+						c.sendMessage("You're not allowed to do that inside of the Wilderness.");
+						return false;
 					} else {
-					if(c.playerRights > 1 && c.inWild()) {
-					c.sendMessage("You're not allowed to do that inside of the Wilderness.");
-					return false;
-					} else {
- 					c.playerLevel[3] += 99;
-					c.getPA().refreshSkill(3);
-					c.sendMessage("You add 99 onto your current HP.");
-					return false;
+						c.playerLevel[3] += 99;
+						c.getPA().refreshSkill(3);
+						c.sendMessage("You add 99 onto your current HP.");
+						return false;
 					}
-					}
+				}
 			case 9747:
 			case 9748:
 			case 9749:
@@ -4130,7 +4131,8 @@ public class ItemAssistant {
 				if (wearID == 19032 || wearID == 19037 || wearID == 19034
 						|| wearID == 19035 || wearID == 19036
 						|| wearID == 19038 || wearID == 19039
-						|| wearID == 19040	|| wearID == 19988	|| wearID == 19989	|| wearID == 19027) {
+						|| wearID == 19040 || wearID == 19988
+						|| wearID == 19989 || wearID == 19027) {
 					targetSlot = 1;// angle capes
 				}
 				/*

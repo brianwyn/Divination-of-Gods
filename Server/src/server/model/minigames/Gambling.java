@@ -48,6 +48,7 @@ public class Gambling {
 		}
 		c.sendMessage(s);
 	}
+
 	public static void blackJack(Client c) {
 		if (playerBet < 100000) {
 			c.sendMessage("You need to bet atleast 100,000 coins to play this game.");
@@ -93,6 +94,7 @@ public class Gambling {
 		}
 		stopTheGame(c);
 	}
+
 	public static void gambleBlackJack(Client c) {
 		if (!c.getItems().playerHasItem(995, 100000)) {
 			c.sendMessage("You need at least 100,000 coins to place a bet!");
@@ -103,6 +105,7 @@ public class Gambling {
 		hasBetEnough = true;
 		c.outStream.createFrame(27);
 	}
+
 	public static void playGame(final Client c) {
 		int random = Misc.random(9);
 		int number1 = Misc.random(9);

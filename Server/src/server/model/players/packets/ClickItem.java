@@ -23,6 +23,7 @@ public class ClickItem implements PacketType {
 
 	public static int flowerTime = -1;
 	public static int flowers = 0;
+
 	@Override
 	public void processPacket(Client c, int packetType, int packetSize) {
 		@SuppressWarnings("unused")
@@ -34,21 +35,21 @@ public class ClickItem implements PacketType {
 
 		}
 		if (itemId == 10832) {
-		c.getItems().deleteItem(10832, 1);
-		c.getItems().addItem(995, 500000000);
-		c.sendMessage("You open the bag to find 500M stashed away!");
+			c.getItems().deleteItem(10832, 1);
+			c.getItems().addItem(995, 500000000);
+			c.sendMessage("You open the bag to find 500M stashed away!");
 
 		}
 		if (itemId == 10833) {
-		c.getItems().deleteItem(10833, 1);
-		c.getItems().addItem(995, 1000000000);
-		c.sendMessage("You open the bag to find 1000M stashed away!");
+			c.getItems().deleteItem(10833, 1);
+			c.getItems().addItem(995, 1000000000);
+			c.sendMessage("You open the bag to find 1000M stashed away!");
 
 		}
 		if (itemId == 10834) {
-		c.getItems().deleteItem(10834, 1);
-		c.getItems().addItem(995, 2000000000);
-		c.sendMessage("You open the bag to find 2000M stashed away!");
+			c.getItems().deleteItem(10834, 1);
+			c.getItems().addItem(995, 2000000000);
+			c.sendMessage("You open the bag to find 2000M stashed away!");
 
 		}
 		if (itemId == 17616) {
@@ -1216,6 +1217,7 @@ public class ClickItem implements PacketType {
 		}
 
 	}
+
 	public int randomflower() {
 		return flower[(int) (Math.random() * flower.length)];
 	}

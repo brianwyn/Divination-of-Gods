@@ -211,10 +211,12 @@ public class Region {
 		return canMove(npc.getX(), npc.getY(), p.getX(), p.getY(),
 				npc.heightLevel % 4, 1, 1);
 	}
+
 	public static boolean canAttackNPC(Client a, NPC npc) {
 		return canMove(a.getX(), a.getY(), npc.getX(), npc.getY(),
 				a.heightLevel % 4, 1, 1);
 	}
+
 	public static boolean canMove(int startX, int startY, int endX, int endY,
 			int height, int xLength, int yLength) {
 		int diffX = endX - startX;
@@ -289,6 +291,7 @@ public class Region {
 
 		return true;
 	}
+
 	public static int getClipping(int x, int y, int height) {
 		try {
 			if (height > 3)
@@ -307,6 +310,7 @@ public class Region {
 		}
 		return 0;
 	}
+
 	public static boolean getClipping(int x, int y, int height, int moveTypeX,
 			int moveTypeY) {
 		try {

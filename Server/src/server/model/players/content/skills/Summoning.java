@@ -62,6 +62,7 @@ public class Summoning {
 			}
 		}
 	}
+
 	public static void openInterface(Client c) {
 		c.isBanking = true;
 		c.storing = true;
@@ -70,6 +71,7 @@ public class Summoning {
 		refreshInterface(c);
 		c.getPA().interfaceWithInventory(2700, 5063);
 	}
+
 	public static void refreshInterface(Client c) {
 		for (int k = 0; k < 29; k++) {
 			if (c.storeditems[k] > 0) {
@@ -82,6 +84,7 @@ public class Summoning {
 
 		}
 	}
+
 	public static void storeItem(Client c, int itemID, int fromSlot, int amount) {
 		if (c.storing) {
 			if (c.occupied[c.summoningslot] == false
@@ -198,6 +201,7 @@ public class Summoning {
 		}
 
 	}
+
 	public int pouchreq;
 	// public boolean hasitem();
 	private final static int SHARD = 18016; // 14015
@@ -412,6 +416,7 @@ public class Summoning {
 			}
 		}
 	}
+
 	public void removeItems() {
 		for (int i = 0; i < 29; i += 1) {
 			if (NPCHandler.npcs[c.summoningnpcid] != null) {

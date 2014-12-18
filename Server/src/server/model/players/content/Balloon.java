@@ -9,10 +9,12 @@ import server.model.players.Client;
 
 public class Balloon extends Objects {
 	static Random r = new Random();
+
 	public static Balloon getBalloon(int item, int amount) {
 		return new Balloon(115 + r.nextInt(5), (2730 + r.nextInt(13)),
 				(3462 + r.nextInt(13)), 0, 0, 10, 0, item, amount);
 	}
+
 	public static Balloon getEmpty() {
 		return new Balloon(115 + r.nextInt(5), (2730 + r.nextInt(13)),
 				(3462 + r.nextInt(13)), 0, 0, 10, 0, 0, 0);

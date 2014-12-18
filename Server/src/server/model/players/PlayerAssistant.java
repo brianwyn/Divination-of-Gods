@@ -72,7 +72,8 @@ public class PlayerAssistant {
 			return 5;
 		}
 	}
-		public Client getClient(String playerName) {
+
+	public Client getClient(String playerName) {
 		for (Player p : PlayerHandler.players) {
 			if (p != null) {
 				if (p.playerName.equalsIgnoreCase(playerName)) {
@@ -307,15 +308,18 @@ public class PlayerAssistant {
 		setSkillLevel(skill, c.playerLevel[skill], c.playerXP[skill]);
 		refreshSkill(skill);
 		return true;
-		}
+	}
 
 	public void handleRSHD(int gloryId) {
-		c.getDH().sendOption5("Nex kills", "Capes", "PVP victim", "Macro Events", "Normal");
+		c.getDH().sendOption5("Nex kills", "Capes", "PVP victim",
+				"Macro Events", "Normal");
 		c.usingGlory = true;
 	}
-	
+
 	public void handleCommands(int gloryId) {
-		c.getDH().sendOption5("Keep me logged in.", "Kick me out.", "Never mind logging, just wipe my bank.", "QP cape please!", "Comp Cape please!");
+		c.getDH().sendOption5("Keep me logged in.", "Kick me out.",
+				"Never mind logging, just wipe my bank.", "QP cape please!",
+				"Comp Cape please!");
 		c.usingGlory = true;
 	}
 
@@ -412,10 +416,10 @@ public class PlayerAssistant {
 		}
 		// amount *= Config.SERVER_EXP_BONUS;
 		if (c.playerEquipment[c.playerRing] == 6575) {
-				amount *= Config.SERVER_EXP_BONUS*4;
-				} else {
-				amount *= Config.SERVER_EXP_BONUS*4;
-			}
+			amount *= Config.SERVER_EXP_BONUS * 4;
+		} else {
+			amount *= Config.SERVER_EXP_BONUS * 4;
+		}
 		int oldLevel = getLevelForXP(c.playerXP[skill]);
 		c.playerXP[skill] += amount;
 		if (oldLevel < getLevelForXP(c.playerXP[skill])) {
@@ -1111,6 +1115,7 @@ public class PlayerAssistant {
 			}
 		}, 1);
 	}
+
 	public void createDisplayName(String name) {
 		BufferedWriter names = null;
 		try {
@@ -1155,6 +1160,7 @@ public class PlayerAssistant {
 			c.flushOutStream();
 		}
 	}
+
 	public void createPlayersObjectAnim(int X, int Y, int animationID,
 			int tileObjectType, int orientation) {
 		try {
@@ -1175,6 +1181,7 @@ public class PlayerAssistant {
 			e.printStackTrace();
 		}
 	}
+
 	// }
 	// projectiles for everyone within 25 squares
 	public void createPlayersProjectile(int x, int y, int offX, int offY,
@@ -1198,6 +1205,7 @@ public class PlayerAssistant {
 			}
 		}
 	}
+
 	public void createPlayersProjectile2(int x, int y, int offX, int offY,
 			int angle, int speed, int gfxMoving, int startHeight,
 			int endHeight, int lockon, int time, int slope) {
@@ -1287,6 +1295,7 @@ public class PlayerAssistant {
 			c.flushOutStream();
 		}
 	}
+
 	/*
 	 * public int getTotalLevel() { int totalLevel =
 	 * (c.getLevelForXP(c.playerXP[0]) + c.getLevelForXP(c.playerXP[1]) +
@@ -3858,6 +3867,7 @@ public class PlayerAssistant {
 		}
 		return false;
 	}
+
 	public void leaveDung(Client c2) { // handles dung leaving
 		for (int k = 0; k < 25; k++) {
 			c2.playerLevel[k] = c2.getPA().getLevelForXP(c2.playerXP[k]);
@@ -5972,7 +5982,9 @@ public class PlayerAssistant {
 			}
 		}
 		if (p > 0) {
-			sendFrame126("Bank of Divination of Gods - (search: '" + str + "')", 5383);
+			sendFrame126(
+					"Bank of Divination of Gods - (search: '" + str + "')",
+					5383);
 			showItems(c.items, c.itemsN);
 			c.getItems().resetTempItems();
 			slot = 0;
@@ -6155,6 +6167,7 @@ public class PlayerAssistant {
 			c.flushOutStream();
 		}
 	}
+
 	// }
 	public void sendFrame75(int MainFrame, int SubFrame) {
 		// synchronized(c) {
@@ -6166,6 +6179,7 @@ public class PlayerAssistant {
 		}
 		// }
 	}
+
 	// }
 	public void sendFrame87(int id, int state) {
 		// synchronized(c) {
@@ -6176,6 +6190,7 @@ public class PlayerAssistant {
 			c.flushOutStream();
 		}
 	}
+
 	// }
 	public void sendLink(String s) {
 		// synchronized(c) {
@@ -6184,6 +6199,7 @@ public class PlayerAssistant {
 			c.getOutStream().writeString(s);
 		}
 	}
+
 	public void sendMp3(String mp3) {
 		// synchronized(c) {
 		// sendFrame126(":mp3:"+mp3+"", 24000);
@@ -6580,6 +6596,7 @@ public class PlayerAssistant {
 			}
 		}
 	}
+
 	public void showOption(int i, int l, String s, int a) {
 		if (c.getOutStream() != null && c != null) {
 			if (!optionType.equalsIgnoreCase(s)) {

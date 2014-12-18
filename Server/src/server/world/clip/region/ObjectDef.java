@@ -1,6 +1,5 @@
 package server.world.clip.region;
 
-
 // Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
@@ -101,21 +100,27 @@ public final class ObjectDef {
 	public int[] modifiedModelColors;
 	public String actions[];
 	public static MemoryArchive archive;
+
 	public ObjectDef() {
 		type = -1;
 	}
+
 	public boolean aBoolean767() {
 		return aBoolean767;
 	}
+
 	public int actionCount() {
 		return hasActions ? 1 : 0;
 	}
+
 	public boolean hasActions() {
 		return hasActions;
 	}
+
 	public boolean hasName() {
 		return name != null && name.length() > 1;
 	}
+
 	public void nullLoader() {
 		anIntArray773 = null;
 		anIntArray776 = null;
@@ -154,6 +159,7 @@ public final class ObjectDef {
 		anInt749 = -1;
 		childrenIDs = null;
 	}
+
 	public void readValues(ByteStreamExt stream) {
 		int flag = -1;
 		do {
@@ -321,9 +327,11 @@ public final class ObjectDef {
 				hasActions = true;
 		}
 	}
+
 	public boolean solid() {
 		return aBoolean779;
 	}
+
 	public int xLength() {
 		return anInt744;
 	}

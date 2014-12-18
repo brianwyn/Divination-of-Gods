@@ -26,6 +26,7 @@ public class MagicRequirements extends MagicData {
 	public static final int BLOOD = 565;
 	public static final int SOUL = 566;
 	public static final int ASTRAL = 9075;
+
 	public static boolean checkMagicReqs(Client c, int spell) {
 		if (c.usingMagic && Config.RUNES_REQUIRED) { // check for runes
 			if ((!c.getItems().playerHasItem(c.MAGIC_SPELLS[spell][8],
@@ -126,6 +127,7 @@ public class MagicRequirements extends MagicData {
 		}
 		return true;
 	}
+
 	public static void deleteRunes(Client c, int[] runes, int[] amount) {
 		if (c.playerRights == 0) {
 			for (int i = 0; i < runes.length; i++) {
@@ -134,9 +136,11 @@ public class MagicRequirements extends MagicData {
 			}
 		}
 	}
+
 	public static boolean hasRequiredLevel(Client c, int i) {
 		return c.playerLevel[6] >= i;
 	}
+
 	public static boolean hasRunes(Client c, int[] runes, int[] amount) {
 		for (int i = 0; i < runes.length; i++) {
 			if (c.getItems().playerHasItem(runes[i], amount[i])
@@ -147,6 +151,7 @@ public class MagicRequirements extends MagicData {
 		c.sendMessage("You don't have enough required runes to cast this spell!");
 		return false;
 	}
+
 	public static boolean wearingStaff(Client c, int runeId) {
 		int wep = c.playerEquipment[Player.playerWeapon];
 		switch (runeId) {

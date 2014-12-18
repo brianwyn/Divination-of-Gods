@@ -54,6 +54,7 @@ public class ObjectManager {
 
 		Construction.spawnObjects(c);
 	}
+
 	public ArrayList<Object> objects = new ArrayList<Object>();
 
 	private ArrayList<Object> toRemove = new ArrayList<Object>();
@@ -205,8 +206,8 @@ public class ObjectManager {
 		c.getPA().checkObjectSpawn(1306, 2640, 4678, 1, 10);
 		c.getPA().checkObjectSpawn(1306, 2638, 4676, 1, 10);
 		c.getPA().checkObjectSpawn(1306, 2645, 4688, 1, 10);
-																// with Bank
-																// Booths
+		// with Bank
+		// Booths
 		// c.getPA().checkObjectSpawn(15411, 1899, 5092, 2, 10); //replace
 		// Ladders with Bank Booths
 		// c.getPA().checkObjectSpawn(15411, 1900, 5092, 2, 10); //replace
@@ -610,7 +611,7 @@ public class ObjectManager {
 		// varrock home
 		// c.getPA().checkObjectSpawn(15478, 3195, 3432, 2, 10); // Con Portal
 		c.getPA().checkObjectSpawn(881, 3222, 3438, 2, 10); // sewer entrance
-																// entrance
+															// entrance
 		c.getPA().checkObjectSpawn(-1, 3207, 3435, 2, 10); // remove stall
 		c.getPA().checkObjectSpawn(-1, 3221, 3431, 2, 10); // remove stall
 		c.getPA().checkObjectSpawn(-1, 3221, 3432, 2, 10); // remove stall
@@ -647,12 +648,12 @@ public class ObjectManager {
 															// altar
 		c.getPA().checkObjectSpawn(410, 3104, 3496, 3, 10); // lunar altar
 		c.getPA().checkObjectSpawn(6552, 3099, 3491, 1, 10); // ancient altar
-		
+
 		c.getPA().checkObjectSpawn(7315, 3093, 3482, 1, 10);
 		c.getPA().checkObjectSpawn(7315, 3094, 3482, 1, 10);
 		c.getPA().checkObjectSpawn(7316, 3090, 3478, 1, 10);
 		c.getPA().checkObjectSpawn(7316, 3097, 3478, 1, 10);
-		
+
 		c.getPA().checkObjectSpawn(1032, 3096, 3482, 0, 10);
 		c.getPA().checkObjectSpawn(1032, 3091, 3482, 0, 10);
 		c.getPA().checkObjectSpawn(1032, 3091, 3482, 0, 10);
@@ -720,7 +721,6 @@ public class ObjectManager {
 		c.getPA().checkObjectSpawn(2024, 2540, 3035, 1, 10); // GOBLIN ESCAPE
 		// END OF GOBLIN MINIGAME
 		c.getPA().checkObjectSpawn(4151, 2605, 3153, 1, 10); // portal home
-															
 
 		c.getPA().checkObjectSpawn(195, 2980, 5111, 0, 10); // escape ladder
 		c.getPA().checkObjectSpawn(4412, 2867, 9527, 0, 10); // escape ladder
@@ -784,6 +784,7 @@ public class ObjectManager {
 		return c.distanceToPoint(o.objectX, o.objectY) <= 60
 				&& c.heightLevel == o.height;
 	}
+
 	public void loadObjects(Client c) {
 		if (c == null)
 			return;
@@ -798,6 +799,7 @@ public class ObjectManager {
 			// c.getFarming().updateHerbPatch();
 		}
 	}
+
 	public boolean objectExists(final int x, final int y) {
 		for (Object o : objects) {
 			if (o.objectX == x && o.objectY == y) {

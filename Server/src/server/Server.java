@@ -6,7 +6,6 @@ import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.concurrent.Executors;
 
-import org.Vote.MainLoader;
 import org.jboss.netty.bootstrap.ServerBootstrap;
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.jboss.netty.util.HashedWheelTimer;
@@ -25,8 +24,8 @@ import server.model.minigames.RFD;
 import server.model.npcs.NPCDrops;
 import server.model.npcs.NPCHandler;
 import server.model.players.PlayerHandler;
-import server.model.players.content.ImpSpawn;
 import server.model.players.SQL;
+import server.model.players.content.ImpSpawn;
 import server.net.PipelineFactory;
 import server.util.SimpleTimer;
 import server.util.log.Logger;
@@ -126,11 +125,13 @@ public class Server {
 	public static int totalExecution = 0;
 
 	public static int totalExecution2 = 0;
+
 	/*
 	 * public static void main(java.lang.String args[]) throws
 	 * NullPointerException, IOException { System.setOut(new
 	 * Logger(System.out)); System.setErr(new Logger(System.err));
-	 * System.out.println("[Divinationofgods.com] Launching Divination of Gods..");
+	 * System.out.println
+	 * ("[Divinationofgods.com] Launching Divination of Gods..");
 	 * World.getWorld(); //WebsiteHighScores.checkConnection(); if
 	 * (!Config.DisableMYSQL) {
 	 * System.out.println("Initing MySQL Connections..."); MySQL.init(); }
@@ -141,8 +142,8 @@ public class Server {
 	 * GE.loadSellers(); GE.loadBuyers(); GrandExchange.loading = false;
 	 * System.out.println("Total offers loaded " + GE.totalOffers);* } catch
 	 * (Exception ex) {
-	 * System.out.println("[divinationofgods.com] Error starting the server...");
-	 * ex.printStackTrace(); System.exit(1); } System.gc(); }
+	 * System.out.println("[divinationofgods.com] Error starting the server..."
+	 * ); ex.printStackTrace(); System.exit(1); } System.gc(); }
 	 */
 	// ENGINE DISABLED
 	/**
@@ -160,6 +161,7 @@ public class Server {
 				new HashedWheelTimer()));
 		serverBootstrap.bind(new InetSocketAddress(serverlistenerPort));
 	}
+
 	public static void debug() {
 		System.out.println("Players online: " + PlayerHandler.getPlayerCount()
 				+ "");
@@ -181,6 +183,7 @@ public class Server {
 	public static long getSleepTimer() {
 		return sleepTime;
 	}
+
 	public static StillGraphicsManager getStillGraphicsManager() {
 		return stillGraphicsManager;
 	}
@@ -202,7 +205,8 @@ public class Server {
 		Region.load();
 		// md = new MadTurnipConnection();
 		// md.start();
-		System.out.println("[DivinationofGods] Launching Divination of Gods..cuz jal knight is awesome");
+		System.out
+				.println("[DivinationofGods] Launching Divination of Gods..cuz jal knight is awesome");
 		SQL.createConnection();
 		System.out.println("Oh look! The Connection to HS has been made!");
 		// World.getWorld();
@@ -218,7 +222,8 @@ public class Server {
 		bind();
 		// Server.setupLoginChannels(); // set up login channels late to avoid
 		// ppl logging in to early
-		System.out.println("[divinationofgods.cu.cc] Launched Divination of Gods!");
+		System.out
+				.println("[divinationofgods.cu.cc] Launched Divination of Gods!");
 		/**
 		 * Main server tick.
 		 */

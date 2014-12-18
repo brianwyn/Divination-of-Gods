@@ -46,12 +46,15 @@ public class Tiles {
 	public void setF(int f) {
 		this.f = f;
 	}
+
 	public void setH(int h) {
 		this.h = h;
 	}
+
 	public void setX(int x) {
 		this.x = x;
 	}
+
 	public void setY(int y) {
 		this.y = y;
 	}

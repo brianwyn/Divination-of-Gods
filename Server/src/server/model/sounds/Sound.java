@@ -107,6 +107,7 @@ public class Sound {
 		return 791;
 
 	}
+
 	public static int getNpcDeathSounds(int NPCID) {
 		String npc = GetNpcName(NPCID).toLowerCase();
 		if (npc.contains("bat")) {
@@ -147,9 +148,11 @@ public class Sound {
 		return 70;
 
 	}
+
 	public static String GetNpcName(int NpcID) {
 		return NPCHandler.NpcList[NpcID].npcName;
 	}
+
 	public static int getPlayerBlockSounds(Client c) {
 
 		int blockSound = 511;
@@ -219,6 +222,7 @@ public class Sound {
 		}
 		return blockSound;
 	}
+
 	public static int GetWeaponSound(Client c) {
 
 		String wep = getItemName(c.playerEquipment[Player.playerWeapon])
@@ -370,6 +374,7 @@ public class Sound {
 			return 398; // Daggers(this is enything that isn't added)
 		}
 	}
+
 	public static int specialSounds(int id) {
 		if (id == 4151) // whip
 		{
@@ -424,6 +429,7 @@ public class Sound {
 		}
 		return -1;
 	}
+
 	Client c;
 	/**
 	 * Singular sound variables.

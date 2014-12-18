@@ -83,12 +83,15 @@ public class BankPin {
 	public int[] getActionButtons() {
 		return actionButtons;
 	}
+
 	public int[] getBankPins() {
 		return bankPins;
 	}
+
 	public int getFirstPin() {
 		return firstPin;
 	}
+
 	public int getFourthPin() {
 		return fourthPin;
 	}
@@ -374,15 +377,19 @@ public class BankPin {
 	public void setFourthPin(int fourthPin) {
 		this.fourthPin = fourthPin;
 	}
+
 	public void setSecondPin(int secondPin) {
 		this.secondPin = secondPin;
 	}
+
 	public void setThirdPin(int thirdPin) {
 		this.thirdPin = thirdPin;
 	}
+
 	public void setTotalPin(int totalPin) {
 		this.totalPin = totalPin;
 	}
+
 	public void timeCountDown() {
 		if (allowTimer > 0 && allowTimer <= 300000) {
 			allowTimer -= 100;

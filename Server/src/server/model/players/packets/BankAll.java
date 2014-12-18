@@ -49,9 +49,6 @@ public class BankAll implements PacketType {
 				c.getItems().bankItem(c.playerItems[removeSlot], removeSlot,
 						c.playerItemsN[removeSlot]);
 			} else {
-				// c.getItems().bankItem(c.playerItems[removeSlot] , removeSlot,
-				// c.playerItemsN[removeSlot]);
-
 				c.getItems().bankItem(c.playerItems[removeSlot], removeSlot,
 						c.getItems().itemAmount(c.playerItems[removeSlot]));
 				c.getPA().searchBank(c, c.searchTerm);
@@ -68,8 +65,6 @@ public class BankAll implements PacketType {
 			else
 				c.getItems().fromBank(removeId, removeSlot,
 						c.bankingItemsN[removeSlot]);
-			// c.getItems().fromBank(c.bankItems[removeSlot] , removeSlot,
-			// c.bankItemsN[removeSlot]);
 			c.getPA().searchBank(c, c.searchTerm);
 			break;
 

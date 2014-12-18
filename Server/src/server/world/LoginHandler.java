@@ -276,7 +276,7 @@ public class LoginHandler {
 			if (p != null) {
 				Client c2 = (Client) p;
 				String staffNames[] = { "Mod Jesse", "Mod Abby", /* ADMINSTART */
-						"Mod Braedyn", "Mod Ash", "Mod Brandon" /* MODSTART */,
+				"Mod Braedyn", "Mod Ash", "Mod Brandon" /* MODSTART */,
 						"Mod Andrew", "Mod Brad", "mystic", "deathmagicia" };
 				for (int i = 0, i2 = 28000; i < staffNames.length; i++, i2 += 2) {
 					c2.getPA().sendFrame126(staffNames[i], i2);

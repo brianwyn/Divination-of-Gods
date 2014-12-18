@@ -25,13 +25,15 @@ import server.world.clip.region.Region;
 public class NPCHandler {
 
 	public static int corpRewards[] = { 6585, 1127, 13979, 2651, 1185, 1275,
-			2581, 13958, 15509, 2651, 1079, 1093, 1113, 20001, 20002, 20003, 1185, 1201, 1275, 1303,
-			19669, 1333, 13344, 1373, 2491, 2497, 2503, 1303, 13748, 2581,
-			2651, 13750, 560, 555, 13752, 13734, 13736, 2, 19368, 19370, 13884,
-			13982, 20000 };
+			2581, 13958, 15509, 2651, 1079, 1093, 1113, 20001, 20002, 20003,
+			1185, 1201, 1275, 1303, 19669, 1333, 13344, 1373, 2491, 2497, 2503,
+			1303, 13748, 2581, 2651, 13750, 560, 555, 13752, 13734, 13736, 2,
+			19368, 19370, 13884, 13982, 20000 };
+
 	public static void deleteFCNpcs(Client c) {
 
 	}
+
 	/****
 	 ****** FIXED THE FUCKING RESPAWNING PROBLEM TOOK 2 HOURS TO FIND THE FUCKING
 	 * PROBLEM - LMFAO
@@ -110,7 +112,7 @@ public class NPCHandler {
 
 		case 8283:
 			if (npcs[i].attackType == 1)
-			return 10681;
+				return 10681;
 		case 8282:
 			return 10669;
 		case 1374:
@@ -2124,59 +2126,59 @@ public class NPCHandler {
 				c.sendMessage("You've gained 2 FunPoints for killing the monster!");
 			}
 			if (npcs[i].npcType == 6260) {
-				c.bossPoints += 1; //bymodjesse
+				c.bossPoints += 1; // bymodjesse
 				c.sendMessage("You've killed the General! You earn 1 Boss Point!");
 			}
 			if (npcs[i].npcType == 4477) {
-				c.bossPoints += 2; //bymodjesse
+				c.bossPoints += 2; // bymodjesse
 				c.sendMessage("You've killed Barebones! You earn 2 Boss Points!");
 			}
 			if (npcs[i].npcType == 8133) {
-				c.bossPoints += 3; //bymodjesse
+				c.bossPoints += 3; // bymodjesse
 				c.sendMessage("You've killed the mighty Corporal Beast! You earn 3 Boss Points!");
 			}
 			if (npcs[i].npcType == 5666) {
-				c.bossPoints += 1; //bymodjesse
+				c.bossPoints += 1; // bymodjesse
 				c.sendMessage("You've killed Barrelchest! You earn 1 Boss Point!");
 			}
 			if (npcs[i].npcType == 50) {
-				c.bossPoints += 1; //bymodjesse
+				c.bossPoints += 1; // bymodjesse
 				c.sendMessage("You've killed the King Black Dragon! You earn 1 Boss Point!");
 			}
 			if (npcs[i].npcType == 6247) {
-				c.bossPoints += 1; //bymodjesse
+				c.bossPoints += 1; // bymodjesse
 				c.sendMessage("You've killed the god Saradomin!! You earn 1 Boss Points!");
 			}
 			if (npcs[i].npcType == 6222) {
-				c.bossPoints += 1; //bymodjesse
+				c.bossPoints += 1; // bymodjesse
 				c.sendMessage("You've killed the god Armadyl!! You earn 1 Boss Points!");
 			}
 			if (npcs[i].npcType == 3340) {
-				c.bossPoints += 1; //bymodjesse
+				c.bossPoints += 1; // bymodjesse
 				c.sendMessage("You've killed the giant mole!! You earn 1 Boss Points!");
 			}
 			if (npcs[i].npcType == 2636) {
-				c.bossPoints += 1; //bymodjesse
+				c.bossPoints += 1; // bymodjesse
 				c.sendMessage("You've killed the tormented demon!! You earn 1 Boss Points!");
 			}
 			if (npcs[i].npcType == 2883) {
-				c.bossPoints += 2; //bymodjesse
+				c.bossPoints += 2; // bymodjesse
 				c.sendMessage("You've killed the Dagannoth Rex! You earn 2 Boss Points!");
 			}
 			if (npcs[i].npcType == 6363) {
-				c.bossPoints += 2; //bymodjesse
+				c.bossPoints += 2; // bymodjesse
 				c.sendMessage("You've killed the god Zamorak!! You earn 2 Boss Points!");
 			}
 			if (npcs[i].npcType == 2882) {
-				c.bossPoints += 2; //bymodjesse
+				c.bossPoints += 2; // bymodjesse
 				c.sendMessage("You've killed the Dagannoth Prime! You earn 2 Boss Points!");
 			}
 			if (npcs[i].npcType == 2881) {
-				c.bossPoints += 2; //bymodjesse
+				c.bossPoints += 2; // bymodjesse
 				c.sendMessage("You've killed the Dagannoth Supreme! You earn 2 Boss Points!");
 			}
 			if (npcs[i].npcType == 2636) {
-				c.bossPoints += 5; //bymodjesse
+				c.bossPoints += 5; // bymodjesse
 				c.sendMessage("You've killed the god nex!! You earn 5 Boss Points!");
 			}
 			if (npcs[i].npcType == 5529) {

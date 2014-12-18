@@ -140,6 +140,7 @@ public class ObjectHandler {
 			}
 		}
 	}
+
 	public int getObeliskIndex(int id) {
 		for (int j = 0; j < obeliskIds.length; j++) {
 			if (obeliskIds[j] == id)
@@ -147,6 +148,7 @@ public class ObjectHandler {
 		}
 		return -1;
 	}
+
 	public boolean isObelisk(int id) {
 		for (int j = 0; j < obeliskIds.length; j++) {
 			if (obeliskIds[j] == id)
@@ -359,12 +361,14 @@ public class ObjectHandler {
 		 * teleportObelisk(index); } } break; } }
 		 */
 	}
+
 	/**
 	 * Removes object from list
 	 **/
 	public void removeObject(Objects object) {
 		globalObjects.remove(object);
 	}
+
 	// firemaking
 	public void setFire(Client c, int id, int x, int y) {
 		Objects OBJECT = new Objects(id, x, y, 0, 0, 10, 0);

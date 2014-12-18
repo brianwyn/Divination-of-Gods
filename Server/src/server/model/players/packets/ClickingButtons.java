@@ -140,8 +140,8 @@ public class ClickingButtons implements PacketType {
 			}
 			break;
 		/*
-			 * Rotten potato shit
-			*/
+		 * Rotten potato shit
+		 */
 
 		case 132220:
 			c.getPA().spellTeleport(2710, 9466, 0);
@@ -661,24 +661,26 @@ public class ClickingButtons implements PacketType {
 		case 47085:
 			c.getPA().resetFrames();
 			c.getPA().getHighscores("kills");
-			c.getPA().sendFrame126("Divination of Gods Highscores: Top Kills", 12102);
+			c.getPA().sendFrame126("Divination of Gods Highscores: Top Kills",
+					12102);
 			break;
 		case 47084:
 			c.getPA().resetFrames();
 			c.getPA().getHighscores("PLP");
-			c.getPA().sendFrame126("Divination of Gods Highscores: Divination Points",
-					12102);
+			c.getPA().sendFrame126(
+					"Divination of Gods Highscores: Divination Points", 12102);
 			break;
 		case 47088:
 			c.getPA().resetFrames();
 			c.getPA().getHighscores("deaths");
-			c.getPA().sendFrame126("Divination of Gods Highscores: Top Deaths", 12102);
+			c.getPA().sendFrame126("Divination of Gods Highscores: Top Deaths",
+					12102);
 			break;
 		case 47089:
 			c.getPA().resetFrames();
 			c.getPA().getHighscores("LP");
-			c.getPA().sendFrame126("    Divination of Gods Highscores: Loyalty Points",
-					12102);
+			c.getPA().sendFrame126(
+					"    Divination of Gods Highscores: Loyalty Points", 12102);
 			break;
 		// Request Staff Assistance
 		case 109114:
@@ -3027,13 +3029,13 @@ public class ClickingButtons implements PacketType {
 		case 62137:
 			break;
 		case 9178:// 4 line chat interface OPTION 1
-			if(c.dialogueAction == 11138) {
-				if(c.getPlayerGod() < 0) {
+			if (c.dialogueAction == 11138) {
+				if (c.getPlayerGod() < 0) {
 					c.setPlayerGod(0);// ZAMORAK
 					c.getPA().removeAllWindows();
 				} else {
-					c.sendMessage("You already worship " +  c.getGod() + ".");
-						c.getPA().removeAllWindows();
+					c.sendMessage("You already worship " + c.getGod() + ".");
+					c.getPA().removeAllWindows();
 				}
 			}
 			if (c.teleAction == 4282) {
@@ -3240,13 +3242,13 @@ public class ClickingButtons implements PacketType {
 			break;
 
 		case 9179:// 4 line chat interface OPTION 2
-			if(c.dialogueAction == 11138) {
-				if(c.getPlayerGod() < 0) {
+			if (c.dialogueAction == 11138) {
+				if (c.getPlayerGod() < 0) {
 					c.setPlayerGod(1);// Arma
 					c.getPA().removeAllWindows();
 				} else {
-					c.sendMessage("You already worship " +  c.getGod() + ".");
-						c.getPA().removeAllWindows();
+					c.sendMessage("You already worship " + c.getGod() + ".");
+					c.getPA().removeAllWindows();
 				}
 			}
 			if (c.teleAction == 4282) {
@@ -3480,13 +3482,13 @@ public class ClickingButtons implements PacketType {
 			break;
 
 		case 9180:// 4 line chat interface OPTION 3
-			if(c.dialogueAction == 11138) {
-				if(c.getPlayerGod() < 0) {
+			if (c.dialogueAction == 11138) {
+				if (c.getPlayerGod() < 0) {
 					c.setPlayerGod(2);// Bandos
 					c.getPA().removeAllWindows();
 				} else {
-					c.sendMessage("You already worship " +  c.getGod() + ".");
-						c.getPA().removeAllWindows();
+					c.sendMessage("You already worship " + c.getGod() + ".");
+					c.getPA().removeAllWindows();
 				}
 			}
 			if (c.teleAction == 4282) {
@@ -3703,7 +3705,7 @@ public class ClickingButtons implements PacketType {
 			break;
 
 		case 9181:// 4 line chat interface OPTION 4
-			if(c.dialogueAction == 11138) {// NEXT CHAT
+			if (c.dialogueAction == 11138) {// NEXT CHAT
 				c.getDH().sendDialogues(11139, 949);
 				return;
 			}
@@ -3973,44 +3975,44 @@ public class ClickingButtons implements PacketType {
 			c.getPA().closeAllWindows();
 			break;
 		case 9167:// 3 line chat interface option1
-			switch(c.dialogueAction) {
-				case 11139:// God chat
-					if(c.getPlayerGod() < 0) {
-						c.setPlayerGod(3);// Nex
-						c.getPA().removeAllWindows();
-					} else {
-						c.sendMessage("You already worship " +  c.getGod() + ".");
-						c.getPA().removeAllWindows();
-					}
+			switch (c.dialogueAction) {
+			case 11139:// God chat
+				if (c.getPlayerGod() < 0) {
+					c.setPlayerGod(3);// Nex
+					c.getPA().removeAllWindows();
+				} else {
+					c.sendMessage("You already worship " + c.getGod() + ".");
+					c.getPA().removeAllWindows();
+				}
 				break;
 			}
-		break;
+			break;
 		case 9168:// 3 line chat interface option 2
-			switch(c.dialogueAction) {
-				case 11139:// God chat
-					if(c.getPlayerGod() < 0) {
-						c.setPlayerGod(4);// Sara
-						c.getPA().removeAllWindows();
-					} else {
-						c.sendMessage("You already worship " +  c.getGod() + ".");
-						c.getPA().removeAllWindows();
-					}
+			switch (c.dialogueAction) {
+			case 11139:// God chat
+				if (c.getPlayerGod() < 0) {
+					c.setPlayerGod(4);// Sara
+					c.getPA().removeAllWindows();
+				} else {
+					c.sendMessage("You already worship " + c.getGod() + ".");
+					c.getPA().removeAllWindows();
+				}
 				break;
 			}
-		break;
+			break;
 		case 9169:// 3 line chat interface option 3
-			switch(c.dialogueAction) {
-				case 11139:// God chat
-					if(c.getPlayerGod() < 0) {
-						c.setPlayerGod(5);// Guthix
-						c.getPA().removeAllWindows();
-					} else {
-						c.sendMessage("You already worship " +  c.getGod() + ".");
-						c.getPA().removeAllWindows();
-					}
+			switch (c.dialogueAction) {
+			case 11139:// God chat
+				if (c.getPlayerGod() < 0) {
+					c.setPlayerGod(5);// Guthix
+					c.getPA().removeAllWindows();
+				} else {
+					c.sendMessage("You already worship " + c.getGod() + ".");
+					c.getPA().removeAllWindows();
+				}
 				break;
 			}
-		break;
+			break;
 		case 9157:// barrows tele to tunnels
 			if (c.dialogueAction == 4381) {
 				c.getShops().openShop(55);
@@ -5301,10 +5303,8 @@ public class ClickingButtons implements PacketType {
 		case 117131:
 		case 4146:
 			c.setSidebarInterface(6, 45500);
-			c.getDH()
-					.sendOption5("War Zone (MASSIVE PLAYER V NPC WAR)",
-							"Mighty Saradomin", "Mad Mummy", "BarrelsChest",
-							"GodWars");
+			c.getDH().sendOption5("War Zone (MASSIVE PLAYER V NPC WAR)",
+					"Mighty Saradomin", "Mad Mummy", "BarrelsChest", "GodWars");
 			c.teleAction = 6;
 			break;
 

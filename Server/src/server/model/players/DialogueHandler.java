@@ -470,7 +470,8 @@ public class DialogueHandler {
 			c.guidePlayer11();
 			break;
 		case 645:
-			c.getDH().sendNpcChat3("This is Nex", "Divination of Gods's hardest boss!",
+			c.getDH().sendNpcChat3("This is Nex",
+					"Divination of Gods's hardest boss!",
 					"If you defeat her you might receive a great reward!",
 					c.talkingNpc, "Server Guide");
 			c.nextChat = 685;
@@ -714,7 +715,8 @@ public class DialogueHandler {
 			c.dialogueAction = 4445;
 			break;
 		case 400:
-			c.getDH().sendNpcChat2("Hello, welcome to the official Divination of Gods",
+			c.getDH().sendNpcChat2(
+					"Hello, welcome to the official Divination of Gods",
 					"Dungeoneering area!", c.talkingNpc, "Thok");
 			c.nextChat = 401;
 			break;
@@ -1287,11 +1289,12 @@ public class DialogueHandler {
 			// c.santaPrize = 1;
 			break;
 		case 19995:
-			sendNpcChat3("Thanks for donating!", "Please take this ring for your",
+			sendNpcChat3("Thanks for donating!",
+					"Please take this ring for your",
 					"double experience weekend!", c.talkingNpc, "Musician");
 			c.nextChat = 0;
 			break;
-			
+
 		case 256:
 			sendNpcChat1("Would you like to abandon the Dungeon?",
 					c.talkingNpc, "Dungeoneering");
@@ -2187,21 +2190,16 @@ public class DialogueHandler {
 			c.nextChat = 166;
 			break;
 		case 1125:
-			sendNpcChat4(
-					"Hello and welcome!",
-					"You must be the hero everyone",
-					"has been talking about!",
-					"We are so glad your here!",
+			sendNpcChat4("Hello and welcome!", "You must be the hero everyone",
+					"has been talking about!", "We are so glad your here!",
 					c.talkingNpc, "Quest Guide");
 			c.nextChat = 1126;
 			break;
 		case 1126:
-			sendNpcChat4(
-					"So what on earth could",
+			sendNpcChat4("So what on earth could",
 					"could posses such a brave and noble",
 					"adventurer to come to these ancient lands",
-					"without a death wish",
-					c.talkingNpc, "Quest Guide");
+					"without a death wish", c.talkingNpc, "Quest Guide");
 			c.nextChat = 1127;
 			break;
 		case 1127:
@@ -2211,45 +2209,40 @@ public class DialogueHandler {
 			c.nextChat = 1128;
 			break;
 		case 1128:
-			sendNpcChat1(
-					"Well then, allow me to start you off",
-					c.talkingNpc, "Quest Guide");
+			sendNpcChat1("Well then, allow me to start you off", c.talkingNpc,
+					"Quest Guide");
 			c.nextChat = 1129;
 			break;
 		case 1129:
-			sendNpcChat4(
-					"First lets talk about the mother of all gods",
+			sendNpcChat4("First lets talk about the mother of all gods",
 					"Ferris the Ancient!",
 					"She is the eldest and wisest of the lands",
-					"and gave birth to the rest of the gods.",
-					c.talkingNpc, "Quest Guide");
+					"and gave birth to the rest of the gods.", c.talkingNpc,
+					"Quest Guide");
 			c.nextChat = 11130;
 			break;
 		case 11130:
-			sendNpcChat4(
-					"Next lets talk about Zamorak",
+			sendNpcChat4("Next lets talk about Zamorak",
 					"Zamorak believes that chaos brings order",
 					"and that through slaying all who defy him",
-					"will bring you closer to the divine.",
-					c.talkingNpc, "Quest Guide");
+					"will bring you closer to the divine.", c.talkingNpc,
+					"Quest Guide");
 			c.nextChat = 11131;
 			break;
 		case 11131:
-			sendNpcChat4(
-					"Now lets talk about Armadyl",
+			sendNpcChat4("Now lets talk about Armadyl",
 					"Armadyl is a bird style god who believes",
 					"those who can not fly do not deserve to exist",
-					"and seeks to destroy those without flight",
-					c.talkingNpc, "Quest Guide");
+					"and seeks to destroy those without flight", c.talkingNpc,
+					"Quest Guide");
 			c.nextChat = 11132;
 			break;
 		case 11132:
-			sendNpcChat4(
-					"That brings us to Bandos",
+			sendNpcChat4("That brings us to Bandos",
 					"Bandos believes only warriors may survive",
 					"and that through strength, comes command",
-					"with command comes power to control",
-					c.talkingNpc, "Quest Guide");
+					"with command comes power to control", c.talkingNpc,
+					"Quest Guide");
 			c.nextChat = 11133;
 			break;
 		case 11133:
@@ -2262,8 +2255,7 @@ public class DialogueHandler {
 			c.nextChat = 11134;
 			break;
 		case 11134:
-			sendNpcChat4(
-					"Then there is Saradomin",
+			sendNpcChat4("Then there is Saradomin",
 					"Saradomin is the god of wisdom and believes",
 					"peace can only be obtained through harmony",
 					"and that we can love one another and co-exist",
@@ -2283,28 +2275,23 @@ public class DialogueHandler {
 			sendNpcChat3(
 					"Whichever god you choose will decide your on-going fate",
 					"So I implore you to choose wisely, as you may",
-					"only choose one...",
-					c.talkingNpc, "Quest Guide");
+					"only choose one...", c.talkingNpc, "Quest Guide");
 			c.nextChat = 11137;
 			break;
 		case 11137:
-			sendNpcChat1(
-					"So which will you choose?",
-					c.talkingNpc, "Quest Guide");
+			sendNpcChat1("So which will you choose?", c.talkingNpc,
+					"Quest Guide");
 			c.nextChat = 11138;
 			break;
-		case 11138: //more options to send to 1139, and names will open a boss point system in essence
-			sendOption4(
-					"Zamorak - God of Chaos",
-					"Armadyl - God of Flight",
-					"Bandos - God of War",
-					"More options");// You would have had errors lol.
+		case 11138: // more options to send to 1139, and names will open a boss
+					// point system in essence
+			sendOption4("Zamorak - God of Chaos", "Armadyl - God of Flight",
+					"Bandos - God of War", "More options");// You would have had
+															// errors lol.
 			c.dialogueAction = 11138;
 			break;
 		case 11139:
-			sendOption3(
-					"Nex - God of Ancients",
-					"Saradomin - God of Wisdom",
+			sendOption3("Nex - God of Ancients", "Saradomin - God of Wisdom",
 					"Guthix - God of Balance");// This isn't done??
 			c.dialogueAction = 11139;
 			break;

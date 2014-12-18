@@ -139,6 +139,7 @@ public class NPC {
 		str.writeByteA(HP);
 		str.writeByte(MaxHP);
 	}
+
 	public void appendMask80Update(Stream str) {
 		str.writeWord(mask80var1);
 		str.writeDWord(mask80var2);
@@ -302,24 +303,29 @@ public class NPC {
 		absY += moveY;
 		return dir;
 	}
+
 	public int getX() {
 		return absX;
 	}
+
 	public int getY() {
 		return absY;
 	}
+
 	public void gfx0(int gfx) {
 		mask80var1 = gfx;
 		mask80var2 = 65536;
 		mask80update = true;
 		updateRequired = true;
 	}
+
 	public void gfx100(int gfx) {
 		mask80var1 = gfx;
 		mask80var2 = 6553600;
 		mask80update = true;
 		updateRequired = true;
 	}
+
 	public void gfx50(int gfx) {
 		mask80var1 = gfx;
 		mask80var2 = 3276800;
@@ -422,7 +428,8 @@ public class NPC {
 				|| (absX >= 2453 && absX <= 2476 && absY >= 4768 && absY <= 4790)
 				|| (absX >= 2947 && absX <= 3002 && absY >= 9475 && absY <= 9528)
 				|| (absX >= 2256 && absX <= 2287 && absY >= 4680 && absY <= 4711)
-				|| (absX >= 2980 && absX <= 2993 && absY >= 9629 && absY <= 9644) || absX > 2784 && absX < 2802 && absY > 9321 && absY < 9341) {
+				|| (absX >= 2980 && absX <= 2993 && absY >= 9629 && absY <= 9644)
+				|| absX > 2784 && absX < 2802 && absY > 9321 && absY < 9341) {
 			return true;
 		}
 		return false;

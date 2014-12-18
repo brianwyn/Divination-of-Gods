@@ -44,6 +44,7 @@ public class PestControl {
 		}
 
 	}
+
 	public static PestControl[] runningGames = new PestControl[1];
 
 	public static void giveReward(Client c, boolean item, int id, int amount,
@@ -123,6 +124,7 @@ public class PestControl {
 
 	public int gameTimer = -1;
 	public static int waitTimer = WAIT_TIMER;
+
 	public static boolean gameExists(int id) {
 		for (PestControl pc : runningGames) {
 			if (pc.getId() == id)
@@ -130,6 +132,7 @@ public class PestControl {
 		}
 		return false;
 	}
+
 	public static boolean isPCNPC(int npcType) {
 		for (PestControlNPC type : PestControlNPC.values()) {
 			if (npcType >= type.getLowestNPCID()
@@ -139,6 +142,7 @@ public class PestControl {
 		}
 		return false;
 	}
+
 	public static boolean isPCNPC(int npcType, PestControlNPC type) {
 		return (npcType >= type.getLowestNPCID() && npcType <= type
 				.getHighestNPCID());

@@ -278,6 +278,7 @@ public class Misc {
 	public static String removeSpaces(String s) {
 		return s.replace(" ", "");
 	}
+
 	public static void textPack(byte packedData[], java.lang.String text) {
 		if (text.length() > 80)
 			text = text.substring(0, 80);
