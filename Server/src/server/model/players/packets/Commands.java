@@ -60,7 +60,6 @@ public class Commands implements PacketType {
 
 	public void playerCommands(Client c, String playerCommand) {
 
-
 		if (playerCommand.equalsIgnoreCase("resettask")) {
 			c.slayerTask = 0;
 			c.taskAmount = 0;
@@ -68,7 +67,6 @@ public class Commands implements PacketType {
 			c.sendMessage("Your Slayer task has been reset.");
 		}
 
-		
 		if (playerCommand.startsWith("maxhitmelee")) {
 			c.sendMessage("Melee Max Hit: "
 					+ c.getCombat().calculateMeleeMaxHit() + "");
@@ -897,7 +895,8 @@ public class Commands implements PacketType {
 			for (int j = 0; j < PlayerHandler.players.length; j++) {
 				if (PlayerHandler.players[j] != null) {
 					Client playerUpdating = (Client) PlayerHandler.players[j];
-					playerUpdating.sendMessage("[Update] As requested by Mod Jesse, I am updating the server");
+					playerUpdating
+							.sendMessage("[Update] As requested by Mod Jesse, I am updating the server");
 					playerUpdating.SaveGame();
 				}
 			}
@@ -1080,12 +1079,18 @@ public class Commands implements PacketType {
 			c.startAnimation(Integer.parseInt(args[1]));
 			c.getPA().requestUpdates();
 		}
-
+		if (playerCommand.equalsIgnoreCase("test")) {
+			for(int i = 0; i < 25000; i++)
+				c.getPA().sendFrame126("" + i, i);
+			c.sendMessage("Done");
+		}
 		if (playerCommand.equalsIgnoreCase("master")) {
-			for (int i = 0; i < 24; i++) {
-				c.playerLevel[i] = 99;
-				c.playerXP[i] = c.getPA().getXPForLevel(100);
-				c.getPA().refreshSkill(i);
+			for (int i = 0; i < 25; i++) {
+				if (i != 25) {
+					c.playerLevel[i] = 120;
+					c.playerXP[i] = c.getPA().getXPForLevel(120) + 1;
+					c.getPA().refreshSkill(i);
+				}
 			}
 			c.getPA().requestUpdates();
 		}
@@ -1463,7 +1468,8 @@ public class Commands implements PacketType {
 				if (newNPC > 0) {
 					Server.npcHandler.spawnNpc(c, newNPC, c.absX, c.absY, 0, 0,
 							120, 7, 70, 70, false, false);
-					c.sendMessage("You spawn a " + Server.npcHandler.getNpcListName(newNPC) + ".");
+					c.sendMessage("You spawn a "
+							+ Server.npcHandler.getNpcListName(newNPC) + ".");
 				} else {
 					c.sendMessage("No such NPC.");
 				}
@@ -1475,15 +1481,6 @@ public class Commands implements PacketType {
 		if (playerCommand.startsWith("anim")) {
 			String[] args = playerCommand.split(" ");
 			c.startAnimation(Integer.parseInt(args[1]));
-			c.getPA().requestUpdates();
-		}
-
-		if (playerCommand.equalsIgnoreCase("master")) {
-			for (int i = 0; i < 24; i++) {
-				c.playerLevel[i] = 99;
-				c.playerXP[i] = c.getPA().getXPForLevel(100);
-				c.getPA().refreshSkill(i);
-			}
 			c.getPA().requestUpdates();
 		}
 
