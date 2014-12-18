@@ -6702,36 +6702,6 @@ private void doAction(int i) {
 								onDemandFetcher.method563((byte)1, 2, j1);
 
 						}
-						if(inputString.equals("::donate")){
-							launchURL("http://divinationofgods.tk");
-						}
-						if(inputString.equals("::vote4cash")) {
-							launchURL("http://divinationofgods.tk");
-						}
-						if(inputString.equals("::forums")) {
-							launchURL("http://divinationofgods.tk");
-						}
-						if(inputString.equals("::forum")) {
-							launchURL("http://divinationofgods.tk");
-						}
-												if(inputString.equals("::site")) {
-							launchURL("http://divinationofgods.tk");
-						}
-												if(inputString.equals("::donat")) {
-							launchURL("http://divinationofgods.tk");
-						}
-						if(inputString.equals("::vote")) {
-							launchURL("http://runelocus.com/top-rsps-list/vote-40379-Divination%20Of%20Gods/");
-						}
-						if(inputString.equals("::vot")) {
-							launchURL("http://divinationofgods.tk");
-						}
-						if(inputString.equals("::votee")) {
-							launchURL("http://divinationofgods.tk");
-						}
-						if(inputString.equals("::VOTE")) {
-							launchURL("http://runelocus.com/top-rsps-list/vote-40379-Divination%20Of%20Gods/");
-						}	
 						if(inputString.equals("::testsp")) {
 					int x = baseX + (myPlayer.x - 6 >> 7);
 									int y = baseY + (myPlayer.y - 6 >> 7);
@@ -6741,24 +6711,11 @@ private void doAction(int i) {
 					stream.method432(y);//players y
 
 						}
-						if(inputString.equals("::reg")) {
-							launchURL("http://desolace.org/");
-							
-							
-							
-	
-						}
-					/*						if(inputString.equals("::sub")) {
-							launchURL("http://www.youtube.com/user/leviathansalliance");
-						}
-												if(inputString.equals("::subscribe")) {
-							launchURL("http://www.youtube.com/user/leviathansalliance");
-						}*/
 						if(inputString.equals("::fpson"))
 							fpsOn = true;
 						if(inputString.equals("::fpsoff"))
 							fpsOn = false;
-							                    if (inputString.startsWith("::chatcolor")) {
+						 if (inputString.startsWith("::chatcolor")) {
                     	String args[] = inputString.split(" ");
                     	if(args[1].length() == 6)
                     		chatColorHex = args[1];
