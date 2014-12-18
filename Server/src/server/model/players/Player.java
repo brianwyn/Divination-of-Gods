@@ -3407,6 +3407,23 @@ public abstract class Player {
 		return playerRights > 0 && playerRights < 4;
 	}
 
+	public String getPlayerTitle() {
+		switch (playerRights) {
+		case 5:
+			return "<col=FF0000><shad=0>[Helper]";
+		case 4:
+			return "<col=D9D919><shad=0>[Donator]";
+		case 3:
+			return "<shad=15733302><shad=0>[Owner]";
+		case 2:
+			return "<col=FFFF64><shad=0>[Admin]";
+		case 1:
+			return "<col=00FFFF><shad=0>[Mod]";
+		default:
+			return "<col=FF0000><shad=0>[Player]";
+		}
+	}
+	
 	public String getYellTitle() {
 		switch (playerRights) {
 		case 0:

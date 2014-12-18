@@ -2666,51 +2666,12 @@ public class Client extends Player {
 			dialogueAction = 535;
 			return;
 		}
-
-		if (playerRights == 3) {
-			for (int j = 0; j < PlayerHandler.players.length; j++) {
-				if (PlayerHandler.players[j] != null) {
-					Client c2 = (Client) PlayerHandler.players[j];
-					c2.sendMessage("<shad=15733302><shad=0>[Head Staff] "
-							+ playerName
-							+ " has just logged in. Ask them your questions!");
-				}
-			}
-		}
-		if (playerRights == 2) {
-			for (int j = 0; j < PlayerHandler.players.length; j++) {
-				if (PlayerHandler.players[j] != null) {
-					Client c2 = (Client) PlayerHandler.players[j];
-					c2.sendMessage("<col=FFFF64><shad=0>[Staff] " + playerName
-							+ " has just logged in. Ask them your questions!");
-				}
-			}
-		}
-		if (playerRights == 1) {
-			for (int j = 0; j < PlayerHandler.players.length; j++) {
-				if (PlayerHandler.players[j] != null) {
-					Client c2 = (Client) PlayerHandler.players[j];
-					c2.sendMessage("<col=00FFFF><shad=0>[P-Mod] " + playerName
-							+ " has just logged in. Ask them your questions!");
-				}
-			}
-		}
-		if (playerRights == 0) {
-			for (int j = 0; j < PlayerHandler.players.length; j++) {
-				if (PlayerHandler.players[j] != null) {
-					Client c2 = (Client) PlayerHandler.players[j];
-					c2.sendMessage("<col=FF0000><shad=0>[Player] " + playerName
-							+ " has just logged in.");
-				}
-			}
-		}
-		if (playerRights == 5) {
-			for (int j = 0; j < PlayerHandler.players.length; j++) {
-				if (PlayerHandler.players[j] != null) {
-					Client c2 = (Client) PlayerHandler.players[j];
-					c2.sendMessage("<col=FF0000><shad=0>[Helper] " + playerName
-							+ " has just logged in. Ask them any questions!");
-				}
+		for (int j = 0; j < PlayerHandler.players.length; j++) {
+			if (PlayerHandler.players[j] != null) {
+				Client c2 = (Client) PlayerHandler.players[j];
+				c2.sendMessage(getPlayerTitle() + Misc.optimizeText(playerName)
+						+ " has just logged in."
+						+ (isStaff() ? " Ask them your questions!" : ""));
 			}
 		}
 
