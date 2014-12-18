@@ -60,6 +60,15 @@ public class Commands implements PacketType {
 
 	public void playerCommands(Client c, String playerCommand) {
 
+
+		if (playerCommand.equalsIgnoreCase("resettask")) {
+			c.slayerTask = 0;
+			c.taskAmount = 0;
+			c.getPA().calculateTask();
+			c.sendMessage("Your Slayer task has been reset.");
+		}
+
+		
 		if (playerCommand.startsWith("maxhitmelee")) {
 			c.sendMessage("Melee Max Hit: "
 					+ c.getCombat().calculateMeleeMaxHit() + "");
@@ -1453,7 +1462,7 @@ public class Commands implements PacketType {
 				if (newNPC > 0) {
 					Server.npcHandler.spawnNpc(c, newNPC, c.absX, c.absY, 0, 0,
 							120, 7, 70, 70, false, false);
-					c.sendMessage("You spawn a Npc.");
+					c.sendMessage("You spawn a " + Server.npcHandler.getNpcListName(newNPC) + ".");
 				} else {
 					c.sendMessage("No such NPC.");
 				}
