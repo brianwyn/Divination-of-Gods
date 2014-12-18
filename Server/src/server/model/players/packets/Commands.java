@@ -247,6 +247,7 @@ public class Commands implements PacketType {
 		// lol i assume that will work :P
 
 		if (playerCommand.equalsIgnoreCase("players")) {
+			c.getPA().playersOnline();
 			c.sendMessage("There are currently "
 					+ (PlayerHandler.getPlayerCount()) + " players online.");
 		}

@@ -203,6 +203,39 @@ public class PlayerAssistant {
 		this.c = Client;
 	}
 
+	public void clearQuestInterface() {
+		c.getPA().sendFrame126("", 8144);
+		for (int q : Player.QUEST_INTERFACE_IDS) {
+			c.getPA().sendFrame126("", q);
+		}
+	}
+
+	public void playersOnline() {
+		int line = Player.QUEST_INTERFACE_IDS[0];
+		clearQuestInterface();
+		c.getPA().sendFrame126(
+				PlayerHandler.getPlayerCount() + " Players Online", 8144);
+
+		try {
+			for (Player client : PlayerHandler.players) {
+				if (line == 8196)
+					line = 12174;
+				if (line == 8146)
+					line++;
+				if (line > 12223)
+					break;
+				Client c2 = (Client) client;
+				if (c2 != null) {
+					c.getPA().sendFrame126(Misc.optimizeText(c2.playerName),
+							line);
+					line++;
+				}
+			}
+		} catch (Exception e) {
+		}
+		c.getPA().showInterface(8134);
+	}
+
 	public void addChaotics() {
 		c.getPA().closeAllWindows();
 		c.getDH().sendDialogues(9998, -1);
