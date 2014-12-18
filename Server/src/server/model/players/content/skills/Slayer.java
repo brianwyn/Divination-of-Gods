@@ -74,7 +74,6 @@ public class Slayer {
 			c.sendMessage("You have been assigned to kill " + c.taskAmount
 					+ " " + Server.npcHandler.getNpcListName(c.given)
 					+ " as a slayer task.");
-			c.getPA().writeTabs();
 			c.hasGivenSlayReward = false;
 			c.sendMessage("Slayer task streak: " + c.slayerTaskStreak
 					+ ". You receive extra points for higher task streaks.");
@@ -86,12 +85,9 @@ public class Slayer {
 					+ " as an elite slayer task.");
 			c.sendMessage("Slayer task streak: " + c.slayerTaskStreak
 					+ ". You receive extra points for higher task streaks.");
-			c.getPA().writeTabs();
 			c.hasGivenSlayReward = false;
 		}
-		/*
-		 * if (!canDoTask(taskLevel,random)) { giveTask(taskLevel); return; }
-		 */
+		c.getPA().calculateTask();
 	}
 
 	public void giveTask2() {
