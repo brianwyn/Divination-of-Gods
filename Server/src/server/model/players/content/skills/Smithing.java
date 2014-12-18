@@ -58,8 +58,7 @@ public class Smithing {
 					c.startAnimation(896);
 					c.getItems().deleteItem(449, c.getItems().getItemSlot(449),
 							1);
-					c.getItems().deleteItem(453, c.getItems().getItemSlot(453),
-							6);
+					c.getItems().deleteItem2(453, 6);
 					c.getItems().addItem(2361, 1);
 					c.getPA().addSkillXP(6000, Player.playerSmithing);
 					// c.spinning = true;
@@ -73,6 +72,7 @@ public class Smithing {
 			}
 		}, 2);
 	}
+
 	public static void smeltBronze(final Client c) {
 		if (c == null) {
 			return;
@@ -124,6 +124,7 @@ public class Smithing {
 			}
 		}, 2);
 	}
+
 	public static void smeltGold(final Client c) {
 		if (c == null) {
 			return;
@@ -175,6 +176,7 @@ public class Smithing {
 			}
 		}, 2);
 	}
+
 	public static void smeltIron(final Client c) {
 		if (c == null) {
 			return;
@@ -232,6 +234,7 @@ public class Smithing {
 			}
 		}, 2);
 	}
+
 	public static void smeltMithril(final Client c) {
 		if (c == null) {
 			return;
@@ -273,8 +276,7 @@ public class Smithing {
 					c.startAnimation(896);
 					c.getItems().deleteItem(447, c.getItems().getItemSlot(447),
 							1);
-					c.getItems().deleteItem(453, c.getItems().getItemSlot(453),
-							4);
+					c.getItems().deleteItem2(453, 4);
 					c.getItems().addItem(2359, 1);
 					c.getPA().addSkillXP(2000, Player.playerSmithing);
 					// c.spinning = true;
@@ -288,6 +290,7 @@ public class Smithing {
 			}
 		}, 2);
 	}
+
 	public static void smeltRune(final Client c) {
 		if (c == null) {
 			return;
@@ -329,8 +332,7 @@ public class Smithing {
 					c.startAnimation(896);
 					c.getItems().deleteItem(451, c.getItems().getItemSlot(451),
 							1);
-					c.getItems().deleteItem(453, c.getItems().getItemSlot(453),
-							8);
+					c.getItems().deleteItem2(453, 8);
 					c.getItems().addItem(2363, 1);
 					c.getPA().addSkillXP(10000, Player.playerSmithing);
 					// c.spinning = true;
@@ -344,6 +346,7 @@ public class Smithing {
 			}
 		}, 2);
 	}
+
 	public static void smeltSilver(final Client c) {
 		if (c == null) {
 			return;
@@ -395,6 +398,7 @@ public class Smithing {
 			}
 		}, 2);
 	}
+
 	public static void smeltSteel(final Client c) {
 		if (c == null) {
 			return;
@@ -436,8 +440,7 @@ public class Smithing {
 					c.startAnimation(896);
 					c.getItems().deleteItem(440, c.getItems().getItemSlot(440),
 							1);
-					c.getItems().deleteItem(453, c.getItems().getItemSlot(453),
-							2);
+					c.getItems().deleteItem2(453, 2);
 					c.getItems().addItem(2353, 1);
 					c.getPA().addSkillXP(900, Player.playerSmithing);
 					// c.spinning = true;
@@ -451,6 +454,7 @@ public class Smithing {
 			}
 		}, 2);
 	}
+
 	private Client c;
 	private final int[] SMELT_BARS = { 2349, 2351, 2355, 2353, 2357, 2359,
 			2361, 2363 };
