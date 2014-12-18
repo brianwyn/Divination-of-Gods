@@ -1066,142 +1066,94 @@ public class NPCHandler {
 
 	public void appendSlayerExperience(int i) {
 		Client c = (Client) PlayerHandler.players[npcs[i].killedBy];
-		if (c != null) {
-			if (c.taskAmount <= 0 || c.taskAmount == 0 || c.taskAmount == -1
-					&& c.slayerTask > 0) {
-				appendSlayerRewards(i);
-			}
-			if (c.slayerTask == npcs[i].npcType) {
-				c.taskAmount--;
-				if (c.taskAmount <= 0 || c.taskAmount == 0
-						|| c.taskAmount == -1 && c.slayerTask > 0) {
-					appendSlayerRewards(i);
-				}
-				c.getPA().addSkillXP2(npcs[i].MaxHP * Config.SLAYER_EXPERIENCE,
-						18);
-			}
+		if (c == null || c.slayerTask != npcs[i].npcType)
+			return;
+		if (c.taskAmount > 1) {
+			c.taskAmount--;
+			c.getPA().addSkillXP2(npcs[i].MaxHP * Config.SLAYER_EXPERIENCE, 18);
+		} else if (c.taskAmount == 1) {
+			c.hasGivenSlayReward = false;
+			appendSlayerRewards(i);
 		}
+		c.getPA().calculateTask();
 	}
 
 	public void appendSlayerRewards(int i) {
 		Client c = (Client) PlayerHandler.players[npcs[i].killedBy];
-		if (c != null) {
-
-			if (c.hasGivenSlayReward == false) {
-				if (c.taskAmount <= 0 || c.taskAmount == 0
-						|| c.taskAmount == -1 && c.slayerTask > 0
-						&& c.taskType > -1) {
-					if (!c.task1[9]) {
-						c.sendMessage("You've completed the task: Complete a Slayer Task!");
-						c.task1[9] = true;
-						c.TPoints += 1;
-						if (c.TPoints == 1) {
-							c.sendMessage("You've received a Task Point! You now have "
-									+ c.TPoints + " point!");
-						} else {
-							c.sendMessage("You've received a Task Point! You now have a total of "
-									+ c.TPoints + " points!");
-						}
-						c.achievementInterface("Complete a Slayer Task!");
-					}
-					c.slayTa += 1;
-					if (c.slayTa >= 100 && !c.task3[9]) {
-						GabbesAchievements.handleEliteTask(c, 9, 3,
-								"Complete 100 Slayer tasks!");
-					}
-					if (isMediumTask(i)) {
-						if (c.taskType == 2 && c.taskAmount == 0
-								|| c.taskAmount == -1 || c.taskAmount < 0
-								&& c.slayerTask > 0) {
-							c.getPA().addSkillXP2(
-									(npcs[i].MaxHP * 10)
-											* Config.SLAYER_EXPERIENCE, 18);
-							c.slayerTask = -1;
-							c.taskType = -1;
-							c.SaveGame();
-							c.taskAmount = -1;
-							c.hasGivenSlayReward = true;
-							c.sendMessage("You completed your MEDIUM slayer task. Please see a slayer master to get a new one.");
-							if (c.slayerTaskStreak == 0) {
-								c.slayerTaskStreak += 1;
-								c.slayerPoints += 10;
-								c.sendMessage("You have gained 10 Slayer Points and one task streak.");
-							} else {
-								giveSlayerPointsReward(c, 10);
-							}
-
-						}
-					}
-
-					if (isHardTask(i)) {
-						if (c.taskType == 3 && c.taskAmount == 0
-								|| c.taskAmount == -1 || c.taskAmount < 0
-								&& c.slayerTask > 0) {
-							c.getPA().addSkillXP2(
-									(npcs[i].MaxHP * 12)
-											* Config.SLAYER_EXPERIENCE, 18);
-							c.slayerTask = -1;
-							c.SaveGame();
-							c.taskType = -1;
-							c.taskAmount = -1;
-							c.hasGivenSlayReward = true;
-							c.sendMessage("You completed your HARD slayer task. Please see a slayer master to get a new one.");
-							if (c.slayerTaskStreak == 0) {
-								c.slayerTaskStreak += 1;
-								c.slayerPoints += 14;
-								c.sendMessage("You have gained 14 Slayer Points and one task streak.");
-							} else {
-								giveSlayerPointsReward(c, 14);
-							}
-						}
-					}
-					if (isEXTREMETask(i)) {
-						if (c.taskType == 4 && c.taskAmount == 0
-								|| c.taskAmount == -1 || c.taskAmount < 0
-								&& c.slayerTask > 0) {
-							c.getPA().addSkillXP2(
-									(npcs[i].MaxHP * 14)
-											* Config.SLAYER_EXPERIENCE, 18);
-							c.slayerTask = -1;
-							c.taskType = -1;
-							c.SaveGame();
-							c.taskAmount = -1;
-							c.hasGivenSlayReward = true;
-							c.sendMessage("You completed your EXTREME slayer task. Please see a slayer master to get a new one.");
-							if (c.slayerTaskStreak == 0) {
-								c.slayerTaskStreak += 1;
-								c.slayerPoints += 19;
-								c.sendMessage("You have gained 19 Slayer Points and one task streak.");
-							} else {
-								giveSlayerPointsReward(c, 19);
-							}
-						}
-					}
-					if (isEasyTask(i)) {
-						if (c.taskType == 1 && c.taskAmount == 0
-								|| c.taskAmount == -1 || c.taskAmount < 0
-								&& c.slayerTask > 0) {
-							c.getPA().addSkillXP2(
-									(npcs[i].MaxHP * 8)
-											* Config.SLAYER_EXPERIENCE, 18);
-							c.slayerTask = -1;
-							c.taskType = -1;
-							c.taskAmount = -1;
-							c.hasGivenSlayReward = true;
-							c.SaveGame();
-							c.sendMessage("You completed your EASY slayer task. Please see a slayer master to get a new one.");
-							if (c.slayerTaskStreak == 0) {
-								c.slayerTaskStreak += 1;
-								c.slayerPoints += 6;
-								c.sendMessage("You have gained 6 Slayer Points and one task streak.");
-							} else {
-								giveSlayerPointsReward(c, 6);
-							}
-						}
-					}
-				}
+		if (c == null || c.hasGivenSlayReward)
+			return;
+		if (!c.task1[9]) {
+			c.sendMessage("You've completed the task: Complete a Slayer Task!");
+			c.task1[9] = true;
+			c.TPoints += 1;
+			if (c.TPoints == 1) {
+				c.sendMessage("You've received a Task Point! You now have "
+						+ c.TPoints + " point!");
+			} else {
+				c.sendMessage("You've received a Task Point! You now have a total of "
+						+ c.TPoints + " points!");
+			}
+			c.achievementInterface("Complete a Slayer Task!");
+		}
+		c.slayTa += 1;
+		if (c.slayTa >= 100 && !c.task3[9]) {
+			GabbesAchievements.handleEliteTask(c, 9, 3,
+					"Complete 100 Slayer tasks!");
+		}
+		if (isEasyTask(i) && c.taskType == 1) {
+			c.getPA().addSkillXP2(
+					(npcs[i].MaxHP * 8) * Config.SLAYER_EXPERIENCE, 18);
+			c.sendMessage("You completed your EASY slayer task. Please see a slayer master to get a new one.");
+			if (c.slayerTaskStreak == 0) {
+				c.slayerTaskStreak += 1;
+				c.slayerPoints += 6;
+				c.sendMessage("You have gained 6 Slayer Points and one task streak.");
+			} else {
+				giveSlayerPointsReward(c, 6);
 			}
 		}
+		if (isMediumTask(i) && c.taskType == 2) {
+			c.getPA().addSkillXP2(
+					(npcs[i].MaxHP * 10) * Config.SLAYER_EXPERIENCE, 18);
+			c.sendMessage("You completed your MEDIUM slayer task. Please see a slayer master to get a new one.");
+			if (c.slayerTaskStreak == 0) {
+				c.slayerTaskStreak += 1;
+				c.slayerPoints += 10;
+				c.sendMessage("You have gained 10 Slayer Points and one task streak.");
+			} else {
+				giveSlayerPointsReward(c, 10);
+			}
+		}
+
+		if (isHardTask(i) && c.taskType == 3) {
+			c.getPA().addSkillXP2(
+					(npcs[i].MaxHP * 12) * Config.SLAYER_EXPERIENCE, 18);
+			c.sendMessage("You completed your HARD slayer task. Please see a slayer master to get a new one.");
+			if (c.slayerTaskStreak == 0) {
+				c.slayerTaskStreak += 1;
+				c.slayerPoints += 14;
+				c.sendMessage("You have gained 14 Slayer Points and one task streak.");
+			} else {
+				giveSlayerPointsReward(c, 14);
+			}
+		}
+		if (isEXTREMETask(i) && c.taskType == 4) {
+			c.getPA().addSkillXP2(
+					(npcs[i].MaxHP * 14) * Config.SLAYER_EXPERIENCE, 18);
+			c.sendMessage("You completed your EXTREME slayer task. Please see a slayer master to get a new one.");
+			if (c.slayerTaskStreak == 0) {
+				c.slayerTaskStreak += 1;
+				c.slayerPoints += 19;
+				c.sendMessage("You have gained 19 Slayer Points and one task streak.");
+			} else {
+				giveSlayerPointsReward(c, 19);
+			}
+		}
+		c.slayerTask = -1;
+		c.taskType = -1;
+		c.SaveGame();
+		c.taskAmount = -1;
+		c.hasGivenSlayReward = true;
 	}
 
 	public void applyDamage(int i) {
@@ -3456,7 +3408,7 @@ public class NPCHandler {
 		for (int i = 0; i < maxListedNPCs; i++) {
 			if (NpcList[i] != null) {
 				if (NpcList[i].npcId == npcId) {
-					return NpcList[i].npcName;
+					return NpcList[i].npcName.replace("_", " ");
 				}
 			}
 		}
