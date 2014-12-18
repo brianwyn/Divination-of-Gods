@@ -114,16 +114,6 @@ public class PlayerHandler {
 		return (int) Math.round(count);
 	}
 
-	public static int getPlayerCount40() {
-		int count = 0;
-		for (int i = 0; i < players.length; i++) {
-			if (players[i] != null) {
-				count += 1;
-			}
-		}
-		return (int) Math.round(count * 2);
-	}
-
 	public static void yell(String message) {
 		for (int j = 0; j < PlayerHandler.players.length; j++) {
 			if (PlayerHandler.players[j] != null) {

@@ -2643,7 +2643,7 @@ public class Client extends Player {
 		isFullBody = Item.isFullBody(playerEquipment[playerChest]);
 
 		PlayerHandler.sendGlobalMessage("Players Online: @gre@"
-				+ (PlayerHandler.getPlayerCount40()) + "", 39155);
+				+ (PlayerHandler.getPlayerCount()) + "", 39155);
 		LoginHandler.handleWelcomeInterface(this);
 		LoginHandler.handleAllLoginCRAP(this);
 		if (blackMark == 4 || blackMark > 4) {
@@ -2923,7 +2923,7 @@ public class Client extends Player {
 		}
 
 		PlayerHandler.sendGlobalMessage("Players Online: @gre@"
-				+ (PlayerHandler.getPlayerCount40()) + "", 39155);
+				+ (PlayerHandler.getPlayerCount()) + "", 39155);
 		CycleEventHandler.getSingleton().stopEvents(this);
 		LoginHandler.handleStaffTabLogin(this);
 		// HiscoresHandler.hiscoresHandler(this);
