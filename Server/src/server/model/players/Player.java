@@ -892,8 +892,6 @@ public abstract class Player {
 	public boolean hasSentDeathMessage = false;
 	public boolean InDung = false;
 	public int blackMark = 0;
-	public int lastBabyX = 0;
-	public int lastBabyY = 0;
 	public boolean usingCross;
 	public boolean usingOtherRangeWeapons;
 	public String connectedFrom = "";

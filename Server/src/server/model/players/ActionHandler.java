@@ -44,6 +44,7 @@ public class ActionHandler {
 	}
 
 	public void firstClickNpc(int npcType) {
+		int index = c.npcClickIndex;
 		c.fishitem = -1;
 		c.clickNpcType = 0;
 		c.npcClickIndex = 0;
@@ -726,48 +727,37 @@ public class ActionHandler {
 
 		// implin's
 		case 6055:
-			c.CatchimpNpc("Baby Impling", 10010, 6055, 11238, 1500, 1,
-					c.playerId);
+			c.CatchimpNpc(index, 6055, 11238, 1500, 1, c.playerId);
 			break;
 		case 6056:
-			c.CatchimpNpc("Young Impling", 10010, 6056, 11240, 3500, 17,
-					c.playerId);
+			c.CatchimpNpc(index, 6056, 11240, 3500, 17, c.playerId);
 			break;
 		case 6057:
-			c.CatchimpNpc("Gourmet Impling", 10010, 6057, 11242, 4000, 20,
-					c.playerId);
+			c.CatchimpNpc(index, 6057, 11242, 4000, 20, c.playerId);
 			break;
 		case 6058:
-			c.CatchimpNpc("Earth Impling", 10010, 6058, 11244, 5000, 34,
-					c.playerId);
+			c.CatchimpNpc(index, 6058, 11244, 5000, 34, c.playerId);
 			break;
 		case 6059:
-			c.CatchimpNpc("Essence impling", 10010, 6059, 11246, 6000, 40,
-					c.playerId);
+			c.CatchimpNpc(index, 6059, 11246, 6000, 40, c.playerId);
 			break;
 		case 6060:
-			c.CatchimpNpc("Electic impling", 10010, 6060, 11248, 8000, 50,
-					c.playerId);
+			c.CatchimpNpc(index, 6060, 11248, 8000, 50, c.playerId);
 			break;
 		case 6061:
-			c.CatchimpNpc("Nature impling", 10010, 6061, 11250, 10000, 58,
-					c.playerId);
+			c.CatchimpNpc(index, 6061, 11250, 10000, 58, c.playerId);
 			break;
 		case 6062:
-			c.CatchimpNpc("Magpie impling", 10010, 6062, 11252, 12500, 65,
-					c.playerId);
+			c.CatchimpNpc(index, 6062, 11252, 12500, 65, c.playerId);
 			break;
 		case 6063:
-			c.CatchimpNpc("Ninja impling", 10010, 6063, 11254, 14000, 74,
-					c.playerId);
+			c.CatchimpNpc(index, 6063, 11254, 14000, 74, c.playerId);
 			break;
 		case 6064:
-			c.CatchimpNpc("Dragon Impling", 10010, 6064, 11256, 25000, 90,
-					c.playerId);
+			c.CatchimpNpc(index, 6064, 11256, 25000, 90, c.playerId);
 			break;
 		case 7903:
-			c.CatchimpNpc("Kingly Impling", 10010, 7903, 15517, 70000, 96,
-					c.playerId);
+			c.CatchimpNpc(index, 7903, 15517, 70000, 96, c.playerId);
 			break;
 
 		// end of implin's!

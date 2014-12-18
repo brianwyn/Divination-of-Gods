@@ -858,191 +858,89 @@ public class Client extends Player {
 	public void CatchHunterNpc(String npcName, int Net, int npcId, int itemId,
 			int AmtExp, int Req, int playerId) {
 		npcName = Server.npcHandler.getNpcListName(npcId);
-		if (System.currentTimeMillis() - foodDelay >= 1500) { // anti spamm
-			if (playerLevel[22] >= Req && getItems().playerHasItem(11260, 1)) { // first
-				// we
-				// check
-				// if
-				// he's
-				// high
-				// enough
-				// to catch
-				if (playerEquipment[playerWeapon] == 10010
-						|| playerEquipment[playerWeapon] == 11259) { // player
-					// got
-					// net?
-					if (playerLevel[22] + Misc.random(10) >= Misc.random(20)
-							+ Req) { // catch chance
-						if (Misc.random(1000) == 1) {
-							sendMessage("You catched a GIGANTIC butterfly and gained triple Experience!"); // looks
-							// like
-							// player
-							// got
-							// a
-							// net
-							getItems().addItem(722, 1); // itemid is different
-							getItems().deleteItem(11260, 1);
-							// so its defined in the
-							// method
-							startAnimation(6999); // this always stays 6999, no
-							// need to change this
-							getPA().addSkillXP(AmtExp * 3, 22); // AmtExp is
-							// different so
-							// its defined
-							// in the method
-						} else {
-							sendMessage("You Catched a Butterfly!"); // looks
-							// like
-							// player
-							// got a
-							// net
-							getItems().addItem(itemId, 1); // itemid is
-							getItems().deleteItem(11260, 1);
-							// different so its
-							// defined in the
-							// method
-							startAnimation(6999); // this always stays 6999, no
-							// need to change this
-							getPA().addSkillXP(AmtExp, 22); // AmtExp is
-							// different so its
-							// defined in the
-							// method
-						}
-					} else {
-						sendMessage("You Failed To Catch The Butterfly");
-						startAnimation(6999);
-					}
-				} else { // player got net?
-					sendMessage("You need to wear a butterfly net!"); // looks
-					// like
-					// he
-					// doesn't
-					return;
-				}
-
-				// }
-			} else {
-				sendMessage("You need atleast "
-						+ Req
-						+ " Hunter To catch that Butterfly! You also need an Impling Jar!");
-				return;
-			}
-			foodDelay = System.currentTimeMillis();// we use food timer but it
-			// really doesn't mather,
-			// this is just used for
-			// anti-spamm :)
-		}
-	} // end of hunt , resume of starting
-
-	public void CatchimpNpc(String npcName, int Net, int npcId, int itemId,
-			int AmtExp, int Req, int playerId) {
-		npcName = Server.npcHandler.getNpcListName(npcId);
-		if (System.currentTimeMillis() - foodDelay >= 1500) {
-			if (!getItems().playerHasItem(11260, 1)) {
-				sendMessage("You do not have an empty impling jar.");
-				return;
-			}
-			if (huntIMPX == 0 || huntIMPY == 0) { // stream is nulled!
-				sendMessage("An error occured. Please try again.");
-				return;
-			}
-			if (playerEquipment[playerWeapon] != 10010
-					&& playerEquipment[playerWeapon] != 11259) {
-
-				sendMessage("You do not have a butterfly net equipped!");
-				return;
-			}
+		if (foodDelay > System.currentTimeMillis())
+			return;
+		if (playerLevel[22] >= Req && getItems().playerHasItem(11260, 1)) {
 			if (playerEquipment[playerWeapon] == 10010
-					|| playerEquipment[playerWeapon] == 11259) {
-				if (playerLevel[22] >= Req) {
-					if (playerLevel[22] + Misc.random(10) >= Misc.random(20)
-							+ Req) { // catch chance
-						impCat += 1;
-						if (impCat >= 150 && !task3[8]) {
-							GabbesAchievements.handleEliteTask(this, 8, 3,
-									"Catch 150 Imps!");
-						}
+					|| playerEquipment[playerWeapon] == 11259) { // player
+				// got
+				// net?
+				if (playerLevel[22] + Misc.random(10) >= Misc.random(20) + Req) { // catch
+																					// chance
+					if (Misc.random(1000) == 1) {
+						sendMessage("You catched a GIGANTIC butterfly and gained triple Experience!");
+						getItems().addItem(722, 1);
 						getItems().deleteItem(11260, 1);
+						startAnimation(6999);
+						getPA().addSkillXP(AmtExp * 3, 22);
+					} else {
+						sendMessage("You Catched a Butterfly!");
 						getItems().addItem(itemId, 1);
+						getItems().deleteItem(11260, 1);
 						startAnimation(6999);
 						getPA().addSkillXP(AmtExp, 22);
-						if (npcName.equalsIgnoreCase("Dragon") || npcId == 6064) {
-							Server.npcHandler.startNPCImpLoops(6064, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Baby") || npcId == 6055) {
-							Server.npcHandler.startNPCImpLoops(6055, huntIMPX,
-									huntIMPY);
-							lastBabyX = huntIMPX;
-							lastBabyY = huntIMPY;
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Young") || npcId == 6056) {
-							Server.npcHandler.startNPCImpLoops(6056, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Gourmet")
-								|| npcId == 6057) {
-							Server.npcHandler.startNPCImpLoops(6057, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Earth") || npcId == 6058) {
-							Server.npcHandler.startNPCImpLoops(6058, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Essence")
-								|| npcId == 6059) {
-							Server.npcHandler.startNPCImpLoops(6059, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Electic")
-								|| npcId == 6060) {
-							Server.npcHandler.startNPCImpLoops(6060, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Nature") || npcId == 6061) {
-							Server.npcHandler.startNPCImpLoops(6061, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Magpie") || npcId == 6062) {
-							Server.npcHandler.startNPCImpLoops(6062, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Ninja") || npcId == 6063) {
-							Server.npcHandler.startNPCImpLoops(6063, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						if (npcName.equalsIgnoreCase("Kingly") || npcId == 7903) {
-							Server.npcHandler.startNPCImpLoops(7903, huntIMPX,
-									huntIMPY);
-							return;
-						}
-						// different so its
-						// defined in the
-						// method
-
-					} else {
-						sendMessage("You failed To catch the imp!");
-						startAnimation(6999);
 					}
-				} else { // player got net?
-					sendMessage("You need a Hunter level of atleast " + Req
-							+ " to catch this imp.");
-					return;
+				} else {
+					sendMessage("You Failed To Catch The Butterfly");
+					startAnimation(6999);
 				}
+			} else { // player got net?
+				sendMessage("You need to wear a butterfly net!");
+				return;
 			}
-
+		} else {
+			sendMessage("You need atleast "
+					+ Req
+					+ " Hunter To catch that Butterfly! You also need an Impling Jar!");
+			return;
 		}
-		foodDelay = System.currentTimeMillis();
+		foodDelay = System.currentTimeMillis() + 2500;
+	} // end of hunt , resume of starting
+
+	public void CatchimpNpc(int npcIndex, int npcId, int itemId, int AmtExp,
+			int Req, int playerId) {
+		NPC npc = NPCHandler.npcs[npcIndex];
+		if (foodDelay > System.currentTimeMillis() || npc == null)
+			return;
+		if (!getItems().playerHasItem(11260, 1)) {
+			sendMessage("You do not have an empty impling jar.");
+			return;
+		}
+
+		if (playerEquipment[playerWeapon] != 10010
+				&& playerEquipment[playerWeapon] != 11259) {
+
+			sendMessage("You do not have a butterfly net equipped!");
+			return;
+		}
+		if (getPA().getLevelForXP(playerXP[22]) < Req) {
+			sendMessage("You need a Hunter level of atleast " + Req
+					+ " to catch this imp.");
+			return;
+		}
+		startAnimation(6999);
+
+		if (playerLevel[22] + Misc.random(10) >= Misc.random(20) + Req) {
+			sendMessage("You failed To catch the imp!");
+			return;
+		}
+		impCat += 1;
+		if (impCat >= 150 && !task3[8]) {
+			GabbesAchievements.handleEliteTask(this, 8, 3, "Catch 150 Imps!");
+		}
+		boolean caught = false;
+		if (npcId == 6064 || npcId == 6055 || npcId == 6056 || npcId == 6057
+				|| npcId == 6058 || npcId == 6059 || npcId == 6060
+				|| npcId == 6061 || npcId == 6062 || npcId == 6063
+				|| npcId == 7903) {
+			caught = Server.npcHandler.startNPCImpLoops(npc);
+		}
+		if (caught) {
+			getItems().deleteItem(11260, 1);
+			getItems().addItem(itemId, 1);
+			getPA().addSkillXP(AmtExp, 22);
+		}
+		foodDelay = System.currentTimeMillis() + 2500;
 	}
 
 	public boolean checkEmpty(Player player) {
@@ -2770,9 +2668,9 @@ public class Client extends Player {
 		}
 
 		if (playerRights == 3) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-				if (Server.playerHandler.players[j] != null) {
-					Client c2 = (Client) Server.playerHandler.players[j];
+			for (int j = 0; j < PlayerHandler.players.length; j++) {
+				if (PlayerHandler.players[j] != null) {
+					Client c2 = (Client) PlayerHandler.players[j];
 					c2.sendMessage("<shad=15733302><shad=0>[Head Staff] "
 							+ playerName
 							+ " has just logged in. Ask them your questions!");
@@ -2780,36 +2678,36 @@ public class Client extends Player {
 			}
 		}
 		if (playerRights == 2) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-				if (Server.playerHandler.players[j] != null) {
-					Client c2 = (Client) Server.playerHandler.players[j];
+			for (int j = 0; j < PlayerHandler.players.length; j++) {
+				if (PlayerHandler.players[j] != null) {
+					Client c2 = (Client) PlayerHandler.players[j];
 					c2.sendMessage("<col=FFFF64><shad=0>[Staff] " + playerName
 							+ " has just logged in. Ask them your questions!");
 				}
 			}
 		}
 		if (playerRights == 1) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-				if (Server.playerHandler.players[j] != null) {
-					Client c2 = (Client) Server.playerHandler.players[j];
+			for (int j = 0; j < PlayerHandler.players.length; j++) {
+				if (PlayerHandler.players[j] != null) {
+					Client c2 = (Client) PlayerHandler.players[j];
 					c2.sendMessage("<col=00FFFF><shad=0>[P-Mod] " + playerName
 							+ " has just logged in. Ask them your questions!");
 				}
 			}
 		}
 		if (playerRights == 0) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-				if (Server.playerHandler.players[j] != null) {
-					Client c2 = (Client) Server.playerHandler.players[j];
+			for (int j = 0; j < PlayerHandler.players.length; j++) {
+				if (PlayerHandler.players[j] != null) {
+					Client c2 = (Client) PlayerHandler.players[j];
 					c2.sendMessage("<col=FF0000><shad=0>[Player] " + playerName
 							+ " has just logged in.");
 				}
 			}
 		}
 		if (playerRights == 5) {
-			for (int j = 0; j < Server.playerHandler.players.length; j++) {
-				if (Server.playerHandler.players[j] != null) {
-					Client c2 = (Client) Server.playerHandler.players[j];
+			for (int j = 0; j < PlayerHandler.players.length; j++) {
+				if (PlayerHandler.players[j] != null) {
+					Client c2 = (Client) PlayerHandler.players[j];
 					c2.sendMessage("<col=FF0000><shad=0>[Helper] " + playerName
 							+ " has just logged in. Ask them any questions!");
 				}

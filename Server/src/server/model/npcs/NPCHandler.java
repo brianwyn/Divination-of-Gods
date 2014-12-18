@@ -857,22 +857,21 @@ public class NPCHandler {
 		}
 	}
 
-	public static void killNPC(NPC n, int type, int x, int y) {
-		if (n == null)
-			return;
-		if (n.npcType == type && n.absX == x && n.absY == y) {
-			lastImpDeathX = n.absX;
-			lastImpDeathX = n.absY;
-			n.isDead = true;
-			n.applyDead = true;
-			n.updateRequired = true;
-			dontdrop = true;
-			if (lastImpDeathX > 0 && lastImpDeathY > 0) {
-				ImpSpawn.spawnNewImp(type, getTimer(type) * 1000,
-						lastImpDeathX, lastImpDeathY);
-				return;
-			}
+	public static boolean killNPC(NPC n) {
+		if (n == null || n.isDead)
+			return false;
+		lastImpDeathX = n.absX;
+		lastImpDeathX = n.absY;
+		n.isDead = true;
+		n.applyDead = true;
+		n.updateRequired = true;
+		dontdrop = true;
+		if (lastImpDeathX > 0 && lastImpDeathY > 0) {
+			ImpSpawn.spawnNewImp(n.npcType, getTimer(n.npcType) * 1000,
+					lastImpDeathX, lastImpDeathY);
+			return true;
 		}
+		return true;
 	}
 
 	public static void mageIcon(int npc) {
@@ -6929,17 +6928,10 @@ public class NPCHandler {
 		return false;
 	}
 
-	public void startNPCImpLoops(int type, int x, int y) {
-		for (int i = 0; i < maxNPCs; i++) {
-			if (npcs[i] != null) {
-				NPC n = NPCHandler.npcs[i];
-				if (n != null) {
-					// if(isHunterIMP(n.npcType)) {
-					killNPC(n, type, x, y);
-				}
-
-			}
-		}
+	public boolean startNPCImpLoops(NPC npc) {
+		if (npc == null)
+			return false;
+		return killNPC(npc);
 	}
 
 	public void Summon(Client c, int npcType, int x, int y, int heightLevel,
