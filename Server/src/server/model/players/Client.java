@@ -920,7 +920,7 @@ public class Client extends Player {
 		}
 		startAnimation(6999);
 
-		if (playerLevel[22] + Misc.random(10) >= Misc.random(20) + Req) {
+		if (playerLevel[22] + Misc.random(10) <= Misc.random(20) + Req) {
 			sendMessage("You failed To catch the imp!");
 			return;
 		}
