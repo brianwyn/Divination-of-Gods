@@ -415,7 +415,7 @@ public class PlayerAssistant {
 			handleDegradingBrawlersFM();
 		}
 		// amount *= Config.SERVER_EXP_BONUS;
-		if (c.playerEquipment[c.playerRing] == 6575) {
+		if (c.playerEquipment[Player.playerRing] == 6575) {
 			amount *= Config.SERVER_EXP_BONUS * 4;
 		} else {
 			amount *= Config.SERVER_EXP_BONUS * 4;
