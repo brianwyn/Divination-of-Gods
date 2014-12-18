@@ -136,20 +136,15 @@ public final class signlink
         }
 
     }
-	public static String findcachedir()
-    {
-            try
-            {
-            	String s = "C:/DoG_Cache/";
-                String s1 = "";
-                File file = new File(s1 + s);
-                if(file.exists() || file.mkdir())
-                    return s1 + s + "/";
-            }
-            catch(Exception _ex) { }
+	
+	public static final String cacheName = "DoG_Cache";
 
-        return null;
-    }
+	public static String findcachedir() {
+		File cacheFile = new File(System.getProperty("user.home") + "/" + cacheName + "/");
+		if (!cacheFile.exists())
+			cacheFile.mkdir();
+		return System.getProperty("user.home") + "/" + cacheName + "/";
+	}
 
   /*  public static String findcachedirORIG()
     {
