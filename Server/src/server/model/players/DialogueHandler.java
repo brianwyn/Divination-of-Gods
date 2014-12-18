@@ -2170,9 +2170,9 @@ public class DialogueHandler {
 		case 11:
 			sendNpcChat4(
 					"Hello!",
-					"My name is Kuradel and I am a master of the slayer skill.",
+					"My name is Kuradal and I am a master of the slayer skill.",
 					"I can assign you a slayer task suitable to your combat level.",
-					"Would you like a slayer task?", c.talkingNpc, "Kolodion");
+					"Would you like a slayer task?", c.talkingNpc, "Kuradal");
 			c.nextChat = 12;
 			break;
 		case 12:
