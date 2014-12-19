@@ -1,734 +1,757 @@
 package com;
+
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.Com/jad.html
 // Decompiler options: packimports(3) 
 // Source File Name:   RSInterface.java
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
+
 public final class RSInterface {
-  public static void addSprite(int paramInt1, int paramInt2, URL paramURL, int l)
-  {
-    RSInterface localRSInterface = new RSInterface();
-    localRSInterface.id = paramInt1;
-    localRSInterface.parentID = paramInt1;
-    localRSInterface.type = 5;
-    localRSInterface.atActionType = 0;
-    localRSInterface.contentType = 0;
-    localRSInterface.opacity = 0;
-    localRSInterface.mOverInterToTrigger = 52;
-   // localRSInterface.sprite1 = new Sprite(paramURL);
-   // localRSInterface.sprite2 = localRSInterface.sprite1;
-    localRSInterface.width = 512;
-    localRSInterface.height = 334;
-	addSprite(paramInt1, paramInt2, ""+paramURL+"", 0);
-  }	
- public static void TitleShop(TextDrawingArea TDA[]) {
-    RSInterface Interface = addTabInterface(16450);
-	/** Title Shop Interface Made by
-	@author Dr House
-	**/
-    setChildren(71, Interface);
-	
-    addSprite(16451, 0, "Interfaces/Loyalty/TITLE");
-    addText(16476, "My Points:", TDA, 0, 0xFF9900, false, true);
-	addText(16477, "Currently viewing: Divination Title Shop", TDA, 1, 0xFF9900, false, true);
-    addText(16478, "Titles", TDA, 0, 0xFF9900, false, true);
-    addText(16479, "Re-Colour", TDA, 0, 0xFF9900, false, true);
-    addText(16480, "Costumes", TDA, 0, 0xFF9900, false, true);
-    addText(16481, "Spins", TDA, 0, 0xFF9900, false, true);
-    addText(16482, "500000", TDA, 0, 0xFF9900, false, true);
-    addText(16483, "Buy", TDA, 0, 0xFF9900, false, true);
-    addText(16484, "Cancel", TDA, 0, 0xFF9900, false, true);
-	addText(16521, "Task", TDA, 0, 0xFF9900, false, true);
-	addText(16522, "Selected:", TDA, 0, 0xFF9900, false, true);
-	
-	//Buttoms
-	
-	addHoverButton(16452, "", 4, 101, 58, "Confirm Selection", -1, 16453, 1);
-	addHoveredButton(16453, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16601);
-	addHoverButton(16454, "", 4, 101, 58, "Confirm Selection", -1, 16455, 1);
-	addHoveredButton(16455, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16602);
-	addHoverButton(16456, "", 4, 101, 58, "Confirm Selection", -1, 16457, 1);
-	addHoveredButton(16457, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16603);
-	addHoverButton(16458, "", 4, 101, 58, "Confirm Selection", -1, 16459, 1);
-	addHoveredButton(16459, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16604);
-	addHoverButton(16460, "", 4, 101, 58, "Confirm Selection", -1, 16461, 1);
-	addHoveredButton(16461, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16605);
-	addHoverButton(16462, "", 4, 101, 58, "Confirm Selection", -1, 16463, 1);
-	addHoveredButton(16463, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16606);
-	addHoverButton(16464, "", 4, 101, 58, "Confirm Selection", -1, 16465, 1);
-	addHoveredButton(16465, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16607);
-	addHoverButton(16466, "", 4, 101, 58, "Confirm Selection", -1, 16467, 1);
-	addHoveredButton(16467, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16608);
-	addHoverButton(16468, "", 4, 101, 58, "Confirm Selection", -1, 16469, 1);
-	addHoveredButton(16469, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16609);
-	addHoverButton(16470, "", 4, 101, 58, "Confirm Selection", -1, 16471, 1);
-	addHoveredButton(16471, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16610);
-	addHoverButton(16472, "", 4, 101, 58, "Confirm Selection", -1, 16473, 1);
-	addHoveredButton(16473, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16611);
-	addHoverButton(16474, "", 4, 101, 58, "Confirm Selection", -1, 16475, 1);
-	addHoveredButton(16475, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16612);
-	addHoverButton(16510, "", 4, 101, 58, "Confirm Selection", -1, 16511, 1);
-	addHoveredButton(16511, "Interfaces/Loyalty/HOVER", 1, 101, 58, 16613);
-	addHoverButton(16512, "", 4, 101, 58, "Confirm Selection", -1, 16513, 1);
-	addHoveredButton(16513, "Interfaces/Loyalty/HOVER", 1, 101, 58, 16614);
-	addHoverButton(16514, "", 4, 120, 36, "Titles", -1, -1, 1);		//Titles Shop
-	addHoverButton(16515, "", 4, 120, 36, "Costumes", -1, -1, 1);	//Costumes Shop
-	addHoverButton(16516, "", 4, 120, 36, "Recolour", -1, -1, 1);	//Recolours Shop
-	addHoverButton(16517, "", 4, 120, 36, "Spins", -1, -1, 1);	//Spins Shop
-	addHoverButton(16520, "", 4, 120, 36, "Task", -1, -1, 1);	//Task Shop
-	addHoverButton(16518, "", 4, 11, 11, "Close", -1, 16519, 1);
-	addHoveredButton(16519, "Interfaces/Loyalty/HOVER", 7, 11, 11, 16665);
-	
-	
-	//Titles
-	
-	addText(16486, "Sir", TDA, 0, 0xFFFFD0, false, true);
-	addText(16487, "Lady", TDA, 0, 0xFFFFD0, false, true);
-	addText(16488, "King", TDA, 0, 0xFFFFD0, false, true);
-	addText(16489, "Queen", TDA, 0, 0xFFFFD0, false, true);
-	addText(16490, "Gangster", TDA, 0, 0xFFFFD0, false, true);
-	addText(16491, "Peedo", TDA, 0, 0xFFFFD0, false, true);
-	addText(16492, "Demon", TDA, 0, 0xFFFFD0, false, true);
-	addText(16493, "Angel", TDA, 0, 0xFFFFD0, false, true);
-	addText(16494, "Unstoppable", TDA, 0, 0xFFFFD0, false, true);
-	addText(16495, "Nerd", TDA, 0, 0xFFFFD0, false, true);
-	addText(16496, "Psychopath", TDA, 0, 0xFFFFD0, false, true);
-	addText(16497, "Immortal", TDA, 0, 0xFFFFD0, false, true);
- 
-	//Prices
-	
-	addText(16498, "1k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16499, "1k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16500, "3k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16501, "3k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16502, "5k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16503, "8k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16504, "10k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16505, "10k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16506, "15k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16507, "20k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16508, "25k Points", TDA, 0, 0xFF9900, false, true);
-	addText(16509, "30k Points", TDA, 0, 0xFF9900, false, true);
-	
-    setBounds(16451, 10, 10, 0, Interface); //Background
-	//Buttoms {
-	//Sir
-	setBounds(16452, 162, 47, 1, Interface);
-    setBounds(16453, 162, 47, 2, Interface);
-	//Lady
-    setBounds(16454, 263, 47, 3, Interface);
-    setBounds(16455, 263, 47, 4, Interface);
-	//King
-    setBounds(16456, 364, 47, 5, Interface);
-    setBounds(16457, 364, 47, 6, Interface);
-	
-	//Queen
-    setBounds(16458, 162, 107, 7, Interface);
-    setBounds(16459, 162, 107, 8, Interface);
-	//Gangstar
-    setBounds(16460, 263, 107, 9, Interface);
-    setBounds(16461, 263, 107, 10, Interface);
-	//Peedo
-    setBounds(16462, 364, 107, 11, Interface);
-    setBounds(16463, 364, 107, 12, Interface);
-	
-	//Demon
-    setBounds(16464, 162, 167, 13, Interface);
-    setBounds(16465, 162, 167, 14, Interface);
-	//Angel
-    setBounds(16466, 263, 167, 15, Interface);
-    setBounds(16467, 263, 167, 16, Interface);
-	//Unstoppable
-    setBounds(16468, 364, 167, 17, Interface);
-    setBounds(16469, 364, 167, 18, Interface);
-	
-	//Nerd
-    setBounds(16470, 162, 227, 19, Interface);
-	setBounds(16471, 162, 227, 20, Interface);
-	//Psychopath
-    setBounds(16472, 263, 227, 21, Interface);
-    setBounds(16473, 263, 227, 22, Interface);
-	//Ninja
-    setBounds(16474, 364, 227, 23, Interface);
-    setBounds(16475, 364, 227, 24, Interface);
-	// }
-	
-	//Texts (not titles) {
-    setBounds(16476, 38, 26, 25, Interface);
-    setBounds(16477, 142, 23, 60, Interface);
-    setBounds(16478, 63, 56, 61, Interface);
-    setBounds(16479, 63, 126, 28, Interface);
-    setBounds(16480, 63, 90, 29, Interface);
-    setBounds(16481, 63, 162, 30, Interface);
-    setBounds(16482, 94, 26, 31, Interface);
-    setBounds(16483, 323, 291, 58, Interface);
-    setBounds(16484, 403, 291, 59, Interface);
-	//}
-	
-	//Titles {
-	setBounds(16486, 199, 60, 34, Interface);
-    setBounds(16487, 301, 60, 35, Interface);
-    setBounds(16488, 403, 60, 36, Interface);
-    setBounds(16489, 199, 120, 37, Interface);
-    setBounds(16490, 301, 120, 38, Interface);
-    setBounds(16491, 403, 120, 39, Interface);
-    setBounds(16492, 199, 180, 40, Interface);
-    setBounds(16493, 301, 180, 41, Interface);
-    setBounds(16494, 399, 180, 42, Interface);
-    setBounds(16495, 199, 240, 43, Interface);
-	setBounds(16496, 299, 240, 44, Interface);
-    setBounds(16497, 403, 240, 45, Interface);
-	//}
-	
-	//Prices {
-    setBounds(16498, 291, 85, 46, Interface);
-    setBounds(16499, 190, 85, 47, Interface);
-    setBounds(16500, 392, 85, 48, Interface);
-    setBounds(16501, 291, 145, 49, Interface);
-    setBounds(16502, 186, 145, 50, Interface);
-    setBounds(16503, 392, 145, 51, Interface);
-    setBounds(16504, 291, 205, 52, Interface);
-    setBounds(16505, 190, 205, 53, Interface);
-    setBounds(16506, 392, 205, 54, Interface);
-    setBounds(16507, 190, 265, 55, Interface);
-    setBounds(16508, 291, 265, 56, Interface);
-    setBounds(16509, 392, 265, 57, Interface);
-	//}
-	
-	//Buy/Cancel Buttom
-	setBounds(16510, 291, 286, 32, Interface);
-    setBounds(16511, 291, 286, 33, Interface);
-    setBounds(16512, 378, 286, 26, Interface);
-    setBounds(16513, 378, 286, 27, Interface);
-	setBounds(16514, 20, 45, 62, Interface);
-    setBounds(16515, 20, 81, 63, Interface);
-    setBounds(16516, 20, 116, 64, Interface);
-    setBounds(16517, 20, 149, 65, Interface);
-	setBounds(16518, 480, 17, 66, Interface);
-    setBounds(16519, 480, 17, 67, Interface);
-	setBounds(16520, 20, 185, 68, Interface);
-    setBounds(16521, 63, 198, 69, Interface);
-    setBounds(16522, 139, 290, 70, Interface);
-	
+	public static void addSprite(int paramInt1, int paramInt2, URL paramURL,
+			int l) {
+		RSInterface localRSInterface = new RSInterface();
+		localRSInterface.id = paramInt1;
+		localRSInterface.parentID = paramInt1;
+		localRSInterface.type = 5;
+		localRSInterface.atActionType = 0;
+		localRSInterface.contentType = 0;
+		localRSInterface.opacity = 0;
+		localRSInterface.mOverInterToTrigger = 52;
+		// localRSInterface.sprite1 = new Sprite(paramURL);
+		// localRSInterface.sprite2 = localRSInterface.sprite1;
+		localRSInterface.width = 512;
+		localRSInterface.height = 334;
+		addSprite(paramInt1, paramInt2, "" + paramURL + "", 0);
 	}
-	
+
+	public static void TitleShop(TextDrawingArea TDA[]) {
+		RSInterface Interface = addTabInterface(16450);
+		/**
+		 * Title Shop Interface Made by
+		 * 
+		 * @author Dr House
+		 **/
+		setChildren(71, Interface);
+
+		addSprite(16451, 0, "Interfaces/Loyalty/TITLE");
+		addText(16476, "My Points:", TDA, 0, 0xFF9900, false, true);
+		addText(16477, "Currently viewing: Divination Title Shop", TDA, 1,
+				0xFF9900, false, true);
+		addText(16478, "Titles", TDA, 0, 0xFF9900, false, true);
+		addText(16479, "Re-Colour", TDA, 0, 0xFF9900, false, true);
+		addText(16480, "Costumes", TDA, 0, 0xFF9900, false, true);
+		addText(16481, "Spins", TDA, 0, 0xFF9900, false, true);
+		addText(16482, "500000", TDA, 0, 0xFF9900, false, true);
+		addText(16483, "Buy", TDA, 0, 0xFF9900, false, true);
+		addText(16484, "Cancel", TDA, 0, 0xFF9900, false, true);
+		addText(16521, "Task", TDA, 0, 0xFF9900, false, true);
+		addText(16522, "Selected:", TDA, 0, 0xFF9900, false, true);
+
+		// Buttoms
+
+		addHoverButton(16452, "", 4, 101, 58, "Confirm Selection", -1, 16453, 1);
+		addHoveredButton(16453, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16601);
+		addHoverButton(16454, "", 4, 101, 58, "Confirm Selection", -1, 16455, 1);
+		addHoveredButton(16455, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16602);
+		addHoverButton(16456, "", 4, 101, 58, "Confirm Selection", -1, 16457, 1);
+		addHoveredButton(16457, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16603);
+		addHoverButton(16458, "", 4, 101, 58, "Confirm Selection", -1, 16459, 1);
+		addHoveredButton(16459, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16604);
+		addHoverButton(16460, "", 4, 101, 58, "Confirm Selection", -1, 16461, 1);
+		addHoveredButton(16461, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16605);
+		addHoverButton(16462, "", 4, 101, 58, "Confirm Selection", -1, 16463, 1);
+		addHoveredButton(16463, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16606);
+		addHoverButton(16464, "", 4, 101, 58, "Confirm Selection", -1, 16465, 1);
+		addHoveredButton(16465, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16607);
+		addHoverButton(16466, "", 4, 101, 58, "Confirm Selection", -1, 16467, 1);
+		addHoveredButton(16467, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16608);
+		addHoverButton(16468, "", 4, 101, 58, "Confirm Selection", -1, 16469, 1);
+		addHoveredButton(16469, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16609);
+		addHoverButton(16470, "", 4, 101, 58, "Confirm Selection", -1, 16471, 1);
+		addHoveredButton(16471, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16610);
+		addHoverButton(16472, "", 4, 101, 58, "Confirm Selection", -1, 16473, 1);
+		addHoveredButton(16473, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16611);
+		addHoverButton(16474, "", 4, 101, 58, "Confirm Selection", -1, 16475, 1);
+		addHoveredButton(16475, "Interfaces/Loyalty/HOVER", 0, 101, 58, 16612);
+		addHoverButton(16510, "", 4, 101, 58, "Confirm Selection", -1, 16511, 1);
+		addHoveredButton(16511, "Interfaces/Loyalty/HOVER", 1, 101, 58, 16613);
+		addHoverButton(16512, "", 4, 101, 58, "Confirm Selection", -1, 16513, 1);
+		addHoveredButton(16513, "Interfaces/Loyalty/HOVER", 1, 101, 58, 16614);
+		addHoverButton(16514, "", 4, 120, 36, "Titles", -1, -1, 1); // Titles
+																	// Shop
+		addHoverButton(16515, "", 4, 120, 36, "Costumes", -1, -1, 1); // Costumes
+																		// Shop
+		addHoverButton(16516, "", 4, 120, 36, "Recolour", -1, -1, 1); // Recolours
+																		// Shop
+		addHoverButton(16517, "", 4, 120, 36, "Spins", -1, -1, 1); // Spins Shop
+		addHoverButton(16520, "", 4, 120, 36, "Task", -1, -1, 1); // Task Shop
+		addHoverButton(16518, "", 4, 11, 11, "Close", -1, 16519, 1);
+		addHoveredButton(16519, "Interfaces/Loyalty/HOVER", 7, 11, 11, 16665);
+
+		// Titles
+
+		addText(16486, "Sir", TDA, 0, 0xFFFFD0, false, true);
+		addText(16487, "Lady", TDA, 0, 0xFFFFD0, false, true);
+		addText(16488, "King", TDA, 0, 0xFFFFD0, false, true);
+		addText(16489, "Queen", TDA, 0, 0xFFFFD0, false, true);
+		addText(16490, "Gangster", TDA, 0, 0xFFFFD0, false, true);
+		addText(16491, "Peedo", TDA, 0, 0xFFFFD0, false, true);
+		addText(16492, "Demon", TDA, 0, 0xFFFFD0, false, true);
+		addText(16493, "Angel", TDA, 0, 0xFFFFD0, false, true);
+		addText(16494, "Unstoppable", TDA, 0, 0xFFFFD0, false, true);
+		addText(16495, "Nerd", TDA, 0, 0xFFFFD0, false, true);
+		addText(16496, "Psychopath", TDA, 0, 0xFFFFD0, false, true);
+		addText(16497, "Immortal", TDA, 0, 0xFFFFD0, false, true);
+
+		// Prices
+
+		addText(16498, "1k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16499, "1k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16500, "3k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16501, "3k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16502, "5k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16503, "8k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16504, "10k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16505, "10k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16506, "15k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16507, "20k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16508, "25k Points", TDA, 0, 0xFF9900, false, true);
+		addText(16509, "30k Points", TDA, 0, 0xFF9900, false, true);
+
+		setBounds(16451, 10, 10, 0, Interface); // Background
+		// Buttoms {
+		// Sir
+		setBounds(16452, 162, 47, 1, Interface);
+		setBounds(16453, 162, 47, 2, Interface);
+		// Lady
+		setBounds(16454, 263, 47, 3, Interface);
+		setBounds(16455, 263, 47, 4, Interface);
+		// King
+		setBounds(16456, 364, 47, 5, Interface);
+		setBounds(16457, 364, 47, 6, Interface);
+
+		// Queen
+		setBounds(16458, 162, 107, 7, Interface);
+		setBounds(16459, 162, 107, 8, Interface);
+		// Gangstar
+		setBounds(16460, 263, 107, 9, Interface);
+		setBounds(16461, 263, 107, 10, Interface);
+		// Peedo
+		setBounds(16462, 364, 107, 11, Interface);
+		setBounds(16463, 364, 107, 12, Interface);
+
+		// Demon
+		setBounds(16464, 162, 167, 13, Interface);
+		setBounds(16465, 162, 167, 14, Interface);
+		// Angel
+		setBounds(16466, 263, 167, 15, Interface);
+		setBounds(16467, 263, 167, 16, Interface);
+		// Unstoppable
+		setBounds(16468, 364, 167, 17, Interface);
+		setBounds(16469, 364, 167, 18, Interface);
+
+		// Nerd
+		setBounds(16470, 162, 227, 19, Interface);
+		setBounds(16471, 162, 227, 20, Interface);
+		// Psychopath
+		setBounds(16472, 263, 227, 21, Interface);
+		setBounds(16473, 263, 227, 22, Interface);
+		// Ninja
+		setBounds(16474, 364, 227, 23, Interface);
+		setBounds(16475, 364, 227, 24, Interface);
+		// }
+
+		// Texts (not titles) {
+		setBounds(16476, 38, 26, 25, Interface);
+		setBounds(16477, 142, 23, 60, Interface);
+		setBounds(16478, 63, 56, 61, Interface);
+		setBounds(16479, 63, 126, 28, Interface);
+		setBounds(16480, 63, 90, 29, Interface);
+		setBounds(16481, 63, 162, 30, Interface);
+		setBounds(16482, 94, 26, 31, Interface);
+		setBounds(16483, 323, 291, 58, Interface);
+		setBounds(16484, 403, 291, 59, Interface);
+		// }
+
+		// Titles {
+		setBounds(16486, 199, 60, 34, Interface);
+		setBounds(16487, 301, 60, 35, Interface);
+		setBounds(16488, 403, 60, 36, Interface);
+		setBounds(16489, 199, 120, 37, Interface);
+		setBounds(16490, 301, 120, 38, Interface);
+		setBounds(16491, 403, 120, 39, Interface);
+		setBounds(16492, 199, 180, 40, Interface);
+		setBounds(16493, 301, 180, 41, Interface);
+		setBounds(16494, 399, 180, 42, Interface);
+		setBounds(16495, 199, 240, 43, Interface);
+		setBounds(16496, 299, 240, 44, Interface);
+		setBounds(16497, 403, 240, 45, Interface);
+		// }
+
+		// Prices {
+		setBounds(16498, 291, 85, 46, Interface);
+		setBounds(16499, 190, 85, 47, Interface);
+		setBounds(16500, 392, 85, 48, Interface);
+		setBounds(16501, 291, 145, 49, Interface);
+		setBounds(16502, 186, 145, 50, Interface);
+		setBounds(16503, 392, 145, 51, Interface);
+		setBounds(16504, 291, 205, 52, Interface);
+		setBounds(16505, 190, 205, 53, Interface);
+		setBounds(16506, 392, 205, 54, Interface);
+		setBounds(16507, 190, 265, 55, Interface);
+		setBounds(16508, 291, 265, 56, Interface);
+		setBounds(16509, 392, 265, 57, Interface);
+		// }
+
+		// Buy/Cancel Buttom
+		setBounds(16510, 291, 286, 32, Interface);
+		setBounds(16511, 291, 286, 33, Interface);
+		setBounds(16512, 378, 286, 26, Interface);
+		setBounds(16513, 378, 286, 27, Interface);
+		setBounds(16514, 20, 45, 62, Interface);
+		setBounds(16515, 20, 81, 63, Interface);
+		setBounds(16516, 20, 116, 64, Interface);
+		setBounds(16517, 20, 149, 65, Interface);
+		setBounds(16518, 480, 17, 66, Interface);
+		setBounds(16519, 480, 17, 67, Interface);
+		setBounds(16520, 20, 185, 68, Interface);
+		setBounds(16521, 63, 198, 69, Interface);
+		setBounds(16522, 139, 290, 70, Interface);
+
+	}
+
 	public static void CostumeShop(TextDrawingArea TDA[]) {
-    RSInterface Interface = addTabInterface(40450);
-	/** Costume Shop Interface Made by
-	@author Dr House
-	**/
-    setChildren(71, Interface);
-	
-    addSprite(40451, 0, "Interfaces/Loyalty/COSTUME");
-    addText(40476, "My Points:", TDA, 0, 0xFF9900, false, true);
-	addText(40477, "Currently viewing: Divination Costume Shop", TDA, 1, 0xFF9900, false, true);
-    addText(40478, "Titles", TDA, 0, 0xFF9900, false, true);
-    addText(40479, "Re-Colour", TDA, 0, 0xFF9900, false, true);
-    addText(40480, "Costumes", TDA, 0, 0xFF9900, false, true);
-    addText(40481, "Spins", TDA, 0, 0xFF9900, false, true);
-    addText(40482, "500000", TDA, 0, 0xFF9900, false, true);
-    addText(40483, "Buy", TDA, 0, 0xFF9900, false, true);
-    addText(40484, "Cancel", TDA, 0, 0xFF9900, false, true);
-	addText(40521, "Task", TDA, 0, 0xFF9900, false, true);
-	addText(40522, "Selected:", TDA, 0, 0xFF9900, false, true);
-	
-	//Buttoms
-	
-	addHoverButton(40452, "", 4, 101, 58, "Select Costume", -1, 40453, 1);
-	addHoveredButton(40453, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40650);
-	addHoverButton(40454, "", 4, 101, 58, "Select Costume", -1, 40455, 1);
-	addHoveredButton(40455, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40651);
-	addHoverButton(40456, "", 4, 101, 58, "Select Costume", -1, 40457, 1);
-	addHoveredButton(40457, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40652);
-	addHoverButton(40458, "", 4, 101, 58, "Select Costume", -1, 40459, 1);
-	addHoveredButton(40459, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40653);
-	addHoverButton(40460, "", 4, 101, 58, "Select Costume", -1, 40461, 1);
-	addHoveredButton(40461, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40654);
-	addHoverButton(40462, "", 4, 101, 58, "Select Costume ", -1, 40463, 1);
-	addHoveredButton(40463, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40655);
-	addHoverButton(40464, "", 4, 101, 58, "Select Costume ", -1, 40465, 1);
-	addHoveredButton(40465, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40656);
-	addHoverButton(40466, "", 4, 101, 58, "Select Costume", -1, 40467, 1);
-	addHoveredButton(40467, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40657);
-	addHoverButton(40468, "", 4, 101, 58, "Select Costume", -1, 40469, 1);
-	addHoveredButton(40469, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40658);
-	addHoverButton(40470, "", 4, 101, 58, "Select Costume", -1, 40471, 1);
-	addHoveredButton(40471, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40659);
-	addHoverButton(40472, "", 4, 101, 58, "Select Costume", -1, 40473, 1);
-	addHoveredButton(40473, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40660);
-	addHoverButton(40474, "", 4, 101, 58, "Select Costume", -1, 40475, 1);
-	addHoveredButton(40475, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40661);
-	addHoverButton(40510, "", 4, 101, 58, "Confirm Selection", -1, 40511, 1);
-	addHoveredButton(40511, "Interfaces/Loyalty/HOVER", 1, 101, 58, 40662);
-	addHoverButton(40512, "", 4, 101, 58, "Confirm Selection", -1, 40513, 1);
-	addHoveredButton(40513, "Interfaces/Loyalty/HOVER", 1, 101, 58, 40663);
-	
-	addHoverButton(40514, "", 4, 120, 36, "Titles", -1, -1, 1);		//Titles Shop
-	addHoverButton(40515, "", 4, 120, 36, "Costumes", -1, -1, 1);	//Costumes Shop
-	addHoverButton(40516, "", 4, 120, 36, "Recolour", -1, -1, 1);	//Recolours Shop
-	addHoverButton(40517, "", 4, 120, 36, "Spins", -1, -1, 1);	//Spins Shop
-	addHoverButton(40520, "", 4, 120, 36, "Task", -1, -1, 1);	//Task Shop
-	addHoverButton(40518, "", 4, 11, 11, "Close", -1, 40519, 1);
-	addHoveredButton(40519, "Interfaces/Loyalty/HOVER", 7, 11, 11, 40664);
-	
-	//Costumes
-	
-	addText(40486, "Frog ", TDA, 0, 0xFFFFD0, false, true);
-	addText(40487, "Mime", TDA, 0, 0xFFFFD0, false, true);
-	addText(40488, "Zombie", TDA, 0, 0xFFFFD0, false, true);
-	addText(40489, "Warlock", TDA, 0, 0xFFFFD0, false, true);
-	addText(40490, "Jester", TDA, 0, 0xFFFFD0, false, true);
-	addText(40491, "Skeleton", TDA, 0, 0xFFFFD0, false, true);
-	addText(40492, "Sled", TDA, 0, 0xFFFFD0, false, true);
-	addText(40493, "Basket", TDA, 0, 0xFFFFD0, false, true);
-	addText(40494, "Witchdoctor", TDA, 0, 0xFFFFD0, false, true);
-	addText(40495, "Santa", TDA, 0, 0xFFFFD0, false, true);
-	addText(40496, "Grim Reaper", TDA, 0, 0xFFFFD0, false, true);
-	addText(40497, "Investigator", TDA, 0, 0xFFFFD0, false, true);
- 
-	//Prices
-	
-	addText(40498, "1k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40499, "1k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40500, "2k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40501, "3k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40502, "4k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40503, "5k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40504, "7.5k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40505, "7.5k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40506, "13k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40507, "15k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40508, "15k Points", TDA, 0, 0xFF9900, false, true);
-	addText(40509, "17.5k Points", TDA, 0, 0xFF9900, false, true);
-	
-    setBounds(40451, 10, 10, 0, Interface); //Background
-	//Buttoms {
-	//Sir
-	setBounds(40452, 162, 47, 1, Interface);
-    setBounds(40453, 162, 47, 2, Interface);
-	//Lady
-    setBounds(40454, 263, 47, 3, Interface);
-    setBounds(40455, 263, 47, 4, Interface);
-	//King
-    setBounds(40456, 364, 47, 5, Interface);
-    setBounds(40457, 364, 47, 6, Interface);
-	
-	//Queen
-    setBounds(40458, 162, 107, 7, Interface);
-    setBounds(40459, 162, 107, 8, Interface);
-	//Gangstar
-    setBounds(40460, 263, 107, 9, Interface);
-    setBounds(40461, 263, 107, 10, Interface);
-	//Peedo
-    setBounds(40462, 364, 107, 11, Interface);
-    setBounds(40463, 364, 107, 12, Interface);
-	
-	//Demon
-    setBounds(40464, 162, 167, 13, Interface);
-    setBounds(40465, 162, 167, 14, Interface);
-	//Angel
-    setBounds(40466, 263, 167, 15, Interface);
-    setBounds(40467, 263, 167, 16, Interface);
-	//Unstoppable
-    setBounds(40468, 364, 167, 17, Interface);
-    setBounds(40469, 364, 167, 18, Interface);
-	
-	//Nerd
-    setBounds(40470, 162, 227, 19, Interface);
-	setBounds(40471, 162, 227, 20, Interface);
-	//Psychopath
-    setBounds(40472, 263, 227, 21, Interface);
-    setBounds(40473, 263, 227, 22, Interface);
-	//Ninja
-    setBounds(40474, 364, 227, 23, Interface);
-    setBounds(40475, 364, 227, 24, Interface);
-	// }
-	
-	//Texts (not costumes) {
-    setBounds(40476, 38, 26, 25, Interface);
-    setBounds(40477, 142, 23, 26, Interface);
-    setBounds(40478, 63, 56, 27, Interface);
-    setBounds(40479, 63, 126, 28, Interface);
-    setBounds(40480, 63, 90, 29, Interface);
-    setBounds(40481, 63, 162, 30, Interface);
-    setBounds(40482, 94, 26, 31, Interface);
-    setBounds(40483, 323, 291, 60, Interface);
-    setBounds(40484, 403, 291, 61, Interface);
-	//}
-	
-	//Costumes {
-	setBounds(40486, 199, 60, 34, Interface);
-    setBounds(40487, 301, 60, 35, Interface);
-    setBounds(40488, 403, 60, 36, Interface);
-    setBounds(40489, 199, 120, 37, Interface);
-    setBounds(40490, 301, 120, 38, Interface);
-    setBounds(40491, 403, 120, 39, Interface);
-    setBounds(40492, 199, 180, 40, Interface);
-    setBounds(40493, 301, 180, 41, Interface);
-    setBounds(40494, 399, 180, 42, Interface);
-    setBounds(40495, 199, 240, 43, Interface);
-	setBounds(40496, 299, 240, 44, Interface);
-    setBounds(40497, 403, 240, 45, Interface);
-	//}
-	
-	//Prices {
-    setBounds(40498, 291, 85, 46, Interface);
-    setBounds(40499, 190, 85, 47, Interface);
-    setBounds(40500, 392, 85, 48, Interface);
-    setBounds(40501, 291, 145, 49, Interface);
-    setBounds(40502, 186, 145, 50, Interface);
-    setBounds(40503, 392, 145, 51, Interface);
-    setBounds(40504, 291, 205, 52, Interface);
-    setBounds(40505, 190, 205, 53, Interface);
-    setBounds(40506, 392, 205, 54, Interface);
-    setBounds(40507, 190, 265, 55, Interface);
-    setBounds(40508, 291, 265, 56, Interface);
-    setBounds(40509, 392, 265, 57, Interface);
-	//}
-	
-	//Buy/Cancel Buttom
-	setBounds(40510, 291, 286, 32, Interface);
-    setBounds(40511, 291, 286, 33, Interface);
-    setBounds(40512, 378, 286, 58, Interface);
-    setBounds(40513, 378, 286, 59, Interface);
-	setBounds(40514, 20, 45, 62, Interface);
-    setBounds(40515, 20, 81, 63, Interface);
-    setBounds(40516, 20, 116, 64, Interface);
-    setBounds(40517, 20, 149, 65, Interface);
-	setBounds(40518, 480, 17, 66, Interface);
-    setBounds(40519, 480, 17, 67, Interface);
-	setBounds(40520, 20, 185, 68, Interface);
-    setBounds(40521, 63, 198, 69, Interface);
-    setBounds(40522, 139, 290, 70, Interface);
-	
+		RSInterface Interface = addTabInterface(40450);
+		/**
+		 * Costume Shop Interface Made by
+		 * 
+		 * @author Dr House
+		 **/
+		setChildren(71, Interface);
+
+		addSprite(40451, 0, "Interfaces/Loyalty/COSTUME");
+		addText(40476, "My Points:", TDA, 0, 0xFF9900, false, true);
+		addText(40477, "Currently viewing: Divination Costume Shop", TDA, 1,
+				0xFF9900, false, true);
+		addText(40478, "Titles", TDA, 0, 0xFF9900, false, true);
+		addText(40479, "Re-Colour", TDA, 0, 0xFF9900, false, true);
+		addText(40480, "Costumes", TDA, 0, 0xFF9900, false, true);
+		addText(40481, "Spins", TDA, 0, 0xFF9900, false, true);
+		addText(40482, "500000", TDA, 0, 0xFF9900, false, true);
+		addText(40483, "Buy", TDA, 0, 0xFF9900, false, true);
+		addText(40484, "Cancel", TDA, 0, 0xFF9900, false, true);
+		addText(40521, "Task", TDA, 0, 0xFF9900, false, true);
+		addText(40522, "Selected:", TDA, 0, 0xFF9900, false, true);
+
+		// Buttoms
+
+		addHoverButton(40452, "", 4, 101, 58, "Select Costume", -1, 40453, 1);
+		addHoveredButton(40453, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40650);
+		addHoverButton(40454, "", 4, 101, 58, "Select Costume", -1, 40455, 1);
+		addHoveredButton(40455, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40651);
+		addHoverButton(40456, "", 4, 101, 58, "Select Costume", -1, 40457, 1);
+		addHoveredButton(40457, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40652);
+		addHoverButton(40458, "", 4, 101, 58, "Select Costume", -1, 40459, 1);
+		addHoveredButton(40459, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40653);
+		addHoverButton(40460, "", 4, 101, 58, "Select Costume", -1, 40461, 1);
+		addHoveredButton(40461, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40654);
+		addHoverButton(40462, "", 4, 101, 58, "Select Costume ", -1, 40463, 1);
+		addHoveredButton(40463, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40655);
+		addHoverButton(40464, "", 4, 101, 58, "Select Costume ", -1, 40465, 1);
+		addHoveredButton(40465, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40656);
+		addHoverButton(40466, "", 4, 101, 58, "Select Costume", -1, 40467, 1);
+		addHoveredButton(40467, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40657);
+		addHoverButton(40468, "", 4, 101, 58, "Select Costume", -1, 40469, 1);
+		addHoveredButton(40469, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40658);
+		addHoverButton(40470, "", 4, 101, 58, "Select Costume", -1, 40471, 1);
+		addHoveredButton(40471, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40659);
+		addHoverButton(40472, "", 4, 101, 58, "Select Costume", -1, 40473, 1);
+		addHoveredButton(40473, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40660);
+		addHoverButton(40474, "", 4, 101, 58, "Select Costume", -1, 40475, 1);
+		addHoveredButton(40475, "Interfaces/Loyalty/HOVER", 2, 101, 58, 40661);
+		addHoverButton(40510, "", 4, 101, 58, "Confirm Selection", -1, 40511, 1);
+		addHoveredButton(40511, "Interfaces/Loyalty/HOVER", 1, 101, 58, 40662);
+		addHoverButton(40512, "", 4, 101, 58, "Confirm Selection", -1, 40513, 1);
+		addHoveredButton(40513, "Interfaces/Loyalty/HOVER", 1, 101, 58, 40663);
+
+		addHoverButton(40514, "", 4, 120, 36, "Titles", -1, -1, 1); // Titles
+																	// Shop
+		addHoverButton(40515, "", 4, 120, 36, "Costumes", -1, -1, 1); // Costumes
+																		// Shop
+		addHoverButton(40516, "", 4, 120, 36, "Recolour", -1, -1, 1); // Recolours
+																		// Shop
+		addHoverButton(40517, "", 4, 120, 36, "Spins", -1, -1, 1); // Spins Shop
+		addHoverButton(40520, "", 4, 120, 36, "Task", -1, -1, 1); // Task Shop
+		addHoverButton(40518, "", 4, 11, 11, "Close", -1, 40519, 1);
+		addHoveredButton(40519, "Interfaces/Loyalty/HOVER", 7, 11, 11, 40664);
+
+		// Costumes
+
+		addText(40486, "Frog ", TDA, 0, 0xFFFFD0, false, true);
+		addText(40487, "Mime", TDA, 0, 0xFFFFD0, false, true);
+		addText(40488, "Zombie", TDA, 0, 0xFFFFD0, false, true);
+		addText(40489, "Warlock", TDA, 0, 0xFFFFD0, false, true);
+		addText(40490, "Jester", TDA, 0, 0xFFFFD0, false, true);
+		addText(40491, "Skeleton", TDA, 0, 0xFFFFD0, false, true);
+		addText(40492, "Sled", TDA, 0, 0xFFFFD0, false, true);
+		addText(40493, "Basket", TDA, 0, 0xFFFFD0, false, true);
+		addText(40494, "Witchdoctor", TDA, 0, 0xFFFFD0, false, true);
+		addText(40495, "Santa", TDA, 0, 0xFFFFD0, false, true);
+		addText(40496, "Grim Reaper", TDA, 0, 0xFFFFD0, false, true);
+		addText(40497, "Investigator", TDA, 0, 0xFFFFD0, false, true);
+
+		// Prices
+
+		addText(40498, "1k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40499, "1k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40500, "2k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40501, "3k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40502, "4k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40503, "5k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40504, "7.5k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40505, "7.5k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40506, "13k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40507, "15k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40508, "15k Points", TDA, 0, 0xFF9900, false, true);
+		addText(40509, "17.5k Points", TDA, 0, 0xFF9900, false, true);
+
+		setBounds(40451, 10, 10, 0, Interface); // Background
+		// Buttoms {
+		// Sir
+		setBounds(40452, 162, 47, 1, Interface);
+		setBounds(40453, 162, 47, 2, Interface);
+		// Lady
+		setBounds(40454, 263, 47, 3, Interface);
+		setBounds(40455, 263, 47, 4, Interface);
+		// King
+		setBounds(40456, 364, 47, 5, Interface);
+		setBounds(40457, 364, 47, 6, Interface);
+
+		// Queen
+		setBounds(40458, 162, 107, 7, Interface);
+		setBounds(40459, 162, 107, 8, Interface);
+		// Gangstar
+		setBounds(40460, 263, 107, 9, Interface);
+		setBounds(40461, 263, 107, 10, Interface);
+		// Peedo
+		setBounds(40462, 364, 107, 11, Interface);
+		setBounds(40463, 364, 107, 12, Interface);
+
+		// Demon
+		setBounds(40464, 162, 167, 13, Interface);
+		setBounds(40465, 162, 167, 14, Interface);
+		// Angel
+		setBounds(40466, 263, 167, 15, Interface);
+		setBounds(40467, 263, 167, 16, Interface);
+		// Unstoppable
+		setBounds(40468, 364, 167, 17, Interface);
+		setBounds(40469, 364, 167, 18, Interface);
+
+		// Nerd
+		setBounds(40470, 162, 227, 19, Interface);
+		setBounds(40471, 162, 227, 20, Interface);
+		// Psychopath
+		setBounds(40472, 263, 227, 21, Interface);
+		setBounds(40473, 263, 227, 22, Interface);
+		// Ninja
+		setBounds(40474, 364, 227, 23, Interface);
+		setBounds(40475, 364, 227, 24, Interface);
+		// }
+
+		// Texts (not costumes) {
+		setBounds(40476, 38, 26, 25, Interface);
+		setBounds(40477, 142, 23, 26, Interface);
+		setBounds(40478, 63, 56, 27, Interface);
+		setBounds(40479, 63, 126, 28, Interface);
+		setBounds(40480, 63, 90, 29, Interface);
+		setBounds(40481, 63, 162, 30, Interface);
+		setBounds(40482, 94, 26, 31, Interface);
+		setBounds(40483, 323, 291, 60, Interface);
+		setBounds(40484, 403, 291, 61, Interface);
+		// }
+
+		// Costumes {
+		setBounds(40486, 199, 60, 34, Interface);
+		setBounds(40487, 301, 60, 35, Interface);
+		setBounds(40488, 403, 60, 36, Interface);
+		setBounds(40489, 199, 120, 37, Interface);
+		setBounds(40490, 301, 120, 38, Interface);
+		setBounds(40491, 403, 120, 39, Interface);
+		setBounds(40492, 199, 180, 40, Interface);
+		setBounds(40493, 301, 180, 41, Interface);
+		setBounds(40494, 399, 180, 42, Interface);
+		setBounds(40495, 199, 240, 43, Interface);
+		setBounds(40496, 299, 240, 44, Interface);
+		setBounds(40497, 403, 240, 45, Interface);
+		// }
+
+		// Prices {
+		setBounds(40498, 291, 85, 46, Interface);
+		setBounds(40499, 190, 85, 47, Interface);
+		setBounds(40500, 392, 85, 48, Interface);
+		setBounds(40501, 291, 145, 49, Interface);
+		setBounds(40502, 186, 145, 50, Interface);
+		setBounds(40503, 392, 145, 51, Interface);
+		setBounds(40504, 291, 205, 52, Interface);
+		setBounds(40505, 190, 205, 53, Interface);
+		setBounds(40506, 392, 205, 54, Interface);
+		setBounds(40507, 190, 265, 55, Interface);
+		setBounds(40508, 291, 265, 56, Interface);
+		setBounds(40509, 392, 265, 57, Interface);
+		// }
+
+		// Buy/Cancel Buttom
+		setBounds(40510, 291, 286, 32, Interface);
+		setBounds(40511, 291, 286, 33, Interface);
+		setBounds(40512, 378, 286, 58, Interface);
+		setBounds(40513, 378, 286, 59, Interface);
+		setBounds(40514, 20, 45, 62, Interface);
+		setBounds(40515, 20, 81, 63, Interface);
+		setBounds(40516, 20, 116, 64, Interface);
+		setBounds(40517, 20, 149, 65, Interface);
+		setBounds(40518, 480, 17, 66, Interface);
+		setBounds(40519, 480, 17, 67, Interface);
+		setBounds(40520, 20, 185, 68, Interface);
+		setBounds(40521, 63, 198, 69, Interface);
+		setBounds(40522, 139, 290, 70, Interface);
+
 	}
-	
 
 	public static void RecolourShop(TextDrawingArea TDA[]) {
-    RSInterface Interface = addTabInterface(44450);
-	/** Costume Shop Interface Made by
-	@author Dr House
-	**/
-    setChildren(70, Interface);
-	
-    addSprite(44451, 0, "Interfaces/Loyalty/COLOUR");
-    addText(44476, "My Points:", TDA, 0, 0xFF9900, false, true);
-	addText(44477, "Currently viewing: Divination Recolour Shop", TDA, 1, 0xFF9900, false, true);
-    addText(44478, "Titles", TDA, 0, 0xFF9900, false, true);
-    addText(44479, "Re-Colour", TDA, 0, 0xFF9900, false, true);
-    addText(44480, "Costumes", TDA, 0, 0xFF9900, false, true);
-    addText(44481, "Spins", TDA, 0, 0xFF9900, false, true);
-    addText(44482, "500000", TDA, 0, 0xFF9900, false, true);
-    addText(44483, "Buy", TDA, 0, 0xFF9900, false, true);
-    addText(44484, "Cancel", TDA, 0, 0xFF9900, false, true);
-	addText(44521, "Task", TDA, 0, 0xFF9900, false, true);
-	
-	//Buttoms
-	
-	addHoverButton(44452, "", 4, 101, 58, "Select Item", -1, 44453, 1);
-	addHoveredButton(44453, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44650);
-	addHoverButton(44454, "", 4, 101, 58, "Select Item", -1, 44455, 1);
-	addHoveredButton(44455, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44651);
-	addHoverButton(44456, "", 4, 101, 58, "Select Item", -1, 44457, 1);
-	addHoveredButton(44457, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44652);
-	addHoverButton(44458, "", 4, 101, 58, "Select Item", -1, 44459, 1);
-	addHoveredButton(44459, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44653);
-	addHoverButton(44460, "", 4, 101, 58, "Select Item", -1, 44461, 1);
-	addHoveredButton(44461, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44654);
-	addHoverButton(44462, "", 4, 101, 58, "Select Item ", -1, 44463, 1);
-	addHoveredButton(44463, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44655);
-	addHoverButton(44464, "", 4, 101, 58, "Select Item ", -1, 44465, 1);
-	addHoveredButton(44465, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44656);
-	addHoverButton(44466, "", 4, 101, 58, "Select Item", -1, 44467, 1);
-	addHoveredButton(44467, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44657);
-	addHoverButton(44468, "", 4, 101, 58, "Select Item", -1, 44469, 1);
-	addHoveredButton(44469, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44658);
-	addHoverButton(44470, "", 4, 101, 58, "Select Item", -1, 44471, 1);
-	addHoveredButton(44471, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44659);
-	addHoverButton(44472, "", 4, 101, 58, "Select Item", -1, 44473, 1);
-	addHoveredButton(44473, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44660);
-	addHoverButton(44474, "", 4, 101, 58, "Select Item", -1, 44475, 1);
-	addHoveredButton(44475, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44661);
-	addHoverButton(44510, "", 4, 101, 58, "Confirm Selection", -1, 44511, 1);
-	addHoveredButton(44511, "Interfaces/Loyalty/HOVER", 1, 101, 58, 44662);
-	addHoverButton(44512, "", 4, 101, 58, "Confirm Selection", -1, 44513, 1);
-	addHoveredButton(44513, "Interfaces/Loyalty/HOVER", 1, 101, 58, 44663);
-	addHoverButton(44514, "", 4, 120, 36, "Titles", -1, -1, 1);		//Titles Shop
-	addHoverButton(44515, "", 4, 120, 36, "Costumes", -1, -1, 1);	//Costumes Shop
-	addHoverButton(44516, "", 4, 120, 36, "Recolour", -1, -1, 1);	//Recolours Shop
-	addHoverButton(44517, "", 4, 120, 36, "Spins", -1, -1, 1);	//Spins Shop
-	addHoverButton(44520, "", 4, 120, 36, "Task", -1, -1, 1);	//Task Shop
-	addHoverButton(44518, "", 4, 11, 11, "Close", -1, 44519, 1);
-	addHoveredButton(44519, "Interfaces/Loyalty/HOVER", 7, 11, 11, 44664);
-	
-	//Items
-	
-	addText(44486, "Dark Bow", TDA, 0, 0xFFFFD0, false, true);
-	addText(44487, "Whip", TDA, 0, 0xFFFFD0, false, true);
-	addText(44488, "Robin", TDA, 0, 0xFFFFD0, false, true);
-	addText(44489, "Ranger Boots", TDA, 0, 0xFFFFD0, false, true);
-	addText(44490, "Inf. Top", TDA, 0, 0xFFFFD0, false, true);
-	addText(44491, "Inf. Bottom", TDA, 0, 0xFFFFD0, false, true);
-	addText(44492, "Inf. Boots", TDA, 0, 0xFFFFD0, false, true);
-	addText(44493, "Dragon(T)", TDA, 0, 0xFFFFD0, false, true);
-	addText(44494, "Dragon(or)", TDA, 0, 0xFFFFD0, false, true);
-	addText(44495, "S. of Light", TDA, 0, 0xFFFFD0, false, true);
-	addText(44496, "H'Ween", TDA, 0, 0xFFFFD0, false, true);
-	addText(44497, "Party Hat", TDA, 0, 0xFFFFD0, false, true);
- 
-	//Prices
-	
-	addText(44498, "1k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44499, "1k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44500, "3k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44501, "3k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44502, "5k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44503, "5k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44504, "5k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44505, "7.5k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44506, "7.5k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44507, "10k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44508, "15k Points", TDA, 0, 0xFF9900, false, true);
-	addText(44509, "15k Points", TDA, 0, 0xFF9900, false, true);
-	
-    setBounds(44451, 10, 10, 0, Interface); //Background
-	
-	setBounds(44452, 162, 46, 1, Interface);
-    setBounds(44453, 162, 46, 2, Interface);
-    setBounds(44454, 263, 46, 3, Interface);
-    setBounds(44455, 263, 46, 4, Interface);
-    setBounds(44456, 364, 46, 5, Interface);
-    setBounds(44457, 364, 46, 6, Interface);
-    setBounds(44458, 162, 105, 7, Interface);
-    setBounds(44459, 162, 105, 8, Interface);
-    setBounds(44460, 263, 105, 9, Interface);
-    setBounds(44461, 263, 105, 10, Interface);
-    setBounds(44462, 364, 105, 11, Interface);
-    setBounds(44463, 364, 105, 12, Interface);
-    setBounds(44464, 162, 164, 13, Interface);
-    setBounds(44465, 162, 164, 14, Interface);
-    setBounds(44466, 263, 164, 15, Interface);
-    setBounds(44467, 263, 164, 16, Interface);
-    setBounds(44468, 364, 164, 17, Interface);
-    setBounds(44469, 364, 164, 18, Interface);
-    setBounds(44470, 162, 223, 19, Interface);
-	setBounds(44471, 162, 223, 20, Interface);
-    setBounds(44472, 263, 223, 21, Interface);
-    setBounds(44473, 263, 223, 22, Interface);
-    setBounds(44474, 364, 223, 23, Interface);
-    setBounds(44475, 364, 223, 24, Interface);
-    setBounds(44476, 38, 26, 25, Interface);
-    setBounds(44477, 142, 23, 26, Interface);
-    setBounds(44478, 63, 56, 27, Interface);
-    setBounds(44479, 63, 126, 28, Interface);
-    setBounds(44480, 63, 90, 29, Interface);
-    setBounds(44481, 63, 162, 30, Interface);
-    setBounds(44482, 94, 26, 31, Interface);
-    setBounds(44483, 323, 291, 60, Interface);
-    setBounds(44484, 403, 291, 61, Interface);
-	setBounds(44486, 199, 60, 34, Interface);
-    setBounds(44487, 301, 60, 35, Interface);
-    setBounds(44488, 403, 60, 36, Interface);
-    setBounds(44489, 195, 120, 37, Interface);
-    setBounds(44490, 301, 120, 38, Interface);
-    setBounds(44491, 403, 120, 39, Interface);
-    setBounds(44492, 199, 180, 40, Interface);
-    setBounds(44493, 301, 180, 41, Interface);
-    setBounds(44494, 399, 180, 42, Interface);
-    setBounds(44495, 199, 240, 43, Interface);
-	setBounds(44496, 299, 240, 44, Interface);
-    setBounds(44497, 403, 240, 45, Interface);
-    setBounds(44498, 291, 85, 46, Interface);
-    setBounds(44499, 190, 85, 47, Interface);
-    setBounds(44500, 392, 85, 48, Interface);
-    setBounds(44501, 291, 145, 49, Interface);
-    setBounds(44502, 186, 145, 50, Interface);
-    setBounds(44503, 392, 145, 51, Interface);
-    setBounds(44504, 291, 205, 52, Interface);
-    setBounds(44505, 190, 205, 53, Interface);
-    setBounds(44506, 392, 205, 54, Interface);
-    setBounds(44507, 190, 265, 55, Interface);
-    setBounds(44508, 291, 265, 56, Interface);
-    setBounds(44509, 392, 265, 57, Interface);
-	setBounds(44510, 291, 286, 32, Interface);
-    setBounds(44511, 291, 286, 33, Interface);
-    setBounds(44512, 378, 286, 58, Interface);
-    setBounds(44513, 378, 286, 59, Interface);
-	setBounds(44514, 20, 45, 62, Interface);
-    setBounds(44515, 20, 81, 63, Interface);
-    setBounds(44516, 20, 116, 64, Interface);
-    setBounds(44517, 20, 149, 65, Interface);
-    setBounds(44518, 480, 17, 66, Interface);
-    setBounds(44519, 480, 17, 67, Interface);
-	setBounds(44520, 20, 185, 68, Interface);
-    setBounds(44521, 63, 198, 69, Interface);
-	}
-	
-	
-	public static void TaskShop(TextDrawingArea TDA[]) {
-    RSInterface Interface = addTabInterface(34450);
-	/** Costume Shop Interface Made by
-	@author Dr House
-	**/
-    setChildren(70, Interface);
-	
-    addSprite(34451, 0, "Interfaces/Loyalty/TASK");
-    addText(34476, "My Points:", TDA, 0, 0xFF9900, false, true);
-	addText(34477, "Currently viewing: Divination Task Shop", TDA, 1, 0xFF9900, false, true);
-    addText(34478, "Titles", TDA, 0, 0xFF9900, false, true);
-    addText(34479, "Re-Colour", TDA, 0, 0xFF9900, false, true);
-    addText(34480, "Costumes", TDA, 0, 0xFF9900, false, true);
-    addText(34481, "Spins", TDA, 0, 0xFF9900, false, true);
-    addText(34482, "500000", TDA, 0, 0xFF9900, false, true);
-    addText(34483, "Buy", TDA, 0, 0xFF9900, false, true);
-    addText(34484, "Cancel", TDA, 0, 0xFF9900, false, true);
-    addText(34521, "Task", TDA, 0, 0xFF9900, false, true);
-	
-	//Buttoms
-	
-	addHoverButton(34452, "", 4, 101, 58, "Select Item", -1, 34453, 1);
-	addHoveredButton(34453, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34650);
-	addHoverButton(34454, "", 4, 101, 58, "Select Item", -1, 34455, 1);
-	addHoveredButton(34455, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34651);
-	addHoverButton(34456, "", 4, 101, 58, "Select Item", -1, 34457, 1);
-	addHoveredButton(34457, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34652);
-	addHoverButton(34458, "", 4, 101, 58, "Select Item", -1, 34459, 1);
-	addHoveredButton(34459, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34653);
-	addHoverButton(34460, "", 4, 101, 58, "Select Item", -1, 34461, 1);
-	addHoveredButton(34461, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34654);
-	addHoverButton(34462, "", 4, 101, 58, "Select Item", -1, 34463, 1);
-	addHoveredButton(34463, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34655);
-	addHoverButton(34464, "", 4, 101, 58, "Select Item ", -1, 34465, 1);
-	addHoveredButton(34465, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34656);
-	addHoverButton(34466, "", 4, 101, 58, "Select Item", -1, 34467, 1);
-	addHoveredButton(34467, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34657);
-	addHoverButton(34468, "", 4, 101, 58, "Select Item", -1, 34469, 1);
-	addHoveredButton(34469, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34658);
-	addHoverButton(34470, "", 4, 101, 58, "Select Item", -1, 34471, 1);
-	addHoveredButton(34471, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34659);
-	addHoverButton(34472, "", 4, 101, 58, "Select Item", -1, 34473, 1);
-	addHoveredButton(34473, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34660);
-	addHoverButton(34474, "", 4, 101, 58, "Select Item", -1, 34475, 1);
-	addHoveredButton(34475, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34661);
-	addHoverButton(34510, "", 4, 101, 58, "Confirm Selection", -1, 34511, 1);
-	addHoveredButton(34511, "Interfaces/Loyalty/HOVER", 1, 101, 58, 34662);
-	addHoverButton(34512, "", 4, 101, 58, "Confirm Selection", -1, 34513, 1);
-	addHoveredButton(34513, "Interfaces/Loyalty/HOVER", 1, 101, 58, 34663);
-	addHoverButton(34514, "", 4, 120, 36, "Titles", -1, -1, 1);		//Titles Shop
-	addHoverButton(34515, "", 4, 120, 36, "Costumes", -1, -1, 1);	//Costumes Shop
-	addHoverButton(34516, "", 4, 120, 36, "Recolour", -1, -1, 1);	//Recolours Shop
-	addHoverButton(34517, "", 4, 120, 36, "Spins", -1, -1, 1);	//Spins Shop
-	addHoverButton(34520, "", 4, 120, 36, "Task", -1, -1, 1);	//Spins Shop
-	addHoverButton(34518, "", 4, 11, 11, "Close", -1, 34519, 1);
-	addHoveredButton(34519, "Interfaces/Loyalty/HOVER", 7, 11, 11, 34664);
-	
-	//Items
-	
-	addText(34486, "Item1", TDA, 0, 0xFFFFD0, false, true);
-	addText(34487, "Item2", TDA, 0, 0xFFFFD0, false, true);
-	addText(34488, "Item3", TDA, 0, 0xFFFFD0, false, true);
-	addText(34489, "Item4", TDA, 0, 0xFFFFD0, false, true);
-	addText(34490, "Item5", TDA, 0, 0xFFFFD0, false, true);
-	addText(34491, "Item6", TDA, 0, 0xFFFFD0, false, true);
-	addText(34492, "Item7", TDA, 0, 0xFFFFD0, false, true);
-	addText(34493, "Item8", TDA, 0, 0xFFFFD0, false, true);
-	addText(34494, "Item9", TDA, 0, 0xFFFFD0, false, true);
-	addText(34495, "Item10", TDA, 0, 0xFFFFD0, false, true);
-	addText(34496, "Item11", TDA, 0, 0xFFFFD0, false, true);
-	addText(34497, "Item12", TDA, 0, 0xFFFFD0, false, true);
+		RSInterface Interface = addTabInterface(44450);
+		/**
+		 * Costume Shop Interface Made by
+		 * 
+		 * @author Dr House
+		 **/
+		setChildren(70, Interface);
 
-	//Prices
-	
-	addText(34498, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34499, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34500, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34501, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34502, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34503, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34504, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34505, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34506, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34507, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34508, "Price", TDA, 0, 0xFF9900, false, true);
-	addText(34509, "Price", TDA, 0, 0xFF9900, false, true);
-	
-    setBounds(34451, 10, 10, 0, Interface); //Background
-	
-	setBounds(34452, 162, 47, 1, Interface);
-    setBounds(34453, 162, 47, 2, Interface);
-    setBounds(34454, 263, 47, 3, Interface);
-    setBounds(34455, 263, 47, 4, Interface);
-    setBounds(34456, 364, 47, 5, Interface);
-    setBounds(34457, 364, 47, 6, Interface);
-    setBounds(34458, 162, 107, 7, Interface);
-    setBounds(34459, 162, 107, 8, Interface);
-    setBounds(34460, 263, 107, 9, Interface);
-    setBounds(34461, 263, 107, 10, Interface);
-    setBounds(34462, 364, 107, 11, Interface);
-    setBounds(34463, 364, 107, 12, Interface);
-    setBounds(34464, 162, 166, 13, Interface);
-    setBounds(34465, 162, 166, 14, Interface);
-    setBounds(34466, 263, 166, 15, Interface);
-    setBounds(34467, 263, 166, 16, Interface);
-    setBounds(34468, 364, 166, 17, Interface);
-    setBounds(34469, 364, 166, 18, Interface);
-    setBounds(34470, 162, 226, 19, Interface);
-	setBounds(34471, 162, 226, 20, Interface);
-    setBounds(34472, 263, 226, 21, Interface);
-    setBounds(34473, 263, 226, 22, Interface);
-    setBounds(34474, 364, 226, 23, Interface);
-    setBounds(34475, 364, 226, 24, Interface);
-    setBounds(34476, 38, 26, 25, Interface);
-    setBounds(34477, 142, 23, 26, Interface);
-    setBounds(34478, 63, 56, 27, Interface);
-    setBounds(34479, 63, 126, 28, Interface);
-    setBounds(34480, 63, 90, 29, Interface);
-    setBounds(34481, 63, 162, 30, Interface);
-    setBounds(34482, 94, 26, 31, Interface);
-    setBounds(34483, 323, 291, 60, Interface);
-    setBounds(34484, 403, 291, 61, Interface);
-	setBounds(34486, 199, 60, 34, Interface);
-    setBounds(34487, 301, 60, 35, Interface);
-    setBounds(34488, 403, 60, 36, Interface);
-    setBounds(34489, 195, 120, 37, Interface);
-    setBounds(34490, 301, 120, 38, Interface);
-    setBounds(34491, 403, 120, 39, Interface);
-    setBounds(34492, 199, 180, 40, Interface);
-    setBounds(34493, 301, 180, 41, Interface);
-    setBounds(34494, 399, 180, 42, Interface);
-    setBounds(34495, 199, 240, 43, Interface);
-	setBounds(34496, 299, 240, 44, Interface);
-    setBounds(34497, 403, 240, 45, Interface);
-    setBounds(34498, 291, 85, 46, Interface);
-    setBounds(34499, 190, 85, 47, Interface);
-    setBounds(34500, 392, 85, 48, Interface);
-    setBounds(34501, 291, 145, 49, Interface);
-    setBounds(34502, 186, 145, 50, Interface);
-    setBounds(34503, 392, 145, 51, Interface);
-    setBounds(34504, 291, 205, 52, Interface);
-    setBounds(34505, 190, 205, 53, Interface);
-    setBounds(34506, 392, 205, 54, Interface);
-    setBounds(34507, 190, 265, 55, Interface);
-    setBounds(34508, 291, 265, 56, Interface);
-    setBounds(34509, 392, 265, 57, Interface);
-	setBounds(34510, 291, 286, 32, Interface);
-    setBounds(34511, 291, 286, 33, Interface);
-    setBounds(34512, 378, 286, 58, Interface);
-    setBounds(34513, 378, 286, 59, Interface);
-	setBounds(34514, 20, 45, 62, Interface);
-    setBounds(34515, 20, 81, 63, Interface);
-    setBounds(34516, 20, 116, 64, Interface);
-    setBounds(34517, 20, 149, 65, Interface);
-    setBounds(34518, 480, 17, 66, Interface);
-    setBounds(34519, 480, 17, 67, Interface);
-    setBounds(34520, 20, 185, 68, Interface);
-    setBounds(34521, 63, 198, 69, Interface);
+		addSprite(44451, 0, "Interfaces/Loyalty/COLOUR");
+		addText(44476, "My Points:", TDA, 0, 0xFF9900, false, true);
+		addText(44477, "Currently viewing: Divination Recolour Shop", TDA, 1,
+				0xFF9900, false, true);
+		addText(44478, "Titles", TDA, 0, 0xFF9900, false, true);
+		addText(44479, "Re-Colour", TDA, 0, 0xFF9900, false, true);
+		addText(44480, "Costumes", TDA, 0, 0xFF9900, false, true);
+		addText(44481, "Spins", TDA, 0, 0xFF9900, false, true);
+		addText(44482, "500000", TDA, 0, 0xFF9900, false, true);
+		addText(44483, "Buy", TDA, 0, 0xFF9900, false, true);
+		addText(44484, "Cancel", TDA, 0, 0xFF9900, false, true);
+		addText(44521, "Task", TDA, 0, 0xFF9900, false, true);
+
+		// Buttoms
+
+		addHoverButton(44452, "", 4, 101, 58, "Select Item", -1, 44453, 1);
+		addHoveredButton(44453, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44650);
+		addHoverButton(44454, "", 4, 101, 58, "Select Item", -1, 44455, 1);
+		addHoveredButton(44455, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44651);
+		addHoverButton(44456, "", 4, 101, 58, "Select Item", -1, 44457, 1);
+		addHoveredButton(44457, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44652);
+		addHoverButton(44458, "", 4, 101, 58, "Select Item", -1, 44459, 1);
+		addHoveredButton(44459, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44653);
+		addHoverButton(44460, "", 4, 101, 58, "Select Item", -1, 44461, 1);
+		addHoveredButton(44461, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44654);
+		addHoverButton(44462, "", 4, 101, 58, "Select Item ", -1, 44463, 1);
+		addHoveredButton(44463, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44655);
+		addHoverButton(44464, "", 4, 101, 58, "Select Item ", -1, 44465, 1);
+		addHoveredButton(44465, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44656);
+		addHoverButton(44466, "", 4, 101, 58, "Select Item", -1, 44467, 1);
+		addHoveredButton(44467, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44657);
+		addHoverButton(44468, "", 4, 101, 58, "Select Item", -1, 44469, 1);
+		addHoveredButton(44469, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44658);
+		addHoverButton(44470, "", 4, 101, 58, "Select Item", -1, 44471, 1);
+		addHoveredButton(44471, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44659);
+		addHoverButton(44472, "", 4, 101, 58, "Select Item", -1, 44473, 1);
+		addHoveredButton(44473, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44660);
+		addHoverButton(44474, "", 4, 101, 58, "Select Item", -1, 44475, 1);
+		addHoveredButton(44475, "Interfaces/Loyalty/HOVER", 3, 101, 58, 44661);
+		addHoverButton(44510, "", 4, 101, 58, "Confirm Selection", -1, 44511, 1);
+		addHoveredButton(44511, "Interfaces/Loyalty/HOVER", 1, 101, 58, 44662);
+		addHoverButton(44512, "", 4, 101, 58, "Confirm Selection", -1, 44513, 1);
+		addHoveredButton(44513, "Interfaces/Loyalty/HOVER", 1, 101, 58, 44663);
+		addHoverButton(44514, "", 4, 120, 36, "Titles", -1, -1, 1); // Titles
+																	// Shop
+		addHoverButton(44515, "", 4, 120, 36, "Costumes", -1, -1, 1); // Costumes
+																		// Shop
+		addHoverButton(44516, "", 4, 120, 36, "Recolour", -1, -1, 1); // Recolours
+																		// Shop
+		addHoverButton(44517, "", 4, 120, 36, "Spins", -1, -1, 1); // Spins Shop
+		addHoverButton(44520, "", 4, 120, 36, "Task", -1, -1, 1); // Task Shop
+		addHoverButton(44518, "", 4, 11, 11, "Close", -1, 44519, 1);
+		addHoveredButton(44519, "Interfaces/Loyalty/HOVER", 7, 11, 11, 44664);
+
+		// Items
+
+		addText(44486, "Dark Bow", TDA, 0, 0xFFFFD0, false, true);
+		addText(44487, "Whip", TDA, 0, 0xFFFFD0, false, true);
+		addText(44488, "Robin", TDA, 0, 0xFFFFD0, false, true);
+		addText(44489, "Ranger Boots", TDA, 0, 0xFFFFD0, false, true);
+		addText(44490, "Inf. Top", TDA, 0, 0xFFFFD0, false, true);
+		addText(44491, "Inf. Bottom", TDA, 0, 0xFFFFD0, false, true);
+		addText(44492, "Inf. Boots", TDA, 0, 0xFFFFD0, false, true);
+		addText(44493, "Dragon(T)", TDA, 0, 0xFFFFD0, false, true);
+		addText(44494, "Dragon(or)", TDA, 0, 0xFFFFD0, false, true);
+		addText(44495, "S. of Light", TDA, 0, 0xFFFFD0, false, true);
+		addText(44496, "H'Ween", TDA, 0, 0xFFFFD0, false, true);
+		addText(44497, "Party Hat", TDA, 0, 0xFFFFD0, false, true);
+
+		// Prices
+
+		addText(44498, "1k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44499, "1k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44500, "3k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44501, "3k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44502, "5k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44503, "5k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44504, "5k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44505, "7.5k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44506, "7.5k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44507, "10k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44508, "15k Points", TDA, 0, 0xFF9900, false, true);
+		addText(44509, "15k Points", TDA, 0, 0xFF9900, false, true);
+
+		setBounds(44451, 10, 10, 0, Interface); // Background
+
+		setBounds(44452, 162, 46, 1, Interface);
+		setBounds(44453, 162, 46, 2, Interface);
+		setBounds(44454, 263, 46, 3, Interface);
+		setBounds(44455, 263, 46, 4, Interface);
+		setBounds(44456, 364, 46, 5, Interface);
+		setBounds(44457, 364, 46, 6, Interface);
+		setBounds(44458, 162, 105, 7, Interface);
+		setBounds(44459, 162, 105, 8, Interface);
+		setBounds(44460, 263, 105, 9, Interface);
+		setBounds(44461, 263, 105, 10, Interface);
+		setBounds(44462, 364, 105, 11, Interface);
+		setBounds(44463, 364, 105, 12, Interface);
+		setBounds(44464, 162, 164, 13, Interface);
+		setBounds(44465, 162, 164, 14, Interface);
+		setBounds(44466, 263, 164, 15, Interface);
+		setBounds(44467, 263, 164, 16, Interface);
+		setBounds(44468, 364, 164, 17, Interface);
+		setBounds(44469, 364, 164, 18, Interface);
+		setBounds(44470, 162, 223, 19, Interface);
+		setBounds(44471, 162, 223, 20, Interface);
+		setBounds(44472, 263, 223, 21, Interface);
+		setBounds(44473, 263, 223, 22, Interface);
+		setBounds(44474, 364, 223, 23, Interface);
+		setBounds(44475, 364, 223, 24, Interface);
+		setBounds(44476, 38, 26, 25, Interface);
+		setBounds(44477, 142, 23, 26, Interface);
+		setBounds(44478, 63, 56, 27, Interface);
+		setBounds(44479, 63, 126, 28, Interface);
+		setBounds(44480, 63, 90, 29, Interface);
+		setBounds(44481, 63, 162, 30, Interface);
+		setBounds(44482, 94, 26, 31, Interface);
+		setBounds(44483, 323, 291, 60, Interface);
+		setBounds(44484, 403, 291, 61, Interface);
+		setBounds(44486, 199, 60, 34, Interface);
+		setBounds(44487, 301, 60, 35, Interface);
+		setBounds(44488, 403, 60, 36, Interface);
+		setBounds(44489, 195, 120, 37, Interface);
+		setBounds(44490, 301, 120, 38, Interface);
+		setBounds(44491, 403, 120, 39, Interface);
+		setBounds(44492, 199, 180, 40, Interface);
+		setBounds(44493, 301, 180, 41, Interface);
+		setBounds(44494, 399, 180, 42, Interface);
+		setBounds(44495, 199, 240, 43, Interface);
+		setBounds(44496, 299, 240, 44, Interface);
+		setBounds(44497, 403, 240, 45, Interface);
+		setBounds(44498, 291, 85, 46, Interface);
+		setBounds(44499, 190, 85, 47, Interface);
+		setBounds(44500, 392, 85, 48, Interface);
+		setBounds(44501, 291, 145, 49, Interface);
+		setBounds(44502, 186, 145, 50, Interface);
+		setBounds(44503, 392, 145, 51, Interface);
+		setBounds(44504, 291, 205, 52, Interface);
+		setBounds(44505, 190, 205, 53, Interface);
+		setBounds(44506, 392, 205, 54, Interface);
+		setBounds(44507, 190, 265, 55, Interface);
+		setBounds(44508, 291, 265, 56, Interface);
+		setBounds(44509, 392, 265, 57, Interface);
+		setBounds(44510, 291, 286, 32, Interface);
+		setBounds(44511, 291, 286, 33, Interface);
+		setBounds(44512, 378, 286, 58, Interface);
+		setBounds(44513, 378, 286, 59, Interface);
+		setBounds(44514, 20, 45, 62, Interface);
+		setBounds(44515, 20, 81, 63, Interface);
+		setBounds(44516, 20, 116, 64, Interface);
+		setBounds(44517, 20, 149, 65, Interface);
+		setBounds(44518, 480, 17, 66, Interface);
+		setBounds(44519, 480, 17, 67, Interface);
+		setBounds(44520, 20, 185, 68, Interface);
+		setBounds(44521, 63, 198, 69, Interface);
 	}
-	public static void addToItemGroup(RSInterface rsi, int w, int h, int x, int y, boolean actions, String action1, String action2, String action3) {
+
+	public static void TaskShop(TextDrawingArea TDA[]) {
+		RSInterface Interface = addTabInterface(34450);
+		/**
+		 * Costume Shop Interface Made by
+		 * 
+		 * @author Dr House
+		 **/
+		setChildren(70, Interface);
+
+		addSprite(34451, 0, "Interfaces/Loyalty/TASK");
+		addText(34476, "My Points:", TDA, 0, 0xFF9900, false, true);
+		addText(34477, "Currently viewing: Divination Task Shop", TDA, 1,
+				0xFF9900, false, true);
+		addText(34478, "Titles", TDA, 0, 0xFF9900, false, true);
+		addText(34479, "Re-Colour", TDA, 0, 0xFF9900, false, true);
+		addText(34480, "Costumes", TDA, 0, 0xFF9900, false, true);
+		addText(34481, "Spins", TDA, 0, 0xFF9900, false, true);
+		addText(34482, "500000", TDA, 0, 0xFF9900, false, true);
+		addText(34483, "Buy", TDA, 0, 0xFF9900, false, true);
+		addText(34484, "Cancel", TDA, 0, 0xFF9900, false, true);
+		addText(34521, "Task", TDA, 0, 0xFF9900, false, true);
+
+		// Buttoms
+
+		addHoverButton(34452, "", 4, 101, 58, "Select Item", -1, 34453, 1);
+		addHoveredButton(34453, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34650);
+		addHoverButton(34454, "", 4, 101, 58, "Select Item", -1, 34455, 1);
+		addHoveredButton(34455, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34651);
+		addHoverButton(34456, "", 4, 101, 58, "Select Item", -1, 34457, 1);
+		addHoveredButton(34457, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34652);
+		addHoverButton(34458, "", 4, 101, 58, "Select Item", -1, 34459, 1);
+		addHoveredButton(34459, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34653);
+		addHoverButton(34460, "", 4, 101, 58, "Select Item", -1, 34461, 1);
+		addHoveredButton(34461, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34654);
+		addHoverButton(34462, "", 4, 101, 58, "Select Item", -1, 34463, 1);
+		addHoveredButton(34463, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34655);
+		addHoverButton(34464, "", 4, 101, 58, "Select Item ", -1, 34465, 1);
+		addHoveredButton(34465, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34656);
+		addHoverButton(34466, "", 4, 101, 58, "Select Item", -1, 34467, 1);
+		addHoveredButton(34467, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34657);
+		addHoverButton(34468, "", 4, 101, 58, "Select Item", -1, 34469, 1);
+		addHoveredButton(34469, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34658);
+		addHoverButton(34470, "", 4, 101, 58, "Select Item", -1, 34471, 1);
+		addHoveredButton(34471, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34659);
+		addHoverButton(34472, "", 4, 101, 58, "Select Item", -1, 34473, 1);
+		addHoveredButton(34473, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34660);
+		addHoverButton(34474, "", 4, 101, 58, "Select Item", -1, 34475, 1);
+		addHoveredButton(34475, "Interfaces/Loyalty/HOVER", 8, 101, 58, 34661);
+		addHoverButton(34510, "", 4, 101, 58, "Confirm Selection", -1, 34511, 1);
+		addHoveredButton(34511, "Interfaces/Loyalty/HOVER", 1, 101, 58, 34662);
+		addHoverButton(34512, "", 4, 101, 58, "Confirm Selection", -1, 34513, 1);
+		addHoveredButton(34513, "Interfaces/Loyalty/HOVER", 1, 101, 58, 34663);
+		addHoverButton(34514, "", 4, 120, 36, "Titles", -1, -1, 1); // Titles
+																	// Shop
+		addHoverButton(34515, "", 4, 120, 36, "Costumes", -1, -1, 1); // Costumes
+																		// Shop
+		addHoverButton(34516, "", 4, 120, 36, "Recolour", -1, -1, 1); // Recolours
+																		// Shop
+		addHoverButton(34517, "", 4, 120, 36, "Spins", -1, -1, 1); // Spins Shop
+		addHoverButton(34520, "", 4, 120, 36, "Task", -1, -1, 1); // Spins Shop
+		addHoverButton(34518, "", 4, 11, 11, "Close", -1, 34519, 1);
+		addHoveredButton(34519, "Interfaces/Loyalty/HOVER", 7, 11, 11, 34664);
+
+		// Items
+
+		addText(34486, "Item1", TDA, 0, 0xFFFFD0, false, true);
+		addText(34487, "Item2", TDA, 0, 0xFFFFD0, false, true);
+		addText(34488, "Item3", TDA, 0, 0xFFFFD0, false, true);
+		addText(34489, "Item4", TDA, 0, 0xFFFFD0, false, true);
+		addText(34490, "Item5", TDA, 0, 0xFFFFD0, false, true);
+		addText(34491, "Item6", TDA, 0, 0xFFFFD0, false, true);
+		addText(34492, "Item7", TDA, 0, 0xFFFFD0, false, true);
+		addText(34493, "Item8", TDA, 0, 0xFFFFD0, false, true);
+		addText(34494, "Item9", TDA, 0, 0xFFFFD0, false, true);
+		addText(34495, "Item10", TDA, 0, 0xFFFFD0, false, true);
+		addText(34496, "Item11", TDA, 0, 0xFFFFD0, false, true);
+		addText(34497, "Item12", TDA, 0, 0xFFFFD0, false, true);
+
+		// Prices
+
+		addText(34498, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34499, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34500, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34501, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34502, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34503, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34504, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34505, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34506, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34507, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34508, "Price", TDA, 0, 0xFF9900, false, true);
+		addText(34509, "Price", TDA, 0, 0xFF9900, false, true);
+
+		setBounds(34451, 10, 10, 0, Interface); // Background
+
+		setBounds(34452, 162, 47, 1, Interface);
+		setBounds(34453, 162, 47, 2, Interface);
+		setBounds(34454, 263, 47, 3, Interface);
+		setBounds(34455, 263, 47, 4, Interface);
+		setBounds(34456, 364, 47, 5, Interface);
+		setBounds(34457, 364, 47, 6, Interface);
+		setBounds(34458, 162, 107, 7, Interface);
+		setBounds(34459, 162, 107, 8, Interface);
+		setBounds(34460, 263, 107, 9, Interface);
+		setBounds(34461, 263, 107, 10, Interface);
+		setBounds(34462, 364, 107, 11, Interface);
+		setBounds(34463, 364, 107, 12, Interface);
+		setBounds(34464, 162, 166, 13, Interface);
+		setBounds(34465, 162, 166, 14, Interface);
+		setBounds(34466, 263, 166, 15, Interface);
+		setBounds(34467, 263, 166, 16, Interface);
+		setBounds(34468, 364, 166, 17, Interface);
+		setBounds(34469, 364, 166, 18, Interface);
+		setBounds(34470, 162, 226, 19, Interface);
+		setBounds(34471, 162, 226, 20, Interface);
+		setBounds(34472, 263, 226, 21, Interface);
+		setBounds(34473, 263, 226, 22, Interface);
+		setBounds(34474, 364, 226, 23, Interface);
+		setBounds(34475, 364, 226, 24, Interface);
+		setBounds(34476, 38, 26, 25, Interface);
+		setBounds(34477, 142, 23, 26, Interface);
+		setBounds(34478, 63, 56, 27, Interface);
+		setBounds(34479, 63, 126, 28, Interface);
+		setBounds(34480, 63, 90, 29, Interface);
+		setBounds(34481, 63, 162, 30, Interface);
+		setBounds(34482, 94, 26, 31, Interface);
+		setBounds(34483, 323, 291, 60, Interface);
+		setBounds(34484, 403, 291, 61, Interface);
+		setBounds(34486, 199, 60, 34, Interface);
+		setBounds(34487, 301, 60, 35, Interface);
+		setBounds(34488, 403, 60, 36, Interface);
+		setBounds(34489, 195, 120, 37, Interface);
+		setBounds(34490, 301, 120, 38, Interface);
+		setBounds(34491, 403, 120, 39, Interface);
+		setBounds(34492, 199, 180, 40, Interface);
+		setBounds(34493, 301, 180, 41, Interface);
+		setBounds(34494, 399, 180, 42, Interface);
+		setBounds(34495, 199, 240, 43, Interface);
+		setBounds(34496, 299, 240, 44, Interface);
+		setBounds(34497, 403, 240, 45, Interface);
+		setBounds(34498, 291, 85, 46, Interface);
+		setBounds(34499, 190, 85, 47, Interface);
+		setBounds(34500, 392, 85, 48, Interface);
+		setBounds(34501, 291, 145, 49, Interface);
+		setBounds(34502, 186, 145, 50, Interface);
+		setBounds(34503, 392, 145, 51, Interface);
+		setBounds(34504, 291, 205, 52, Interface);
+		setBounds(34505, 190, 205, 53, Interface);
+		setBounds(34506, 392, 205, 54, Interface);
+		setBounds(34507, 190, 265, 55, Interface);
+		setBounds(34508, 291, 265, 56, Interface);
+		setBounds(34509, 392, 265, 57, Interface);
+		setBounds(34510, 291, 286, 32, Interface);
+		setBounds(34511, 291, 286, 33, Interface);
+		setBounds(34512, 378, 286, 58, Interface);
+		setBounds(34513, 378, 286, 59, Interface);
+		setBounds(34514, 20, 45, 62, Interface);
+		setBounds(34515, 20, 81, 63, Interface);
+		setBounds(34516, 20, 116, 64, Interface);
+		setBounds(34517, 20, 149, 65, Interface);
+		setBounds(34518, 480, 17, 66, Interface);
+		setBounds(34519, 480, 17, 67, Interface);
+		setBounds(34520, 20, 185, 68, Interface);
+		setBounds(34521, 63, 198, 69, Interface);
+	}
+
+	public static void addToItemGroup(RSInterface rsi, int w, int h, int x,
+			int y, boolean actions, String action1, String action2,
+			String action3) {
 		rsi.width = w;
 		rsi.height = h;
 		rsi.inv = new int[w * h];
@@ -741,184 +764,215 @@ public final class RSInterface {
 		rsi.spritesY = new int[20];
 		rsi.sprites = new Sprite[20];
 		rsi.itemActions = new String[5];
-		if(actions) {
-		rsi.itemActions[0] = action1;
-		rsi.itemActions[1] = action2;
-		rsi.itemActions[2] = action3;
+		if (actions) {
+			rsi.itemActions[0] = action1;
+			rsi.itemActions[1] = action2;
+			rsi.itemActions[2] = action3;
 		}
 		rsi.type = 2;
 	}
-	
 
-	
 	public static void oakLectern(TextDrawingArea[] TDA) {
-	RSInterface rsinterface = addTabInterface(45454);
-	addSprite(45455, 1, "Interfaces/tabCreation/SPRITE");
-	addHoverButton(45456, "Interfaces/GrandExchange/close", 1, 16, 16, "Close", 0, 45457, 1);
-	addHoveredButton(45457, "Interfaces/GrandExchange/close", 2, 16, 16, 45458);
-	
-	
-	addHoverButton(45459, "Interfaces/tabCreation/HOVER", 0, 80, 80, "Create Camelot tab-teleport", 0, 45460, 1);
-    addHoveredButton(45460, "Interfaces/tabCreation/HOVER", 0, 80, 80, 45461);	
-	
-	addHoverButton(45462, "Interfaces/tabCreation/HOVER", 1, 80, 80, "Create Falador tab-teleport", 0, 45463, 1);
-    addHoveredButton(45463, "Interfaces/tabCreation/HOVER", 1, 80, 80, 45464);
-	
-	
-	rsinterface.totalChildren(7);
-	rsinterface.child(0, 45455, 15, 22);
-	rsinterface.child(1, 45456, 480, 27);
-	rsinterface.child(2, 45457, 480, 27);
-	rsinterface.child(3, 45459, 55, 72);
-	rsinterface.child(4, 45460, 55, 72);
-	rsinterface.child(5, 45462, 136, 73);
-	rsinterface.child(6, 45463, 136, 73);
-	
-	}	
-	
-	public static void demonLectern(TextDrawingArea[] TDA) {
-	RSInterface rsinterface = addTabInterface(54544);
-	addSprite(54545, 2, "Interfaces/tabCreation/SPRITE");
-	addHoverButton(54546, "Interfaces/GrandExchange/close", 1, 16, 16, "Close", 0, 54547, 1);
-	addHoveredButton(54547, "Interfaces/GrandExchange/close", 2, 16, 16, 54548);
-	
-	
-	addHoverButton(54549, "Interfaces/tabCreation/HOVER", 0, 80, 80, "Create Camelot-teleport tab", 0, 54460, 1);
-    addHoveredButton(54460, "Interfaces/tabCreation/HOVER", 0, 80, 80, 54461);	
-	
-	addHoverButton(54462, "Interfaces/tabCreation/HOVER", 1, 80, 80, "Create Falador-teleport tab", 0, 54463, 1);
-    addHoveredButton(54463, "Interfaces/tabCreation/HOVER", 1, 80, 80, 54464);
+		RSInterface rsinterface = addTabInterface(45454);
+		addSprite(45455, 1, "Interfaces/tabCreation/SPRITE");
+		addHoverButton(45456, "Interfaces/GrandExchange/close", 1, 16, 16,
+				"Close", 0, 45457, 1);
+		addHoveredButton(45457, "Interfaces/GrandExchange/close", 2, 16, 16,
+				45458);
 
-	addHoverButton(54465, "Interfaces/tabCreation/HOVER", 2, 80, 80, "Create Varrock-teleport tab", 0, 54466, 1);
-    addHoveredButton(54466, "Interfaces/tabCreation/HOVER", 2, 80, 80, 54467);	
-	
-	addHoverButton(54468, "Interfaces/tabCreation/HOVER", 3, 80, 80, "Create Lumbridge-teleport tab", 0, 54469, 1);
-    addHoveredButton(54469, "Interfaces/tabCreation/HOVER", 3, 80, 80, 54470);
-	
-	
-	rsinterface.totalChildren(11);
-	rsinterface.child(0, 54545, 15, 22);
-	rsinterface.child(1, 54546, 480, 27);
-	rsinterface.child(2, 54547, 480, 27);
-	rsinterface.child(3, 54549, 55, 72);
-	rsinterface.child(4, 54460, 55, 72);
-	rsinterface.child(5, 54462, 136, 73);
-	rsinterface.child(6, 54463, 136, 73);
-	rsinterface.child(7, 54465, 217, 73);
-	rsinterface.child(8, 54466, 217, 73);
-	rsinterface.child(9, 54468, 298, 73);
-	rsinterface.child(10, 54469, 298, 73);
-	
-	}	
-	
-	public static void eagleLectern(TextDrawingArea[] TDA) {
-	RSInterface rsinterface = addTabInterface(65454);
-	addSprite(65455, 0, "Interfaces/tabCreation/SPRITE");
-	addHoverButton(65456, "Interfaces/GrandExchange/close", 1, 16, 16, "Close", 0, 65457, 1);
-	addHoveredButton(65457, "Interfaces/GrandExchange/close", 2, 16, 16, 65458);
-	
-	
-	addHoverButton(65459, "Interfaces/tabCreation/HOVER", 0, 80, 80, "Create Camelot-teleport tab", 0, 65460, 1);
-    addHoveredButton(65460, "Interfaces/tabCreation/HOVER", 0, 80, 80, 65461);	
-	
-	addHoverButton(65462, "Interfaces/tabCreation/HOVER", 1, 80, 80, "Create Falador-teleport tab", 0, 65463, 1);
-    addHoveredButton(65463, "Interfaces/tabCreation/HOVER", 1, 80, 80, 65464);
+		addHoverButton(45459, "Interfaces/tabCreation/HOVER", 0, 80, 80,
+				"Create Camelot tab-teleport", 0, 45460, 1);
+		addHoveredButton(45460, "Interfaces/tabCreation/HOVER", 0, 80, 80,
+				45461);
 
-	addHoverButton(65465, "Interfaces/tabCreation/HOVER", 2, 80, 80, "Create Varrock-teleport tab", 0, 65466, 1);
-    addHoveredButton(65466, "Interfaces/tabCreation/HOVER", 2, 80, 80, 65467);	
-	
-	addHoverButton(65468, "Interfaces/tabCreation/HOVER", 3, 80, 80, "Create Lumbridge-teleport tab", 0, 65469, 1);
-    addHoveredButton(65469, "Interfaces/tabCreation/HOVER", 3, 80, 80, 65470);
-	
-	addHoverButton(65471, "Interfaces/tabCreation/HOVER", 4, 80, 80, "Create Ardougne-teleport tab", 0, 65472, 1);
-    addHoveredButton(65472, "Interfaces/tabCreation/HOVER", 4, 80, 80, 65473);
-		
-	addHoverButton(65474, "Interfaces/tabCreation/HOVER", 5, 80, 80, "Create House-teleport tab", 0, 65475, 1);
-    addHoveredButton(65475, "Interfaces/tabCreation/HOVER", 5, 80, 80, 65476);
-	
-	
-	rsinterface.totalChildren(15);
-	rsinterface.child(0, 65455, 15, 22);
-	rsinterface.child(1, 65456, 480, 27);
-	rsinterface.child(2, 65457, 480, 27);
-	rsinterface.child(3, 65459, 55, 72);
-	rsinterface.child(4, 65460, 55, 72);
-	rsinterface.child(5, 65462, 136, 73);
-	rsinterface.child(6, 65463, 136, 73);
-	rsinterface.child(7, 65465, 217, 73);
-	rsinterface.child(8, 65466, 217, 73);
-	rsinterface.child(9, 65468, 298, 73);
-	rsinterface.child(10, 65469, 298, 73);
-	rsinterface.child(11, 65471, 379, 73);
-	rsinterface.child(12, 65472, 379, 73);
-	rsinterface.child(13, 65474, 55, 191);
-	rsinterface.child(14, 65475, 55, 191);
-	
+		addHoverButton(45462, "Interfaces/tabCreation/HOVER", 1, 80, 80,
+				"Create Falador tab-teleport", 0, 45463, 1);
+		addHoveredButton(45463, "Interfaces/tabCreation/HOVER", 1, 80, 80,
+				45464);
+
+		rsinterface.totalChildren(7);
+		rsinterface.child(0, 45455, 15, 22);
+		rsinterface.child(1, 45456, 480, 27);
+		rsinterface.child(2, 45457, 480, 27);
+		rsinterface.child(3, 45459, 55, 72);
+		rsinterface.child(4, 45460, 55, 72);
+		rsinterface.child(5, 45462, 136, 73);
+		rsinterface.child(6, 45463, 136, 73);
+
 	}
-	
+
+	public static void demonLectern(TextDrawingArea[] TDA) {
+		RSInterface rsinterface = addTabInterface(54544);
+		addSprite(54545, 2, "Interfaces/tabCreation/SPRITE");
+		addHoverButton(54546, "Interfaces/GrandExchange/close", 1, 16, 16,
+				"Close", 0, 54547, 1);
+		addHoveredButton(54547, "Interfaces/GrandExchange/close", 2, 16, 16,
+				54548);
+
+		addHoverButton(54549, "Interfaces/tabCreation/HOVER", 0, 80, 80,
+				"Create Camelot-teleport tab", 0, 54460, 1);
+		addHoveredButton(54460, "Interfaces/tabCreation/HOVER", 0, 80, 80,
+				54461);
+
+		addHoverButton(54462, "Interfaces/tabCreation/HOVER", 1, 80, 80,
+				"Create Falador-teleport tab", 0, 54463, 1);
+		addHoveredButton(54463, "Interfaces/tabCreation/HOVER", 1, 80, 80,
+				54464);
+
+		addHoverButton(54465, "Interfaces/tabCreation/HOVER", 2, 80, 80,
+				"Create Varrock-teleport tab", 0, 54466, 1);
+		addHoveredButton(54466, "Interfaces/tabCreation/HOVER", 2, 80, 80,
+				54467);
+
+		addHoverButton(54468, "Interfaces/tabCreation/HOVER", 3, 80, 80,
+				"Create Lumbridge-teleport tab", 0, 54469, 1);
+		addHoveredButton(54469, "Interfaces/tabCreation/HOVER", 3, 80, 80,
+				54470);
+
+		rsinterface.totalChildren(11);
+		rsinterface.child(0, 54545, 15, 22);
+		rsinterface.child(1, 54546, 480, 27);
+		rsinterface.child(2, 54547, 480, 27);
+		rsinterface.child(3, 54549, 55, 72);
+		rsinterface.child(4, 54460, 55, 72);
+		rsinterface.child(5, 54462, 136, 73);
+		rsinterface.child(6, 54463, 136, 73);
+		rsinterface.child(7, 54465, 217, 73);
+		rsinterface.child(8, 54466, 217, 73);
+		rsinterface.child(9, 54468, 298, 73);
+		rsinterface.child(10, 54469, 298, 73);
+
+	}
+
+	public static void eagleLectern(TextDrawingArea[] TDA) {
+		RSInterface rsinterface = addTabInterface(65454);
+		addSprite(65455, 0, "Interfaces/tabCreation/SPRITE");
+		addHoverButton(65456, "Interfaces/GrandExchange/close", 1, 16, 16,
+				"Close", 0, 65457, 1);
+		addHoveredButton(65457, "Interfaces/GrandExchange/close", 2, 16, 16,
+				65458);
+
+		addHoverButton(65459, "Interfaces/tabCreation/HOVER", 0, 80, 80,
+				"Create Camelot-teleport tab", 0, 65460, 1);
+		addHoveredButton(65460, "Interfaces/tabCreation/HOVER", 0, 80, 80,
+				65461);
+
+		addHoverButton(65462, "Interfaces/tabCreation/HOVER", 1, 80, 80,
+				"Create Falador-teleport tab", 0, 65463, 1);
+		addHoveredButton(65463, "Interfaces/tabCreation/HOVER", 1, 80, 80,
+				65464);
+
+		addHoverButton(65465, "Interfaces/tabCreation/HOVER", 2, 80, 80,
+				"Create Varrock-teleport tab", 0, 65466, 1);
+		addHoveredButton(65466, "Interfaces/tabCreation/HOVER", 2, 80, 80,
+				65467);
+
+		addHoverButton(65468, "Interfaces/tabCreation/HOVER", 3, 80, 80,
+				"Create Lumbridge-teleport tab", 0, 65469, 1);
+		addHoveredButton(65469, "Interfaces/tabCreation/HOVER", 3, 80, 80,
+				65470);
+
+		addHoverButton(65471, "Interfaces/tabCreation/HOVER", 4, 80, 80,
+				"Create Ardougne-teleport tab", 0, 65472, 1);
+		addHoveredButton(65472, "Interfaces/tabCreation/HOVER", 4, 80, 80,
+				65473);
+
+		addHoverButton(65474, "Interfaces/tabCreation/HOVER", 5, 80, 80,
+				"Create House-teleport tab", 0, 65475, 1);
+		addHoveredButton(65475, "Interfaces/tabCreation/HOVER", 5, 80, 80,
+				65476);
+
+		rsinterface.totalChildren(15);
+		rsinterface.child(0, 65455, 15, 22);
+		rsinterface.child(1, 65456, 480, 27);
+		rsinterface.child(2, 65457, 480, 27);
+		rsinterface.child(3, 65459, 55, 72);
+		rsinterface.child(4, 65460, 55, 72);
+		rsinterface.child(5, 65462, 136, 73);
+		rsinterface.child(6, 65463, 136, 73);
+		rsinterface.child(7, 65465, 217, 73);
+		rsinterface.child(8, 65466, 217, 73);
+		rsinterface.child(9, 65468, 298, 73);
+		rsinterface.child(10, 65469, 298, 73);
+		rsinterface.child(11, 65471, 379, 73);
+		rsinterface.child(12, 65472, 379, 73);
+		rsinterface.child(13, 65474, 55, 191);
+		rsinterface.child(14, 65475, 55, 191);
+
+	}
+
 	public static void collectBuy(TextDrawingArea[] TDA) {
 		RSInterface rsinterface = addTabInterface(53700);
 		int x = 9;
 		addSprite(53701, 1, "Interfaces/GE/buyCollect");
-		addHoverButton(53702, "Interfaces/GrandExchange2/close", 1, 16, 16, "Close", 0, 53703, 1);
-	        addHoveredButton(53703, "Interfaces/GrandExchange2/close", 2, 16, 16, 53704);
-		addHoverButton(53758, "Interfaces/GrandExchange2/sprite", 25, 29, 23, "Back", 0, 53759, 1);
-	        addHoveredButton(53759, "Interfaces/GrandExchange2/sprite", 26, 29, 23, 53760);
-	 	addText(53769, "Choose an item to exchange", TDA, 0, 0x96731A, false, true);
-	 	addText(53770, "Select an item from your invertory to sell.", TDA, 0, 0x958E60, false, true);
+		addHoverButton(53702, "Interfaces/GrandExchange2/close", 1, 16, 16,
+				"Close", 0, 53703, 1);
+		addHoveredButton(53703, "Interfaces/GrandExchange2/close", 2, 16, 16,
+				53704);
+		addHoverButton(53758, "Interfaces/GrandExchange2/sprite", 25, 29, 23,
+				"Back", 0, 53759, 1);
+		addHoveredButton(53759, "Interfaces/GrandExchange2/sprite", 26, 29, 23,
+				53760);
+		addText(53769, "Choose an item to exchange", TDA, 0, 0x96731A, false,
+				true);
+		addText(53770, "Select an item from your invertory to sell.", TDA, 0,
+				0x958E60, false, true);
 		addText(53771, "0", TDA, 0, 0xB58338, true, true);
-	 	addText(53772, "1 gp", TDA, 0, 0xB58338, true, true);
-	 	addText(53773, "0 gp", TDA, 0, 0xB58338, true, true);
-		addHoverButton(53793, "Interfaces/GE/collectNoHover", 1, 40, 36, "[GE]", 0, 53794, 1);
-        addHoveredButton(53794, "Interfaces/GE/collectHover", 1, 40, 36, 53795);
-		addHoverButton(53796, "Interfaces/GE/collectNoHover", 1, 40, 36, "[GE]", 0, 53797, 1);
-        addHoveredButton(53797, "Interfaces/GE/collectHover", 1, 40, 36, 53798);
+		addText(53772, "1 gp", TDA, 0, 0xB58338, true, true);
+		addText(53773, "0 gp", TDA, 0, 0xB58338, true, true);
+		addHoverButton(53793, "Interfaces/GE/collectNoHover", 1, 40, 36,
+				"[GE]", 0, 53794, 1);
+		addHoveredButton(53794, "Interfaces/GE/collectHover", 1, 40, 36, 53795);
+		addHoverButton(53796, "Interfaces/GE/collectNoHover", 1, 40, 36,
+				"[GE]", 0, 53797, 1);
+		addHoveredButton(53797, "Interfaces/GE/collectHover", 1, 40, 36, 53798);
 		RSInterface add = addInterface(53780);
-	 	addToItemGroup(add, 1, 1, 24, 24, true, "[GE]", "[GE]", "[GE]");
-	 	add = addInterface(53781);
-	 	addToItemGroup(add, 1, 1, 24, 24, true, "[ITEM]Collect", "[GE]", "[GE]");
-	 	add = addInterface(53782);
-	 	addToItemGroup(add, 1, 1, 24, 24, true, "[COINS]Collect", "[GE]", "[GE]");
+		addToItemGroup(add, 1, 1, 24, 24, true, "[GE]", "[GE]", "[GE]");
+		add = addInterface(53781);
+		addToItemGroup(add, 1, 1, 24, 24, true, "[ITEM]Collect", "[GE]", "[GE]");
+		add = addInterface(53782);
+		addToItemGroup(add, 1, 1, 24, 24, true, "[COINS]Collect", "[GE]",
+				"[GE]");
 		addText(53784, "", TDA, 0, 0xFFFF00, false, true);
 		addText(53785, "", TDA, 0, 0xFFFF00, false, true);
 		addText(53787, "N/A", TDA, 0, 0xB58338, false, true);
 		addText(53788, "", TDA, 0, 0xFFFF00, true, true);
 		addText(53789, "", TDA, 0, 0xFFFF00, true, true);
-		addHoverButton(53800, "Interfaces/GE/clickAbort", 1, 20, 20, "Abort offer", 0, 53801, 1);
-        addHoveredButton(53801, "Interfaces/GE/clickAbort", 2, 20, 20, 53802);
-	        rsinterface.totalChildren(24);
-	        rsinterface.child(0, 53701, 4+x, 23);//385, 260
-	        rsinterface.child(1, 53702, 464+x, 33);//435, 260
-	        rsinterface.child(2, 53703, 464+x, 33);
-	        rsinterface.child(3, 53758, 19+x, 284);
-	        rsinterface.child(4, 53759, 19+x, 284);
-	        rsinterface.child(5, 53769, 202+x, 71);
-	        rsinterface.child(6, 53770, 202+x, 98);	        
-	        rsinterface.child(7, 53771, 142+x, 185);
-	        rsinterface.child(8, 53772, 354+x, 185);
-	        rsinterface.child(9, 53773, 252+x, 246);
-	        rsinterface.child(10, 53793, 386+x, 256+23);	        
-	        rsinterface.child(11, 53794, 386+x, 256+23);
-	        rsinterface.child(12, 53796, 435+x, 256+23);
-	        rsinterface.child(13, 53797, 435+x, 256+23);
-			rsinterface.child(14, 53780, 97+x, 97);
-	        rsinterface.child(15, 53781, 385+4+x, 260+23);
-			rsinterface.child(16, 53782, 435+4+x, 260+23);
-	        rsinterface.child(17, 53784, 385+4+x, 260+23);
-			rsinterface.child(18, 53785, 435+4+x, 260+23);
-			rsinterface.child(19, 53787, 108, 136);
-			rsinterface.child(20, 53788, 214+x, 249+23);
-			rsinterface.child(21, 53789, 214+x, 263+23);
-			rsinterface.child(22, 53800, 345+x, 250+23);
-			rsinterface.child(23, 53801, 345+x, 250+23);
+		addHoverButton(53800, "Interfaces/GE/clickAbort", 1, 20, 20,
+				"Abort offer", 0, 53801, 1);
+		addHoveredButton(53801, "Interfaces/GE/clickAbort", 2, 20, 20, 53802);
+		rsinterface.totalChildren(24);
+		rsinterface.child(0, 53701, 4 + x, 23);// 385, 260
+		rsinterface.child(1, 53702, 464 + x, 33);// 435, 260
+		rsinterface.child(2, 53703, 464 + x, 33);
+		rsinterface.child(3, 53758, 19 + x, 284);
+		rsinterface.child(4, 53759, 19 + x, 284);
+		rsinterface.child(5, 53769, 202 + x, 71);
+		rsinterface.child(6, 53770, 202 + x, 98);
+		rsinterface.child(7, 53771, 142 + x, 185);
+		rsinterface.child(8, 53772, 354 + x, 185);
+		rsinterface.child(9, 53773, 252 + x, 246);
+		rsinterface.child(10, 53793, 386 + x, 256 + 23);
+		rsinterface.child(11, 53794, 386 + x, 256 + 23);
+		rsinterface.child(12, 53796, 435 + x, 256 + 23);
+		rsinterface.child(13, 53797, 435 + x, 256 + 23);
+		rsinterface.child(14, 53780, 97 + x, 97);
+		rsinterface.child(15, 53781, 385 + 4 + x, 260 + 23);
+		rsinterface.child(16, 53782, 435 + 4 + x, 260 + 23);
+		rsinterface.child(17, 53784, 385 + 4 + x, 260 + 23);
+		rsinterface.child(18, 53785, 435 + 4 + x, 260 + 23);
+		rsinterface.child(19, 53787, 108, 136);
+		rsinterface.child(20, 53788, 214 + x, 249 + 23);
+		rsinterface.child(21, 53789, 214 + x, 263 + 23);
+		rsinterface.child(22, 53800, 345 + x, 250 + 23);
+		rsinterface.child(23, 53801, 345 + x, 250 + 23);
 	}
-
 
 	public static void addSprite(int id, String spriteName) {
 		RSInterface tab = interfaceCache[id] = new RSInterface();
 		tab.id = id;
 		tab.parentID = id;
-		tab.type = 5; //5
+		tab.type = 5; // 5
 		tab.atActionType = 0;
 		tab.contentType = 0;
 		tab.opacity = (byte) 0;
@@ -928,1077 +982,1112 @@ public final class RSInterface {
 		tab.width = 512;
 		tab.height = 334;
 	}
-		public static void addPriceChecker(int index) {
-			RSInterface rsi = interfaceCache[index] = new RSInterface();
-	   		rsi.itemActions = new String[10];
-	    	rsi.spritesX = new int[20];
-	    	rsi.invStackSizes = new int[25];
-	    	rsi.inv = new int[30];
-			rsi.spritesY = new int[20];
-	   		rsi.children = new int[0];
-	   	 	rsi.childX = new int[0];
-	    	rsi.childY = new int[0];
-			rsi.itemActions[0] = "Take 1";//need to do it like this o.o how its 100 frame ids
-	   		rsi.itemActions[1] = "Take 5";
-	   		rsi.itemActions[2] = "Take 10";
-	   		rsi.itemActions[3] = "Take All";
-			rsi.itemActions[4] = "Take X";
-	    	rsi.centerText = true;
-			rsi.aBoolean227 = false;
-	    	rsi.aBoolean235 = false;
-	   		rsi.usableItemInterface = false;
-			rsi.isInventoryInterface = false;
-	   		rsi.aBoolean259 = true;
-	   		rsi.textShadow = false;
-	   		rsi.invSpritePadX = 40;
-	   		rsi.invSpritePadY = 28; 
-			rsi.height = 5;
-			rsi.width = 5;
-			rsi.parentID = 18246;
-	   		rsi.id = 4393;
-	    	rsi.type = 2;
-		}
-	
-public static void newQuestInterface(TextDrawingArea[] TDA) {
-	RSInterface Interface = addTabInterface(23500);
 
-	setChildren(11, Interface);
-	addSprite(23501, 1, "Interfaces/NewQuest/BACKGROUND");// Background
-	addSprite(23511, 1, "Interfaces/NewQuest/IMAGE");//Star
-	addHover(23502, 3, 0, 23503, 1, "", 17, 17, "Close");//Close Button
-	addHovered(23503, 2, "", 17, 17, 23504);//Close Button
-	addText(23515, "Start Point text here", 0xFF9900, false, true, 0,0);//Start Point Text
-	addText(23513, "Start Requirements text here", 0xFF9900, false, true, 0,0);//Start Requirements Items Text
-	addText(23514, "Required items text here", 0xFF9900, false, true, 0,0);//Required Items Text
-	addText(23508, "Combat text here", 0xFF9900, false, true, 0,0);//Combat Text
-	addText(23509, "Rewards text here 1st line", 0xFF9900, false, true, 0,0);//Rewards Text	
-	addText(23516, "Rewards text here 2nd line", 0xFF9900, false, true, 0,0);//Rewards Text	
-    addText(23510, "Not Started", TDA, 2, 0xFF9900, false, true);//Quest Progress Text
-    addText(23512, "Quest Name", TDA, 2, 0xFF9900, false, true);//Title
+	public static void addPriceChecker(int index) {
+		RSInterface rsi = interfaceCache[index] = new RSInterface();
+		rsi.itemActions = new String[10];
+		rsi.spritesX = new int[20];
+		rsi.invStackSizes = new int[25];
+		rsi.inv = new int[30];
+		rsi.spritesY = new int[20];
+		rsi.children = new int[0];
+		rsi.childX = new int[0];
+		rsi.childY = new int[0];
+		rsi.itemActions[0] = "Take 1";// need to do it like this o.o how its 100
+										// frame ids
+		rsi.itemActions[1] = "Take 5";
+		rsi.itemActions[2] = "Take 10";
+		rsi.itemActions[3] = "Take All";
+		rsi.itemActions[4] = "Take X";
+		rsi.centerText = true;
+		rsi.aBoolean227 = false;
+		rsi.aBoolean235 = false;
+		rsi.usableItemInterface = false;
+		rsi.isInventoryInterface = false;
+		rsi.aBoolean259 = true;
+		rsi.textShadow = false;
+		rsi.invSpritePadX = 40;
+		rsi.invSpritePadY = 28;
+		rsi.height = 5;
+		rsi.width = 5;
+		rsi.parentID = 18246;
+		rsi.id = 4393;
+		rsi.type = 2;
+	}
 
-	setBounds(23501, 12, 6, 0, Interface);//background
-	setBounds(23511, 26, 254, 1, Interface);//Star
-	setBounds(23502, 475, 8, 2, Interface);//Close Button
-	setBounds(23515, 137, 44, 3, Interface);//Start Point Text
-	setBounds(23513, 137, 84, 4, Interface);//Start Requirements Items Text
-	setBounds(23514, 137, 134, 5, Interface);//Required Items Text
-	setBounds(23508, 137, 184, 6, Interface);//Combat Text
-	setBounds(23509, 137, 224, 7, Interface);//Rewards Text
-	setBounds(23516, 137, 234, 10, Interface);//Rewards Text
-	setBounds(23510, 320, 278, 8, Interface);//Progress
-	setBounds(23512, 204, 10, 9, Interface);//Title
-}		
-	
+	public static void newQuestInterface(TextDrawingArea[] TDA) {
+		RSInterface Interface = addTabInterface(23500);
 
-	
+		setChildren(11, Interface);
+		addSprite(23501, 1, "Interfaces/NewQuest/BACKGROUND");// Background
+		addSprite(23511, 1, "Interfaces/NewQuest/IMAGE");// Star
+		addHover(23502, 3, 0, 23503, 1, "", 17, 17, "Close");// Close Button
+		addHovered(23503, 2, "", 17, 17, 23504);// Close Button
+		addText(23515, "Start Point text here", 0xFF9900, false, true, 0, 0);// Start
+																				// Point
+																				// Text
+		addText(23513, "Start Requirements text here", 0xFF9900, false, true,
+				0, 0);// Start Requirements Items Text
+		addText(23514, "Required items text here", 0xFF9900, false, true, 0, 0);// Required
+																				// Items
+																				// Text
+		addText(23508, "Combat text here", 0xFF9900, false, true, 0, 0);// Combat
+																		// Text
+		addText(23509, "Rewards text here 1st line", 0xFF9900, false, true, 0,
+				0);// Rewards Text
+		addText(23516, "Rewards text here 2nd line", 0xFF9900, false, true, 0,
+				0);// Rewards Text
+		addText(23510, "Not Started", TDA, 2, 0xFF9900, false, true);// Quest
+																		// Progress
+																		// Text
+		addText(23512, "Quest Name", TDA, 2, 0xFF9900, false, true);// Title
 
-	
-		public static void Domtowershop(TextDrawingArea tda[])
-    {
-        RSInterface rsinterface = addTabInterface(17955);
-        addSprite(39525, 0, "Interfaces/Domtowershop/Main");
-        addHoverButton(39526, "Interfaces/Domtowershop/basichelmnormal", 0, 37, 75, "Buy Serjeant Cap", -1, 39527, 1);
-        addHoveredButton(39527, "Interfaces/Domtowershop/basichelmhov", 1, 37, 75, 39528);
-        addHoverButton(39529, "Interfaces/Domtowershop/basicplatenormal", 0, 37, 75, "Buy Serjeant Top", -1, 39530, 1);
-        addHoveredButton(39530, "Interfaces/Domtowershop/basicplatehov", 1, 37, 75, 39531);
-        addHoverButton(39532, "Interfaces/Domtowershop/basiclegsnormal", 0, 37, 75, "Buy Serjeant Trousers", -1, 39533, 1);
-        addHoveredButton(39533, "Interfaces/Domtowershop/basiclegshov", 1, 37, 75, 39534);
-        addHoverButton(39535, "Interfaces/Domtowershop/basicshieldnormal", 0, 37, 75, "Buy Serjeant Gloves", -1, 39536, 1);
-        addHoveredButton(39536, "Interfaces/Domtowershop/basicshieldhov", 1, 37, 75, 39537);
-        addHoverButton(39538, "Interfaces/Domtowershop/basicswordnormal", 0, 37, 75, "Buy Serjeant Boots", -1, 39539, 1);
-        addHoveredButton(39539, "Interfaces/Domtowershop/basicswordhov", 1, 37, 75, 39540);
-        addHoverButton(39541, "Interfaces/Domtowershop/medhelmnormal", 0, 37, 75, "Buy Commander Cap", -1, 39542, 1);
-        addHoveredButton(39542, "Interfaces/Domtowershop/medhelmhov", 1, 37, 75, 39543);
-        addHoverButton(39544, "Interfaces/Domtowershop/medplatenormal", 0, 37, 75, "Buy Commander Top", -1, 39545, 1);
-        addHoveredButton(39545, "Interfaces/Domtowershop/medplatehov", 1, 37, 75, 39546);
-        addHoverButton(39547, "Interfaces/Domtowershop/medlegsnormal", 0, 37, 75, "Buy Commander Trousers", -1, 39548, 1);
-        addHoveredButton(39548, "Interfaces/Domtowershop/medlegshov", 1, 37, 75, 39549);
-        addHoverButton(39550, "Interfaces/Domtowershop/medshieldnormal", 0, 37, 75, "Buy Commander Gloves", -1, 39551, 1);
-        addHoveredButton(39551, "Interfaces/Domtowershop/medshieldhov", 1, 37, 75, 39552);
-        addHoverButton(39553, "Interfaces/Domtowershop/medswordnormal", 0, 37, 75, "Buy Commander Boots", -1, 39554, 1);
-        addHoveredButton(39554, "Interfaces/Domtowershop/medswordhov", 1, 37, 75, 39555);
-        addHoverButton(39556, "Interfaces/Domtowershop/hardhelmnormal", 0, 37, 75, "Buy War-chief Cap", -1, 39557, 1);
-        addHoveredButton(39557, "Interfaces/Domtowershop/hardhelmhov", 1, 37, 75, 39558);
-        addHoverButton(39559, "Interfaces/Domtowershop/hardplatenormal", 0, 37, 75, "Buy War-chief Top", -1, 39560, 1);
-        addHoveredButton(39560, "Interfaces/Domtowershop/hardplatehov", 1, 37, 75, 39561);
-        addHoverButton(39562, "Interfaces/Domtowershop/hardlegsnormal", 0, 37, 75, "Buy War-chief Trousers", -1, 39563, 1);
-        addHoveredButton(39563, "Interfaces/Domtowershop/hardlegshov", 1, 37, 75, 39564);
-        addHoverButton(39565, "Interfaces/Domtowershop/hardshieldnormal", 0, 37, 75, "Buy War-chief Gloves", -1, 39566, 1);
-        addHoveredButton(39566, "Interfaces/Domtowershop/hardshieldhov", 1, 37, 75, 39567);
-        addHoverButton(39568, "Interfaces/Domtowershop/hardswordnormal", 0, 37, 75, "Buy War-chief Boots", -1, 39569, 1);
-        addHoveredButton(39569, "Interfaces/Domtowershop/hardswordhov", 1, 37, 75, 39570);
-        addHoverButton(39571, "Interfaces/Domtowershop/extremehelmnormal", 0, 37, 75, "Buy Lord Marshal Cap", -1, 39572, 1);
-        addHoveredButton(39572, "Interfaces/Domtowershop/extremehelmhov", 1, 37, 75, 39573);
-        addHoverButton(39574, "Interfaces/Domtowershop/extremeplatenormal", 0, 37, 75, "Buy Lord Marshal Top", -1, 39575, 1);
-        addHoveredButton(39575, "Interfaces/Domtowershop/extremeplatehov", 1, 37, 75, 39576);
-        addHoverButton(39577, "Interfaces/Domtowershop/extremelegsnormal", 0, 37, 75, "Buy Lord Marshal Trousers", -1, 39578, 1);
-        addHoveredButton(39578, "Interfaces/Domtowershop/extremelegshov", 1, 37, 75, 39579);
-        addHoverButton(39580, "Interfaces/Domtowershop/extremeshieldnormal", 0, 37, 75, "Buy Lord Marshal Gloves", -1, 39581, 1);
-        addHoveredButton(39581, "Interfaces/Domtowershop/extremeshieldhov", 1, 37, 75, 39582);
-        addHoverButton(39583, "Interfaces/Domtowershop/extremeswordnormal", 0, 37, 75, "Buy Lord Marshal Boots", -1, 39584, 1);
-        addHoveredButton(39584, "Interfaces/Domtowershop/extremeswordhov", 1, 37, 75, 39585);
-        addHoverButton(39586, "Interfaces/Domtowershop/decbuttonnormal", 0, 144, 30, "Special Clothing", -1, 39587, 1);
-        addHoveredButton(39587, "Interfaces/Domtowershop/decbuttonhover", 1, 144, 30, 39588);
-        addHoverButton(39589, "Interfaces/Domtowershop/consumebuttonnormal", 0, 144, 30, "Potions & Titles", -1, 39590, 1);
-        addHoveredButton(39590, "Interfaces/Domtowershop/consumebuttonhover", 1, 144, 30, 39501);
-        addHoverButton(39592, "Interfaces/Domtowershop/miscbuttonnormal", 0, 144, 30, "Weapons & Misc", -1, 39593, 1);
-        addHoveredButton(39593, "Interfaces/Domtowershop/miscbuttonhover", 1, 144, 30, 39594);
-        addHoverButton(39595, "Interfaces/Domtowershop/close", 0, 16, 16, "Close", -1, 39596, 1);
-        addHoveredButton(39596, "Interfaces/Domtowershop/close", 1, 16, 16, 39597);
-        addText(39598, "Dominion Tower Rewards", tda, 3, 0xff981f, true, true);
-        addText(39599, "Items can be bought with Dominion Tower points only.", tda, 0, 0xffffff, true, true);
-        addText(49599, "Special Clothing", tda, 1, 0, false, false);
-        addText(39803, "Potions & Titles", tda, 1, 0, false, false);
-        addText(39804, "Weapons & Misc", tda, 1, 0, false, false);
-        rsinterface.totalChildren(54);
-        rsinterface.child(0, 39525, 2, 19);
-        rsinterface.child(1, 39526, 77, 90);
-        rsinterface.child(2, 39527, 77, 90);
-        rsinterface.child(3, 39529, 119, 90);
-        rsinterface.child(4, 39530, 119, 90);
-        rsinterface.child(5, 39532, 161, 90);
-        rsinterface.child(6, 39533, 161, 90);
-        rsinterface.child(7, 39535, 203, 90);
-        rsinterface.child(8, 39536, 203, 90);
-        rsinterface.child(9, 39538, 245, 90);
-        rsinterface.child(10, 39539, 245, 90);
-        rsinterface.child(11, 39541, 287, 90);
-        rsinterface.child(12, 39542, 287, 90);
-        rsinterface.child(13, 39544, 329, 90);
-        rsinterface.child(14, 39545, 329, 90);
-        rsinterface.child(15, 39547, 371, 90);
-        rsinterface.child(16, 39548, 371, 90);
-        rsinterface.child(17, 39550, 413, 90);
-        rsinterface.child(18, 39551, 413, 90);
-        rsinterface.child(19, 39553, 455, 90);
-        rsinterface.child(20, 39554, 455, 90);
-        rsinterface.child(21, 39556, 77, 190);
-        rsinterface.child(22, 39557, 77, 190);
-        rsinterface.child(23, 39559, 119, 190);
-        rsinterface.child(24, 39560, 119, 190);
-        rsinterface.child(25, 39562, 161, 190);
-        rsinterface.child(26, 39563, 161, 190);
-        rsinterface.child(27, 39565, 203, 190);
-        rsinterface.child(28, 39566, 203, 190);
-        rsinterface.child(29, 39568, 245, 190);
-        rsinterface.child(30, 39569, 245, 190);
-        rsinterface.child(31, 39571, 287, 190);
-        rsinterface.child(32, 39572, 287, 190);
-        rsinterface.child(33, 39574, 329, 190);
-        rsinterface.child(34, 39575, 329, 190);
-        rsinterface.child(35, 39577, 371, 190);
-        rsinterface.child(36, 39578, 371, 190);
-        rsinterface.child(37, 39580, 413, 190);
-        rsinterface.child(38, 39581, 413, 190);
-        rsinterface.child(39, 39583, 455, 190);
-        rsinterface.child(40, 39584, 455, 190);
-        rsinterface.child(41, 39586, 28, 44);
-        rsinterface.child(42, 39587, 28, 44);
-        rsinterface.child(43, 39589, 185, 44);
-        rsinterface.child(44, 39590, 185, 44);
-        rsinterface.child(45, 39592, 342, 44);
-        rsinterface.child(46, 39593, 342, 44);
-        rsinterface.child(47, 39595, 480, 22);
-        rsinterface.child(48, 39596, 480, 22);
-        rsinterface.child(49, 39598, 253, 22);
-        rsinterface.child(50, 39599, 257, 294);
-        rsinterface.child(51, 49599, 55, 51);
-        rsinterface.child(52, 39803, 212, 51);
-        rsinterface.child(53, 39804, 369, 51);
-    }
-	public static void addTextButton(int i, String s, String tooltip, int k, boolean l, boolean m, TextDrawingArea[] TDA, int j, int w) {
+		setBounds(23501, 12, 6, 0, Interface);// background
+		setBounds(23511, 26, 254, 1, Interface);// Star
+		setBounds(23502, 475, 8, 2, Interface);// Close Button
+		setBounds(23515, 137, 44, 3, Interface);// Start Point Text
+		setBounds(23513, 137, 84, 4, Interface);// Start Requirements Items Text
+		setBounds(23514, 137, 134, 5, Interface);// Required Items Text
+		setBounds(23508, 137, 184, 6, Interface);// Combat Text
+		setBounds(23509, 137, 224, 7, Interface);// Rewards Text
+		setBounds(23516, 137, 234, 10, Interface);// Rewards Text
+		setBounds(23510, 320, 278, 8, Interface);// Progress
+		setBounds(23512, 204, 10, 9, Interface);// Title
+	}
+
+	public static void Domtowershop(TextDrawingArea tda[]) {
+		RSInterface rsinterface = addTabInterface(17955);
+		addSprite(39525, 0, "Interfaces/Domtowershop/Main");
+		addHoverButton(39526, "Interfaces/Domtowershop/basichelmnormal", 0, 37,
+				75, "Buy Serjeant Cap", -1, 39527, 1);
+		addHoveredButton(39527, "Interfaces/Domtowershop/basichelmhov", 1, 37,
+				75, 39528);
+		addHoverButton(39529, "Interfaces/Domtowershop/basicplatenormal", 0,
+				37, 75, "Buy Serjeant Top", -1, 39530, 1);
+		addHoveredButton(39530, "Interfaces/Domtowershop/basicplatehov", 1, 37,
+				75, 39531);
+		addHoverButton(39532, "Interfaces/Domtowershop/basiclegsnormal", 0, 37,
+				75, "Buy Serjeant Trousers", -1, 39533, 1);
+		addHoveredButton(39533, "Interfaces/Domtowershop/basiclegshov", 1, 37,
+				75, 39534);
+		addHoverButton(39535, "Interfaces/Domtowershop/basicshieldnormal", 0,
+				37, 75, "Buy Serjeant Gloves", -1, 39536, 1);
+		addHoveredButton(39536, "Interfaces/Domtowershop/basicshieldhov", 1,
+				37, 75, 39537);
+		addHoverButton(39538, "Interfaces/Domtowershop/basicswordnormal", 0,
+				37, 75, "Buy Serjeant Boots", -1, 39539, 1);
+		addHoveredButton(39539, "Interfaces/Domtowershop/basicswordhov", 1, 37,
+				75, 39540);
+		addHoverButton(39541, "Interfaces/Domtowershop/medhelmnormal", 0, 37,
+				75, "Buy Commander Cap", -1, 39542, 1);
+		addHoveredButton(39542, "Interfaces/Domtowershop/medhelmhov", 1, 37,
+				75, 39543);
+		addHoverButton(39544, "Interfaces/Domtowershop/medplatenormal", 0, 37,
+				75, "Buy Commander Top", -1, 39545, 1);
+		addHoveredButton(39545, "Interfaces/Domtowershop/medplatehov", 1, 37,
+				75, 39546);
+		addHoverButton(39547, "Interfaces/Domtowershop/medlegsnormal", 0, 37,
+				75, "Buy Commander Trousers", -1, 39548, 1);
+		addHoveredButton(39548, "Interfaces/Domtowershop/medlegshov", 1, 37,
+				75, 39549);
+		addHoverButton(39550, "Interfaces/Domtowershop/medshieldnormal", 0, 37,
+				75, "Buy Commander Gloves", -1, 39551, 1);
+		addHoveredButton(39551, "Interfaces/Domtowershop/medshieldhov", 1, 37,
+				75, 39552);
+		addHoverButton(39553, "Interfaces/Domtowershop/medswordnormal", 0, 37,
+				75, "Buy Commander Boots", -1, 39554, 1);
+		addHoveredButton(39554, "Interfaces/Domtowershop/medswordhov", 1, 37,
+				75, 39555);
+		addHoverButton(39556, "Interfaces/Domtowershop/hardhelmnormal", 0, 37,
+				75, "Buy War-chief Cap", -1, 39557, 1);
+		addHoveredButton(39557, "Interfaces/Domtowershop/hardhelmhov", 1, 37,
+				75, 39558);
+		addHoverButton(39559, "Interfaces/Domtowershop/hardplatenormal", 0, 37,
+				75, "Buy War-chief Top", -1, 39560, 1);
+		addHoveredButton(39560, "Interfaces/Domtowershop/hardplatehov", 1, 37,
+				75, 39561);
+		addHoverButton(39562, "Interfaces/Domtowershop/hardlegsnormal", 0, 37,
+				75, "Buy War-chief Trousers", -1, 39563, 1);
+		addHoveredButton(39563, "Interfaces/Domtowershop/hardlegshov", 1, 37,
+				75, 39564);
+		addHoverButton(39565, "Interfaces/Domtowershop/hardshieldnormal", 0,
+				37, 75, "Buy War-chief Gloves", -1, 39566, 1);
+		addHoveredButton(39566, "Interfaces/Domtowershop/hardshieldhov", 1, 37,
+				75, 39567);
+		addHoverButton(39568, "Interfaces/Domtowershop/hardswordnormal", 0, 37,
+				75, "Buy War-chief Boots", -1, 39569, 1);
+		addHoveredButton(39569, "Interfaces/Domtowershop/hardswordhov", 1, 37,
+				75, 39570);
+		addHoverButton(39571, "Interfaces/Domtowershop/extremehelmnormal", 0,
+				37, 75, "Buy Lord Marshal Cap", -1, 39572, 1);
+		addHoveredButton(39572, "Interfaces/Domtowershop/extremehelmhov", 1,
+				37, 75, 39573);
+		addHoverButton(39574, "Interfaces/Domtowershop/extremeplatenormal", 0,
+				37, 75, "Buy Lord Marshal Top", -1, 39575, 1);
+		addHoveredButton(39575, "Interfaces/Domtowershop/extremeplatehov", 1,
+				37, 75, 39576);
+		addHoverButton(39577, "Interfaces/Domtowershop/extremelegsnormal", 0,
+				37, 75, "Buy Lord Marshal Trousers", -1, 39578, 1);
+		addHoveredButton(39578, "Interfaces/Domtowershop/extremelegshov", 1,
+				37, 75, 39579);
+		addHoverButton(39580, "Interfaces/Domtowershop/extremeshieldnormal", 0,
+				37, 75, "Buy Lord Marshal Gloves", -1, 39581, 1);
+		addHoveredButton(39581, "Interfaces/Domtowershop/extremeshieldhov", 1,
+				37, 75, 39582);
+		addHoverButton(39583, "Interfaces/Domtowershop/extremeswordnormal", 0,
+				37, 75, "Buy Lord Marshal Boots", -1, 39584, 1);
+		addHoveredButton(39584, "Interfaces/Domtowershop/extremeswordhov", 1,
+				37, 75, 39585);
+		addHoverButton(39586, "Interfaces/Domtowershop/decbuttonnormal", 0,
+				144, 30, "Special Clothing", -1, 39587, 1);
+		addHoveredButton(39587, "Interfaces/Domtowershop/decbuttonhover", 1,
+				144, 30, 39588);
+		addHoverButton(39589, "Interfaces/Domtowershop/consumebuttonnormal", 0,
+				144, 30, "Potions & Titles", -1, 39590, 1);
+		addHoveredButton(39590, "Interfaces/Domtowershop/consumebuttonhover",
+				1, 144, 30, 39501);
+		addHoverButton(39592, "Interfaces/Domtowershop/miscbuttonnormal", 0,
+				144, 30, "Weapons & Misc", -1, 39593, 1);
+		addHoveredButton(39593, "Interfaces/Domtowershop/miscbuttonhover", 1,
+				144, 30, 39594);
+		addHoverButton(39595, "Interfaces/Domtowershop/close", 0, 16, 16,
+				"Close", -1, 39596, 1);
+		addHoveredButton(39596, "Interfaces/Domtowershop/close", 1, 16, 16,
+				39597);
+		addText(39598, "Dominion Tower Rewards", tda, 3, 0xff981f, true, true);
+		addText(39599, "Items can be bought with Dominion Tower points only.",
+				tda, 0, 0xffffff, true, true);
+		addText(49599, "Special Clothing", tda, 1, 0, false, false);
+		addText(39803, "Potions & Titles", tda, 1, 0, false, false);
+		addText(39804, "Weapons & Misc", tda, 1, 0, false, false);
+		rsinterface.totalChildren(54);
+		rsinterface.child(0, 39525, 2, 19);
+		rsinterface.child(1, 39526, 77, 90);
+		rsinterface.child(2, 39527, 77, 90);
+		rsinterface.child(3, 39529, 119, 90);
+		rsinterface.child(4, 39530, 119, 90);
+		rsinterface.child(5, 39532, 161, 90);
+		rsinterface.child(6, 39533, 161, 90);
+		rsinterface.child(7, 39535, 203, 90);
+		rsinterface.child(8, 39536, 203, 90);
+		rsinterface.child(9, 39538, 245, 90);
+		rsinterface.child(10, 39539, 245, 90);
+		rsinterface.child(11, 39541, 287, 90);
+		rsinterface.child(12, 39542, 287, 90);
+		rsinterface.child(13, 39544, 329, 90);
+		rsinterface.child(14, 39545, 329, 90);
+		rsinterface.child(15, 39547, 371, 90);
+		rsinterface.child(16, 39548, 371, 90);
+		rsinterface.child(17, 39550, 413, 90);
+		rsinterface.child(18, 39551, 413, 90);
+		rsinterface.child(19, 39553, 455, 90);
+		rsinterface.child(20, 39554, 455, 90);
+		rsinterface.child(21, 39556, 77, 190);
+		rsinterface.child(22, 39557, 77, 190);
+		rsinterface.child(23, 39559, 119, 190);
+		rsinterface.child(24, 39560, 119, 190);
+		rsinterface.child(25, 39562, 161, 190);
+		rsinterface.child(26, 39563, 161, 190);
+		rsinterface.child(27, 39565, 203, 190);
+		rsinterface.child(28, 39566, 203, 190);
+		rsinterface.child(29, 39568, 245, 190);
+		rsinterface.child(30, 39569, 245, 190);
+		rsinterface.child(31, 39571, 287, 190);
+		rsinterface.child(32, 39572, 287, 190);
+		rsinterface.child(33, 39574, 329, 190);
+		rsinterface.child(34, 39575, 329, 190);
+		rsinterface.child(35, 39577, 371, 190);
+		rsinterface.child(36, 39578, 371, 190);
+		rsinterface.child(37, 39580, 413, 190);
+		rsinterface.child(38, 39581, 413, 190);
+		rsinterface.child(39, 39583, 455, 190);
+		rsinterface.child(40, 39584, 455, 190);
+		rsinterface.child(41, 39586, 28, 44);
+		rsinterface.child(42, 39587, 28, 44);
+		rsinterface.child(43, 39589, 185, 44);
+		rsinterface.child(44, 39590, 185, 44);
+		rsinterface.child(45, 39592, 342, 44);
+		rsinterface.child(46, 39593, 342, 44);
+		rsinterface.child(47, 39595, 480, 22);
+		rsinterface.child(48, 39596, 480, 22);
+		rsinterface.child(49, 39598, 253, 22);
+		rsinterface.child(50, 39599, 257, 294);
+		rsinterface.child(51, 49599, 55, 51);
+		rsinterface.child(52, 39803, 212, 51);
+		rsinterface.child(53, 39804, 369, 51);
+	}
+
+	public static void addTextButton(int i, String s, String tooltip, int k,
+			boolean l, boolean m, TextDrawingArea[] TDA, int j, int w) {
 		RSInterface rsinterface = addInterface(i);
 		rsinterface.parentID = i;
 		rsinterface.id = i;
-		//rsinterface.interfaceType = 4;
+		// rsinterface.interfaceType = 4;
 		rsinterface.atActionType = 1;
 		rsinterface.width = w;
 		rsinterface.height = 16;
 		rsinterface.contentType = 0;
-		rsinterface.opacity = (byte)0xFF981F;
-	/*	rsinterface.textCentered = l;
-		rsinterface.textShadowed = m;*/
+		rsinterface.opacity = (byte) 0xFF981F;
+		/*
+		 * rsinterface.textCentered = l; rsinterface.textShadowed = m;
+		 */
 		rsinterface.textDrawingAreas = TDA[j];
-	//	rsinterface.disabledMessage = s;
-	//	rsinterface.enabledMessage = "";
-	//	rsinterface.enabledColor = 0xFF981F;
-	//	rsinterface.disabledColor = 0xFF981F;
+		// rsinterface.disabledMessage = s;
+		// rsinterface.enabledMessage = "";
+		// rsinterface.enabledColor = 0xFF981F;
+		// rsinterface.disabledColor = 0xFF981F;
 		rsinterface.tooltip = tooltip;
 	}
-    public static void slayerInterface(TextDrawingArea[] tda) {
-        RSInterface rsInterface = addInterface(41000);
-        addSprite(41001, 1, "Interfaces/SlayerInterface/IMAGE");
-        addHoverButton(41002, "Interfaces/SlayerInterface/IMAGE", 4, 16, 16, "Close window", 0, 41003, 1);
-        addHoveredButton(41003, "Interfaces/SlayerInterface/IMAGE", 5, 16, 16, 41004);
-        addHoverButton(41005, "", 0, 85, 20, "Buy", 0, 41006, 1);
-        addHoverButton(41007, "", 0, 85, 20, "Learn", 0, 41008, 1);
-        addHoverButton(41009, "", 0, 85, 20, "Assignment", 0, 41010, 1);
-        addText(41011, "Slayer Points: ", tda, 3, 0xFF981F);
-        addTextButton(41012, "Slayer Experience                           50", "Buy Slayer Experience", 0xFF981F, false, true, tda, 1, 400);
-        addTextButton(41013, "Slayer's Respite                             25", "Buy Slayer's Respite", 0xFF981F, false, true, tda, 1, 401);
-        addTextButton(41014, "Slayer Darts                                     35", "Buy Slayer Darts", 0xFF981F, false, true, tda, 1, 402);
-        addTextButton(41015, "Broad Arrows                                    25", "Buy Broad Arrows", 0xFF981F, false, true, tda, 1, 403);
-        setChildren(11, rsInterface);
-        rsInterface.child(0, 41001, 12, 10);
-        rsInterface.child(1, 41002, 473, 20);
-        rsInterface.child(2, 41003, 473, 20);
-        rsInterface.child(3, 41005, 21, 23);
-        rsInterface.child(4, 41007, 107, 23);
-        rsInterface.child(5, 41009, 193, 23);
-        rsInterface.child(6, 41011, 98, 74);
-        rsInterface.child(7, 41012, 124, 128);
-        rsInterface.child(8, 41013, 125, 160);
-        rsInterface.child(9, 41014, 125, 190);
-        rsInterface.child(10, 41015, 124, 220);
-        
-    }
-    
-    public static void slayerInterfaceSub1(TextDrawingArea[] tda) {
-        RSInterface rsInterface = addInterface(41500);
-        addSprite(41501, 2, "Interfaces/SlayerInterface/IMAGE");
-        addHoverButton(41502, "Interfaces/SlayerInterface/IMAGE", 4, 16, 16, "Close window", 0, 41503, 1);
-        addHoveredButton(41503, "Interfaces/SlayerInterface/IMAGE", 5, 16, 16, 41504);
-        addHoverButton(41505, "", 0, 85, 20, "Buy", 0, 41506, 1);
-        addHoverButton(41507, "", 0, 85, 20, "Learn", 0, 41508, 1);
-        addHoverButton(41509, "", 0, 85, 20, "Assignment", 0, 41510, 1);
-        addText(41511, "Slayer Points: ", tda, 3, 0xFF981F);
-        setChildren(7, rsInterface);
-        rsInterface.child(0, 41501, 12, 10);
-        rsInterface.child(1, 41502, 473, 20);
-        rsInterface.child(2, 41503, 473, 20);
-        rsInterface.child(3, 41505, 21, 23);
-        rsInterface.child(4, 41507, 107, 23);
-        rsInterface.child(5, 41509, 193, 23);
-        rsInterface.child(6, 41511, 98, 74);
-    }
-    
-    public static void slayerInterfaceSub2(TextDrawingArea[] tda) {
-        RSInterface rsInterface = addInterface(42000);
-        addSprite(42001, 3, "Interfaces/SlayerInterface/IMAGE");
-        addHoverButton(42002, "Interfaces/SlayerInterface/IMAGE", 4, 16, 16, "Close window", 0, 42003, 1);
-        addHoveredButton(42003, "Interfaces/SlayerInterface/IMAGE", 5, 16, 16, 42004);
-        addHoverButton(42005, "", 0, 85, 20, "Buy", 0, 42006, 1);
-        addHoverButton(42007, "", 0, 85, 20, "Learn", 0, 42008, 1);
-        addHoverButton(42009, "", 0, 85, 20, "Assignment", 0, 42010, 1);
-        addText(42011, "Slayer Points: ", tda, 3, 0xFF981F);
-        addTextButton(42012, "Cancel Task", "Temporarily cancel your current slayer task", 0xFF981F, false, true, tda, 1, 300);
-        addTextButton(42013, "Remove Task permanently", "Permanently remove this monster as a task", 0xFF981F, false, true, tda, 1, 305);
-        addText(42014, "line 1", tda, 1, 0xFF981F);
-        addText(42015, "line 2", tda, 1, 0xFF981F);
-        addText(42016, "line 3", tda, 1, 0xFF981F);
-        addText(42017, "line 4", tda, 1, 0xFF981F);
-        addButton(42018, 6, "Interfaces/SlayerInterface/IMAGE", "Delete removed slayer task");
-        addButton(42019, 6, "Interfaces/SlayerInterface/IMAGE", "Delete removed slayer task");
-        addButton(42020, 6, "Interfaces/SlayerInterface/IMAGE", "Delete removed slayer task");
-        addButton(42021, 6, "Interfaces/SlayerInterface/IMAGE", "Delete removed slayer task");
-        setChildren(17, rsInterface);
-        rsInterface.child(0, 42001, 12, 10);
-        rsInterface.child(1, 42002, 473, 20);
-        rsInterface.child(2, 42003, 473, 20);
-        rsInterface.child(3, 42005, 21, 23);
-        rsInterface.child(4, 42007, 107, 23);
-        rsInterface.child(5, 42009, 193, 23);
-        rsInterface.child(6, 42011, 98, 74);
-        rsInterface.child(7, 42012, 71, 127);
-        rsInterface.child(8, 42013, 71, 146);
-        rsInterface.child(9, 42014, 71, 216);
-        rsInterface.child(10, 42015, 71, 234);
-        rsInterface.child(11, 42016, 71, 252);
-        rsInterface.child(12, 42017, 71, 270);
-        rsInterface.child(13, 42018, 303, 215);
-        rsInterface.child(14, 42019, 303, 233);
-        rsInterface.child(15, 42020, 303, 251);
-        rsInterface.child(16, 42021, 303, 269);
-    }
- public static void skillTab602(TextDrawingArea[] tda) {
-        RSInterface skill = addInterface(3917);
-        addText(27203, "99", 0xFFFF00, false, true, -1, tda, 0);
-        addText(27204, "99", 0xFFFF00, false, true, -1, tda, 0);
-        addText(27205, "99", 0xFFFF00, false, true, -1, tda, 0);
-        addText(27206, "99", 0xFFFF00, false, true, -1, tda, 0);
-        int[] logoutID = {
-            2450, 2451, 2452
-        };
-        int[] logoutID2 = {
-            2458
-        };
-        for (int i: logoutID) {
-            RSInterface Logout = interfaceCache[i];
-            Logout.textColor = 0xFF981F;
-            Logout.contentType = 0;
-        }
-        for (int i: logoutID2) {
-            RSInterface Logout = interfaceCache[i];
-            Logout.contentType = 0;
-        }
-        skill.totalChildren(4);
-        skill.child(0, 27203, 158, 175);
-        skill.child(1, 27204, 171, 186);
-        skill.child(2, 27205, 158, 203);
-        skill.child(3, 27206, 171, 214);
-        String[] spriteNames = {
-            "Attack", "HP", "Mine", "Strength", "Agility", "Smith", "Defence", "Herblore", "Fish", "Range", "Thief", "Cook", "Prayer", "Craft", "Fire", "Mage", "Fletch", "Wood", "Rune", "Slay", "Farm", "Construction", "Hunter", "Summon", "Dungeon"
-        };
-        int[] buttons = {
-            8654, 8655, 8656, 8657, 8658, 8659, 8660, 8861, 8662, 8663, 8664, 8665, 8666, 8667, 8668, 8669, 8670, 8671, 8672, 12162, 13928, 27123, 27124, 27125, 27126
-        };
-        int[] hovers = {
-            4040, 4076, 4112, 4046, 4082, 4118, 4052, 4088, 4124, 4058, 4094, 4130, 4064, 4100, 4136, 4070, 4106, 4142, 4160, 2832, 13917, 19005, 19006, 19007, 19008
-        };
-        /*int[][] text = { { 4004, 4005 }, { 4016, 4017 }, { 4028, 4029 },
-                         { 4006, 4007 }, { 4018, 4019 }, { 4030, 4031 }, { 4008, 4009 },
-                         { 4020, 4021 }, { 4032, 4033 }, { 4010, 4011 }, { 4022, 4023 },
-                         { 4034, 4035 }, { 4012, 4013 }, { 4024, 4025 }, { 4036, 4037 },
-                         { 4014, 4015 }, { 4026, 4027 }, { 4038, 4039 }, { 4152, 4153 },
-                         { 12166, 12167 }, { 13926, 13927 }, { 18000, 18001 },
-                         { 18166, 18170 }, { 18167, 18171 }, { 18168, 18172 } };*/
-        int[][] text = {
-            {
-                4004, 4005
-            }, {
-                4016, 4017
-            }, {
-                4028, 4029
-            }, {
-                4006, 4007
-            }, {
-                4018, 4019
-            }, {
-                4030, 4031
-            }, {
-                4008, 4009
-            }, {
-                4020, 4021
-            }, {
-                4032, 4033
-            }, {
-                4010, 4011
-            }, {
-                4022, 4023
-            }, {
-                4034, 4035
-            }, {
-                4012, 4013
-            }, {
-                4024, 4025
-            }, {
-                4036, 4037
-            }, {
-                4014, 4015
-            }, {
-                4026, 4027
-            }, {
-                4038, 4039
-            }, {
-                4152, 4153
-            }, {
-                12166, 12167
-            }, {
-                13926, 13927
-            }, {
-                18165, 18169
-            }, {
-                18166, 18170
-            }, {
-                18167, 18171
-            }, {
-                18168, 18172
-            }
-        };
-        int[] icons = {
-            3965, 3966, 3967, 3968, 3969, 3970, 3971, 3972, 3973,
-            3974, 3975, 3976, 3977, 3978, 3979, 3980, 3981, 3982, 4151,
-            12165, 13925, 27127, 27128, 27129, 27130
-        };
-        int[][] buttonCoords = {
-            {
-                4, 4
-            }, {
-                66, 4
-            }, {
-                128, 4
-            }, {
-                4, 32
-            }, {
-                66, 32
-            }, {
-                128, 32
-            }, {
-                4, 60
-            }, {
-                66, 60
-            }, {
-                128, 60
-            }, {
-                4, 88
-            }, {
-                66, 88
-            }, {
-                128, 88
-            }, {
-                4, 116
-            }, {
-                66, 116
-            }, {
-                128, 116
-            }, {
-                4, 144
-            }, {
-                66, 144
-            }, {
-                128, 144
-            }, {
-                4, 172
-            }, {
-                66, 172
-            }, {
-                128, 172
-            }, {
-                4, 200
-            }, {
-                66, 200
-            }, {
-                128, 200
-            }, {
-                4, 229
-            }
-        };
-        int[][] iconCoords = {
-            {
-                6, 6
-            }, {
-                69, 7
-            }, {
-                131, 6
-            }, {
-                9, 34
-            }, {
-                68, 33
-            }, {
-                131, 36
-            }, {
-                9, 64
-            }, {
-                67, 63
-            }, {
-                131, 61
-            }, {
-                7, 91
-            }, {
-                68, 94
-            }, {
-                133, 90
-            }, {
-                6, 118
-            }, {
-                70, 120
-            }, {
-                130, 118
-            }, {
-                6, 147
-            }, {
-                69, 146
-            }, {
-                132, 146
-            }, {
-                6, 173
-            }, {
-                69, 173
-            }, {
-                130, 174
-            }, {
-                6, 202
-            }, {
-                69, 201
-            }, {
-                131, 202
-            }, {
-                6, 230
-            }
-        };
-        int[][] textCoords = {
-            {
-                31, 7, 44, 18
-            }, {
-                93, 7, 106, 18
-            }, {
-                155, 7, 168, 18
-            }, {
-                31, 35, 44, 46
-            }, {
-                93, 35, 106, 46
-            }, {
-                155, 35, 168, 46
-            }, {
-                31, 63, 44, 74
-            }, {
-                93, 63, 106, 74
-            }, {
-                155, 63, 168, 74
-            }, {
-                31, 91, 44, 102
-            }, {
-                93, 91, 106, 102
-            }, {
-                155, 91, 168, 102
-            }, {
-                31, 119, 44, 130
-            }, {
-                93, 119, 106, 130
-            }, {
-                155, 119, 168, 130
-            }, {
-                31, 149, 44, 158
-            }, {
-                93, 147, 106, 158
-            }, {
-                155, 147, 168, 158
-            }, {
-                31, 175, 44, 186
-            }, {
-                93, 175, 106, 186
-            }, {
-                155, 175, 168, 186
-            }, {
-                31, 203, 44, 214
-            }, {
-                93, 203, 106, 214
-            }, {
-                155, 203, 168, 214
-            }, {
-                31, 231, 44, 242
-            }
-        };
-        int[][] newText = {
-            {
-                18165, 18166, 18167, 18168
-            }, {
-                18169, 18170, 18171, 18172
-            }
-        };
-        for (int i = 0; i < hovers.length; i++) {
-            createSkillHover(hovers[i], 205 + i);
-            addSkillButton(buttons[i]);
-            addImage(icons[i], "Player/Skill/" + spriteNames[i]);
-        }
-        for (int i = 0; i < 4; i++) {
-            addSkillText(newText[0][i], false, i + 21);
-            addSkillText(newText[1][i], true, i + 21);
-        }
-        skill.children(icons.length + (text.length * 2) + hovers.length + buttons.length + 1);
-        int frame = 0;
-        RSInterface totalLevel = interfaceCache[3984];
-        totalLevel.message = "@yel@Total level: %1";
-        totalLevel.textDrawingAreas = fonts[2];
-        skill.child(frame, 3984, 74, 237);
-        frame++;
-        for (int i = 0; i < buttons.length; i++) {
-            skill.child(frame, buttons[i], buttonCoords[i][0], buttonCoords[i][1]);
-            frame++;
-        }
-        for (int i = 0; i < icons.length; i++) {
-            skill.child(frame, icons[i], iconCoords[i][0], iconCoords[i][1]);
-            frame++;
-        }
-        for (int i = 0; i < text.length; i++) {
-            skill.child(frame, text[i][0], textCoords[i][0], textCoords[i][1]);
-            frame++;
-        }
-        for (int i = 0; i < text.length; i++) {
-            skill.child(frame, text[i][1], textCoords[i][2], textCoords[i][3]);
-            frame++;
-        }
-        for (int i = 0; i < hovers.length; i++) {
-            skill.child(frame, hovers[i], buttonCoords[i][0], buttonCoords[i][1]);
-            frame++;
-        }
-    }
-    public void children(int total) {
-        children = new int[total];
-        childX = new int[total];
-        childY = new int[total];
-    }
-    public static void createSkillHover(int id, int x) {
-        RSInterface hover = addInterface(id);
-        hover.type = 8;
-        hover.message = "TESTING!";
-        hover.contentType = x;
-        hover.width = 60;
-        hover.height = 28;
-    }
-    public static void addImage(int id, String s) {
-        RSInterface image = addInterface(id);
-        image.type = 5;
-        image.atActionType = 0;
-        image.contentType = 0;
-        image.width = 100;
-        image.height = 100;
-        image.sprite1 = getSprite(s);
-    }
-    public static void addSkillText(int id, boolean max, int skill) {
-        RSInterface text = addInterface(id);
-        text.id = id;
-        text.parentID = id;
-        text.type = 4;
-        text.atActionType = 0;
-        text.width = 15;
-        text.height = 12;
-        text.textDrawingAreas = fonts[0];
-        text.textShadow = true;
-        text.centerText = true;
-        text.textColor = 16776960;
-        if (!max) {
-            text.valueIndexArray = new int[1][];
-            text.valueIndexArray[0] = new int[3];
-            text.valueIndexArray[0][0] = 1;
-            text.valueIndexArray[0][1] = skill;
-            text.valueIndexArray[0][2] = 0;
-        } else {
-            text.valueIndexArray = new int[2][];
-            text.valueIndexArray[0] = new int[3];
-            text.valueIndexArray[0][0] = 1;
-            text.valueIndexArray[0][1] = skill;
-            text.valueIndexArray[0][2] = 0;
-            text.valueIndexArray[1] = new int[1];
-            text.valueIndexArray[1][0] = 0;
-        }
-        text.message = "%1";
-    }
-    public static Sprite getSprite(String s) {
-        Sprite image;
-        try {
-            image = new Sprite(s);
-            if (image != null) {
-                return image;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        return image;
-    }
-    public static void addSkillButton(int id) {
-        RSInterface button = addInterface(id);
-        button.type = 5;
-        button.atActionType = 5;
-        button.contentType = 0;
-        button.width = 60;
-        button.height = 27;
-        button.sprite1 = CustomSpriteLoader(33225, "");
-        button.sprite1 = getSprite("Player/Skill/Button");
-        button.tooltip = "View";
-    }
-    public static void Domtowershop2(TextDrawingArea tda[])
-    {
-        RSInterface rsinterface = addTabInterface(17965);
-        addSprite(39525, 0, "Interfaces/Domtowershop/Main");
-        addHoverButton(39601, "Interfaces/Domtowershop/base", 0, 37, 75, "Buy Extreme attack (4)", -1, 39602, 1);
-        addHoveredButton(39602, "Interfaces/Domtowershop/standhover", 1, 37, 75, 39603);
-        addHoverButton(39604, "Interfaces/Domtowershop/boltsack", 0, 37, 75, "Buy Extreme strength (4)", -1, 39605, 1);
-        addHoveredButton(39605, "Interfaces/Domtowershop/boltsack", 1, 37, 75, 39606);
-        addHoverButton(39607, "Interfaces/Domtowershop/bow", 0, 37, 75, "Buy Extreme defence (4)", -1, 39608, 1);
-        addHoveredButton(39608, "Interfaces/Domtowershop/bow", 1, 37, 75, 39609);
-        addHoverButton(39610, "Interfaces/Domtowershop/chamber", 0, 37, 75, "Buy Extreme magic (4)", -1, 39611, 1);
-        addHoveredButton(39611, "Interfaces/Domtowershop/chamber", 1, 37, 75, 39612);
-        addHoverButton(39613, "Interfaces/Domtowershop/ammo", 0, 37, 75, "Buy Extreme ranging (4)", -1, 39614, 1);
-        addHoveredButton(39614, "Interfaces/Domtowershop/ammo", 1, 37, 75, 38);
-        addHoverButton(39813, "Interfaces/Domtowershop/ammo1", 0, 37, 75, "Buy Super prayer (4)", -1, 39814, 1);
-        addHoveredButton(39814, "Interfaces/Domtowershop/ammo1", 1, 37, 75, 39815);
-        addHoverButton(39816, "Interfaces/Domtowershop/ammo2", 0, 37, 75, "Buy Overload (4)", -1, 39817, 1);
-        addHoveredButton(39817, "Interfaces/Domtowershop/ammo2", 1, 37, 75, 39818);
-        addHoverButton(39616, "Interfaces/Domtowershop/melee", 0, 73, 75, "Buy Usertitle: Gladiator", -1, 39617, 1);
-        addHoveredButton(39617, "Interfaces/Domtowershop/melee", 1, 73, 75, 39618);
-        addHoverButton(39619, "Interfaces/Domtowershop/range", 0, 73, 75, "Buy Usertitle: survivor", -1, 39620, 1);
-        addHoveredButton(39620, "Interfaces/Domtowershop/range", 1, 73, 75, 39621);
-        addHoverButton(39622, "Interfaces/Domtowershop/magic", 0, 73, 75, "Buy Usertitle: Dominator", -1, 39623, 1);
-        addHoveredButton(39623, "Interfaces/Domtowershop/mage", 1, 73, 75, 39624);
-        addHoverButton(39586, "Interfaces/Domtowershop/decbuttonnormal", 0, 144, 30, "Special Clothing", -1, 39587, 1);
-        addHoveredButton(39587, "Interfaces/Domtowershop/decbuttonhover", 1, 144, 30, 39588);
-        addHoverButton(39589, "Interfaces/Domtowershop/consumebuttonnormal", 0, 144, 30, "Potions & Titles", -1, 39590, 1);
-        addHoveredButton(39590, "Interfaces/Domtowershop/consumebuttonhover", 1, 144, 30, 39501);
-        addHoverButton(39592, "Interfaces/Domtowershop/miscbuttonnormal", 0, 144, 30, "Weapons & Misc", -1, 39593, 1);
-        addHoveredButton(39593, "Interfaces/Domtowershop/miscbuttonhover", 1, 144, 30, 39594);
-        addHoverButton(39595, "Interfaces/Domtowershop/close", 0, 16, 16, "Close", -1, 39596, 1);
-        addHoveredButton(39596, "Interfaces/Domtowershop/close", 1, 16, 16, 39597);
-        addText(39598, "Dominion Tower Rewards", tda, 3, 0xff981f, true, true);
-        addText(39599, "Items can be bought with Dominion Tower points only.", tda, 0, 0xffffff, true, true);
-        addText(49599, "Special Clothing", tda, 1, 0, false, false);
-        addText(39803, "Potions & Titles", tda, 1, 0, false, false);
-        addText(39800, "Gladiator", tda, 0, 0xffffff, true, true);
-        addText(39801, "Survivor", tda, 0, 0xffffff, true, true);
-        addText(39802, "Dominator", tda, 0, 0xffffff, true, true);
-        addText(39804, "Weapons & Misc", tda, 1, 0, false, false);
-        rsinterface.totalChildren(37);
-        rsinterface.child(0, 39525, 2, 19);
-        rsinterface.child(1, 39601, 119, 90);
-        rsinterface.child(2, 39602, 119, 90);
-        rsinterface.child(3, 39604, 161, 90);
-        rsinterface.child(4, 39605, 161, 90);
-        rsinterface.child(5, 39607, 203, 90);
-        rsinterface.child(6, 39608, 203, 90);
-        rsinterface.child(7, 39610, 245, 90);
-        rsinterface.child(8, 39611, 245, 90);
-        rsinterface.child(9, 39613, 287, 90);
-        rsinterface.child(10, 39614, 287, 90);
-        rsinterface.child(11, 39616, 119, 190);
-        rsinterface.child(12, 39617, 119, 190);
-        rsinterface.child(13, 39619, 245, 190);
-        rsinterface.child(14, 39620, 245, 190);
-        rsinterface.child(15, 39622, 371, 190);
-        rsinterface.child(16, 39623, 371, 190);
-        rsinterface.child(17, 39586, 28, 44);
-        rsinterface.child(18, 39587, 28, 44);
-        rsinterface.child(19, 39589, 185, 44);
-        rsinterface.child(20, 39590, 185, 44);
-        rsinterface.child(21, 39592, 342, 44);
-        rsinterface.child(22, 39593, 342, 44);
-        rsinterface.child(23, 39595, 480, 22);
-        rsinterface.child(24, 39596, 480, 22);
-        rsinterface.child(25, 39598, 253, 22);
-        rsinterface.child(26, 39599, 257, 294);
-        rsinterface.child(27, 49599, 55, 51);
-        rsinterface.child(28, 39800, 156, 220);
-        rsinterface.child(29, 39801, 282, 220);
-        rsinterface.child(30, 39802, 408, 220);
-        rsinterface.child(31, 39803, 212, 51);
-        rsinterface.child(36, 39804, 369, 51);
-        rsinterface.child(32, 39813, 329, 90);
-        rsinterface.child(33, 39814, 329, 90);
-        rsinterface.child(34, 39816, 371, 90);
-        rsinterface.child(35, 39817, 371, 90);
-    }
 
-    public static void Domtowershop3(TextDrawingArea tda[])
-    {
-        RSInterface rsinterface = addTabInterface(17957);
-        addSprite(39525, 0, "Interfaces/Domtowershop/Main");
-        addHoverButton(39700, "Interfaces/Domtowershop/saracape", 0, 37, 75, "Buy Gravite rapier", -1, 39701, 1);
-        addHoveredButton(39701, "Interfaces/Domtowershop/saracape", 1, 37, 75, 39702);
-        addHoverButton(39703, "Interfaces/Domtowershop/zamcape", 0, 37, 75, "Buy Gravite longsword", -1, 39704, 1);
-        addHoveredButton(39704, "Interfaces/Domtowershop/zamcape", 1, 37, 75, 39705);
-        addHoverButton(39706, "Interfaces/Domtowershop/sarahood", 0, 37, 75, "Buy Gravite 2h sword", -1, 39707, 1);
-        addHoveredButton(39707, "Interfaces/Domtowershop/sarahood", 1, 37, 75, 39708);
-        addHoverButton(39709, "Interfaces/Domtowershop/zamhood", 0, 37, 75, "Buy Gravite staff", -1, 39710, 1);
-        addHoveredButton(39710, "Interfaces/Domtowershop/zamhood", 1, 37, 75, 39711);
-        addHoverButton(39712, "Interfaces/Domtowershop/flag", 0, 37, 75, "Buy Arcane pulse necklace", -1, 39713, 1);
-        addHoveredButton(39713, "Interfaces/Domtowershop/flag", 1, 37, 75, 39714);
-        addHoverButton(39715, "Interfaces/Domtowershop/kill", 0, 37, 75, "Buy Arcane blast necklace", -1, 39716, 1);
-        addHoveredButton(39716, "Interfaces/Domtowershop/kill", 1, 37, 75, 39717);
-        addHoverButton(39718, "Interfaces/Domtowershop/hob", 0, 37, 75, "Buy Arcane stream necklace", -1, 39719, 1);
-        addHoveredButton(39719, "Interfaces/Domtowershop/hob", 1, 37, 75, 39720);
-        addHoverButton(39721, "Interfaces/Domtowershop/nerd", 0, 37, 75, "Buy Twisted bird skull necklace", -1, 39722, 1);
-        addHoveredButton(39722, "Interfaces/Domtowershop/nerd", 1, 37, 75, 39723);
-        addHoverButton(39724, "Interfaces/Domtowershop/nerdest", 0, 37, 75, "Buy Split dragontooth necklace", -1, 39725, 1);
-        addHoveredButton(39725, "Interfaces/Domtowershop/nerdest", 1, 37, 75, 39726);
-        addHoverButton(39727, "Interfaces/Domtowershop/guth", 0, 37, 75, "Buy Demon horn necklace", -1, 39728, 1);
-        addHoveredButton(39728, "Interfaces/Domtowershop/guth", 1, 37, 75, 39729);
-        addHoverButton(39730, "Interfaces/Domtowershop/sara", 0, 37, 75, "Buy Amulet of zealots", -1, 39731, 1);
-        addHoveredButton(39731, "Interfaces/Domtowershop/sara", 1, 37, 75, 39732);
-        addHoverButton(39733, "Interfaces/Domtowershop/zammy", 0, 37, 75, "Buy Nature staff", -1, 39734, 1);
-        addHoveredButton(39734, "Interfaces/Domtowershop/zammy", 1, 37, 75, 39735);
-        addHoverButton(39736, "Interfaces/Domtowershop/faith", 0, 37, 75, "Buy Blue cape", -1, 39737, 1);
-        addHoveredButton(39737, "Interfaces/Domtowershop/faith", 1, 37, 75, 39738);
-        addHoverButton(39739, "Interfaces/Domtowershop/free", 0, 37, 75, "Buy Red cape", -1, 39740, 1);
-        addHoveredButton(39740, "Interfaces/Domtowershop/free", 1, 37, 75, 39741);
-        addHoverButton(39586, "Interfaces/Domtowershop/decbuttonnormal", 0, 144, 30, "Special Clothing", -1, 39587, 1);
-        addHoveredButton(39587, "Interfaces/Domtowershop/decbuttonhover", 1, 144, 30, 39588);
-        addHoverButton(39589, "Interfaces/Domtowershop/consumebuttonnormal", 0, 144, 30, "Potions & Titles", -1, 39590, 1);
-        addHoveredButton(39590, "Interfaces/Domtowershop/consumebuttonhover", 1, 144, 30, 39501);
-        addHoverButton(39592, "Interfaces/Domtowershop/miscbuttonnormal", 0, 144, 30, "Weapons & Misc", -1, 39593, 1);
-        addHoveredButton(39593, "Interfaces/Domtowershop/miscbuttonhover", 1, 144, 30, 39594);
-        addHoverButton(39595, "Interfaces/Domtowershop/close", 0, 16, 16, "Close", -1, 39596, 1);
-        addHoveredButton(39596, "Interfaces/Domtowershop/close", 1, 16, 16, 39597);
-        addText(39598, "Dominion Tower Rewards", tda, 3, 0xff981f, true, true);
-        addText(39599, "Items can be bought with Dominion Tower points only.", tda, 0, 0xffffff, true, true);
-        addText(49599, "Special Clothing", tda, 1, 0, false, false);
-        addText(39803, "Potions & Titles", tda, 1, 0, false, false);
-        addText(39804, "Weapons & Misc", tda, 1, 0, false, false);
-        rsinterface.totalChildren(42);
-        rsinterface.child(0, 39525, 2, 19);
-        rsinterface.child(1, 39700, 117, 90);
-        rsinterface.child(2, 39701, 117, 90);
-        rsinterface.child(3, 39703, 159, 90);
-        rsinterface.child(4, 39704, 159, 90);
-        rsinterface.child(5, 39706, 201, 90);
-        rsinterface.child(6, 39707, 201, 90);
-        rsinterface.child(7, 39709, 243, 90);
-        rsinterface.child(8, 39710, 243, 90);
-        rsinterface.child(9, 39712, 285, 90);
-        rsinterface.child(10, 39713, 285, 90);
-        rsinterface.child(11, 39715, 327, 90);
-        rsinterface.child(12, 39716, 327, 90);
-        rsinterface.child(13, 39718, 369, 90);
-        rsinterface.child(14, 39719, 369, 90);
-        rsinterface.child(15, 39721, 411, 90);
-        rsinterface.child(16, 39722, 411, 90);
-        rsinterface.child(17, 39724, 453, 90);
-        rsinterface.child(18, 39725, 453, 90);
-        rsinterface.child(19, 39727, 117, 190);
-        rsinterface.child(20, 39728, 117, 190);
-        rsinterface.child(21, 39730, 201, 190);
-        rsinterface.child(22, 39731, 201, 190);
-        rsinterface.child(23, 39733, 285, 190);
-        rsinterface.child(24, 39734, 285, 190);
-        rsinterface.child(25, 39736, 369, 190);
-        rsinterface.child(26, 39737, 369, 190);
-        rsinterface.child(27, 39739, 453, 190);
-        rsinterface.child(28, 39740, 453, 190);
-        rsinterface.child(29, 39586, 28, 44);
-        rsinterface.child(30, 39587, 28, 44);
-        rsinterface.child(31, 39589, 185, 44);
-        rsinterface.child(32, 39590, 185, 44);
-        rsinterface.child(33, 39592, 342, 44);
-        rsinterface.child(34, 39593, 342, 44);
-        rsinterface.child(35, 39595, 480, 22);
-        rsinterface.child(36, 39596, 480, 22);
-        rsinterface.child(37, 39598, 253, 22);
-        rsinterface.child(38, 39599, 257, 294);
-        rsinterface.child(39, 49599, 55, 51);
-        rsinterface.child(40, 39803, 212, 51);
-        rsinterface.child(41, 39804, 369, 51);
-    }	
-	
-    public static void DominionTower1(TextDrawingArea tda[])
-    {
-        RSInterface rsinterface = addTabInterface(46200);
-        addSprite(46201, 0, "Interfaces/Dominiontower1/SUM");
-        addHoverButton(46202, "Interfaces/Dominiontower1/BOSS", 1, 100, 100, "Fight The Inadequacy!", -1, 46203, 1);
-        addHoveredButton(46203, "Interfaces/Dominiontower1/BOSS", 9, 100, 100, 46204);
-        addHoverButton(46205, "Interfaces/Dominiontower1/BOSS", 2, 100, 100, "Fight Giant Roc!", -1, 46206, 1);
-        addHoveredButton(46206, "Interfaces/Dominiontower1/BOSS", 10, 100, 100, 46207);
-        addHoverButton(46208, "Interfaces/Dominiontower1/BOSS", 3, 100, 100, "Fight The Untouchable!", -1, 46209, 1);
-        addHoveredButton(46209, "Interfaces/Dominiontower1/BOSS", 11, 100, 100, 46210);
-        addHoverButton(46211, "Interfaces/Dominiontower1/BOSS", 4, 100, 100, "Fight The Everlasting!", -1, 46212, 1);
-        addHoveredButton(46212, "Interfaces/Dominiontower1/BOSS", 12, 100, 100, 46213);
-        addHoverButton(46214, "Interfaces/Dominiontower1/BOSS", 5, 100, 100, "Fight Evil Chicken!", -1, 46215, 1);
-        addHoveredButton(46215, "Interfaces/Dominiontower1/BOSS", 13, 100, 100, 46216);
-        addHoverButton(46217, "Interfaces/Dominiontower1/BOSS", 6, 100, 100, "Fight Giant scarab!", -1, 46218, 1);
-        addHoveredButton(46218, "Interfaces/Dominiontower1/BOSS", 14, 100, 100, 46219);
-        addHoverButton(46220, "Interfaces/Dominiontower1/BOSS", 7, 100, 100, "Fight Bouncer!", -1, 46221, 1);
-        addHoveredButton(46221, "Interfaces/Dominiontower1/BOSS", 15, 100, 100, 46222);
-        addHoverButton(46223, "Interfaces/Dominiontower1/BOSS", 8, 100, 100, "Fight Black Knight Titan!", -1, 46224, 1);
-        addHoveredButton(46224, "Interfaces/Dominiontower1/BOSS", 16, 100, 100, 46225);
-        addHoverButton(45026, "Interfaces/Dominterface/BUTTON", 3, 100, 34, "Not now", -1, 45027, 1);
-        addHoveredButton(45027, "Interfaces/Dominterface/BUTTON", 4, 100, 34, 44028);
-        addHoverButton(45029, "Interfaces/Dominterface/BUTTON", 3, 100, 34, "Help", -1, 45030, 1);
-        addHoveredButton(45030, "Interfaces/Dominterface/BUTTON", 4, 100, 34, 45031);
-        addText(46232, "Dominion Tower Med Class", tda, 1, 0xf5c036, true, true);
-        addText(46233, "Not now", tda, 1, 0xf5c036, true, true);
-        addText(46234, "Help", tda, 1, 0xf5c036, true, true);
-        rsinterface.totalChildren(24);
-        rsinterface.child(0, 46201, 0, 0);
-        rsinterface.child(1, 46202, 11, 41);
-        rsinterface.child(2, 46203, 11, 41);
-        rsinterface.child(3, 46205, 133, 41);
-        rsinterface.child(4, 46206, 133, 41);
-        rsinterface.child(5, 46208, 277, 41);
-        rsinterface.child(6, 46209, 277, 41);
-        rsinterface.child(7, 46211, 400, 41);
-        rsinterface.child(8, 46212, 400, 41);
-        rsinterface.child(9, 46214, 11, 155);
-        rsinterface.child(10, 46215, 11, 155);
-        rsinterface.child(11, 46217, 133, 155);
-        rsinterface.child(12, 46218, 133, 155);
-        rsinterface.child(13, 46220, 277, 155);
-        rsinterface.child(14, 46221, 277, 155);
-        rsinterface.child(15, 46223, 400, 155);
-        rsinterface.child(16, 46224, 400, 155);
-        rsinterface.child(17, 45026, 8, 280);
-        rsinterface.child(18, 45027, 8, 280);
-        rsinterface.child(19, 45029, 405, 280);
-        rsinterface.child(20, 45030, 405, 280);
-        rsinterface.child(21, 46232, 255, 11);
-        rsinterface.child(22, 46233, 57, 288);
-        rsinterface.child(23, 46234, 454, 288);
-    }
+	public static void slayerInterface(TextDrawingArea[] tda) {
+		RSInterface rsInterface = addInterface(41000);
+		addSprite(41001, 1, "Interfaces/SlayerInterface/IMAGE");
+		addHoverButton(41002, "Interfaces/SlayerInterface/IMAGE", 4, 16, 16,
+				"Close window", 0, 41003, 1);
+		addHoveredButton(41003, "Interfaces/SlayerInterface/IMAGE", 5, 16, 16,
+				41004);
+		addHoverButton(41005, "", 0, 85, 20, "Buy", 0, 41006, 1);
+		addHoverButton(41007, "", 0, 85, 20, "Learn", 0, 41008, 1);
+		addHoverButton(41009, "", 0, 85, 20, "Assignment", 0, 41010, 1);
+		addText(41011, "Slayer Points: ", tda, 3, 0xFF981F);
+		addTextButton(41012, "Slayer Experience                           50",
+				"Buy Slayer Experience", 0xFF981F, false, true, tda, 1, 400);
+		addTextButton(41013, "Slayer's Respite                             25",
+				"Buy Slayer's Respite", 0xFF981F, false, true, tda, 1, 401);
+		addTextButton(41014,
+				"Slayer Darts                                     35",
+				"Buy Slayer Darts", 0xFF981F, false, true, tda, 1, 402);
+		addTextButton(41015,
+				"Broad Arrows                                    25",
+				"Buy Broad Arrows", 0xFF981F, false, true, tda, 1, 403);
+		setChildren(11, rsInterface);
+		rsInterface.child(0, 41001, 12, 10);
+		rsInterface.child(1, 41002, 473, 20);
+		rsInterface.child(2, 41003, 473, 20);
+		rsInterface.child(3, 41005, 21, 23);
+		rsInterface.child(4, 41007, 107, 23);
+		rsInterface.child(5, 41009, 193, 23);
+		rsInterface.child(6, 41011, 98, 74);
+		rsInterface.child(7, 41012, 124, 128);
+		rsInterface.child(8, 41013, 125, 160);
+		rsInterface.child(9, 41014, 125, 190);
+		rsInterface.child(10, 41015, 124, 220);
 
-    public static void DominionTower2(TextDrawingArea tda[])
-    {
-        RSInterface rsinterface = addTabInterface(48300);
-        addSprite(48301, 0, "Interfaces/Dominiontower2/SUM");
-        addHoverButton(48302, "Interfaces/Dominiontower2/BOSS", 1, 100, 100, "Fight Dad!", -1, 48303, 1);
-        addHoveredButton(48303, "Interfaces/Dominiontower2/BOSS", 9, 100, 100, 48304);
-        addHoverButton(48305, "Interfaces/Dominiontower2/BOSS", 2, 100, 100, "Fight Tree spirit!", -1, 48306, 1);
-        addHoveredButton(48306, "Interfaces/Dominiontower2/BOSS", 10, 100, 100, 48307);
-        addHoverButton(48308, "Interfaces/Dominiontower2/BOSS", 3, 100, 100, "Fight Ket-Zek!", -1, 48309, 1);
-        addHoveredButton(48309, "Interfaces/Dominiontower2/BOSS", 11, 100, 100, 48310);
-        addHoverButton(48311, "Interfaces/Dominiontower2/BOSS", 4, 100, 100, "Fight Treus Dayth!", -1, 48312, 1);
-        addHoveredButton(48312, "Interfaces/Dominiontower2/BOSS", 12, 100, 100, 48313);
-        addHoverButton(48314, "Interfaces/Dominiontower2/BOSS", 5, 100, 100, "Fight Tumeken's shadow!", -1, 48315, 1);
-        addHoveredButton(48315, "Interfaces/Dominiontower2/BOSS", 13, 100, 100, 48316);
-        addHoverButton(48317, "Interfaces/Dominiontower2/BOSS", 6, 100, 100, "Fight The Kendal!", -1, 48318, 1);
-        addHoveredButton(48318, "Interfaces/Dominiontower2/BOSS", 14, 100, 100, 48319);
-        addHoverButton(48320, "Interfaces/Dominiontower2/BOSS", 7, 100, 100, "Fight Sigmund!", -1, 48321, 1);
-        addHoveredButton(48321, "Interfaces/Dominiontower2/BOSS", 15, 100, 100, 48322);
-        addHoverButton(48323, "Interfaces/Dominiontower2/BOSS", 8, 100, 100, "Fight Melzar the Mad!", -1, 48324, 1);
-        addHoveredButton(48324, "Interfaces/Dominiontower2/BOSS", 16, 100, 100, 48325);
-        addHoverButton(45026, "Interfaces/Dominterface/BUTTON", 3, 100, 34, "Not now", -1, 45027, 1);
-        addHoveredButton(45027, "Interfaces/Dominterface/BUTTON", 4, 100, 34, 44028);
-        addHoverButton(45029, "Interfaces/Dominterface/BUTTON", 3, 100, 34, "Help", -1, 45030, 1);
-        addHoveredButton(45030, "Interfaces/Dominterface/BUTTON", 4, 100, 34, 45031);
-        addText(48332, "Dominion Tower Easy Class", tda, 1, 0xf5c036, true, true);
-        addText(48333, "Not now", tda, 1, 0xf5c036, true, true);
-        addText(48334, "Help", tda, 1, 0xf5c036, true, true);
-        rsinterface.totalChildren(24);
-        rsinterface.child(0, 48301, 0, 0);
-        rsinterface.child(1, 48302, 11, 41);
-        rsinterface.child(2, 48303, 11, 41);
-        rsinterface.child(3, 48305, 133, 41);
-        rsinterface.child(4, 48306, 133, 41);
-        rsinterface.child(5, 48308, 277, 41);
-        rsinterface.child(6, 48309, 277, 41);
-        rsinterface.child(7, 48311, 400, 41);
-        rsinterface.child(8, 48312, 400, 41);
-        rsinterface.child(9, 48314, 11, 155);
-        rsinterface.child(10, 48315, 11, 155);
-        rsinterface.child(11, 48317, 133, 155);
-        rsinterface.child(12, 48318, 133, 155);
-        rsinterface.child(13, 48320, 277, 155);
-        rsinterface.child(14, 48321, 277, 155);
-        rsinterface.child(15, 48323, 400, 155);
-        rsinterface.child(16, 48324, 400, 155);
-        rsinterface.child(17, 45026, 8, 280);
-        rsinterface.child(18, 45027, 8, 280);
-        rsinterface.child(19, 45029, 405, 280);
-        rsinterface.child(20, 45030, 405, 280);
-        rsinterface.child(21, 48332, 255, 11);
-        rsinterface.child(22, 48333, 57, 288);
-        rsinterface.child(23, 48334, 454, 288);
-    }
+	}
 
-    public static void Domtowerwin1(TextDrawingArea tda[])
-    {
-        RSInterface rsinterface = addTabInterface(46500);
-        addSprite(46501, 0, "Interfaces/Dominterface/WIN");
-        addText(46502, "Current Dominion Tower Points: ", tda, 0, 0xacacac, true, true);
-        addText(46503, "133713371337", tda, 0, 0x599eff, true, true);
-        addHoverButton(46504, "Interfaces/Dominterface/BUTTON", 3, 100, 34, "Not now", -1, 46505, 1);
-        addHoveredButton(46505, "Interfaces/Dominterface/BUTTON", 4, 100, 34, 46506);
-        addHoverButton(46507, "Interfaces/Dominterface/BUTTON", 3, 100, 34, "Carry on", -1, 46508, 1);
-        addHoveredButton(46508, "Interfaces/Dominterface/BUTTON", 4, 100, 34, 46509);
-        addText(46510, "You've Defeated A Boss!", tda, 1, 0xf5c036, true, true);
-        addText(46511, "Not now", tda, 1, 0xf5c036, true, true);
-        addText(46512, "Carry on", tda, 1, 0xf5c036, true, true);
-        rsinterface.totalChildren(10);
-        rsinterface.child(0, 46501, 0, 0);
-        rsinterface.child(1, 46502, 220, 225);
-        rsinterface.child(2, 46503, 333, 225);
-        rsinterface.child(3, 46504, 8, 280);
-        rsinterface.child(4, 46505, 8, 280);
-        rsinterface.child(5, 46507, 405, 280);
-        rsinterface.child(6, 46508, 405, 280);
-        rsinterface.child(7, 46510, 255, 11);
-        rsinterface.child(8, 46511, 57, 288);
-        rsinterface.child(9, 46512, 454, 288);
-    }
+	public static void slayerInterfaceSub1(TextDrawingArea[] tda) {
+		RSInterface rsInterface = addInterface(41500);
+		addSprite(41501, 2, "Interfaces/SlayerInterface/IMAGE");
+		addHoverButton(41502, "Interfaces/SlayerInterface/IMAGE", 4, 16, 16,
+				"Close window", 0, 41503, 1);
+		addHoveredButton(41503, "Interfaces/SlayerInterface/IMAGE", 5, 16, 16,
+				41504);
+		addHoverButton(41505, "", 0, 85, 20, "Buy", 0, 41506, 1);
+		addHoverButton(41507, "", 0, 85, 20, "Learn", 0, 41508, 1);
+		addHoverButton(41509, "", 0, 85, 20, "Assignment", 0, 41510, 1);
+		addText(41511, "Slayer Points: ", tda, 3, 0xFF981F);
+		setChildren(7, rsInterface);
+		rsInterface.child(0, 41501, 12, 10);
+		rsInterface.child(1, 41502, 473, 20);
+		rsInterface.child(2, 41503, 473, 20);
+		rsInterface.child(3, 41505, 21, 23);
+		rsInterface.child(4, 41507, 107, 23);
+		rsInterface.child(5, 41509, 193, 23);
+		rsInterface.child(6, 41511, 98, 74);
+	}
 
-    public static void Dominterface(TextDrawingArea tda[])
-    {
-        RSInterface rsinterface = addTabInterface(46100);
-        addSprite(46101, 1, "Interfaces/Dominterface/BACKGROUND");
-        addHoverButton(46102, "Interfaces/Dominterface/EXIT", 1, 17, 17, "Close Window", -1, 46103, 1);
-        addHoveredButton(46103, "Interfaces/Dominterface/EXIT", 2, 17, 17, 46104);
-        addHoverButton(46105, "Interfaces/Dominterface/BUTTON", 1, 129, 21, "Harder Classes", -1, 46106, 1);
-        addHoveredButton(46106, "Interfaces/Dominterface/BUTTON", 2, 129, 21, 46107);
-        addText(46108, "Harder Classes", tda, 0, 0xff9b00, true, true);
-        addHoverButton(46109, "Interfaces/Dominterface/BUTTON", 1, 129, 21, "Medium Classes", -1, 46110, 1);
-        addHoveredButton(46110, "Interfaces/Dominterface/BUTTON", 2, 129, 21, 46111);
-        addText(46112, "Medium Classes", tda, 0, 0xff9b00, true, true);
-        addHoverButton(46113, "Interfaces/Dominterface/BUTTON", 1, 129, 21, "Easy Classes", -1, 46114, 1);
-        addHoveredButton(46114, "Interfaces/Dominterface/BUTTON", 2, 129, 21, 46115);
-        addText(46116, "Easy Classes", tda, 0, 0xff9b00, true, true);
-        addHoverButton(46117, "Interfaces/Dominterface/BUTTON", 1, 129, 21, "Rewards", -1, 46118, 1);
-        addHoveredButton(46118, "Interfaces/Dominterface/BUTTON", 2, 129, 21, 46119);
-        addText(46120, "Rewards", tda, 0, 0xff9b00, true, true);
-        rsinterface.totalChildren(15);
-        rsinterface.child(0, 46101, 152, 32);
-        rsinterface.child(1, 46102, 334, 42);
-        rsinterface.child(2, 46103, 334, 42);
-        rsinterface.child(3, 46105, 191, 88);
-        rsinterface.child(4, 46106, 191, 88);
-        rsinterface.child(5, 46108, 257, 95);
-        rsinterface.child(6, 46109, 191, 128);
-        rsinterface.child(7, 46110, 191, 128);
-        rsinterface.child(8, 46112, 257, 135);
-        rsinterface.child(9, 46113, 191, 168);
-        rsinterface.child(10, 46114, 191, 168);
-        rsinterface.child(11, 46116, 257, 175);
-        rsinterface.child(12, 46117, 191, 208);
-        rsinterface.child(13, 46118, 191, 208);
-        rsinterface.child(14, 46120, 257, 215);
-    }
+	public static void slayerInterfaceSub2(TextDrawingArea[] tda) {
+		RSInterface rsInterface = addInterface(42000);
+		addSprite(42001, 3, "Interfaces/SlayerInterface/IMAGE");
+		addHoverButton(42002, "Interfaces/SlayerInterface/IMAGE", 4, 16, 16,
+				"Close window", 0, 42003, 1);
+		addHoveredButton(42003, "Interfaces/SlayerInterface/IMAGE", 5, 16, 16,
+				42004);
+		addHoverButton(42005, "", 0, 85, 20, "Buy", 0, 42006, 1);
+		addHoverButton(42007, "", 0, 85, 20, "Learn", 0, 42008, 1);
+		addHoverButton(42009, "", 0, 85, 20, "Assignment", 0, 42010, 1);
+		addText(42011, "Slayer Points: ", tda, 3, 0xFF981F);
+		addTextButton(42012, "Cancel Task",
+				"Temporarily cancel your current slayer task", 0xFF981F, false,
+				true, tda, 1, 300);
+		addTextButton(42013, "Remove Task permanently",
+				"Permanently remove this monster as a task", 0xFF981F, false,
+				true, tda, 1, 305);
+		addText(42014, "line 1", tda, 1, 0xFF981F);
+		addText(42015, "line 2", tda, 1, 0xFF981F);
+		addText(42016, "line 3", tda, 1, 0xFF981F);
+		addText(42017, "line 4", tda, 1, 0xFF981F);
+		addButton(42018, 6, "Interfaces/SlayerInterface/IMAGE",
+				"Delete removed slayer task");
+		addButton(42019, 6, "Interfaces/SlayerInterface/IMAGE",
+				"Delete removed slayer task");
+		addButton(42020, 6, "Interfaces/SlayerInterface/IMAGE",
+				"Delete removed slayer task");
+		addButton(42021, 6, "Interfaces/SlayerInterface/IMAGE",
+				"Delete removed slayer task");
+		setChildren(17, rsInterface);
+		rsInterface.child(0, 42001, 12, 10);
+		rsInterface.child(1, 42002, 473, 20);
+		rsInterface.child(2, 42003, 473, 20);
+		rsInterface.child(3, 42005, 21, 23);
+		rsInterface.child(4, 42007, 107, 23);
+		rsInterface.child(5, 42009, 193, 23);
+		rsInterface.child(6, 42011, 98, 74);
+		rsInterface.child(7, 42012, 71, 127);
+		rsInterface.child(8, 42013, 71, 146);
+		rsInterface.child(9, 42014, 71, 216);
+		rsInterface.child(10, 42015, 71, 234);
+		rsInterface.child(11, 42016, 71, 252);
+		rsInterface.child(12, 42017, 71, 270);
+		rsInterface.child(13, 42018, 303, 215);
+		rsInterface.child(14, 42019, 303, 233);
+		rsInterface.child(15, 42020, 303, 251);
+		rsInterface.child(16, 42021, 303, 269);
+	}
 
-	public static void DominionTower(TextDrawingArea tda[])
-    {
-        RSInterface rsinterface = addTabInterface(45000);
-        addSprite(45001, 0, "Interfaces/Dominiontower/SUM");
-        addHoverButton(45002, "Interfaces/Dominiontower/BOSS", 1, 100, 100, "Fight Decaying avatar!", -1, 45003, 1);
-        addHoveredButton(45003, "Interfaces/Dominiontower/BOSS", 9, 100, 100, 45004);
-        addHoverButton(45005, "Interfaces/Dominiontower/BOSS", 2, 100, 100, "Fight Dagannoth Mother!", -1, 45006, 1);
-        addHoveredButton(45006, "Interfaces/Dominiontower/BOSS", 10, 100, 100, 45007);
-        addHoverButton(45008, "Interfaces/Dominiontower/BOSS", 3, 100, 100, "Fight Nezikchened!", -1, 45009, 1);
-        addHoveredButton(45009, "Interfaces/Dominiontower/BOSS", 11, 100, 100, 45010);
-        addHoverButton(45011, "Interfaces/Dominiontower/BOSS", 4, 100, 100, "Fight Jungle demon!", -1, 45012, 1);
-        addHoveredButton(45012, "Interfaces/Dominiontower/BOSS", 12, 100, 100, 45013);
-        addHoverButton(45014, "Interfaces/Dominiontower/BOSS", 5, 100, 100, "Fight Arrav!", -1, 45015, 1);
-        addHoveredButton(45015, "Interfaces/Dominiontower/BOSS", 13, 100, 100, 45016);
-        addHoverButton(45017, "Interfaces/Dominiontower/BOSS", 6, 100, 100, "Fight Barrelchest!", -1, 45018, 1);
-        addHoveredButton(45018, "Interfaces/Dominiontower/BOSS", 14, 100, 100, 45019);
-        addHoverButton(45020, "Interfaces/Dominiontower/BOSS", 7, 100, 100, "Fight Chronozon!", -1, 45021, 1);
-        addHoveredButton(45021, "Interfaces/Dominiontower/BOSS", 15, 100, 100, 45022);
-        addHoverButton(45023, "Interfaces/Dominiontower/BOSS", 8, 100, 100, "Fight Balance Elemental!", -1, 45024, 1);
-        addHoveredButton(45024, "Interfaces/Dominiontower/BOSS", 16, 100, 100, 45025);
-        addHoverButton(45026, "Interfaces/Dominterface/BUTTON", 3, 100, 34, "Not now", -1, 45027, 1);
-        addHoveredButton(45027, "Interfaces/Dominterface/BUTTON", 4, 100, 34, 44028);
-        addHoverButton(45029, "Interfaces/Dominterface/BUTTON", 3, 100, 34, "Help", -1, 45030, 1);
-        addHoveredButton(45030, "Interfaces/Dominterface/BUTTON", 4, 100, 34, 45031);
-        addText(45032, "Dominion Tower Hard Class", tda, 1, 0xf5c036, true, true);
-        addText(45033, "Not now", tda, 1, 0xf5c036, true, true);
-        addText(45034, "Help", tda, 1, 0xf5c036, true, true);
-        rsinterface.totalChildren(24);
-        rsinterface.child(0, 45001, 0, 0);
-        rsinterface.child(1, 45002, 11, 41);
-        rsinterface.child(2, 45003, 11, 41);
-        rsinterface.child(3, 45005, 133, 41);
-        rsinterface.child(4, 45006, 133, 41);
-        rsinterface.child(5, 45008, 277, 41);
-        rsinterface.child(6, 45009, 277, 41);
-        rsinterface.child(7, 45011, 400, 41);
-        rsinterface.child(8, 45012, 400, 41);
-        rsinterface.child(9, 45014, 11, 155);
-        rsinterface.child(10, 45015, 11, 155);
-        rsinterface.child(11, 45017, 133, 155);
-        rsinterface.child(12, 45018, 133, 155);
-        rsinterface.child(13, 45020, 277, 155);
-        rsinterface.child(14, 45021, 277, 155);
-        rsinterface.child(15, 45023, 400, 155);
-        rsinterface.child(16, 45024, 400, 155);
-        rsinterface.child(17, 45026, 8, 280);
-        rsinterface.child(18, 45027, 8, 280);
-        rsinterface.child(19, 45029, 405, 280);
-        rsinterface.child(20, 45030, 405, 280);
-        rsinterface.child(21, 45032, 255, 11);
-        rsinterface.child(22, 45033, 57, 288);
-        rsinterface.child(23, 45034, 454, 288);
-    }	
-	
+	public static void skillTab602(TextDrawingArea[] tda) {
+		RSInterface skill = addInterface(3917);
+		addText(27203, "99", 0xFFFF00, false, true, -1, tda, 0);
+		addText(27204, "99", 0xFFFF00, false, true, -1, tda, 0);
+		addText(27205, "99", 0xFFFF00, false, true, -1, tda, 0);
+		addText(27206, "99", 0xFFFF00, false, true, -1, tda, 0);
+		int[] logoutID = { 2450, 2451, 2452 };
+		int[] logoutID2 = { 2458 };
+		for (int i : logoutID) {
+			RSInterface Logout = interfaceCache[i];
+			Logout.textColor = 0xFF981F;
+			Logout.contentType = 0;
+		}
+		for (int i : logoutID2) {
+			RSInterface Logout = interfaceCache[i];
+			Logout.contentType = 0;
+		}
+		skill.totalChildren(4);
+		skill.child(0, 27203, 158, 175);
+		skill.child(1, 27204, 171, 186);
+		skill.child(2, 27205, 158, 203);
+		skill.child(3, 27206, 171, 214);
+		String[] spriteNames = { "Attack", "HP", "Mine", "Strength", "Agility",
+				"Smith", "Defence", "Herblore", "Fish", "Range", "Thief",
+				"Cook", "Prayer", "Craft", "Fire", "Mage", "Fletch", "Wood",
+				"Rune", "Slay", "Farm", "Construction", "Hunter", "Summon",
+				"Dungeon" };
+		int[] buttons = { 8654, 8655, 8656, 8657, 8658, 8659, 8660, 8861, 8662,
+				8663, 8664, 8665, 8666, 8667, 8668, 8669, 8670, 8671, 8672,
+				12162, 13928, 27123, 27124, 27125, 27126 };
+		int[] hovers = { 4040, 4076, 4112, 4046, 4082, 4118, 4052, 4088, 4124,
+				4058, 4094, 4130, 4064, 4100, 4136, 4070, 4106, 4142, 4160,
+				2832, 13917, 19005, 19006, 19007, 19008 };
+		/*
+		 * int[][] text = { { 4004, 4005 }, { 4016, 4017 }, { 4028, 4029 }, {
+		 * 4006, 4007 }, { 4018, 4019 }, { 4030, 4031 }, { 4008, 4009 }, { 4020,
+		 * 4021 }, { 4032, 4033 }, { 4010, 4011 }, { 4022, 4023 }, { 4034, 4035
+		 * }, { 4012, 4013 }, { 4024, 4025 }, { 4036, 4037 }, { 4014, 4015 }, {
+		 * 4026, 4027 }, { 4038, 4039 }, { 4152, 4153 }, { 12166, 12167 }, {
+		 * 13926, 13927 }, { 18000, 18001 }, { 18166, 18170 }, { 18167, 18171 },
+		 * { 18168, 18172 } };
+		 */
+		int[][] text = { { 4004, 4005 }, { 4016, 4017 }, { 4028, 4029 },
+				{ 4006, 4007 }, { 4018, 4019 }, { 4030, 4031 }, { 4008, 4009 },
+				{ 4020, 4021 }, { 4032, 4033 }, { 4010, 4011 }, { 4022, 4023 },
+				{ 4034, 4035 }, { 4012, 4013 }, { 4024, 4025 }, { 4036, 4037 },
+				{ 4014, 4015 }, { 4026, 4027 }, { 4038, 4039 }, { 4152, 4153 },
+				{ 12166, 12167 }, { 13926, 13927 }, { 18165, 18169 },
+				{ 18166, 18170 }, { 18167, 18171 }, { 18168, 18172 } };
+		int[] icons = { 3965, 3966, 3967, 3968, 3969, 3970, 3971, 3972, 3973,
+				3974, 3975, 3976, 3977, 3978, 3979, 3980, 3981, 3982, 4151,
+				12165, 13925, 27127, 27128, 27129, 27130 };
+		int[][] buttonCoords = { { 4, 4 }, { 66, 4 }, { 128, 4 }, { 4, 32 },
+				{ 66, 32 }, { 128, 32 }, { 4, 60 }, { 66, 60 }, { 128, 60 },
+				{ 4, 88 }, { 66, 88 }, { 128, 88 }, { 4, 116 }, { 66, 116 },
+				{ 128, 116 }, { 4, 144 }, { 66, 144 }, { 128, 144 },
+				{ 4, 172 }, { 66, 172 }, { 128, 172 }, { 4, 200 }, { 66, 200 },
+				{ 128, 200 }, { 4, 229 } };
+		int[][] iconCoords = { { 6, 6 }, { 69, 7 }, { 131, 6 }, { 9, 34 },
+				{ 68, 33 }, { 131, 36 }, { 9, 64 }, { 67, 63 }, { 131, 61 },
+				{ 7, 91 }, { 68, 94 }, { 133, 90 }, { 6, 118 }, { 70, 120 },
+				{ 130, 118 }, { 6, 147 }, { 69, 146 }, { 132, 146 },
+				{ 6, 173 }, { 69, 173 }, { 130, 174 }, { 6, 202 }, { 69, 201 },
+				{ 131, 202 }, { 6, 230 } };
+		int[][] textCoords = { { 31, 7, 44, 18 }, { 93, 7, 106, 18 },
+				{ 155, 7, 168, 18 }, { 31, 35, 44, 46 }, { 93, 35, 106, 46 },
+				{ 155, 35, 168, 46 }, { 31, 63, 44, 74 }, { 93, 63, 106, 74 },
+				{ 155, 63, 168, 74 }, { 31, 91, 44, 102 },
+				{ 93, 91, 106, 102 }, { 155, 91, 168, 102 },
+				{ 31, 119, 44, 130 }, { 93, 119, 106, 130 },
+				{ 155, 119, 168, 130 }, { 31, 149, 44, 158 },
+				{ 93, 147, 106, 158 }, { 155, 147, 168, 158 },
+				{ 31, 175, 44, 186 }, { 93, 175, 106, 186 },
+				{ 155, 175, 168, 186 }, { 31, 203, 44, 214 },
+				{ 93, 203, 106, 214 }, { 155, 203, 168, 214 },
+				{ 31, 231, 44, 242 } };
+		int[][] newText = { { 18165, 18166, 18167, 18168 },
+				{ 18169, 18170, 18171, 18172 } };
+		for (int i = 0; i < hovers.length; i++) {
+			createSkillHover(hovers[i], 205 + i);
+			addSkillButton(buttons[i]);
+			addImage(icons[i], "Player/Skill/" + spriteNames[i]);
+		}
+		for (int i = 0; i < 4; i++) {
+			addSkillText(newText[0][i], false, i + 21);
+			addSkillText(newText[1][i], true, i + 21);
+		}
+		skill.children(icons.length + (text.length * 2) + hovers.length
+				+ buttons.length + 1);
+		int frame = 0;
+		RSInterface totalLevel = interfaceCache[3984];
+		totalLevel.message = "@yel@Total level: %1";
+		totalLevel.textDrawingAreas = fonts[2];
+		skill.child(frame, 3984, 74, 237);
+		frame++;
+		for (int i = 0; i < buttons.length; i++) {
+			skill.child(frame, buttons[i], buttonCoords[i][0],
+					buttonCoords[i][1]);
+			frame++;
+		}
+		for (int i = 0; i < icons.length; i++) {
+			skill.child(frame, icons[i], iconCoords[i][0], iconCoords[i][1]);
+			frame++;
+		}
+		for (int i = 0; i < text.length; i++) {
+			skill.child(frame, text[i][0], textCoords[i][0], textCoords[i][1]);
+			frame++;
+		}
+		for (int i = 0; i < text.length; i++) {
+			skill.child(frame, text[i][1], textCoords[i][2], textCoords[i][3]);
+			frame++;
+		}
+		for (int i = 0; i < hovers.length; i++) {
+			skill.child(frame, hovers[i], buttonCoords[i][0],
+					buttonCoords[i][1]);
+			frame++;
+		}
+	}
 
+	public void children(int total) {
+		children = new int[total];
+		childX = new int[total];
+		childY = new int[total];
+	}
 
-		public static void addSprite(int id, int spriteId, String spriteName, int dummy) {
+	public static void createSkillHover(int id, int x) {
+		RSInterface hover = addInterface(id);
+		hover.type = 8;
+		hover.message = "TESTING!";
+		hover.contentType = x;
+		hover.width = 60;
+		hover.height = 28;
+	}
+
+	public static void addImage(int id, String s) {
+		RSInterface image = addInterface(id);
+		image.type = 5;
+		image.atActionType = 0;
+		image.contentType = 0;
+		image.width = 100;
+		image.height = 100;
+		image.sprite1 = getSprite(s);
+	}
+
+	public static void addSkillText(int id, boolean max, int skill) {
+		RSInterface text = addInterface(id);
+		text.id = id;
+		text.parentID = id;
+		text.type = 4;
+		text.atActionType = 0;
+		text.width = 15;
+		text.height = 12;
+		text.textDrawingAreas = fonts[0];
+		text.textShadow = true;
+		text.centerText = true;
+		text.textColor = 16776960;
+		if (!max) {
+			text.valueIndexArray = new int[1][];
+			text.valueIndexArray[0] = new int[3];
+			text.valueIndexArray[0][0] = 1;
+			text.valueIndexArray[0][1] = skill;
+			text.valueIndexArray[0][2] = 0;
+		} else {
+			text.valueIndexArray = new int[2][];
+			text.valueIndexArray[0] = new int[3];
+			text.valueIndexArray[0][0] = 1;
+			text.valueIndexArray[0][1] = skill;
+			text.valueIndexArray[0][2] = 0;
+			text.valueIndexArray[1] = new int[1];
+			text.valueIndexArray[1][0] = 0;
+		}
+		text.message = "%1";
+	}
+
+	public static Sprite getSprite(String s) {
+		try {
+			Sprite image = new Sprite(s);
+			if (image != null) {
+				return image;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static void addSkillButton(int id) {
+		RSInterface button = addInterface(id);
+		button.type = 5;
+		button.atActionType = 5;
+		button.contentType = 0;
+		button.width = 60;
+		button.height = 27;
+		button.sprite1 = CustomSpriteLoader(33225, "");
+		button.sprite1 = getSprite("Player/Skill/Button");
+		button.tooltip = "View";
+	}
+
+	public static void Domtowershop2(TextDrawingArea tda[]) {
+		RSInterface rsinterface = addTabInterface(17965);
+		addSprite(39525, 0, "Interfaces/Domtowershop/Main");
+		addHoverButton(39601, "Interfaces/Domtowershop/base", 0, 37, 75,
+				"Buy Extreme attack (4)", -1, 39602, 1);
+		addHoveredButton(39602, "Interfaces/Domtowershop/standhover", 1, 37,
+				75, 39603);
+		addHoverButton(39604, "Interfaces/Domtowershop/boltsack", 0, 37, 75,
+				"Buy Extreme strength (4)", -1, 39605, 1);
+		addHoveredButton(39605, "Interfaces/Domtowershop/boltsack", 1, 37, 75,
+				39606);
+		addHoverButton(39607, "Interfaces/Domtowershop/bow", 0, 37, 75,
+				"Buy Extreme defence (4)", -1, 39608, 1);
+		addHoveredButton(39608, "Interfaces/Domtowershop/bow", 1, 37, 75, 39609);
+		addHoverButton(39610, "Interfaces/Domtowershop/chamber", 0, 37, 75,
+				"Buy Extreme magic (4)", -1, 39611, 1);
+		addHoveredButton(39611, "Interfaces/Domtowershop/chamber", 1, 37, 75,
+				39612);
+		addHoverButton(39613, "Interfaces/Domtowershop/ammo", 0, 37, 75,
+				"Buy Extreme ranging (4)", -1, 39614, 1);
+		addHoveredButton(39614, "Interfaces/Domtowershop/ammo", 1, 37, 75, 38);
+		addHoverButton(39813, "Interfaces/Domtowershop/ammo1", 0, 37, 75,
+				"Buy Super prayer (4)", -1, 39814, 1);
+		addHoveredButton(39814, "Interfaces/Domtowershop/ammo1", 1, 37, 75,
+				39815);
+		addHoverButton(39816, "Interfaces/Domtowershop/ammo2", 0, 37, 75,
+				"Buy Overload (4)", -1, 39817, 1);
+		addHoveredButton(39817, "Interfaces/Domtowershop/ammo2", 1, 37, 75,
+				39818);
+		addHoverButton(39616, "Interfaces/Domtowershop/melee", 0, 73, 75,
+				"Buy Usertitle: Gladiator", -1, 39617, 1);
+		addHoveredButton(39617, "Interfaces/Domtowershop/melee", 1, 73, 75,
+				39618);
+		addHoverButton(39619, "Interfaces/Domtowershop/range", 0, 73, 75,
+				"Buy Usertitle: survivor", -1, 39620, 1);
+		addHoveredButton(39620, "Interfaces/Domtowershop/range", 1, 73, 75,
+				39621);
+		addHoverButton(39622, "Interfaces/Domtowershop/magic", 0, 73, 75,
+				"Buy Usertitle: Dominator", -1, 39623, 1);
+		addHoveredButton(39623, "Interfaces/Domtowershop/mage", 1, 73, 75,
+				39624);
+		addHoverButton(39586, "Interfaces/Domtowershop/decbuttonnormal", 0,
+				144, 30, "Special Clothing", -1, 39587, 1);
+		addHoveredButton(39587, "Interfaces/Domtowershop/decbuttonhover", 1,
+				144, 30, 39588);
+		addHoverButton(39589, "Interfaces/Domtowershop/consumebuttonnormal", 0,
+				144, 30, "Potions & Titles", -1, 39590, 1);
+		addHoveredButton(39590, "Interfaces/Domtowershop/consumebuttonhover",
+				1, 144, 30, 39501);
+		addHoverButton(39592, "Interfaces/Domtowershop/miscbuttonnormal", 0,
+				144, 30, "Weapons & Misc", -1, 39593, 1);
+		addHoveredButton(39593, "Interfaces/Domtowershop/miscbuttonhover", 1,
+				144, 30, 39594);
+		addHoverButton(39595, "Interfaces/Domtowershop/close", 0, 16, 16,
+				"Close", -1, 39596, 1);
+		addHoveredButton(39596, "Interfaces/Domtowershop/close", 1, 16, 16,
+				39597);
+		addText(39598, "Dominion Tower Rewards", tda, 3, 0xff981f, true, true);
+		addText(39599, "Items can be bought with Dominion Tower points only.",
+				tda, 0, 0xffffff, true, true);
+		addText(49599, "Special Clothing", tda, 1, 0, false, false);
+		addText(39803, "Potions & Titles", tda, 1, 0, false, false);
+		addText(39800, "Gladiator", tda, 0, 0xffffff, true, true);
+		addText(39801, "Survivor", tda, 0, 0xffffff, true, true);
+		addText(39802, "Dominator", tda, 0, 0xffffff, true, true);
+		addText(39804, "Weapons & Misc", tda, 1, 0, false, false);
+		rsinterface.totalChildren(37);
+		rsinterface.child(0, 39525, 2, 19);
+		rsinterface.child(1, 39601, 119, 90);
+		rsinterface.child(2, 39602, 119, 90);
+		rsinterface.child(3, 39604, 161, 90);
+		rsinterface.child(4, 39605, 161, 90);
+		rsinterface.child(5, 39607, 203, 90);
+		rsinterface.child(6, 39608, 203, 90);
+		rsinterface.child(7, 39610, 245, 90);
+		rsinterface.child(8, 39611, 245, 90);
+		rsinterface.child(9, 39613, 287, 90);
+		rsinterface.child(10, 39614, 287, 90);
+		rsinterface.child(11, 39616, 119, 190);
+		rsinterface.child(12, 39617, 119, 190);
+		rsinterface.child(13, 39619, 245, 190);
+		rsinterface.child(14, 39620, 245, 190);
+		rsinterface.child(15, 39622, 371, 190);
+		rsinterface.child(16, 39623, 371, 190);
+		rsinterface.child(17, 39586, 28, 44);
+		rsinterface.child(18, 39587, 28, 44);
+		rsinterface.child(19, 39589, 185, 44);
+		rsinterface.child(20, 39590, 185, 44);
+		rsinterface.child(21, 39592, 342, 44);
+		rsinterface.child(22, 39593, 342, 44);
+		rsinterface.child(23, 39595, 480, 22);
+		rsinterface.child(24, 39596, 480, 22);
+		rsinterface.child(25, 39598, 253, 22);
+		rsinterface.child(26, 39599, 257, 294);
+		rsinterface.child(27, 49599, 55, 51);
+		rsinterface.child(28, 39800, 156, 220);
+		rsinterface.child(29, 39801, 282, 220);
+		rsinterface.child(30, 39802, 408, 220);
+		rsinterface.child(31, 39803, 212, 51);
+		rsinterface.child(36, 39804, 369, 51);
+		rsinterface.child(32, 39813, 329, 90);
+		rsinterface.child(33, 39814, 329, 90);
+		rsinterface.child(34, 39816, 371, 90);
+		rsinterface.child(35, 39817, 371, 90);
+	}
+
+	public static void Domtowershop3(TextDrawingArea tda[]) {
+		RSInterface rsinterface = addTabInterface(17957);
+		addSprite(39525, 0, "Interfaces/Domtowershop/Main");
+		addHoverButton(39700, "Interfaces/Domtowershop/saracape", 0, 37, 75,
+				"Buy Gravite rapier", -1, 39701, 1);
+		addHoveredButton(39701, "Interfaces/Domtowershop/saracape", 1, 37, 75,
+				39702);
+		addHoverButton(39703, "Interfaces/Domtowershop/zamcape", 0, 37, 75,
+				"Buy Gravite longsword", -1, 39704, 1);
+		addHoveredButton(39704, "Interfaces/Domtowershop/zamcape", 1, 37, 75,
+				39705);
+		addHoverButton(39706, "Interfaces/Domtowershop/sarahood", 0, 37, 75,
+				"Buy Gravite 2h sword", -1, 39707, 1);
+		addHoveredButton(39707, "Interfaces/Domtowershop/sarahood", 1, 37, 75,
+				39708);
+		addHoverButton(39709, "Interfaces/Domtowershop/zamhood", 0, 37, 75,
+				"Buy Gravite staff", -1, 39710, 1);
+		addHoveredButton(39710, "Interfaces/Domtowershop/zamhood", 1, 37, 75,
+				39711);
+		addHoverButton(39712, "Interfaces/Domtowershop/flag", 0, 37, 75,
+				"Buy Arcane pulse necklace", -1, 39713, 1);
+		addHoveredButton(39713, "Interfaces/Domtowershop/flag", 1, 37, 75,
+				39714);
+		addHoverButton(39715, "Interfaces/Domtowershop/kill", 0, 37, 75,
+				"Buy Arcane blast necklace", -1, 39716, 1);
+		addHoveredButton(39716, "Interfaces/Domtowershop/kill", 1, 37, 75,
+				39717);
+		addHoverButton(39718, "Interfaces/Domtowershop/hob", 0, 37, 75,
+				"Buy Arcane stream necklace", -1, 39719, 1);
+		addHoveredButton(39719, "Interfaces/Domtowershop/hob", 1, 37, 75, 39720);
+		addHoverButton(39721, "Interfaces/Domtowershop/nerd", 0, 37, 75,
+				"Buy Twisted bird skull necklace", -1, 39722, 1);
+		addHoveredButton(39722, "Interfaces/Domtowershop/nerd", 1, 37, 75,
+				39723);
+		addHoverButton(39724, "Interfaces/Domtowershop/nerdest", 0, 37, 75,
+				"Buy Split dragontooth necklace", -1, 39725, 1);
+		addHoveredButton(39725, "Interfaces/Domtowershop/nerdest", 1, 37, 75,
+				39726);
+		addHoverButton(39727, "Interfaces/Domtowershop/guth", 0, 37, 75,
+				"Buy Demon horn necklace", -1, 39728, 1);
+		addHoveredButton(39728, "Interfaces/Domtowershop/guth", 1, 37, 75,
+				39729);
+		addHoverButton(39730, "Interfaces/Domtowershop/sara", 0, 37, 75,
+				"Buy Amulet of zealots", -1, 39731, 1);
+		addHoveredButton(39731, "Interfaces/Domtowershop/sara", 1, 37, 75,
+				39732);
+		addHoverButton(39733, "Interfaces/Domtowershop/zammy", 0, 37, 75,
+				"Buy Nature staff", -1, 39734, 1);
+		addHoveredButton(39734, "Interfaces/Domtowershop/zammy", 1, 37, 75,
+				39735);
+		addHoverButton(39736, "Interfaces/Domtowershop/faith", 0, 37, 75,
+				"Buy Blue cape", -1, 39737, 1);
+		addHoveredButton(39737, "Interfaces/Domtowershop/faith", 1, 37, 75,
+				39738);
+		addHoverButton(39739, "Interfaces/Domtowershop/free", 0, 37, 75,
+				"Buy Red cape", -1, 39740, 1);
+		addHoveredButton(39740, "Interfaces/Domtowershop/free", 1, 37, 75,
+				39741);
+		addHoverButton(39586, "Interfaces/Domtowershop/decbuttonnormal", 0,
+				144, 30, "Special Clothing", -1, 39587, 1);
+		addHoveredButton(39587, "Interfaces/Domtowershop/decbuttonhover", 1,
+				144, 30, 39588);
+		addHoverButton(39589, "Interfaces/Domtowershop/consumebuttonnormal", 0,
+				144, 30, "Potions & Titles", -1, 39590, 1);
+		addHoveredButton(39590, "Interfaces/Domtowershop/consumebuttonhover",
+				1, 144, 30, 39501);
+		addHoverButton(39592, "Interfaces/Domtowershop/miscbuttonnormal", 0,
+				144, 30, "Weapons & Misc", -1, 39593, 1);
+		addHoveredButton(39593, "Interfaces/Domtowershop/miscbuttonhover", 1,
+				144, 30, 39594);
+		addHoverButton(39595, "Interfaces/Domtowershop/close", 0, 16, 16,
+				"Close", -1, 39596, 1);
+		addHoveredButton(39596, "Interfaces/Domtowershop/close", 1, 16, 16,
+				39597);
+		addText(39598, "Dominion Tower Rewards", tda, 3, 0xff981f, true, true);
+		addText(39599, "Items can be bought with Dominion Tower points only.",
+				tda, 0, 0xffffff, true, true);
+		addText(49599, "Special Clothing", tda, 1, 0, false, false);
+		addText(39803, "Potions & Titles", tda, 1, 0, false, false);
+		addText(39804, "Weapons & Misc", tda, 1, 0, false, false);
+		rsinterface.totalChildren(42);
+		rsinterface.child(0, 39525, 2, 19);
+		rsinterface.child(1, 39700, 117, 90);
+		rsinterface.child(2, 39701, 117, 90);
+		rsinterface.child(3, 39703, 159, 90);
+		rsinterface.child(4, 39704, 159, 90);
+		rsinterface.child(5, 39706, 201, 90);
+		rsinterface.child(6, 39707, 201, 90);
+		rsinterface.child(7, 39709, 243, 90);
+		rsinterface.child(8, 39710, 243, 90);
+		rsinterface.child(9, 39712, 285, 90);
+		rsinterface.child(10, 39713, 285, 90);
+		rsinterface.child(11, 39715, 327, 90);
+		rsinterface.child(12, 39716, 327, 90);
+		rsinterface.child(13, 39718, 369, 90);
+		rsinterface.child(14, 39719, 369, 90);
+		rsinterface.child(15, 39721, 411, 90);
+		rsinterface.child(16, 39722, 411, 90);
+		rsinterface.child(17, 39724, 453, 90);
+		rsinterface.child(18, 39725, 453, 90);
+		rsinterface.child(19, 39727, 117, 190);
+		rsinterface.child(20, 39728, 117, 190);
+		rsinterface.child(21, 39730, 201, 190);
+		rsinterface.child(22, 39731, 201, 190);
+		rsinterface.child(23, 39733, 285, 190);
+		rsinterface.child(24, 39734, 285, 190);
+		rsinterface.child(25, 39736, 369, 190);
+		rsinterface.child(26, 39737, 369, 190);
+		rsinterface.child(27, 39739, 453, 190);
+		rsinterface.child(28, 39740, 453, 190);
+		rsinterface.child(29, 39586, 28, 44);
+		rsinterface.child(30, 39587, 28, 44);
+		rsinterface.child(31, 39589, 185, 44);
+		rsinterface.child(32, 39590, 185, 44);
+		rsinterface.child(33, 39592, 342, 44);
+		rsinterface.child(34, 39593, 342, 44);
+		rsinterface.child(35, 39595, 480, 22);
+		rsinterface.child(36, 39596, 480, 22);
+		rsinterface.child(37, 39598, 253, 22);
+		rsinterface.child(38, 39599, 257, 294);
+		rsinterface.child(39, 49599, 55, 51);
+		rsinterface.child(40, 39803, 212, 51);
+		rsinterface.child(41, 39804, 369, 51);
+	}
+
+	public static void DominionTower1(TextDrawingArea tda[]) {
+		RSInterface rsinterface = addTabInterface(46200);
+		addSprite(46201, 0, "Interfaces/Dominiontower1/SUM");
+		addHoverButton(46202, "Interfaces/Dominiontower1/BOSS", 1, 100, 100,
+				"Fight The Inadequacy!", -1, 46203, 1);
+		addHoveredButton(46203, "Interfaces/Dominiontower1/BOSS", 9, 100, 100,
+				46204);
+		addHoverButton(46205, "Interfaces/Dominiontower1/BOSS", 2, 100, 100,
+				"Fight Giant Roc!", -1, 46206, 1);
+		addHoveredButton(46206, "Interfaces/Dominiontower1/BOSS", 10, 100, 100,
+				46207);
+		addHoverButton(46208, "Interfaces/Dominiontower1/BOSS", 3, 100, 100,
+				"Fight The Untouchable!", -1, 46209, 1);
+		addHoveredButton(46209, "Interfaces/Dominiontower1/BOSS", 11, 100, 100,
+				46210);
+		addHoverButton(46211, "Interfaces/Dominiontower1/BOSS", 4, 100, 100,
+				"Fight The Everlasting!", -1, 46212, 1);
+		addHoveredButton(46212, "Interfaces/Dominiontower1/BOSS", 12, 100, 100,
+				46213);
+		addHoverButton(46214, "Interfaces/Dominiontower1/BOSS", 5, 100, 100,
+				"Fight Evil Chicken!", -1, 46215, 1);
+		addHoveredButton(46215, "Interfaces/Dominiontower1/BOSS", 13, 100, 100,
+				46216);
+		addHoverButton(46217, "Interfaces/Dominiontower1/BOSS", 6, 100, 100,
+				"Fight Giant scarab!", -1, 46218, 1);
+		addHoveredButton(46218, "Interfaces/Dominiontower1/BOSS", 14, 100, 100,
+				46219);
+		addHoverButton(46220, "Interfaces/Dominiontower1/BOSS", 7, 100, 100,
+				"Fight Bouncer!", -1, 46221, 1);
+		addHoveredButton(46221, "Interfaces/Dominiontower1/BOSS", 15, 100, 100,
+				46222);
+		addHoverButton(46223, "Interfaces/Dominiontower1/BOSS", 8, 100, 100,
+				"Fight Black Knight Titan!", -1, 46224, 1);
+		addHoveredButton(46224, "Interfaces/Dominiontower1/BOSS", 16, 100, 100,
+				46225);
+		addHoverButton(45026, "Interfaces/Dominterface/BUTTON", 3, 100, 34,
+				"Not now", -1, 45027, 1);
+		addHoveredButton(45027, "Interfaces/Dominterface/BUTTON", 4, 100, 34,
+				44028);
+		addHoverButton(45029, "Interfaces/Dominterface/BUTTON", 3, 100, 34,
+				"Help", -1, 45030, 1);
+		addHoveredButton(45030, "Interfaces/Dominterface/BUTTON", 4, 100, 34,
+				45031);
+		addText(46232, "Dominion Tower Med Class", tda, 1, 0xf5c036, true, true);
+		addText(46233, "Not now", tda, 1, 0xf5c036, true, true);
+		addText(46234, "Help", tda, 1, 0xf5c036, true, true);
+		rsinterface.totalChildren(24);
+		rsinterface.child(0, 46201, 0, 0);
+		rsinterface.child(1, 46202, 11, 41);
+		rsinterface.child(2, 46203, 11, 41);
+		rsinterface.child(3, 46205, 133, 41);
+		rsinterface.child(4, 46206, 133, 41);
+		rsinterface.child(5, 46208, 277, 41);
+		rsinterface.child(6, 46209, 277, 41);
+		rsinterface.child(7, 46211, 400, 41);
+		rsinterface.child(8, 46212, 400, 41);
+		rsinterface.child(9, 46214, 11, 155);
+		rsinterface.child(10, 46215, 11, 155);
+		rsinterface.child(11, 46217, 133, 155);
+		rsinterface.child(12, 46218, 133, 155);
+		rsinterface.child(13, 46220, 277, 155);
+		rsinterface.child(14, 46221, 277, 155);
+		rsinterface.child(15, 46223, 400, 155);
+		rsinterface.child(16, 46224, 400, 155);
+		rsinterface.child(17, 45026, 8, 280);
+		rsinterface.child(18, 45027, 8, 280);
+		rsinterface.child(19, 45029, 405, 280);
+		rsinterface.child(20, 45030, 405, 280);
+		rsinterface.child(21, 46232, 255, 11);
+		rsinterface.child(22, 46233, 57, 288);
+		rsinterface.child(23, 46234, 454, 288);
+	}
+
+	public static void DominionTower2(TextDrawingArea tda[]) {
+		RSInterface rsinterface = addTabInterface(48300);
+		addSprite(48301, 0, "Interfaces/Dominiontower2/SUM");
+		addHoverButton(48302, "Interfaces/Dominiontower2/BOSS", 1, 100, 100,
+				"Fight Dad!", -1, 48303, 1);
+		addHoveredButton(48303, "Interfaces/Dominiontower2/BOSS", 9, 100, 100,
+				48304);
+		addHoverButton(48305, "Interfaces/Dominiontower2/BOSS", 2, 100, 100,
+				"Fight Tree spirit!", -1, 48306, 1);
+		addHoveredButton(48306, "Interfaces/Dominiontower2/BOSS", 10, 100, 100,
+				48307);
+		addHoverButton(48308, "Interfaces/Dominiontower2/BOSS", 3, 100, 100,
+				"Fight Ket-Zek!", -1, 48309, 1);
+		addHoveredButton(48309, "Interfaces/Dominiontower2/BOSS", 11, 100, 100,
+				48310);
+		addHoverButton(48311, "Interfaces/Dominiontower2/BOSS", 4, 100, 100,
+				"Fight Treus Dayth!", -1, 48312, 1);
+		addHoveredButton(48312, "Interfaces/Dominiontower2/BOSS", 12, 100, 100,
+				48313);
+		addHoverButton(48314, "Interfaces/Dominiontower2/BOSS", 5, 100, 100,
+				"Fight Tumeken's shadow!", -1, 48315, 1);
+		addHoveredButton(48315, "Interfaces/Dominiontower2/BOSS", 13, 100, 100,
+				48316);
+		addHoverButton(48317, "Interfaces/Dominiontower2/BOSS", 6, 100, 100,
+				"Fight The Kendal!", -1, 48318, 1);
+		addHoveredButton(48318, "Interfaces/Dominiontower2/BOSS", 14, 100, 100,
+				48319);
+		addHoverButton(48320, "Interfaces/Dominiontower2/BOSS", 7, 100, 100,
+				"Fight Sigmund!", -1, 48321, 1);
+		addHoveredButton(48321, "Interfaces/Dominiontower2/BOSS", 15, 100, 100,
+				48322);
+		addHoverButton(48323, "Interfaces/Dominiontower2/BOSS", 8, 100, 100,
+				"Fight Melzar the Mad!", -1, 48324, 1);
+		addHoveredButton(48324, "Interfaces/Dominiontower2/BOSS", 16, 100, 100,
+				48325);
+		addHoverButton(45026, "Interfaces/Dominterface/BUTTON", 3, 100, 34,
+				"Not now", -1, 45027, 1);
+		addHoveredButton(45027, "Interfaces/Dominterface/BUTTON", 4, 100, 34,
+				44028);
+		addHoverButton(45029, "Interfaces/Dominterface/BUTTON", 3, 100, 34,
+				"Help", -1, 45030, 1);
+		addHoveredButton(45030, "Interfaces/Dominterface/BUTTON", 4, 100, 34,
+				45031);
+		addText(48332, "Dominion Tower Easy Class", tda, 1, 0xf5c036, true,
+				true);
+		addText(48333, "Not now", tda, 1, 0xf5c036, true, true);
+		addText(48334, "Help", tda, 1, 0xf5c036, true, true);
+		rsinterface.totalChildren(24);
+		rsinterface.child(0, 48301, 0, 0);
+		rsinterface.child(1, 48302, 11, 41);
+		rsinterface.child(2, 48303, 11, 41);
+		rsinterface.child(3, 48305, 133, 41);
+		rsinterface.child(4, 48306, 133, 41);
+		rsinterface.child(5, 48308, 277, 41);
+		rsinterface.child(6, 48309, 277, 41);
+		rsinterface.child(7, 48311, 400, 41);
+		rsinterface.child(8, 48312, 400, 41);
+		rsinterface.child(9, 48314, 11, 155);
+		rsinterface.child(10, 48315, 11, 155);
+		rsinterface.child(11, 48317, 133, 155);
+		rsinterface.child(12, 48318, 133, 155);
+		rsinterface.child(13, 48320, 277, 155);
+		rsinterface.child(14, 48321, 277, 155);
+		rsinterface.child(15, 48323, 400, 155);
+		rsinterface.child(16, 48324, 400, 155);
+		rsinterface.child(17, 45026, 8, 280);
+		rsinterface.child(18, 45027, 8, 280);
+		rsinterface.child(19, 45029, 405, 280);
+		rsinterface.child(20, 45030, 405, 280);
+		rsinterface.child(21, 48332, 255, 11);
+		rsinterface.child(22, 48333, 57, 288);
+		rsinterface.child(23, 48334, 454, 288);
+	}
+
+	public static void Domtowerwin1(TextDrawingArea tda[]) {
+		RSInterface rsinterface = addTabInterface(46500);
+		addSprite(46501, 0, "Interfaces/Dominterface/WIN");
+		addText(46502, "Current Dominion Tower Points: ", tda, 0, 0xacacac,
+				true, true);
+		addText(46503, "133713371337", tda, 0, 0x599eff, true, true);
+		addHoverButton(46504, "Interfaces/Dominterface/BUTTON", 3, 100, 34,
+				"Not now", -1, 46505, 1);
+		addHoveredButton(46505, "Interfaces/Dominterface/BUTTON", 4, 100, 34,
+				46506);
+		addHoverButton(46507, "Interfaces/Dominterface/BUTTON", 3, 100, 34,
+				"Carry on", -1, 46508, 1);
+		addHoveredButton(46508, "Interfaces/Dominterface/BUTTON", 4, 100, 34,
+				46509);
+		addText(46510, "You've Defeated A Boss!", tda, 1, 0xf5c036, true, true);
+		addText(46511, "Not now", tda, 1, 0xf5c036, true, true);
+		addText(46512, "Carry on", tda, 1, 0xf5c036, true, true);
+		rsinterface.totalChildren(10);
+		rsinterface.child(0, 46501, 0, 0);
+		rsinterface.child(1, 46502, 220, 225);
+		rsinterface.child(2, 46503, 333, 225);
+		rsinterface.child(3, 46504, 8, 280);
+		rsinterface.child(4, 46505, 8, 280);
+		rsinterface.child(5, 46507, 405, 280);
+		rsinterface.child(6, 46508, 405, 280);
+		rsinterface.child(7, 46510, 255, 11);
+		rsinterface.child(8, 46511, 57, 288);
+		rsinterface.child(9, 46512, 454, 288);
+	}
+
+	public static void Dominterface(TextDrawingArea tda[]) {
+		RSInterface rsinterface = addTabInterface(46100);
+		addSprite(46101, 1, "Interfaces/Dominterface/BACKGROUND");
+		addHoverButton(46102, "Interfaces/Dominterface/EXIT", 1, 17, 17,
+				"Close Window", -1, 46103, 1);
+		addHoveredButton(46103, "Interfaces/Dominterface/EXIT", 2, 17, 17,
+				46104);
+		addHoverButton(46105, "Interfaces/Dominterface/BUTTON", 1, 129, 21,
+				"Harder Classes", -1, 46106, 1);
+		addHoveredButton(46106, "Interfaces/Dominterface/BUTTON", 2, 129, 21,
+				46107);
+		addText(46108, "Harder Classes", tda, 0, 0xff9b00, true, true);
+		addHoverButton(46109, "Interfaces/Dominterface/BUTTON", 1, 129, 21,
+				"Medium Classes", -1, 46110, 1);
+		addHoveredButton(46110, "Interfaces/Dominterface/BUTTON", 2, 129, 21,
+				46111);
+		addText(46112, "Medium Classes", tda, 0, 0xff9b00, true, true);
+		addHoverButton(46113, "Interfaces/Dominterface/BUTTON", 1, 129, 21,
+				"Easy Classes", -1, 46114, 1);
+		addHoveredButton(46114, "Interfaces/Dominterface/BUTTON", 2, 129, 21,
+				46115);
+		addText(46116, "Easy Classes", tda, 0, 0xff9b00, true, true);
+		addHoverButton(46117, "Interfaces/Dominterface/BUTTON", 1, 129, 21,
+				"Rewards", -1, 46118, 1);
+		addHoveredButton(46118, "Interfaces/Dominterface/BUTTON", 2, 129, 21,
+				46119);
+		addText(46120, "Rewards", tda, 0, 0xff9b00, true, true);
+		rsinterface.totalChildren(15);
+		rsinterface.child(0, 46101, 152, 32);
+		rsinterface.child(1, 46102, 334, 42);
+		rsinterface.child(2, 46103, 334, 42);
+		rsinterface.child(3, 46105, 191, 88);
+		rsinterface.child(4, 46106, 191, 88);
+		rsinterface.child(5, 46108, 257, 95);
+		rsinterface.child(6, 46109, 191, 128);
+		rsinterface.child(7, 46110, 191, 128);
+		rsinterface.child(8, 46112, 257, 135);
+		rsinterface.child(9, 46113, 191, 168);
+		rsinterface.child(10, 46114, 191, 168);
+		rsinterface.child(11, 46116, 257, 175);
+		rsinterface.child(12, 46117, 191, 208);
+		rsinterface.child(13, 46118, 191, 208);
+		rsinterface.child(14, 46120, 257, 215);
+	}
+
+	public static void DominionTower(TextDrawingArea tda[]) {
+		RSInterface rsinterface = addTabInterface(45000);
+		addSprite(45001, 0, "Interfaces/Dominiontower/SUM");
+		addHoverButton(45002, "Interfaces/Dominiontower/BOSS", 1, 100, 100,
+				"Fight Decaying avatar!", -1, 45003, 1);
+		addHoveredButton(45003, "Interfaces/Dominiontower/BOSS", 9, 100, 100,
+				45004);
+		addHoverButton(45005, "Interfaces/Dominiontower/BOSS", 2, 100, 100,
+				"Fight Dagannoth Mother!", -1, 45006, 1);
+		addHoveredButton(45006, "Interfaces/Dominiontower/BOSS", 10, 100, 100,
+				45007);
+		addHoverButton(45008, "Interfaces/Dominiontower/BOSS", 3, 100, 100,
+				"Fight Nezikchened!", -1, 45009, 1);
+		addHoveredButton(45009, "Interfaces/Dominiontower/BOSS", 11, 100, 100,
+				45010);
+		addHoverButton(45011, "Interfaces/Dominiontower/BOSS", 4, 100, 100,
+				"Fight Jungle demon!", -1, 45012, 1);
+		addHoveredButton(45012, "Interfaces/Dominiontower/BOSS", 12, 100, 100,
+				45013);
+		addHoverButton(45014, "Interfaces/Dominiontower/BOSS", 5, 100, 100,
+				"Fight Arrav!", -1, 45015, 1);
+		addHoveredButton(45015, "Interfaces/Dominiontower/BOSS", 13, 100, 100,
+				45016);
+		addHoverButton(45017, "Interfaces/Dominiontower/BOSS", 6, 100, 100,
+				"Fight Barrelchest!", -1, 45018, 1);
+		addHoveredButton(45018, "Interfaces/Dominiontower/BOSS", 14, 100, 100,
+				45019);
+		addHoverButton(45020, "Interfaces/Dominiontower/BOSS", 7, 100, 100,
+				"Fight Chronozon!", -1, 45021, 1);
+		addHoveredButton(45021, "Interfaces/Dominiontower/BOSS", 15, 100, 100,
+				45022);
+		addHoverButton(45023, "Interfaces/Dominiontower/BOSS", 8, 100, 100,
+				"Fight Balance Elemental!", -1, 45024, 1);
+		addHoveredButton(45024, "Interfaces/Dominiontower/BOSS", 16, 100, 100,
+				45025);
+		addHoverButton(45026, "Interfaces/Dominterface/BUTTON", 3, 100, 34,
+				"Not now", -1, 45027, 1);
+		addHoveredButton(45027, "Interfaces/Dominterface/BUTTON", 4, 100, 34,
+				44028);
+		addHoverButton(45029, "Interfaces/Dominterface/BUTTON", 3, 100, 34,
+				"Help", -1, 45030, 1);
+		addHoveredButton(45030, "Interfaces/Dominterface/BUTTON", 4, 100, 34,
+				45031);
+		addText(45032, "Dominion Tower Hard Class", tda, 1, 0xf5c036, true,
+				true);
+		addText(45033, "Not now", tda, 1, 0xf5c036, true, true);
+		addText(45034, "Help", tda, 1, 0xf5c036, true, true);
+		rsinterface.totalChildren(24);
+		rsinterface.child(0, 45001, 0, 0);
+		rsinterface.child(1, 45002, 11, 41);
+		rsinterface.child(2, 45003, 11, 41);
+		rsinterface.child(3, 45005, 133, 41);
+		rsinterface.child(4, 45006, 133, 41);
+		rsinterface.child(5, 45008, 277, 41);
+		rsinterface.child(6, 45009, 277, 41);
+		rsinterface.child(7, 45011, 400, 41);
+		rsinterface.child(8, 45012, 400, 41);
+		rsinterface.child(9, 45014, 11, 155);
+		rsinterface.child(10, 45015, 11, 155);
+		rsinterface.child(11, 45017, 133, 155);
+		rsinterface.child(12, 45018, 133, 155);
+		rsinterface.child(13, 45020, 277, 155);
+		rsinterface.child(14, 45021, 277, 155);
+		rsinterface.child(15, 45023, 400, 155);
+		rsinterface.child(16, 45024, 400, 155);
+		rsinterface.child(17, 45026, 8, 280);
+		rsinterface.child(18, 45027, 8, 280);
+		rsinterface.child(19, 45029, 405, 280);
+		rsinterface.child(20, 45030, 405, 280);
+		rsinterface.child(21, 45032, 255, 11);
+		rsinterface.child(22, 45033, 57, 288);
+		rsinterface.child(23, 45034, 454, 288);
+	}
+
+	public static void addSprite(int id, int spriteId, String spriteName,
+			int dummy) {
 		RSInterface tab = interfaceCache[id] = new RSInterface();
 		tab.id = id;
 		tab.parentID = id;
 		tab.type = 11;
 		tab.atActionType = 0;
 		tab.contentType = 0;
-		tab.opacity = (byte)0;
+		tab.opacity = (byte) 0;
 		tab.type = 52;
 		tab.sprite1 = imageLoader(spriteId, spriteName);
-		tab.sprite2 = imageLoader(spriteId, spriteName); 
+		tab.sprite2 = imageLoader(spriteId, spriteName);
 		tab.width = 512;
 		tab.height = 334;
-	}	
-public static void addToggleButton(int id, int bID, int bID2, String bName, String tT, int configID, int aT, int configFrame, int dummy) {
+	}
+
+	public static void addToggleButton(int id, int bID, int bID2, String bName,
+			String tT, int configID, int aT, int configFrame, int dummy) {
 		RSInterface tab = addTabInterface(id);
 		tab.parentID = id;
 		tab.id = id;
@@ -2020,9 +2109,10 @@ public static void addToggleButton(int id, int bID, int bID2, String bName, Stri
 		tab.width = tab.sprite1.myWidth;
 		tab.height = tab.sprite1.myHeight;
 		tab.tooltip = tT;
-	}	
-	
-public static void addToggleButton(int id, int bID, int bID2, String bName, String tT, int configID, int aT, int configFrame) {
+	}
+
+	public static void addToggleButton(int id, int bID, int bID2, String bName,
+			String tT, int configID, int aT, int configFrame) {
 		RSInterface tab = addTabInterface(id);
 		tab.parentID = id;
 		tab.id = id;
@@ -2045,7 +2135,9 @@ public static void addToggleButton(int id, int bID, int bID2, String bName, Stri
 		tab.height = tab.sprite1.myHeight;
 		tab.tooltip = tT;
 	}
-public static void AddInterfaceButton(int i, int j, int hoverId, String name, int W, int H, String S, int AT) {
+
+	public static void AddInterfaceButton(int i, int j, int hoverId,
+			String name, int W, int H, String S, int AT) {
 		RSInterface RSInterface = addInterface(i);
 		RSInterface.id = i;
 		RSInterface.parentID = i;
@@ -2053,166 +2145,185 @@ public static void AddInterfaceButton(int i, int j, int hoverId, String name, in
 		RSInterface.atActionType = AT;
 		RSInterface.opacity = 0;
 		RSInterface.type = hoverId;
-		RSInterface.sprite1 = imageLoader(j,name);
-		RSInterface.sprite2 = imageLoader(j,name);
+		RSInterface.sprite1 = imageLoader(j, name);
+		RSInterface.sprite2 = imageLoader(j, name);
 		RSInterface.width = W;
 		RSInterface.height = H;
 		RSInterface.tooltip = S;
-	}	
-	
-	public static void minigameTeleportInterface(TextDrawingArea[] paramArrayOfTextDrawingArea) {
-    RSInterface localRSInterface = addTabInterface(42000);
-    setChildren(14, localRSInterface);
-    addSprite(42001, 0, "Interfaces/minigametele/SPRITE");
-    addHover(42002, 3, 0, 33003, 0, "Interfaces/minigametele/EXIT", 21, 21, "Exit");
-    addHovered(42003, 1, "Interfaces/minigametele/EXIT", 21, 21, 42004);
-    addButton(42005, 0, "", "Teleport to Duel Arena", 42005, 1, 100, 33);
+	}
 
-    addButton(42006, 0, "", "Teleport to Barrows", 42006, 1, 100, 33);
+	public static void minigameTeleportInterface(
+			TextDrawingArea[] paramArrayOfTextDrawingArea) {
+		RSInterface localRSInterface = addTabInterface(42000);
+		setChildren(14, localRSInterface);
+		addSprite(42001, 0, "Interfaces/minigametele/SPRITE");
+		addHover(42002, 3, 0, 33003, 0, "Interfaces/minigametele/EXIT", 21, 21,
+				"Exit");
+		addHovered(42003, 1, "Interfaces/minigametele/EXIT", 21, 21, 42004);
+		addButton(42005, 0, "", "Teleport to Duel Arena", 42005, 1, 100, 33);
 
-    addButton(42007, 0, "", "Teleport to Warriors Guild", 42007, 1, 130, 33);
-    addButton(42008, 0, "", "Teleport to Pest Control", 42008, 1, 100, 33);
-    addButton(42009, 0, "", "Teleport to Fight Caves", 42009, 1, 100, 33);
+		addButton(42006, 0, "", "Teleport to Barrows", 42006, 1, 100, 33);
 
-    addButton(42010, 0, "", "Teleport to Fist of Guthix", 42010, 1, 100, 33);
-    addButton(42011, 0, "", "Teleport to Castle Wars", 42011, 1, 100, 33);
-    addButton(42012, 0, "", "Teleport to Barbarian Assault", 42012, 1, 100, 33);
-    addButton(42013, 0, "", "Teleport to Dominion Tower", 42013, 1, 100, 33);
-    addButton(42014, 0, "", "Teleport to Recipe for Disaster", 42014, 1, 100, 33);
-    addButton(42015, 0, "", "Teleport to Nomad - MiniQuest", 42015, 1, 100, 33);
+		addButton(42007, 0, "", "Teleport to Warriors Guild", 42007, 1, 130, 33);
+		addButton(42008, 0, "", "Teleport to Pest Control", 42008, 1, 100, 33);
+		addButton(42009, 0, "", "Teleport to Fight Caves", 42009, 1, 100, 33);
 
-    setBounds(42001, 4, 6, 0, localRSInterface);
-    setBounds(42002, 477, 6, 1, localRSInterface);
-    setBounds(42003, 477, 6, 2, localRSInterface);
-    setBounds(42005, 50, 72, 3, localRSInterface);
-    setBounds(42006, 50, 111, 4, localRSInterface);
-    setBounds(42007, 50, 145, 5, localRSInterface);
-    setBounds(42008, 50, 190, 6, localRSInterface);
-    setBounds(42009, 50, 225, 7, localRSInterface);
-    setBounds(42010, 229, 72, 8, localRSInterface);
-    setBounds(42011, 229, 111, 9, localRSInterface);
-    setBounds(42012, 229, 145, 10, localRSInterface);
-    setBounds(42013, 229, 190, 11, localRSInterface);
-    setBounds(42014, 229, 225, 12, localRSInterface);
-    setBounds(42015, 368, 72, 13, localRSInterface);
-  }
+		addButton(42010, 0, "", "Teleport to Fist of Guthix", 42010, 1, 100, 33);
+		addButton(42011, 0, "", "Teleport to Castle Wars", 42011, 1, 100, 33);
+		addButton(42012, 0, "", "Teleport to Barbarian Assault", 42012, 1, 100,
+				33);
+		addButton(42013, 0, "", "Teleport to Dominion Tower", 42013, 1, 100, 33);
+		addButton(42014, 0, "", "Teleport to Recipe for Disaster", 42014, 1,
+				100, 33);
+		addButton(42015, 0, "", "Teleport to Nomad - MiniQuest", 42015, 1, 100,
+				33);
 
-  public static void SkillTeleportInterface(TextDrawingArea[] paramArrayOfTextDrawingArea)
-  {
-    RSInterface localRSInterface = addTabInterface(33000);
-    setChildren(40, localRSInterface);
+		setBounds(42001, 4, 6, 0, localRSInterface);
+		setBounds(42002, 477, 6, 1, localRSInterface);
+		setBounds(42003, 477, 6, 2, localRSInterface);
+		setBounds(42005, 50, 72, 3, localRSInterface);
+		setBounds(42006, 50, 111, 4, localRSInterface);
+		setBounds(42007, 50, 145, 5, localRSInterface);
+		setBounds(42008, 50, 190, 6, localRSInterface);
+		setBounds(42009, 50, 225, 7, localRSInterface);
+		setBounds(42010, 229, 72, 8, localRSInterface);
+		setBounds(42011, 229, 111, 9, localRSInterface);
+		setBounds(42012, 229, 145, 10, localRSInterface);
+		setBounds(42013, 229, 190, 11, localRSInterface);
+		setBounds(42014, 229, 225, 12, localRSInterface);
+		setBounds(42015, 368, 72, 13, localRSInterface);
+	}
 
-    addSprite(33001, 0, "Interfaces/GabbesSkillTeleport/SPRITE");
-    addHover(33002, 3, 0, 33003, 0, "Interfaces/GabbesSkillTeleport/EXIT", 21, 21, "Exit");
-    addHovered(33003, 1, "Interfaces/GabbesSkillTeleport/EXIT", 21, 21, 33004);
-    addButton(33005, 0, "FISHING", "Teleport to Fishing", 33005, 1, 110, 33);
-    addText(33006, "", 14929103, true, true, 115, 2);
-    addButton(33007, 0, "COOKING", "Teleport to Cooking", 33007, 1, 110, 33);
-    addText(33008, "", 14929103, true, true, 115, 2);
-    addButton(33009, 0, "MINING", "Teleport to Mining", 33009, 1, 110, 33);
-    addText(33010, "", 14929103, true, true, 115, 2);
-    addButton(33011, 0, "SMITHING", "Teleport to Smithing", 33011, 1, 112, 33);
-    addText(33012, "", 14929103, true, true, 115, 2);
-    addButton(33013, 0, "WOODCUTTING", "Teleport to Woodcutting", 33013, 1, 130, 33);
-    addText(33014, "", 14929103, true, true, 115, 2);
-    addButton(33015, 0, "FIREMAKING", "Teleport to Firemaking", 33015, 1, 120, 33);
-    addText(33016, "", 14929103, true, true, 115, 2);
-    addButton(33017, 0, "FARMING", "Teleport to Farming", 33017, 1, 110, 33);
-    addText(33018, "", 14929103, true, true, 115, 2);
-    addButton(33019, 0, "HERBLORE", "Teleport to Herblore", 33019, 1, 110, 33);
-    addText(33020, "", 14929103, true, true, 115, 2);
-    addButton(33021, 0, "AGILITY", "Teleport to Agility", 33021, 1, 110, 33);
-    addText(33022, "", 14929103, true, true, 115, 2);
-    addButton(33023, 0, "HUNTER", "Teleport to Hunter", 33023, 1, 110, 33);
-    addText(33024, "", 14929103, true, true, 115, 2);
+	public static void SkillTeleportInterface(
+			TextDrawingArea[] paramArrayOfTextDrawingArea) {
+		RSInterface localRSInterface = addTabInterface(33000);
+		setChildren(40, localRSInterface);
 
-    addButton(33025, 0, "CONSTRUCTION", "Teleport to Construction", 33025, 1, 120, 33);
-    addText(33026, "", 14929103, true, true, 115, 2);
+		addSprite(33001, 0, "Interfaces/GabbesSkillTeleport/SPRITE");
+		addHover(33002, 3, 0, 33003, 0, "Interfaces/GabbesSkillTeleport/EXIT",
+				21, 21, "Exit");
+		addHovered(33003, 1, "Interfaces/GabbesSkillTeleport/EXIT", 21, 21,
+				33004);
+		addButton(33005, 0, "FISHING", "Teleport to Fishing", 33005, 1, 110, 33);
+		addText(33006, "", 14929103, true, true, 115, 2);
+		addButton(33007, 0, "COOKING", "Teleport to Cooking", 33007, 1, 110, 33);
+		addText(33008, "", 14929103, true, true, 115, 2);
+		addButton(33009, 0, "MINING", "Teleport to Mining", 33009, 1, 110, 33);
+		addText(33010, "", 14929103, true, true, 115, 2);
+		addButton(33011, 0, "SMITHING", "Teleport to Smithing", 33011, 1, 112,
+				33);
+		addText(33012, "", 14929103, true, true, 115, 2);
+		addButton(33013, 0, "WOODCUTTING", "Teleport to Woodcutting", 33013, 1,
+				130, 33);
+		addText(33014, "", 14929103, true, true, 115, 2);
+		addButton(33015, 0, "FIREMAKING", "Teleport to Firemaking", 33015, 1,
+				120, 33);
+		addText(33016, "", 14929103, true, true, 115, 2);
+		addButton(33017, 0, "FARMING", "Teleport to Farming", 33017, 1, 110, 33);
+		addText(33018, "", 14929103, true, true, 115, 2);
+		addButton(33019, 0, "HERBLORE", "Teleport to Herblore", 33019, 1, 110,
+				33);
+		addText(33020, "", 14929103, true, true, 115, 2);
+		addButton(33021, 0, "AGILITY", "Teleport to Agility", 33021, 1, 110, 33);
+		addText(33022, "", 14929103, true, true, 115, 2);
+		addButton(33023, 0, "HUNTER", "Teleport to Hunter", 33023, 1, 110, 33);
+		addText(33024, "", 14929103, true, true, 115, 2);
 
-    addButton(33027, 0, "FLETCHING", "Teleport to Fletching", 33027, 1, 111, 33);
-    addText(33028, "", 14929103, true, true, 115, 2);
+		addButton(33025, 0, "CONSTRUCTION", "Teleport to Construction", 33025,
+				1, 120, 33);
+		addText(33026, "", 14929103, true, true, 115, 2);
 
-    addButton(33029, 0, "CRAFTING", "Teleport to Crafting", 33029, 1, 110, 33);
-    addText(33030, "", 14929103, true, true, 115, 2);
+		addButton(33027, 0, "FLETCHING", "Teleport to Fletching", 33027, 1,
+				111, 33);
+		addText(33028, "", 14929103, true, true, 115, 2);
 
-    addButton(33031, 0, "SUMMONING", "Teleport to Summoning", 33031, 1, 110, 33);
-    addText(33032, "", 14929103, true, true, 115, 2);
+		addButton(33029, 0, "CRAFTING", "Teleport to Crafting", 33029, 1, 110,
+				33);
+		addText(33030, "", 14929103, true, true, 115, 2);
 
-    addButton(33035, 0, "DUNGEONEERING", "Teleport to Dungeoneering", 33035, 1, 120, 33);
-    addText(33036, "", 14929103, true, true, 115, 2);
+		addButton(33031, 0, "SUMMONING", "Teleport to Summoning", 33031, 1,
+				110, 33);
+		addText(33032, "", 14929103, true, true, 115, 2);
 
-    addButton(33033, 0, "RUNECRAFTING", "Teleport to Runecrafting", 33033, 1, 120, 33);
-    addText(33034, "", 14929103, true, true, 115, 2);
+		addButton(33035, 0, "DUNGEONEERING", "Teleport to Dungeoneering",
+				33035, 1, 120, 33);
+		addText(33036, "", 14929103, true, true, 115, 2);
 
-    addButton(33037, 0, "THIEVING", "Teleport to Thieving", 33037, 1, 120, 33);
-    addText(33038, "", 14929103, true, true, 115, 2);
-    addButton(33039, 0, "SLAYER", "Teleport to Slayer", 33039, 1, 120, 33);
-    addText(33040, "", 14929103, true, true, 115, 2);
+		addButton(33033, 0, "RUNECRAFTING", "Teleport to Runecrafting", 33033,
+				1, 120, 33);
+		addText(33034, "", 14929103, true, true, 115, 2);
 
-    addText(33041, "Total Level: 2000", 14929103, true, true, 115, 2);
+		addButton(33037, 0, "THIEVING", "Teleport to Thieving", 33037, 1, 120,
+				33);
+		addText(33038, "", 14929103, true, true, 115, 2);
+		addButton(33039, 0, "SLAYER", "Teleport to Slayer", 33039, 1, 120, 33);
+		addText(33040, "", 14929103, true, true, 115, 2);
 
-    setBounds(33001, 4, 2, 0, localRSInterface);
-    setBounds(33002, 477, 6, 1, localRSInterface);
-    setBounds(33003, 477, 6, 2, localRSInterface);
+		addText(33041, "Total Level: 2000", 14929103, true, true, 115, 2);
 
-    setBounds(33005, 50, 90, 3, localRSInterface);
-    setBounds(33006, 115, 100, 4, localRSInterface);
+		setBounds(33001, 4, 2, 0, localRSInterface);
+		setBounds(33002, 477, 6, 1, localRSInterface);
+		setBounds(33003, 477, 6, 2, localRSInterface);
 
-    setBounds(33007, 50, 130, 5, localRSInterface);
-    setBounds(33008, 115, 140, 6, localRSInterface);
+		setBounds(33005, 50, 90, 3, localRSInterface);
+		setBounds(33006, 115, 100, 4, localRSInterface);
 
-    setBounds(33009, 50, 170, 7, localRSInterface);
-    setBounds(33010, 115, 180, 8, localRSInterface);
+		setBounds(33007, 50, 130, 5, localRSInterface);
+		setBounds(33008, 115, 140, 6, localRSInterface);
 
-    setBounds(33011, 50, 210, 9, localRSInterface);
-    setBounds(33012, 115, 220, 10, localRSInterface);
+		setBounds(33009, 50, 170, 7, localRSInterface);
+		setBounds(33010, 115, 180, 8, localRSInterface);
 
-    setBounds(33013, 160, 90, 11, localRSInterface);
-    setBounds(33014, 235, 100, 12, localRSInterface);
+		setBounds(33011, 50, 210, 9, localRSInterface);
+		setBounds(33012, 115, 220, 10, localRSInterface);
 
-    setBounds(33015, 160, 130, 13, localRSInterface);
-    setBounds(33016, 235, 140, 14, localRSInterface);
+		setBounds(33013, 160, 90, 11, localRSInterface);
+		setBounds(33014, 235, 100, 12, localRSInterface);
 
-    setBounds(33017, 160, 170, 15, localRSInterface);
-    setBounds(33018, 235, 180, 16, localRSInterface);
+		setBounds(33015, 160, 130, 13, localRSInterface);
+		setBounds(33016, 235, 140, 14, localRSInterface);
 
-    setBounds(33019, 160, 210, 17, localRSInterface);
-    setBounds(33020, 235, 220, 18, localRSInterface);
+		setBounds(33017, 160, 170, 15, localRSInterface);
+		setBounds(33018, 235, 180, 16, localRSInterface);
 
-    setBounds(33021, 285, 90, 19, localRSInterface);
-    setBounds(33022, 340, 100, 20, localRSInterface);
+		setBounds(33019, 160, 210, 17, localRSInterface);
+		setBounds(33020, 235, 220, 18, localRSInterface);
 
-    setBounds(33023, 50, 250, 21, localRSInterface);
-    setBounds(33024, 110, 260, 22, localRSInterface);
+		setBounds(33021, 285, 90, 19, localRSInterface);
+		setBounds(33022, 340, 100, 20, localRSInterface);
 
-    setBounds(33025, 160, 250, 23, localRSInterface);
-    setBounds(33026, 235, 260, 24, localRSInterface);
+		setBounds(33023, 50, 250, 21, localRSInterface);
+		setBounds(33024, 110, 260, 22, localRSInterface);
 
-    setBounds(33027, 285, 130, 25, localRSInterface);
-    setBounds(33028, 350, 140, 26, localRSInterface);
+		setBounds(33025, 160, 250, 23, localRSInterface);
+		setBounds(33026, 235, 260, 24, localRSInterface);
 
-    setBounds(33029, 285, 170, 27, localRSInterface);
-    setBounds(33030, 350, 180, 28, localRSInterface);
+		setBounds(33027, 285, 130, 25, localRSInterface);
+		setBounds(33028, 350, 140, 26, localRSInterface);
 
-    setBounds(33031, 285, 210, 29, localRSInterface);
-    setBounds(33032, 360, 220, 30, localRSInterface);
+		setBounds(33029, 285, 170, 27, localRSInterface);
+		setBounds(33030, 350, 180, 28, localRSInterface);
 
-    setBounds(33033, 285, 250, 31, localRSInterface);
-    setBounds(33034, 360, 260, 32, localRSInterface);
+		setBounds(33031, 285, 210, 29, localRSInterface);
+		setBounds(33032, 360, 220, 30, localRSInterface);
 
-    setBounds(33035, 395, 90, 33, localRSInterface);
-    setBounds(33036, 455, 110, 34, localRSInterface);
+		setBounds(33033, 285, 250, 31, localRSInterface);
+		setBounds(33034, 360, 260, 32, localRSInterface);
 
-    setBounds(33037, 399, 130, 35, localRSInterface);
-    setBounds(33038, 455, 145, 36, localRSInterface);
+		setBounds(33035, 395, 90, 33, localRSInterface);
+		setBounds(33036, 455, 110, 34, localRSInterface);
 
-    setBounds(33039, 399, 170, 37, localRSInterface);
-    setBounds(33040, 455, 183, 38, localRSInterface);
+		setBounds(33037, 399, 130, 35, localRSInterface);
+		setBounds(33038, 455, 145, 36, localRSInterface);
 
-    setBounds(33041, 100, 280, 39, localRSInterface);
-  }
-	
-		public static void addHoverButton1(int i, String imageName, int j, int width, int height, String text, int hoverOver, int aT) {
+		setBounds(33039, 399, 170, 37, localRSInterface);
+		setBounds(33040, 455, 183, 38, localRSInterface);
+
+		setBounds(33041, 100, 280, 39, localRSInterface);
+	}
+
+	public static void addHoverButton1(int i, String imageName, int j,
+			int width, int height, String text, int hoverOver, int aT) {
 		RSInterface tab = addTabInterface(i);
 		tab.id = i;
 		tab.parentID = i;
@@ -2226,321 +2337,427 @@ public static void AddInterfaceButton(int i, int j, int hoverId, String name, in
 		tab.height = height;
 		tab.tooltip = text;
 	}
-		private static void addHead(int i, int width, int height, int zoom) {
+
+	@SuppressWarnings("unused")
+	private static void addHead(int i, int width, int height, int zoom) {
 		RSInterface rsinterface = addTabInterface(i);
-		rsinterface.type= 6;
+		rsinterface.type = 6;
 		rsinterface.modelZoom = zoom;
 		rsinterface.modelRotation1 = 40;
-		rsinterface.modelRotation2 = 1900;//166
+		rsinterface.modelRotation2 = 1900;// 166
 		rsinterface.height = height;
 		rsinterface.width = width;
-	}	
-public static void Buy(TextDrawingArea[] TDA) {
-	RSInterface rsinterface = addTabInterface(24600);
-	addSprite(24601, 0, "Interfaces/GrandExchange/buy");
-	addHoverButton(24602, "Interfaces/GrandExchange/close", 1, 16, 16, "Close", 0, 24603, 1);
-        addHoveredButton(24603, "Interfaces/GrandExchange/close", 2, 16, 16, 24604);
-	addHoverButton(24606, "Interfaces/GrandExchange/sprite", 1, 13, 13, "Decrease Quantity", 0, 24607, 1);
-        addHoveredButton(24607, "Interfaces/GrandExchange/sprite", 3, 13, 13, 24608);
-	addHoverButton(24610, "Interfaces/GrandExchange/sprite", 2, 13, 13, "Increase Quantity", 0, 24611, 1);
-        addHoveredButton(24611, "Interfaces/GrandExchange/sprite", 4, 13, 13, 24612);
-	addHoverButton(24614, "Interfaces/GrandExchange/sprite", 5, 35, 25, "Add 1", 0, 24615, 1);
-        addHoveredButton(24615, "Interfaces/GrandExchange/sprite", 6, 35, 25, 24616);
-	addHoverButton(24618, "Interfaces/GrandExchange/sprite", 7, 35, 25, "Add 10", 0, 24619, 1);
-        addHoveredButton(24619, "Interfaces/GrandExchange/sprite", 8, 35, 25, 24620);
-	addHoverButton(24622, "Interfaces/GrandExchange/sprite", 9, 35, 25, "Add 100", 0, 24623, 1);
-        addHoveredButton(24623, "Interfaces/GrandExchange/sprite", 10, 35, 25, 24624);
-	addHoverButton(24626, "Interfaces/GrandExchange/sprite", 11, 35, 25, "Add 1000", 0, 24627, 1);
-        addHoveredButton(24627, "Interfaces/GrandExchange/sprite", 12, 35, 25, 24628);
-	addHoverButton(24630, "Interfaces/GrandExchange/sprite", 13, 35, 25, "Edit Quantity", 0, 24631, 1);
-        addHoveredButton(24631, "Interfaces/GrandExchange/sprite", 14, 35, 25, 24632);
-	addHoverButton(24634, "Interfaces/GrandExchange/sprite", 15, 35, 25, "Decrease Price", 0, 24635, 1);
-        addHoveredButton(24635, "Interfaces/GrandExchange/sprite", 16, 35, 25, 24636);
-	addHoverButton(24638, "Interfaces/GrandExchange/sprite", 17, 35, 25, "Offer Guild Price", 0, 24639, 1);
-        addHoveredButton(24639, "Interfaces/GrandExchange/sprite", 18, 35, 25, 24640);
-	addHoverButton(24642, "Interfaces/GrandExchange/sprite", 13, 35, 25, "Edit Price", 0, 24643, 1);
-        addHoveredButton(24643, "Interfaces/GrandExchange/sprite", 14, 35, 25, 24644);
-	addHoverButton(24646, "Interfaces/GrandExchange/sprite", 19, 35, 25, "Increase Price", 0, 24647, 1);
-        addHoveredButton(24647, "Interfaces/GrandExchange/sprite", 20, 35, 25, 24648);
-	addHoverButton(24650, "Interfaces/GrandExchange/sprite", 21, 120, 43, "Confrim Offer", 0, 24651, 1);
-        addHoveredButton(24651, "Interfaces/GrandExchange/sprite", 22, 120, 43, 24652);
-	addHoverButton(24654, "Interfaces/GrandExchange/sprite", 23, 40, 36, "Choose Item", 0, 24655, 1);
-        addHoveredButton(24655, "Interfaces/GrandExchange/sprite", 24, 40, 36, 24656);
-	addHoverButton(24658, "Interfaces/GrandExchange/sprite", 25, 29, 23, "Back", 0, 24659, 1);
-        addHoveredButton(24659, "Interfaces/GrandExchange/sprite", 26, 29, 23, 24660);
-	addHoverButton(24662, "Interfaces/GrandExchange/sprite", 1, 13, 13, "Decrease Price", 0, 24663, 1);
-        addHoveredButton(24663, "Interfaces/GrandExchange/sprite", 3, 13, 13, 24664);
-	addHoverButton(24665, "Interfaces/GrandExchange/sprite", 2, 13, 13, "Increase Price", 0, 24666, 1);
-        addHoveredButton(24666, "Interfaces/GrandExchange/sprite", 4, 13, 13, 24667); 
- 	addText(24669, "Choose an item to exchange", TDA, 0, 0x96731A, false, true);
- 	addText(24670, "Click the icone to the left to sreach for items.", TDA, 0, 0x958E60, false, true);
- 	addText(24671, "0", TDA, 0, 0xB58338, false, true);
- 	addText(24672, "1 gp", TDA, 0, 0xB58338, false, true);
- 	addText(24673, "0 gp", TDA, 0, 0xB58338, false, true);
-        rsinterface.totalChildren(40);
-        rsinterface.child(0, 24601, 4, 23);
-        rsinterface.child(1, 24602, 464, 33);
-        rsinterface.child(2, 24603, 464, 33);
-        rsinterface.child(3, 24606, 46, 184);
-        rsinterface.child(4, 24607, 46, 184);
-        rsinterface.child(5, 24610, 226, 184);
-        rsinterface.child(6, 24611, 226, 184);
-        rsinterface.child(7, 24614, 43, 208);
-        rsinterface.child(8, 24615, 43, 208);
-        rsinterface.child(9, 24618, 84, 208);
-        rsinterface.child(10, 24619, 84, 208);
-        rsinterface.child(11, 24622, 125, 208);
-        rsinterface.child(12, 24623, 125, 208);
-        rsinterface.child(13, 24626, 166, 208);
-        rsinterface.child(14, 24627, 166, 208);
-        rsinterface.child(15, 24630, 207, 208);
-        rsinterface.child(16, 24631, 207, 208);
-        rsinterface.child(17, 24634, 260, 208);
-        rsinterface.child(18, 24635, 260, 208);
-        rsinterface.child(19, 24638, 316, 208);
-        rsinterface.child(20, 24639, 316, 208);
-        rsinterface.child(21, 24642, 357, 208);
-        rsinterface.child(22, 24643, 357, 208);
-        rsinterface.child(23, 24646, 413, 208);
-        rsinterface.child(24, 24647, 413, 208);
-        rsinterface.child(25, 24650, 191, 273);
-        rsinterface.child(26, 24651, 191, 273);
-        rsinterface.child(27, 24654, 93, 95);
-        rsinterface.child(28, 24655, 93, 95);
-        rsinterface.child(29, 24658, 19, 284);
-        rsinterface.child(30, 24659, 19, 284);
-        rsinterface.child(31, 24662, 260, 184);
-        rsinterface.child(32, 24663, 260, 184);
-        rsinterface.child(33, 24665, 435, 184);
-        rsinterface.child(34, 24666, 435, 184);
-        rsinterface.child(35, 24669, 202, 71);
-        rsinterface.child(36, 24670, 202, 98);
-        rsinterface.child(37, 24671, 139, 185);
-        rsinterface.child(38, 24672, 341, 185);
-        rsinterface.child(39, 24673, 238, 246);
 	}
-		
-public static void Sell(TextDrawingArea[] TDA) {
-	RSInterface rsinterface = addTabInterface(24700);
-	addSprite(24701, 0, "Interfaces/GrandExchange/sell");
-	addHoverButton(24702, "Interfaces/GrandExchange/close", 1, 16, 16, "Close", 0, 24703, 1);
-        addHoveredButton(24703, "Interfaces/GrandExchange/close", 2, 16, 16, 24704);
-	addHoverButton(24706, "Interfaces/GrandExchange/sprite", 1, 13, 13, "Decrease Quantity", 0, 24707, 1);
-        addHoveredButton(24707, "Interfaces/GrandExchange/sprite", 3, 13, 13, 24708);
-	addHoverButton(24710, "Interfaces/GrandExchange/sprite", 2, 13, 13, "Increase Quantity", 0, 24711, 1);
-        addHoveredButton(24711, "Interfaces/GrandExchange/sprite", 4, 13, 13, 24712);
-	addHoverButton(24714, "Interfaces/GrandExchange/sprite", 5, 35, 25, "Sell 1", 0, 24715, 1);
-        addHoveredButton(24715, "Interfaces/GrandExchange/sprite", 6, 35, 25, 24716);
-	addHoverButton(24718, "Interfaces/GrandExchange/sprite", 7, 35, 25, "Sell 10", 0, 24719, 1);
-        addHoveredButton(24719, "Interfaces/GrandExchange/sprite", 8, 35, 25, 24720);
-	addHoverButton(24722, "Interfaces/GrandExchange/sprite", 9, 35, 25, "Sell 100", 0, 24723, 1);
-        addHoveredButton(24723, "Interfaces/GrandExchange/sprite", 10, 35, 25, 24724);
-	addHoverButton(24726, "Interfaces/GrandExchange/sprite", 29, 35, 25, "Sell All", 0, 24727, 1);
-        addHoveredButton(24727, "Interfaces/GrandExchange/sprite", 30, 35, 25, 24728);
-	addHoverButton(24730, "Interfaces/GrandExchange/sprite", 13, 35, 25, "Edit Quantity", 0, 24731, 1);
-        addHoveredButton(24731, "Interfaces/GrandExchange/sprite", 14, 35, 25, 24732);
-	addHoverButton(24734, "Interfaces/GrandExchange/sprite", 15, 35, 25, "Decrease Price", 0, 24735, 1);
-        addHoveredButton(24735, "Interfaces/GrandExchange/sprite", 16, 35, 25, 24736);
-	addHoverButton(24738, "Interfaces/GrandExchange/sprite", 17, 35, 25, "Offer Guild Price", 0, 24739, 1);
-        addHoveredButton(24739, "Interfaces/GrandExchange/sprite", 18, 35, 25, 24740);
-	addHoverButton(24742, "Interfaces/GrandExchange/sprite", 13, 35, 25, "Edit Price", 0, 24743, 1);
-        addHoveredButton(24743, "Interfaces/GrandExchange/sprite", 14, 35, 25, 24744);
-	addHoverButton(24746, "Interfaces/GrandExchange/sprite", 19, 35, 25, "Increase Price", 0, 24747, 1);
-        addHoveredButton(24747, "Interfaces/GrandExchange/sprite", 20, 35, 25, 24748);
-	addHoverButton(24750, "Interfaces/GrandExchange/sprite", 21, 120, 43, "Confrim Offer", 0, 24751, 1);
-        addHoveredButton(24751, "Interfaces/GrandExchange/sprite", 22, 120, 43, 24752);
-	addHoverButton(24758, "Interfaces/GrandExchange/sprite", 25, 29, 23, "Back", 0, 24759, 1);
-        addHoveredButton(24759, "Interfaces/GrandExchange/sprite", 26, 29, 23, 24760);
-	addHoverButton(24762, "Interfaces/GrandExchange/sprite", 1, 13, 13, "Decrease Price", 0, 24763, 1);
-        addHoveredButton(24763, "Interfaces/GrandExchange/sprite", 3, 13, 13, 24764);
-	addHoverButton(24765, "Interfaces/GrandExchange/sprite", 2, 13, 13, "Increase Price", 0, 24766, 1);
-        addHoveredButton(24766, "Interfaces/GrandExchange/sprite", 4, 13, 13, 24767);
- 	addText(24769, "Choose an item to exchange", TDA, 0, 0x96731A, false, true);
- 	addText(24770, "Select an item from your invertory to sell.", TDA, 0, 0x958E60, false, true);
-	addText(24771, "0", TDA, 0, 0xB58338, false, true);
- 	addText(24772, "1 gp", TDA, 0, 0xB58338, false, true);
- 	addText(24773, "0 gp", TDA, 0, 0xB58338, false, true);
-        rsinterface.totalChildren(38);
-        rsinterface.child(0, 24701, 4, 23);
-        rsinterface.child(1, 24702, 464, 33);
-        rsinterface.child(2, 24703, 464, 33);
-        rsinterface.child(3, 24706, 46, 184);
-        rsinterface.child(4, 24707, 46, 184);
-        rsinterface.child(5, 24710, 226, 184);
-        rsinterface.child(6, 24711, 226, 184);
-        rsinterface.child(7, 24714, 43, 208);
-        rsinterface.child(8, 24715, 43, 208);
-        rsinterface.child(9, 24718, 84, 208);
-        rsinterface.child(10, 24719, 84, 208);
-        rsinterface.child(11, 24722, 125, 208);
-        rsinterface.child(12, 24723, 125, 208);
-        rsinterface.child(13, 24726, 166, 208);
-        rsinterface.child(14, 24727, 166, 208);
-        rsinterface.child(15, 24730, 207, 208);
-        rsinterface.child(16, 24731, 207, 208);
-        rsinterface.child(17, 24734, 260, 208);
-        rsinterface.child(18, 24735, 260, 208);
-        rsinterface.child(19, 24738, 316, 208);
-        rsinterface.child(20, 24739, 316, 208);
-        rsinterface.child(21, 24742, 357, 208);
-        rsinterface.child(22, 24743, 357, 208);
-        rsinterface.child(23, 24746, 413, 208);
-        rsinterface.child(24, 24747, 413, 208);
-        rsinterface.child(25, 24750, 191, 273);
-        rsinterface.child(26, 24751, 191, 273);
-        rsinterface.child(27, 24758, 19, 284);
-        rsinterface.child(28, 24759, 19, 284);
-        rsinterface.child(29, 24762, 260, 184);
-        rsinterface.child(30, 24763, 260, 184);
-        rsinterface.child(31, 24765, 435, 184);
-        rsinterface.child(32, 24766, 435, 184);
-        rsinterface.child(33, 24769, 202, 71);
-        rsinterface.child(34, 24770, 202, 98);
-        rsinterface.child(35, 24771, 139, 185);
-        rsinterface.child(36, 24772, 341, 185);
-        rsinterface.child(37, 24773, 238, 246);
-	}	
-	
-	
+
+	public static void Buy(TextDrawingArea[] TDA) {
+		RSInterface rsinterface = addTabInterface(24600);
+		addSprite(24601, 0, "Interfaces/GrandExchange/buy");
+		addHoverButton(24602, "Interfaces/GrandExchange/close", 1, 16, 16,
+				"Close", 0, 24603, 1);
+		addHoveredButton(24603, "Interfaces/GrandExchange/close", 2, 16, 16,
+				24604);
+		addHoverButton(24606, "Interfaces/GrandExchange/sprite", 1, 13, 13,
+				"Decrease Quantity", 0, 24607, 1);
+		addHoveredButton(24607, "Interfaces/GrandExchange/sprite", 3, 13, 13,
+				24608);
+		addHoverButton(24610, "Interfaces/GrandExchange/sprite", 2, 13, 13,
+				"Increase Quantity", 0, 24611, 1);
+		addHoveredButton(24611, "Interfaces/GrandExchange/sprite", 4, 13, 13,
+				24612);
+		addHoverButton(24614, "Interfaces/GrandExchange/sprite", 5, 35, 25,
+				"Add 1", 0, 24615, 1);
+		addHoveredButton(24615, "Interfaces/GrandExchange/sprite", 6, 35, 25,
+				24616);
+		addHoverButton(24618, "Interfaces/GrandExchange/sprite", 7, 35, 25,
+				"Add 10", 0, 24619, 1);
+		addHoveredButton(24619, "Interfaces/GrandExchange/sprite", 8, 35, 25,
+				24620);
+		addHoverButton(24622, "Interfaces/GrandExchange/sprite", 9, 35, 25,
+				"Add 100", 0, 24623, 1);
+		addHoveredButton(24623, "Interfaces/GrandExchange/sprite", 10, 35, 25,
+				24624);
+		addHoverButton(24626, "Interfaces/GrandExchange/sprite", 11, 35, 25,
+				"Add 1000", 0, 24627, 1);
+		addHoveredButton(24627, "Interfaces/GrandExchange/sprite", 12, 35, 25,
+				24628);
+		addHoverButton(24630, "Interfaces/GrandExchange/sprite", 13, 35, 25,
+				"Edit Quantity", 0, 24631, 1);
+		addHoveredButton(24631, "Interfaces/GrandExchange/sprite", 14, 35, 25,
+				24632);
+		addHoverButton(24634, "Interfaces/GrandExchange/sprite", 15, 35, 25,
+				"Decrease Price", 0, 24635, 1);
+		addHoveredButton(24635, "Interfaces/GrandExchange/sprite", 16, 35, 25,
+				24636);
+		addHoverButton(24638, "Interfaces/GrandExchange/sprite", 17, 35, 25,
+				"Offer Guild Price", 0, 24639, 1);
+		addHoveredButton(24639, "Interfaces/GrandExchange/sprite", 18, 35, 25,
+				24640);
+		addHoverButton(24642, "Interfaces/GrandExchange/sprite", 13, 35, 25,
+				"Edit Price", 0, 24643, 1);
+		addHoveredButton(24643, "Interfaces/GrandExchange/sprite", 14, 35, 25,
+				24644);
+		addHoverButton(24646, "Interfaces/GrandExchange/sprite", 19, 35, 25,
+				"Increase Price", 0, 24647, 1);
+		addHoveredButton(24647, "Interfaces/GrandExchange/sprite", 20, 35, 25,
+				24648);
+		addHoverButton(24650, "Interfaces/GrandExchange/sprite", 21, 120, 43,
+				"Confrim Offer", 0, 24651, 1);
+		addHoveredButton(24651, "Interfaces/GrandExchange/sprite", 22, 120, 43,
+				24652);
+		addHoverButton(24654, "Interfaces/GrandExchange/sprite", 23, 40, 36,
+				"Choose Item", 0, 24655, 1);
+		addHoveredButton(24655, "Interfaces/GrandExchange/sprite", 24, 40, 36,
+				24656);
+		addHoverButton(24658, "Interfaces/GrandExchange/sprite", 25, 29, 23,
+				"Back", 0, 24659, 1);
+		addHoveredButton(24659, "Interfaces/GrandExchange/sprite", 26, 29, 23,
+				24660);
+		addHoverButton(24662, "Interfaces/GrandExchange/sprite", 1, 13, 13,
+				"Decrease Price", 0, 24663, 1);
+		addHoveredButton(24663, "Interfaces/GrandExchange/sprite", 3, 13, 13,
+				24664);
+		addHoverButton(24665, "Interfaces/GrandExchange/sprite", 2, 13, 13,
+				"Increase Price", 0, 24666, 1);
+		addHoveredButton(24666, "Interfaces/GrandExchange/sprite", 4, 13, 13,
+				24667);
+		addText(24669, "Choose an item to exchange", TDA, 0, 0x96731A, false,
+				true);
+		addText(24670, "Click the icone to the left to sreach for items.", TDA,
+				0, 0x958E60, false, true);
+		addText(24671, "0", TDA, 0, 0xB58338, false, true);
+		addText(24672, "1 gp", TDA, 0, 0xB58338, false, true);
+		addText(24673, "0 gp", TDA, 0, 0xB58338, false, true);
+		rsinterface.totalChildren(40);
+		rsinterface.child(0, 24601, 4, 23);
+		rsinterface.child(1, 24602, 464, 33);
+		rsinterface.child(2, 24603, 464, 33);
+		rsinterface.child(3, 24606, 46, 184);
+		rsinterface.child(4, 24607, 46, 184);
+		rsinterface.child(5, 24610, 226, 184);
+		rsinterface.child(6, 24611, 226, 184);
+		rsinterface.child(7, 24614, 43, 208);
+		rsinterface.child(8, 24615, 43, 208);
+		rsinterface.child(9, 24618, 84, 208);
+		rsinterface.child(10, 24619, 84, 208);
+		rsinterface.child(11, 24622, 125, 208);
+		rsinterface.child(12, 24623, 125, 208);
+		rsinterface.child(13, 24626, 166, 208);
+		rsinterface.child(14, 24627, 166, 208);
+		rsinterface.child(15, 24630, 207, 208);
+		rsinterface.child(16, 24631, 207, 208);
+		rsinterface.child(17, 24634, 260, 208);
+		rsinterface.child(18, 24635, 260, 208);
+		rsinterface.child(19, 24638, 316, 208);
+		rsinterface.child(20, 24639, 316, 208);
+		rsinterface.child(21, 24642, 357, 208);
+		rsinterface.child(22, 24643, 357, 208);
+		rsinterface.child(23, 24646, 413, 208);
+		rsinterface.child(24, 24647, 413, 208);
+		rsinterface.child(25, 24650, 191, 273);
+		rsinterface.child(26, 24651, 191, 273);
+		rsinterface.child(27, 24654, 93, 95);
+		rsinterface.child(28, 24655, 93, 95);
+		rsinterface.child(29, 24658, 19, 284);
+		rsinterface.child(30, 24659, 19, 284);
+		rsinterface.child(31, 24662, 260, 184);
+		rsinterface.child(32, 24663, 260, 184);
+		rsinterface.child(33, 24665, 435, 184);
+		rsinterface.child(34, 24666, 435, 184);
+		rsinterface.child(35, 24669, 202, 71);
+		rsinterface.child(36, 24670, 202, 98);
+		rsinterface.child(37, 24671, 139, 185);
+		rsinterface.child(38, 24672, 341, 185);
+		rsinterface.child(39, 24673, 238, 246);
+	}
+
+	public static void Sell(TextDrawingArea[] TDA) {
+		RSInterface rsinterface = addTabInterface(24700);
+		addSprite(24701, 0, "Interfaces/GrandExchange/sell");
+		addHoverButton(24702, "Interfaces/GrandExchange/close", 1, 16, 16,
+				"Close", 0, 24703, 1);
+		addHoveredButton(24703, "Interfaces/GrandExchange/close", 2, 16, 16,
+				24704);
+		addHoverButton(24706, "Interfaces/GrandExchange/sprite", 1, 13, 13,
+				"Decrease Quantity", 0, 24707, 1);
+		addHoveredButton(24707, "Interfaces/GrandExchange/sprite", 3, 13, 13,
+				24708);
+		addHoverButton(24710, "Interfaces/GrandExchange/sprite", 2, 13, 13,
+				"Increase Quantity", 0, 24711, 1);
+		addHoveredButton(24711, "Interfaces/GrandExchange/sprite", 4, 13, 13,
+				24712);
+		addHoverButton(24714, "Interfaces/GrandExchange/sprite", 5, 35, 25,
+				"Sell 1", 0, 24715, 1);
+		addHoveredButton(24715, "Interfaces/GrandExchange/sprite", 6, 35, 25,
+				24716);
+		addHoverButton(24718, "Interfaces/GrandExchange/sprite", 7, 35, 25,
+				"Sell 10", 0, 24719, 1);
+		addHoveredButton(24719, "Interfaces/GrandExchange/sprite", 8, 35, 25,
+				24720);
+		addHoverButton(24722, "Interfaces/GrandExchange/sprite", 9, 35, 25,
+				"Sell 100", 0, 24723, 1);
+		addHoveredButton(24723, "Interfaces/GrandExchange/sprite", 10, 35, 25,
+				24724);
+		addHoverButton(24726, "Interfaces/GrandExchange/sprite", 29, 35, 25,
+				"Sell All", 0, 24727, 1);
+		addHoveredButton(24727, "Interfaces/GrandExchange/sprite", 30, 35, 25,
+				24728);
+		addHoverButton(24730, "Interfaces/GrandExchange/sprite", 13, 35, 25,
+				"Edit Quantity", 0, 24731, 1);
+		addHoveredButton(24731, "Interfaces/GrandExchange/sprite", 14, 35, 25,
+				24732);
+		addHoverButton(24734, "Interfaces/GrandExchange/sprite", 15, 35, 25,
+				"Decrease Price", 0, 24735, 1);
+		addHoveredButton(24735, "Interfaces/GrandExchange/sprite", 16, 35, 25,
+				24736);
+		addHoverButton(24738, "Interfaces/GrandExchange/sprite", 17, 35, 25,
+				"Offer Guild Price", 0, 24739, 1);
+		addHoveredButton(24739, "Interfaces/GrandExchange/sprite", 18, 35, 25,
+				24740);
+		addHoverButton(24742, "Interfaces/GrandExchange/sprite", 13, 35, 25,
+				"Edit Price", 0, 24743, 1);
+		addHoveredButton(24743, "Interfaces/GrandExchange/sprite", 14, 35, 25,
+				24744);
+		addHoverButton(24746, "Interfaces/GrandExchange/sprite", 19, 35, 25,
+				"Increase Price", 0, 24747, 1);
+		addHoveredButton(24747, "Interfaces/GrandExchange/sprite", 20, 35, 25,
+				24748);
+		addHoverButton(24750, "Interfaces/GrandExchange/sprite", 21, 120, 43,
+				"Confrim Offer", 0, 24751, 1);
+		addHoveredButton(24751, "Interfaces/GrandExchange/sprite", 22, 120, 43,
+				24752);
+		addHoverButton(24758, "Interfaces/GrandExchange/sprite", 25, 29, 23,
+				"Back", 0, 24759, 1);
+		addHoveredButton(24759, "Interfaces/GrandExchange/sprite", 26, 29, 23,
+				24760);
+		addHoverButton(24762, "Interfaces/GrandExchange/sprite", 1, 13, 13,
+				"Decrease Price", 0, 24763, 1);
+		addHoveredButton(24763, "Interfaces/GrandExchange/sprite", 3, 13, 13,
+				24764);
+		addHoverButton(24765, "Interfaces/GrandExchange/sprite", 2, 13, 13,
+				"Increase Price", 0, 24766, 1);
+		addHoveredButton(24766, "Interfaces/GrandExchange/sprite", 4, 13, 13,
+				24767);
+		addText(24769, "Choose an item to exchange", TDA, 0, 0x96731A, false,
+				true);
+		addText(24770, "Select an item from your invertory to sell.", TDA, 0,
+				0x958E60, false, true);
+		addText(24771, "0", TDA, 0, 0xB58338, false, true);
+		addText(24772, "1 gp", TDA, 0, 0xB58338, false, true);
+		addText(24773, "0 gp", TDA, 0, 0xB58338, false, true);
+		rsinterface.totalChildren(38);
+		rsinterface.child(0, 24701, 4, 23);
+		rsinterface.child(1, 24702, 464, 33);
+		rsinterface.child(2, 24703, 464, 33);
+		rsinterface.child(3, 24706, 46, 184);
+		rsinterface.child(4, 24707, 46, 184);
+		rsinterface.child(5, 24710, 226, 184);
+		rsinterface.child(6, 24711, 226, 184);
+		rsinterface.child(7, 24714, 43, 208);
+		rsinterface.child(8, 24715, 43, 208);
+		rsinterface.child(9, 24718, 84, 208);
+		rsinterface.child(10, 24719, 84, 208);
+		rsinterface.child(11, 24722, 125, 208);
+		rsinterface.child(12, 24723, 125, 208);
+		rsinterface.child(13, 24726, 166, 208);
+		rsinterface.child(14, 24727, 166, 208);
+		rsinterface.child(15, 24730, 207, 208);
+		rsinterface.child(16, 24731, 207, 208);
+		rsinterface.child(17, 24734, 260, 208);
+		rsinterface.child(18, 24735, 260, 208);
+		rsinterface.child(19, 24738, 316, 208);
+		rsinterface.child(20, 24739, 316, 208);
+		rsinterface.child(21, 24742, 357, 208);
+		rsinterface.child(22, 24743, 357, 208);
+		rsinterface.child(23, 24746, 413, 208);
+		rsinterface.child(24, 24747, 413, 208);
+		rsinterface.child(25, 24750, 191, 273);
+		rsinterface.child(26, 24751, 191, 273);
+		rsinterface.child(27, 24758, 19, 284);
+		rsinterface.child(28, 24759, 19, 284);
+		rsinterface.child(29, 24762, 260, 184);
+		rsinterface.child(30, 24763, 260, 184);
+		rsinterface.child(31, 24765, 435, 184);
+		rsinterface.child(32, 24766, 435, 184);
+		rsinterface.child(33, 24769, 202, 71);
+		rsinterface.child(34, 24770, 202, 98);
+		rsinterface.child(35, 24771, 139, 185);
+		rsinterface.child(36, 24772, 341, 185);
+		rsinterface.child(37, 24773, 238, 246);
+	}
 
 	public static void NewSkillLamp(TextDrawingArea[] tda) {
-	RSInterface Interface = addTabInterface(35000);
+		RSInterface Interface = addTabInterface(35000);
 
-	setChildren(61, Interface);
-	addSprite(35001, 0, "Interfaces/NewSkillLamp/BACKGROUND");// Background
-	addHover(35002, 3, 0, 35003, 0, "Interfaces/NewSkillLamp/EXIT", 21, 21, "Exit");//Close Button
-	addHovered(35003, 1, "Interfaces/NewSkillLamp/EXIT", 21, 21, 35004);//Close Button
-	addSprite(35005, 0, "Interfaces/NewSkillLamp/BANNER");
-    addText(35006, "Choose XP Type...", tda, 1, 0xE3CCCF, true, true);
-	//Line 1
-	addHoverButton(35007, "", 0, 46, 44, "Choose Attack", -1, 35008, 1);
-	addHoveredButton(35008, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35009);
-	addHoverButton(35010, "", 0, 46, 44, "Choose Magic", -1, 35011, 1);
-	addHoveredButton(35011, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35012);
-	addHoverButton(35013, "", 0, 46, 44, "Choose Mining", -1, 35014, 1);
-	addHoveredButton(35014, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35015);
-	addHoverButton(35016, "", 0, 46, 44, "Choose Woodcutting", -1, 35017, 1);
-	addHoveredButton(35017, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35018);
-	addHoverButton(35019, "", 0, 46, 44, "Choose Agility", -1, 35020, 1);
-	addHoveredButton(35020, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35021);
-	addHoverButton(35022, "", 0, 46, 44, "Choose Fletching", -1, 35023, 1);
-	addHoveredButton(35023, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35024);
-	addHoverButton(35025, "", 0, 46, 44, "Choose Thieving", -1, 35026, 1);
-	addHoveredButton(35026, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35027);
-	//Line 2
-	addHoverButton(35028, "", 0, 46, 44, "Choose Strength", -1, 35029, 1);
-	addHoveredButton(35029, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35030);
-	addHoverButton(35031, "", 0, 46, 44, "Choose Ranged", -1, 35032, 1);
-	addHoveredButton(35032, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35033);
-	addHoverButton(35034, "", 0, 46, 44, "Choose Smithing", -1, 35035, 1);
-	addHoveredButton(35035, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35036);
-	addHoverButton(35037, "", 0, 46, 44, "Choose Firemaking", -1, 35038, 1);
-	addHoveredButton(35038, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35039);
-	addHoverButton(35040, "", 0, 46, 44, "Choose Herblore", -1, 35041, 1);
-	addHoveredButton(35041, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35042);
-	addHoverButton(35043, "", 0, 46, 44, "Choose Slayer", -1, 35044, 1);
-	addHoveredButton(35044, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35045);
-	addHoverButton(35046, "", 0, 46, 44, "Choose Construction", -1, 35047, 1);
-	addHoveredButton(35047, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35048);
-	//Line 3
-	addHoverButton(35049, "", 0, 46, 44, "Choose Defence", -1, 35050, 1);
-	addHoveredButton(35050, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35051);
-	addHoverButton(35052, "", 0, 46, 44, "Choose Prayer", -1, 35053, 1);
-	addHoveredButton(35053, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35054);
-	addHoverButton(35055, "", 0, 46, 44, "Choose Fishing", -1, 35056, 1);
-	addHoveredButton(35056, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35057);
-	addHoverButton(35058, "", 0, 46, 44, "Choose Crafting", -1, 35059, 1);
-	addHoveredButton(35059, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35060);
-	addHoverButton(35061, "", 0, 46, 44, "Choose Farming", -1, 35062, 1);
-	addHoveredButton(35062, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35063);
-	addHoverButton(35064, "", 0, 46, 44, "Choose Hunter", -1, 35065, 1);
-	addHoveredButton(35065, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35066);
-	addHoverButton(35067, "", 0, 46, 44, "Choose Summoning", -1, 35068, 1);
-	addHoveredButton(35068, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35069);
-	//Line 4
-	addHoverButton(35070, "", 0, 46, 44, "Choose Constitution", -1, 35071, 1);
-	addHoveredButton(35071, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35072);
-	addHoverButton(35073, "", 0, 46, 44, "Choose Dungeoneering", -1, 35074, 1);
-	addHoveredButton(35074, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35075);
-	addHoverButton(35076, "", 0, 46, 44, "Choose Cooking", -1, 35077, 1);
-	addHoveredButton(35077, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35078);
-	addHoverButton(35079, "", 0, 46, 44, "Choose Runecrafting", -1, 35080, 1);
-	addHoveredButton(35080, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44, 35081);
-	//Other Stuff
-	addHover(35082, 3, 0, 35083, 0, "Interfaces/NewSkillLamp/CANCEL", 127, 21, "");
-	addHovered(35083, 1, "Interfaces/NewSkillLamp/CANCEL", 127, 21, 35084);
-	addHoverButton(35085, "Interfaces/NewSkillLamp/CONFIRM", 0, 127, 21, "Confirm", -1, 35086, 1);
-	addHoveredButton(35086, "Interfaces/NewSkillLamp/CONFIRM", 1, 127, 21, 35087);
-    addText(35088, "Confirm", tda, 1, 0xE3CCCF, false, true);
-    addText(35089, "Not right now", tda, 1, 0xE3CCCF, false, true);
+		setChildren(61, Interface);
+		addSprite(35001, 0, "Interfaces/NewSkillLamp/BACKGROUND");// Background
+		addHover(35002, 3, 0, 35003, 0, "Interfaces/NewSkillLamp/EXIT", 21, 21,
+				"Exit");// Close Button
+		addHovered(35003, 1, "Interfaces/NewSkillLamp/EXIT", 21, 21, 35004);// Close
+																			// Button
+		addSprite(35005, 0, "Interfaces/NewSkillLamp/BANNER");
+		addText(35006, "Choose XP Type...", tda, 1, 0xE3CCCF, true, true);
+		// Line 1
+		addHoverButton(35007, "", 0, 46, 44, "Choose Attack", -1, 35008, 1);
+		addHoveredButton(35008, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35009);
+		addHoverButton(35010, "", 0, 46, 44, "Choose Magic", -1, 35011, 1);
+		addHoveredButton(35011, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35012);
+		addHoverButton(35013, "", 0, 46, 44, "Choose Mining", -1, 35014, 1);
+		addHoveredButton(35014, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35015);
+		addHoverButton(35016, "", 0, 46, 44, "Choose Woodcutting", -1, 35017, 1);
+		addHoveredButton(35017, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35018);
+		addHoverButton(35019, "", 0, 46, 44, "Choose Agility", -1, 35020, 1);
+		addHoveredButton(35020, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35021);
+		addHoverButton(35022, "", 0, 46, 44, "Choose Fletching", -1, 35023, 1);
+		addHoveredButton(35023, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35024);
+		addHoverButton(35025, "", 0, 46, 44, "Choose Thieving", -1, 35026, 1);
+		addHoveredButton(35026, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35027);
+		// Line 2
+		addHoverButton(35028, "", 0, 46, 44, "Choose Strength", -1, 35029, 1);
+		addHoveredButton(35029, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35030);
+		addHoverButton(35031, "", 0, 46, 44, "Choose Ranged", -1, 35032, 1);
+		addHoveredButton(35032, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35033);
+		addHoverButton(35034, "", 0, 46, 44, "Choose Smithing", -1, 35035, 1);
+		addHoveredButton(35035, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35036);
+		addHoverButton(35037, "", 0, 46, 44, "Choose Firemaking", -1, 35038, 1);
+		addHoveredButton(35038, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35039);
+		addHoverButton(35040, "", 0, 46, 44, "Choose Herblore", -1, 35041, 1);
+		addHoveredButton(35041, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35042);
+		addHoverButton(35043, "", 0, 46, 44, "Choose Slayer", -1, 35044, 1);
+		addHoveredButton(35044, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35045);
+		addHoverButton(35046, "", 0, 46, 44, "Choose Construction", -1, 35047,
+				1);
+		addHoveredButton(35047, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35048);
+		// Line 3
+		addHoverButton(35049, "", 0, 46, 44, "Choose Defence", -1, 35050, 1);
+		addHoveredButton(35050, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35051);
+		addHoverButton(35052, "", 0, 46, 44, "Choose Prayer", -1, 35053, 1);
+		addHoveredButton(35053, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35054);
+		addHoverButton(35055, "", 0, 46, 44, "Choose Fishing", -1, 35056, 1);
+		addHoveredButton(35056, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35057);
+		addHoverButton(35058, "", 0, 46, 44, "Choose Crafting", -1, 35059, 1);
+		addHoveredButton(35059, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35060);
+		addHoverButton(35061, "", 0, 46, 44, "Choose Farming", -1, 35062, 1);
+		addHoveredButton(35062, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35063);
+		addHoverButton(35064, "", 0, 46, 44, "Choose Hunter", -1, 35065, 1);
+		addHoveredButton(35065, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35066);
+		addHoverButton(35067, "", 0, 46, 44, "Choose Summoning", -1, 35068, 1);
+		addHoveredButton(35068, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35069);
+		// Line 4
+		addHoverButton(35070, "", 0, 46, 44, "Choose Constitution", -1, 35071,
+				1);
+		addHoveredButton(35071, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35072);
+		addHoverButton(35073, "", 0, 46, 44, "Choose Dungeoneering", -1, 35074,
+				1);
+		addHoveredButton(35074, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35075);
+		addHoverButton(35076, "", 0, 46, 44, "Choose Cooking", -1, 35077, 1);
+		addHoveredButton(35077, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35078);
+		addHoverButton(35079, "", 0, 46, 44, "Choose Runecrafting", -1, 35080,
+				1);
+		addHoveredButton(35080, "Interfaces/NewSkillLamp/CIRCLE", 1, 46, 44,
+				35081);
+		// Other Stuff
+		addHover(35082, 3, 0, 35083, 0, "Interfaces/NewSkillLamp/CANCEL", 127,
+				21, "");
+		addHovered(35083, 1, "Interfaces/NewSkillLamp/CANCEL", 127, 21, 35084);
+		addHoverButton(35085, "Interfaces/NewSkillLamp/CONFIRM", 0, 127, 21,
+				"Confirm", -1, 35086, 1);
+		addHoveredButton(35086, "Interfaces/NewSkillLamp/CONFIRM", 1, 127, 21,
+				35087);
+		addText(35088, "Confirm", tda, 1, 0xE3CCCF, false, true);
+		addText(35089, "Not right now", tda, 1, 0xE3CCCF, false, true);
 
-	setBounds(35001, 10, 14, 0, Interface);//background
-	setBounds(35002, 470, 20, 1, Interface);//Close Button
-	setBounds(35003, 470, 20, 2, Interface);//Close Button
-	setBounds(35005, 181, 48, 3, Interface);
-	setBounds(35006, 255, 52, 4, Interface);
-	//Line 1
-	setBounds(35007, 37, 80, 5, Interface);
-	setBounds(35008, 37, 80, 6, Interface);
-	setBounds(35010, 102, 80, 7, Interface);
-	setBounds(35011, 102, 80, 8, Interface);
-	setBounds(35013, 167, 80, 9, Interface);
-	setBounds(35014, 167, 80, 10, Interface);
-	setBounds(35016, 232, 80, 11, Interface);
-	setBounds(35017, 232, 80, 12, Interface);
-	setBounds(35019, 297, 80, 13, Interface);
-	setBounds(35020, 297, 80, 14, Interface);
-	setBounds(35022, 362, 80, 15, Interface);
-	setBounds(35023, 362, 80, 16, Interface);
-	setBounds(35025, 427, 80, 17, Interface);
-	setBounds(35026, 427, 80, 18, Interface);
-	//Line 2
-	setBounds(35028, 37, 138, 19, Interface);
-	setBounds(35029, 37, 138, 20, Interface);
-	setBounds(35031, 102, 138, 21, Interface);
-	setBounds(35032, 102, 138, 22, Interface);
-	setBounds(35034, 167, 138, 23, Interface);
-	setBounds(35035, 167, 138, 24, Interface);
-	setBounds(35037, 232, 138, 25, Interface);
-	setBounds(35038, 232, 138, 26, Interface);
-	setBounds(35040, 297, 138, 27, Interface);
-	setBounds(35041, 297, 138, 28, Interface);
-	setBounds(35043, 362, 138, 29, Interface);
-	setBounds(35044, 362, 138, 30, Interface);
-	setBounds(35046, 427, 138, 31, Interface);
-	setBounds(35047, 427, 138, 32, Interface);
-	//Line 3
-	setBounds(35049, 37, 196, 33, Interface);
-	setBounds(35050, 37, 196, 34, Interface);
-	setBounds(35052, 102, 196, 35, Interface);
-	setBounds(35053, 102, 196, 36, Interface);
-	setBounds(35055, 167, 196, 37, Interface);
-	setBounds(35056, 167, 196, 38, Interface);
-	setBounds(35058, 232, 196, 39, Interface);
-	setBounds(35059, 232, 196, 40, Interface);
-	setBounds(35061, 297, 196, 41, Interface);
-	setBounds(35062, 297, 196, 42, Interface);
-	setBounds(35064, 362, 196, 43, Interface);
-	setBounds(35065, 362, 196, 44, Interface);
-	setBounds(35067, 427, 196, 45, Interface);
-	setBounds(35068, 427, 196, 46, Interface);
-	//Line 4
-	setBounds(35070, 37, 254, 47, Interface);
-	setBounds(35071, 37, 254, 48, Interface);
-	setBounds(35073, 102, 254, 49, Interface);
-	setBounds(35074, 102, 254, 50, Interface);
-	setBounds(35076, 167, 254, 51, Interface);
-	setBounds(35077, 167, 254, 52, Interface);
-	setBounds(35079, 232, 254, 53, Interface);
-	setBounds(35080, 232, 254, 54, Interface);
-	//Other Stuff
-	setBounds(35082, 322, 280, 55, Interface);
-	setBounds(35083, 322, 280, 56, Interface);
-	setBounds(35085, 322, 250, 57, Interface);
-	setBounds(35086, 322, 250, 58, Interface);
-	setBounds(35088, 360, 253, 59, Interface);
-	setBounds(35089, 350, 283, 60, Interface);
-}
+		setBounds(35001, 10, 14, 0, Interface);// background
+		setBounds(35002, 470, 20, 1, Interface);// Close Button
+		setBounds(35003, 470, 20, 2, Interface);// Close Button
+		setBounds(35005, 181, 48, 3, Interface);
+		setBounds(35006, 255, 52, 4, Interface);
+		// Line 1
+		setBounds(35007, 37, 80, 5, Interface);
+		setBounds(35008, 37, 80, 6, Interface);
+		setBounds(35010, 102, 80, 7, Interface);
+		setBounds(35011, 102, 80, 8, Interface);
+		setBounds(35013, 167, 80, 9, Interface);
+		setBounds(35014, 167, 80, 10, Interface);
+		setBounds(35016, 232, 80, 11, Interface);
+		setBounds(35017, 232, 80, 12, Interface);
+		setBounds(35019, 297, 80, 13, Interface);
+		setBounds(35020, 297, 80, 14, Interface);
+		setBounds(35022, 362, 80, 15, Interface);
+		setBounds(35023, 362, 80, 16, Interface);
+		setBounds(35025, 427, 80, 17, Interface);
+		setBounds(35026, 427, 80, 18, Interface);
+		// Line 2
+		setBounds(35028, 37, 138, 19, Interface);
+		setBounds(35029, 37, 138, 20, Interface);
+		setBounds(35031, 102, 138, 21, Interface);
+		setBounds(35032, 102, 138, 22, Interface);
+		setBounds(35034, 167, 138, 23, Interface);
+		setBounds(35035, 167, 138, 24, Interface);
+		setBounds(35037, 232, 138, 25, Interface);
+		setBounds(35038, 232, 138, 26, Interface);
+		setBounds(35040, 297, 138, 27, Interface);
+		setBounds(35041, 297, 138, 28, Interface);
+		setBounds(35043, 362, 138, 29, Interface);
+		setBounds(35044, 362, 138, 30, Interface);
+		setBounds(35046, 427, 138, 31, Interface);
+		setBounds(35047, 427, 138, 32, Interface);
+		// Line 3
+		setBounds(35049, 37, 196, 33, Interface);
+		setBounds(35050, 37, 196, 34, Interface);
+		setBounds(35052, 102, 196, 35, Interface);
+		setBounds(35053, 102, 196, 36, Interface);
+		setBounds(35055, 167, 196, 37, Interface);
+		setBounds(35056, 167, 196, 38, Interface);
+		setBounds(35058, 232, 196, 39, Interface);
+		setBounds(35059, 232, 196, 40, Interface);
+		setBounds(35061, 297, 196, 41, Interface);
+		setBounds(35062, 297, 196, 42, Interface);
+		setBounds(35064, 362, 196, 43, Interface);
+		setBounds(35065, 362, 196, 44, Interface);
+		setBounds(35067, 427, 196, 45, Interface);
+		setBounds(35068, 427, 196, 46, Interface);
+		// Line 4
+		setBounds(35070, 37, 254, 47, Interface);
+		setBounds(35071, 37, 254, 48, Interface);
+		setBounds(35073, 102, 254, 49, Interface);
+		setBounds(35074, 102, 254, 50, Interface);
+		setBounds(35076, 167, 254, 51, Interface);
+		setBounds(35077, 167, 254, 52, Interface);
+		setBounds(35079, 232, 254, 53, Interface);
+		setBounds(35080, 232, 254, 54, Interface);
+		// Other Stuff
+		setBounds(35082, 322, 280, 55, Interface);
+		setBounds(35083, 322, 280, 56, Interface);
+		setBounds(35085, 322, 250, 57, Interface);
+		setBounds(35086, 322, 250, 58, Interface);
+		setBounds(35088, 360, 253, 59, Interface);
+		setBounds(35089, 350, 283, 60, Interface);
+	}
+
 	public static void settingsInterface(TextDrawingArea TDA[]) {
 		RSInterface rsinterface = addTabInterface(26000);
 		int x = 168;
@@ -2656,7 +2873,6 @@ public static void Sell(TextDrawingArea[] TDA) {
 		localRSInterface.child(17, 17030, 20, 213);
 		localRSInterface.child(18, 17033, 67, 193);
 	}
-		
 
 	private static void addHead2(int id, int w, int h, int zoom) {// tewst
 		RSInterface rsinterface = addInterface(id);
@@ -2714,11 +2930,11 @@ public static void Sell(TextDrawingArea[] TDA) {
 		addText(39161, "", 16750623, false, true, 52, TDA, 2);
 		addHoverText(39162, "", "", TDA, 0, 16711680, false, true, 150);
 		addText(39163, "Register at:", 16750623, false, true, 52, TDA, 0);
-		addHoverText(39164, "Www.divinationofgods.tk", "Register", TDA, 0, 16711680,
-				false, true, 150);
+		addHoverText(39164, "Www.divinationofgods.tk", "Register", TDA, 0,
+				16711680, false, true, 150);
 		addText(39165, "Register on :", 16750623, false, true, 52, TDA, 0);
-		addHoverText(39166, "Www.divinationofgods.tk", "Register", TDA, 0, 16711680,
-				false, true, 150);
+		addHoverText(39166, "Www.divinationofgods.tk", "Register", TDA, 0,
+				16711680, false, true, 150);
 		setBounds(39161, 8, 0, 0, localRSInterface);
 		setBounds(39162, 8, 15, 1, localRSInterface);
 		setBounds(39163, 8, 30, 2, localRSInterface);
@@ -2794,8 +3010,8 @@ public static void Sell(TextDrawingArea[] TDA) {
 			localException.printStackTrace();
 		}
 	}
-	
-		public static void achievementTabb2(TextDrawingArea[] TDA) {
+
+	public static void achievementTabb2(TextDrawingArea[] TDA) {
 		RSInterface localRSInterface = addInterface(48000);
 		setChildren(6, localRSInterface);
 		addSprite(48001, 0, "Interfaces/Achieve/TASKSTRENGTH");
@@ -2810,18 +3026,18 @@ public static void Sell(TextDrawingArea[] TDA) {
 		setBounds(48004, 49, 157, 3, localRSInterface);
 		setBounds(48005, 129, 229, 4, localRSInterface);
 		setBounds(48006, 170, 3, 5, localRSInterface);
-		}
-		
-		
-		public static void achievemnttab(TextDrawingArea[] TDA) {
+	}
+
+	public static void achievemnttab(TextDrawingArea[] TDA) {
 		RSInterface localRSInterface = addInterface(3332);
 		setChildren(4, localRSInterface);
-		addButton(33154, 2, "Interfaces/QuestTab/QUEST", 18, 18, "Swap to Quests", 1);
-		
+		addButton(33154, 2, "Interfaces/QuestTab/QUEST", 18, 18,
+				"Swap to Quests", 1);
+
 		addText(33155, "My Achievements", 16750623, false, true, 52, TDA, 2);
-				
+
 		addSprite(33157, 0, "Interfaces/QuestTab/QUEST");
-		
+
 		setBounds(33155, 10, 5, 0, localRSInterface);
 		setBounds(33157, 3, 24, 1, localRSInterface);
 		setBounds(33160, 5, 29, 2, localRSInterface);
@@ -2834,11 +3050,11 @@ public static void Sell(TextDrawingArea[] TDA) {
 		addText(33161, "", 0x00FFFF, false, true, 52, TDA, 2);
 		addHoverText(33162, "", "", TDA, 0, 16711680, false, true, 150);
 		addText(33163, "Register at:", 16750623, false, true, 52, TDA, 0);
-		addHoverText(33164, "Www.divinationofgods.tk", "Register", TDA, 0, 16711680,
-				false, true, 150);
+		addHoverText(33164, "Www.divinationofgods.tk", "Register", TDA, 0,
+				16711680, false, true, 150);
 		addText(33165, "Register on :", 16750623, false, true, 52, TDA, 0);
-		addHoverText(33166, "Www.divinationofgods.tk", "Register", TDA, 0, 16711680,
-				false, true, 150);
+		addHoverText(33166, "Www.divinationofgods.tk", "Register", TDA, 0,
+				16711680, false, true, 150);
 		setBounds(33161, 8, 0, 0, localRSInterface);
 		setBounds(33162, 8, 15, 1, localRSInterface);
 		setBounds(33163, 8, 30, 2, localRSInterface);
@@ -2915,171 +3131,137 @@ public static void Sell(TextDrawingArea[] TDA) {
 		}
 	}
 
-	/*public static void dungTab(TextDrawingArea[] TDA) {
-		RSInterface Interface = addInterface(638);
-		setChildren(4, Interface);
-		addText(29155, "Quests", 0xFF981F, false, true, 52, TDA, 2);
-		addButton(29156, 2, "Interfaces/QuestTab/QUEST", 18, 18,
-				"Swap to Quest Tab", 1);
-		addSprite(29157, 0, "Interfaces/QuestTab/QUEST");
-		setBounds(29155, 10, 5, 0, Interface);
-		setBounds(29156, 165, 5, 1, Interface);
-		setBounds(29157, 3, 24, 2, Interface);
-		setBounds(29160, 5, 29, 3, Interface);
-		Interface = addInterface(29160);
-		Interface.height = 214;
-		Interface.width = 165;
-		Interface.scrollMax = 1700;
-		setChildren(105, Interface);
-		addText(29161, "", 0xFF981F, false, true, 52, TDA, 2);
-		addHoverText(29162, "", "", TDA, 0, 0xff0000, false, true, 150);
-		addText(29163, "", 0xFF981F, false, true, 52, TDA, 2);
-		addHoverText(29164, "", "", TDA, 0, 0xff0000, false, true, 150);
-		addText(29165, "", 0xFF981F, false, true, 52, TDA, 2);
-		addHoverText(29166, "", "", TDA, 0, 0xff0000, false, true, 150);
-		setBounds(29161, 4, 4, 0, Interface);
-		setBounds(29162, 8, 22, 1, Interface);
-		setBounds(29163, 4, 35, 2, Interface);
-		setBounds(29164, 8, 53, 3, Interface);
-		setBounds(663, 4, 67, 4, Interface);
-		int Ypos = 83;
-		int frameID = 5;
-		for (int iD = 29165; iD <= 29264; iD++) {
-			addHoverText(iD, "", "Continue"/* "View Quest Journal, "+iD */
-			/*
-					TDA, 0, 0xff0000, false, true, 150);
-			setBounds(iD, 8, Ypos, frameID, Interface);
-			frameID++;
-			Ypos += 15;
-			Ypos++;
-		}
-		Interface = addInterface(29265);
-		try {
-			setChildren(4, Interface);
-			addText(29266, "Coming soon!", 0xFF981F, false, true, -1, TDA, 2);
-			addButton(29267, 1, "Interfaces/QuestTab/QUEST", 18, 18,
-					"Swap to Player Info", 1);
-			addSprite(29269, 0, "Interfaces/QuestTab/QUEST");
-			setBounds(29266, 10, 5, 0, Interface);
-			setBounds(29267, 165, 5, 1, Interface);
-			setBounds(29269, 3, 24, 2, Interface);
-			setBounds(29268, 5, 29, 3, Interface);
-			Interface = addInterface(29268);
-			Interface.height = 214;
-			Interface.width = 165;
-			Interface.scrollMax = 1700;
-			setChildren(20, Interface);
-			setBounds(29295, 8, 4, 0, Interface);
-			setBounds(29296, 8, 16, 1, Interface);
-			setBounds(29297, 8, 29, 2, Interface);
-			setBounds(29298, 8, 42, 3, Interface);
-			setBounds(29299, 8, 54, 4, Interface);
-			setBounds(29300, 8, 66, 5, Interface);
-			setBounds(29301, 8, 78, 6, Interface);
-			setBounds(29302, 8, 90, 7, Interface);
-			setBounds(29303, 8, 102, 8, Interface);
-			setBounds(29304, 8, 114, 9, Interface);
-			setBounds(29305, 8, 126, 10, Interface);
-			setBounds(29306, 8, 138, 11, Interface);
-			setBounds(29307, 8, 150, 12, Interface);
-			setBounds(29308, 8, 162, 13, Interface);
-			setBounds(29309, 8, 174, 14, Interface);
-			setBounds(29310, 8, 186, 15, Interface);
-			setBounds(29311, 8, 198, 16, Interface);
-			setBounds(29312, 8, 210, 17, Interface);
-			setBounds(29313, 8, 222, 18, Interface);
-			setBounds(29314, 8, 234, 19, Interface);
-			addHoverText(29295, "Please register at", "Please Register", TDA,
-					1, 0xFF981F, false, true, 150);
-			addHoverText(29296, "Www.divinationofgods.tk", "", TDA, 0, 0xff0000,
-					false, true, 150);
-			addHoverText(29297, "And advertise/vote daily!", "", TDA, 0,
-					0xff0000, false, true, 150);
-			addHoverText(29298, "::vote for more players!", "", TDA, 0,
-					0xff0000, false, true, 150);
-			addHoverText(29299, "More players=More updates!", "", TDA, 0,
-					0xff0000, false, true, 150);
-			addHoverText(29300, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29301, "", "", TDA, 1, 0xFF981F, false, true, 150);
-			addHoverText(29302, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29303, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29304, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29305, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29306, "", "", TDA, 1, 0xFF981F, false, true, 150);
-			addHoverText(29307, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29308, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29309, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29310, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29311, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29312, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29313, "", "", TDA, 0, 0xff0000, false, true, 150);
-			addHoverText(29314, "", "", TDA, 0, 0xff0000, false, true, 150);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}*/
+	/*
+	 * public static void dungTab(TextDrawingArea[] TDA) { RSInterface Interface
+	 * = addInterface(638); setChildren(4, Interface); addText(29155, "Quests",
+	 * 0xFF981F, false, true, 52, TDA, 2); addButton(29156, 2,
+	 * "Interfaces/QuestTab/QUEST", 18, 18, "Swap to Quest Tab", 1);
+	 * addSprite(29157, 0, "Interfaces/QuestTab/QUEST"); setBounds(29155, 10, 5,
+	 * 0, Interface); setBounds(29156, 165, 5, 1, Interface); setBounds(29157,
+	 * 3, 24, 2, Interface); setBounds(29160, 5, 29, 3, Interface); Interface =
+	 * addInterface(29160); Interface.height = 214; Interface.width = 165;
+	 * Interface.scrollMax = 1700; setChildren(105, Interface); addText(29161,
+	 * "", 0xFF981F, false, true, 52, TDA, 2); addHoverText(29162, "", "", TDA,
+	 * 0, 0xff0000, false, true, 150); addText(29163, "", 0xFF981F, false, true,
+	 * 52, TDA, 2); addHoverText(29164, "", "", TDA, 0, 0xff0000, false, true,
+	 * 150); addText(29165, "", 0xFF981F, false, true, 52, TDA, 2);
+	 * addHoverText(29166, "", "", TDA, 0, 0xff0000, false, true, 150);
+	 * setBounds(29161, 4, 4, 0, Interface); setBounds(29162, 8, 22, 1,
+	 * Interface); setBounds(29163, 4, 35, 2, Interface); setBounds(29164, 8,
+	 * 53, 3, Interface); setBounds(663, 4, 67, 4, Interface); int Ypos = 83;
+	 * int frameID = 5; for (int iD = 29165; iD <= 29264; iD++) {
+	 * addHoverText(iD, "", "Continue"/* "View Quest Journal, "+iD
+	 */
+	/*
+	 * TDA, 0, 0xff0000, false, true, 150); setBounds(iD, 8, Ypos, frameID,
+	 * Interface); frameID++; Ypos += 15; Ypos++; } Interface =
+	 * addInterface(29265); try { setChildren(4, Interface); addText(29266,
+	 * "Coming soon!", 0xFF981F, false, true, -1, TDA, 2); addButton(29267, 1,
+	 * "Interfaces/QuestTab/QUEST", 18, 18, "Swap to Player Info", 1);
+	 * addSprite(29269, 0, "Interfaces/QuestTab/QUEST"); setBounds(29266, 10, 5,
+	 * 0, Interface); setBounds(29267, 165, 5, 1, Interface); setBounds(29269,
+	 * 3, 24, 2, Interface); setBounds(29268, 5, 29, 3, Interface); Interface =
+	 * addInterface(29268); Interface.height = 214; Interface.width = 165;
+	 * Interface.scrollMax = 1700; setChildren(20, Interface); setBounds(29295,
+	 * 8, 4, 0, Interface); setBounds(29296, 8, 16, 1, Interface);
+	 * setBounds(29297, 8, 29, 2, Interface); setBounds(29298, 8, 42, 3,
+	 * Interface); setBounds(29299, 8, 54, 4, Interface); setBounds(29300, 8,
+	 * 66, 5, Interface); setBounds(29301, 8, 78, 6, Interface);
+	 * setBounds(29302, 8, 90, 7, Interface); setBounds(29303, 8, 102, 8,
+	 * Interface); setBounds(29304, 8, 114, 9, Interface); setBounds(29305, 8,
+	 * 126, 10, Interface); setBounds(29306, 8, 138, 11, Interface);
+	 * setBounds(29307, 8, 150, 12, Interface); setBounds(29308, 8, 162, 13,
+	 * Interface); setBounds(29309, 8, 174, 14, Interface); setBounds(29310, 8,
+	 * 186, 15, Interface); setBounds(29311, 8, 198, 16, Interface);
+	 * setBounds(29312, 8, 210, 17, Interface); setBounds(29313, 8, 222, 18,
+	 * Interface); setBounds(29314, 8, 234, 19, Interface); addHoverText(29295,
+	 * "Please register at", "Please Register", TDA, 1, 0xFF981F, false, true,
+	 * 150); addHoverText(29296, "Www.divinationofgods.tk", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29297,
+	 * "And advertise/vote daily!", "", TDA, 0, 0xff0000, false, true, 150);
+	 * addHoverText(29298, "::vote for more players!", "", TDA, 0, 0xff0000,
+	 * false, true, 150); addHoverText(29299, "More players=More updates!", "",
+	 * TDA, 0, 0xff0000, false, true, 150); addHoverText(29300, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29301, "", "", TDA, 1,
+	 * 0xFF981F, false, true, 150); addHoverText(29302, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29303, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29304, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29305, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29306, "", "", TDA, 1,
+	 * 0xFF981F, false, true, 150); addHoverText(29307, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29308, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29309, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29310, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29311, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29312, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29313, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); addHoverText(29314, "", "", TDA, 0,
+	 * 0xff0000, false, true, 150); } catch (Exception e) { e.printStackTrace();
+	 * } }
+	 */
 	public static void staffTab(TextDrawingArea[] TDA) {
 		RSInterface tab = addTabInterface(24999);
 		addText(28024, "Staff List", 0xff9933, true, true, -1, TDA, 1);
-			addSprite(16126, 0, "Interfaces/stafftab/SPRITE");
-			addSprite(16127, 1, "Interfaces/stafftab/SPRITE");
-			addHoverButton(28018, "Interfaces/stafftab/SPRITE", 2, 160, 32, "Request Staff Assistance", -1, 28019, 1);
-			addHoveredButton(28019, "Interfaces/stafftab/SPRITE", 3, 160, 32, 28020);
-			addText(28000, "None", 0xffffff, false, true, -1, TDA, 1);
-			addText(28001, "Offline", 0xff0000, false, true, -1, TDA, 1);
-			addText(28002, "None", 0xffffff, false, true, -1, TDA, 1);
-			addText(28003, "Offline", 0xff0000, false, true, -1, TDA, 1);
-			addText(28004, "None", 0xffffff, false, true, -1, TDA, 1);
-			addText(28005, "Offline", 0xff0000, false, true, -1, TDA, 1);
-			addText(28006, "None", 0xffffff, false, true, -1, TDA, 1);
-			addText(28007, "Offline", 0xff0000, false, true, -1, TDA, 1);
-			addText(28008, "None", 0xffffff, false, true, -1, TDA, 1);
-			addText(28009, "Offline", 0xff0000, false, true, -1, TDA, 1);
-			addText(28010, "None", 0xffffff, false, true, -1, TDA, 1);
-			addText(28011, "Offline", 0xff0000, false, true, -1, TDA, 1);
-			addText(28012, "None", 0xffffff, false, true, -1, TDA, 1);
-			addText(28013, "Offline", 0xff0000, false, true, -1, TDA, 1);
-			addText(28014, "None", 0xffffff, false, true, -1, TDA, 1);
-			addText(28015, "Offline", 0xff0000, false, true, -1, TDA, 1);
-			addText(28016, "None", 0xffffff, false, true, -1, TDA, 1);
-			addText(28017, "Offline", 0xff0000, false, true, -1, TDA, 1);
-			
-			addText(28021, "Owners", 0xff9933, true, true, -1, TDA, 3);
-			addText(28022, "Administrators", 0xff9933, true, true, -1, TDA, 3);
-			addText(28023, "Moderators", 0xff9933, true, true, -1, TDA, 3);
+		addSprite(16126, 0, "Interfaces/stafftab/SPRITE");
+		addSprite(16127, 1, "Interfaces/stafftab/SPRITE");
+		addHoverButton(28018, "Interfaces/stafftab/SPRITE", 2, 160, 32,
+				"Request Staff Assistance", -1, 28019, 1);
+		addHoveredButton(28019, "Interfaces/stafftab/SPRITE", 3, 160, 32, 28020);
+		addText(28000, "None", 0xffffff, false, true, -1, TDA, 1);
+		addText(28001, "Offline", 0xff0000, false, true, -1, TDA, 1);
+		addText(28002, "None", 0xffffff, false, true, -1, TDA, 1);
+		addText(28003, "Offline", 0xff0000, false, true, -1, TDA, 1);
+		addText(28004, "None", 0xffffff, false, true, -1, TDA, 1);
+		addText(28005, "Offline", 0xff0000, false, true, -1, TDA, 1);
+		addText(28006, "None", 0xffffff, false, true, -1, TDA, 1);
+		addText(28007, "Offline", 0xff0000, false, true, -1, TDA, 1);
+		addText(28008, "None", 0xffffff, false, true, -1, TDA, 1);
+		addText(28009, "Offline", 0xff0000, false, true, -1, TDA, 1);
+		addText(28010, "None", 0xffffff, false, true, -1, TDA, 1);
+		addText(28011, "Offline", 0xff0000, false, true, -1, TDA, 1);
+		addText(28012, "None", 0xffffff, false, true, -1, TDA, 1);
+		addText(28013, "Offline", 0xff0000, false, true, -1, TDA, 1);
+		addText(28014, "None", 0xffffff, false, true, -1, TDA, 1);
+		addText(28015, "Offline", 0xff0000, false, true, -1, TDA, 1);
+		addText(28016, "None", 0xffffff, false, true, -1, TDA, 1);
+		addText(28017, "Offline", 0xff0000, false, true, -1, TDA, 1);
+
+		addText(28021, "Owners", 0xff9933, true, true, -1, TDA, 3);
+		addText(28022, "Administrators", 0xff9933, true, true, -1, TDA, 3);
+		addText(28023, "Moderators", 0xff9933, true, true, -1, TDA, 3);
 		tab.totalChildren(32);
-			tab.child(0, 28024, 95, 4);
-			tab.child(1, 16127, 0, 25);
-			tab.child(2, 16126, 0, 221);
-			tab.child(3, 16126, 0, 22);
-			tab.child(4, 16126, 0, 40);
-			tab.child(5, 16126, 0, 73);
-			tab.child(6, 16126, 0, 91);
-			tab.child(7, 16126, 0, 124);
-			tab.child(8, 16126, 0, 141);
-			tab.child(9, 28000, 3, 42);
-			tab.child(10, 28002, 3, 57);
-			tab.child(11, 28004, 3, 93);
-			tab.child(12, 28006, 3, 108);
-			tab.child(13, 28008, 3, 144);
-			tab.child(14, 28010, 3, 159);
-			tab.child(15, 28012, 3, 174);
-			tab.child(16, 28014, 3, 189);
-			tab.child(17, 28016, 3, 204);
-			tab.child(18, 28001, 146, 42);
-			tab.child(19, 28003, 146, 57);
-			tab.child(20, 28005, 146, 93);
-			tab.child(21, 28007, 146, 108);
-			tab.child(22, 28009, 146, 144);
-			tab.child(23, 28011, 146, 159);
-			tab.child(24, 28013, 146, 174);
-			tab.child(25, 28015, 146, 189);
-			tab.child(26, 28017, 146, 204);
-			tab.child(27, 28018, 15, 226);
-			tab.child(28, 28019, 15, 226);
-			tab.child(29, 28021, 95, 24);
-			tab.child(30, 28022, 95, 75);
-			tab.child(31, 28023, 95, 125);
+		tab.child(0, 28024, 95, 4);
+		tab.child(1, 16127, 0, 25);
+		tab.child(2, 16126, 0, 221);
+		tab.child(3, 16126, 0, 22);
+		tab.child(4, 16126, 0, 40);
+		tab.child(5, 16126, 0, 73);
+		tab.child(6, 16126, 0, 91);
+		tab.child(7, 16126, 0, 124);
+		tab.child(8, 16126, 0, 141);
+		tab.child(9, 28000, 3, 42);
+		tab.child(10, 28002, 3, 57);
+		tab.child(11, 28004, 3, 93);
+		tab.child(12, 28006, 3, 108);
+		tab.child(13, 28008, 3, 144);
+		tab.child(14, 28010, 3, 159);
+		tab.child(15, 28012, 3, 174);
+		tab.child(16, 28014, 3, 189);
+		tab.child(17, 28016, 3, 204);
+		tab.child(18, 28001, 146, 42);
+		tab.child(19, 28003, 146, 57);
+		tab.child(20, 28005, 146, 93);
+		tab.child(21, 28007, 146, 108);
+		tab.child(22, 28009, 146, 144);
+		tab.child(23, 28011, 146, 159);
+		tab.child(24, 28013, 146, 174);
+		tab.child(25, 28015, 146, 189);
+		tab.child(26, 28017, 146, 204);
+		tab.child(27, 28018, 15, 226);
+		tab.child(28, 28019, 15, 226);
+		tab.child(29, 28021, 95, 24);
+		tab.child(30, 28022, 95, 75);
+		tab.child(31, 28023, 95, 125);
 	}
 
 	public static void customStrings(TextDrawingArea[] tda) {
@@ -3229,130 +3411,159 @@ public static void Sell(TextDrawingArea[] TDA) {
 		indexChild++;
 	}
 
-	public static void runecraftingTable(TextDrawingArea[] TDA) {
+	public static void runecraftingTable(TextDrawingArea[] text) {
+		RSInterface Interface = addInterface(51000); // Interface ID
+		// Background here
+		addSprite(51001, 1, "Interfaces/runecraftingTable/BACKGROUND");
 
-	RSInterface Interface = addInterface(27000); //Interface ID
-	//Background here
-	addSprite(27001, 1, "Interfaces/runecraftingTable/BACKGROUND");
-	
-	//Buttons Begin
-	addHoverButton(27002, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Air Altar", -1, 27002, 1);
-	addHoverButton(27003, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Mind Altar", -1, 27003, 1);
-	addHoverButton(27004, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Water Altar", -1, 27004, 1);
-	addHoverButton(27005, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Earth Altar", -1, 27005, 1);
-	addHoverButton(27006, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Fire Altar", -1, 27006, 1);
-	addHoverButton(27007, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Cosmic Altar", -1, 27007, 1);
-	addHoverButton(27008, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Chaos Altar", -1, 27008, 1);
-	addHoverButton(27009, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Astral Altar", -1, 27009, 1);
-	addHoverButton(27010, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Nature Altar", -1, 27010, 1);
-	addHoverButton(27011, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Law Altar", -1, 27011, 1);
-	addHoverButton(27012, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Death Altar", -1, 27012, 1);
-	addHoverButton(27013, "Interfaces/runecraftingTable/SPRITE", 1, 82, 76, "Teleport to @gre@Blood Altar", -1, 27013, 1);
-	addHoverButton(27014, "Interfaces/runecraftingTable/CLOSE", 1, 25, 25, "Close", -1, 27014, 1);
-	//Buttons End
-	
-	//Set Bounds Begin
-	setChildren(14, Interface); //Number of sprites/buttons
-	setBounds(27001, 7, 6, 0, Interface); 
-	setBounds(27002, 45, 61, 1, Interface); //105122 - Action Button IDs
-	setBounds(27003, 155, 61, 2, Interface); //105123
-	setBounds(27004, 265, 61, 3, Interface); //105124
-	setBounds(27005, 388, 61, 4, Interface); //105125
-	setBounds(27006, 40, 145, 5, Interface); //105126
-	setBounds(27007, 158, 145, 6, Interface);//105127
-	setBounds(27008, 266, 145, 7, Interface); //105128
-	setBounds(27009, 385, 145, 8, Interface); //105129
-	setBounds(27010, 38, 227, 9, Interface);//105130
-	setBounds(27011, 158, 227, 10, Interface); //105131
-	setBounds(27012, 265, 227, 11, Interface); //105132
-	setBounds(27013, 385, 227, 12, Interface);//105133
-	setBounds(27014, 477, 10, 13, Interface); //105134
-    //Set Bounds End           
+		// Buttons Begin
+		AddInterfaceButton(51002, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Air Altar");
+		AddInterfaceButton(51003, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Mind Altar");
+		AddInterfaceButton(51004, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Water Altar");
+		AddInterfaceButton(51005, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Earth Altar");
+		AddInterfaceButton(51006, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Fire Altar");
+		AddInterfaceButton(51007, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Body Altar");
+		AddInterfaceButton(51008, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Cosmic Altar");
+		AddInterfaceButton(51009, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Chaos Altar");
+		AddInterfaceButton(51010, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Astral Altar");
+		AddInterfaceButton(51011, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Nature Altar");
+		AddInterfaceButton(51012, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Law Altar");
+		AddInterfaceButton(51013, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Death Altar");
+		AddInterfaceButton(51014, 0, "Interfaces/runecraftingTable/SPRITE",
+				"Teleport to @gre@Blood Altar");
+		AddInterfaceButton(51015, 0, "Interfaces/runecraftingTable/CLOSE",
+				"@red@Close");
+		// Buttons End
+
+		// Set Bounds Begin
+		setChildren(15, Interface); // Number of sprites/buttons
+		setBounds(51001, 7, 6, 0, Interface);
+		setBounds(51002, 20, 61, 1, Interface); // 105122 - Action Button IDs
+		setBounds(51003, 115, 61, 2, Interface); // 105123
+		setBounds(51004, 214, 61, 3, Interface); // 105124
+		setBounds(51005, 319, 61, 4, Interface); // 105125
+		setBounds(51006, 411, 61, 5, Interface); // 105126
+		setBounds(51007, 40, 145, 6, Interface); // 105127
+		setBounds(51008, 158, 145, 7, Interface);// 105128
+		setBounds(51009, 266, 145, 8, Interface); // 105129
+		setBounds(51010, 385, 145, 9, Interface); // 105130
+		setBounds(51011, 38, 227, 10, Interface);// 105131
+		setBounds(51012, 158, 227, 11, Interface); // 105132
+		setBounds(51013, 265, 227, 12, Interface); // 105133
+		setBounds(51014, 385, 227, 13, Interface);// 105134
+		setBounds(51015, 477, 10, 14, Interface); // 105135
+		// Set Bounds End
 	}
-  public static final void boss(TextDrawingArea[] paramArrayOfTextDrawingArea) {
-    RSInterface localRSInterface = addTabInterface(45500);
-    addText(45501, "Boss Teleport", 16751360, false, true, 52, paramArrayOfTextDrawingArea, 2);
-    addHoverButton(45502, "Interfaces/Minigame/Hover", 0, 172, 24, "Nex", -1, 45503, 1);
 
-    addHoveredButton(45503, "Interfaces/Minigame/Hover", 3, 172, 24, 45504);
-    addHoverButton(45518, "Interfaces/Minigame/Hover", 0, 172, 24, "King Black Dragon", -1, 45519, 1);
+	public static final void boss(TextDrawingArea[] paramArrayOfTextDrawingArea) {
+		RSInterface localRSInterface = addTabInterface(45500);
+		addText(45501, "Boss Teleport", 16751360, false, true, 52,
+				paramArrayOfTextDrawingArea, 2);
+		addHoverButton(45502, "Interfaces/Minigame/Hover", 0, 172, 24, "Nex",
+				-1, 45503, 1);
 
-    addHoveredButton(45519, "Interfaces/Minigame/Hover", 3, 172, 24, 45520);
-    addHoverButton(45521, "Interfaces/Minigame/Hover", 0, 172, 24, "Dagannoth Kings", -1, 45522, 1);
+		addHoveredButton(45503, "Interfaces/Minigame/Hover", 3, 172, 24, 45504);
+		addHoverButton(45518, "Interfaces/Minigame/Hover", 0, 172, 24,
+				"King Black Dragon", -1, 45519, 1);
 
-    addHoveredButton(45522, "Interfaces/Minigame/Hover", 3, 172, 24, 45523);
-    addHoverButton(45524, "Interfaces/Minigame/Hover", 0, 172, 24, "Tormented Demons", -1, 45525, 1);
+		addHoveredButton(45519, "Interfaces/Minigame/Hover", 3, 172, 24, 45520);
+		addHoverButton(45521, "Interfaces/Minigame/Hover", 0, 172, 24,
+				"Dagannoth Kings", -1, 45522, 1);
 
-    addHoveredButton(45525, "Interfaces/Minigame/Hover", 3, 172, 24, 45526);
-    addHoverButton(45527, "Interfaces/Minigame/Hover", 0, 172, 24, "Corporal Beast", -1, 45528, 1);
+		addHoveredButton(45522, "Interfaces/Minigame/Hover", 3, 172, 24, 45523);
+		addHoverButton(45524, "Interfaces/Minigame/Hover", 0, 172, 24,
+				"Tormented Demons", -1, 45525, 1);
 
-    addHoveredButton(45528, "Interfaces/Minigame/Hover", 3, 172, 24, 45529);
-    addHoverButton(45533, "Interfaces/Minigame/Back", 0, 16, 16, "Back", -1, 45534, 1);
+		addHoveredButton(45525, "Interfaces/Minigame/Hover", 3, 172, 24, 45526);
+		addHoverButton(45527, "Interfaces/Minigame/Hover", 0, 172, 24,
+				"Corporal Beast", -1, 45528, 1);
 
-    addHoveredButton(45534, "Interfaces/Minigame/Back", 1, 16, 16, 45535);
-    addSprite(45505, 1, "Interfaces/Minigame/Godwars");
-    addSprite(45506, 1, "Interfaces/Minigame/Kbd");
-    addSprite(45507, 1, "Interfaces/Minigame/Dagganoths");
-    addSprite(45508, 1, "Interfaces/Minigame/Chaos");
-    addSprite(45509, 1, "Interfaces/Minigame/Corporeal");
-    addSprite(45511, 1, "Interfaces/Minigame/Background");
-    addText(45512, "Nex", 14056233, true, true, 52, paramArrayOfTextDrawingArea, 2);
-    addText(45513, "King Black Dragon", 14056233, true, true, 52, paramArrayOfTextDrawingArea, 2);
-    addText(45514, "Dagannoth Kings", 14056233, true, true, 52, paramArrayOfTextDrawingArea, 2);
-    addText(45515, "Tormented Demons", 14056233, true, true, 52, paramArrayOfTextDrawingArea, 2);
-    addText(45516, "Corporal Beast", 14056233, true, true, 52, paramArrayOfTextDrawingArea, 2);
-    int i = 24;
-    int j = 0;
-    setChildren(i, localRSInterface);
-    setBounds(45511, -1, 26, j, localRSInterface);
-    j++;
-    setBounds(45501, 33, 7, j, localRSInterface);
-    j++;
-    setBounds(45502, 8, 35, j, localRSInterface);
-    j++;
-    setBounds(45503, 8, 35, j, localRSInterface);
-    j++;
-    setBounds(45512, 80, 39, j, localRSInterface);
-    j++;
-    setBounds(45518, 8, 72, j, localRSInterface);
-    j++;
-    setBounds(45519, 8, 72, j, localRSInterface);
-    j++;
-    setBounds(45513, 80, 76, j, localRSInterface);
-    j++;
-    setBounds(45521, 8, 109, j, localRSInterface);
-    j++;
-    setBounds(45522, 8, 109, j, localRSInterface);
-    j++;
-    setBounds(45514, 80, 113, j, localRSInterface);
-    j++;
-    setBounds(45524, 8, 146, j, localRSInterface);
-    j++;
-    setBounds(45525, 8, 146, j, localRSInterface);
-    j++;
-    setBounds(45515, 80, 150, j, localRSInterface);
-    j++;
-    setBounds(45527, 8, 183, j, localRSInterface);
-    j++;
-    setBounds(45528, 8, 183, j, localRSInterface);
-    j++;
-    setBounds(45516, 80, 187, j, localRSInterface);
-    j++;
-    setBounds(45505, 148, 33, j, localRSInterface);
-    j++;
-    setBounds(45506, 148, 70, j, localRSInterface);
-    j++;
-    setBounds(45507, 148, 104, j, localRSInterface);
-    j++;
-    setBounds(45508, 148, 144, j, localRSInterface);
-    j++;
-    setBounds(45509, 148, 179, j, localRSInterface);
-    j++;
-    setBounds(45533, 10, 6, j, localRSInterface);
-    j++;
-    setBounds(45534, 10, 6, j, localRSInterface);
-    j++;
-  }
+		addHoveredButton(45528, "Interfaces/Minigame/Hover", 3, 172, 24, 45529);
+		addHoverButton(45533, "Interfaces/Minigame/Back", 0, 16, 16, "Back",
+				-1, 45534, 1);
+
+		addHoveredButton(45534, "Interfaces/Minigame/Back", 1, 16, 16, 45535);
+		addSprite(45505, 1, "Interfaces/Minigame/Godwars");
+		addSprite(45506, 1, "Interfaces/Minigame/Kbd");
+		addSprite(45507, 1, "Interfaces/Minigame/Dagganoths");
+		addSprite(45508, 1, "Interfaces/Minigame/Chaos");
+		addSprite(45509, 1, "Interfaces/Minigame/Corporeal");
+		addSprite(45511, 1, "Interfaces/Minigame/Background");
+		addText(45512, "Nex", 14056233, true, true, 52,
+				paramArrayOfTextDrawingArea, 2);
+		addText(45513, "King Black Dragon", 14056233, true, true, 52,
+				paramArrayOfTextDrawingArea, 2);
+		addText(45514, "Dagannoth Kings", 14056233, true, true, 52,
+				paramArrayOfTextDrawingArea, 2);
+		addText(45515, "Tormented Demons", 14056233, true, true, 52,
+				paramArrayOfTextDrawingArea, 2);
+		addText(45516, "Corporal Beast", 14056233, true, true, 52,
+				paramArrayOfTextDrawingArea, 2);
+		int i = 24;
+		int j = 0;
+		setChildren(i, localRSInterface);
+		setBounds(45511, -1, 26, j, localRSInterface);
+		j++;
+		setBounds(45501, 33, 7, j, localRSInterface);
+		j++;
+		setBounds(45502, 8, 35, j, localRSInterface);
+		j++;
+		setBounds(45503, 8, 35, j, localRSInterface);
+		j++;
+		setBounds(45512, 80, 39, j, localRSInterface);
+		j++;
+		setBounds(45518, 8, 72, j, localRSInterface);
+		j++;
+		setBounds(45519, 8, 72, j, localRSInterface);
+		j++;
+		setBounds(45513, 80, 76, j, localRSInterface);
+		j++;
+		setBounds(45521, 8, 109, j, localRSInterface);
+		j++;
+		setBounds(45522, 8, 109, j, localRSInterface);
+		j++;
+		setBounds(45514, 80, 113, j, localRSInterface);
+		j++;
+		setBounds(45524, 8, 146, j, localRSInterface);
+		j++;
+		setBounds(45525, 8, 146, j, localRSInterface);
+		j++;
+		setBounds(45515, 80, 150, j, localRSInterface);
+		j++;
+		setBounds(45527, 8, 183, j, localRSInterface);
+		j++;
+		setBounds(45528, 8, 183, j, localRSInterface);
+		j++;
+		setBounds(45516, 80, 187, j, localRSInterface);
+		j++;
+		setBounds(45505, 148, 33, j, localRSInterface);
+		j++;
+		setBounds(45506, 148, 70, j, localRSInterface);
+		j++;
+		setBounds(45507, 148, 104, j, localRSInterface);
+		j++;
+		setBounds(45508, 148, 144, j, localRSInterface);
+		j++;
+		setBounds(45509, 148, 179, j, localRSInterface);
+		j++;
+		setBounds(45533, 10, 6, j, localRSInterface);
+		j++;
+		setBounds(45534, 10, 6, j, localRSInterface);
+		j++;
+	}
+
 	public static void teleport(TextDrawingArea[] TDA) {
 		RSInterface localRSInterface = addInterface(11650);
 		addSprite(11651, 10, "CLICK");
@@ -4446,52 +4657,39 @@ public static void Sell(TextDrawingArea[] TDA) {
 		setBounds(3902, 471, 22, 5, rsinterface);
 		setBounds(3826, 60, 85, 6, rsinterface);
 	}
-	
-	/*	public static void Shop(TextDrawingArea[] TDA) {
-		RSInterface rsinterface = addTabInterface(3824);
-		setChildren(8, rsinterface);
-		addSprite(3825, 0, "Shop/SHOP");
-		
-		addHoverButton(3902, "Shop/SPRITE", 1, 13, 13, "Close", -1, 3826, 1);
-		addHoveredButton(3826, "Shop/SPRITE", 2, 13, 13, 3827);	
-		
-		//addHover(3902, 3, 0, 3826, 1, "Shop/CLOSE", 17, 17, "Close Window");
-		//addHovered(3826, 2, "Shop/CLOSE", 17, 17, 3827);
-		addText(19679, "", 0xff981f, false, true, 52, TDA, 1);
-		addText(19680, "", 0xbf751d, false, true, 52, TDA, 1);
-		addButton(19681, 2, "Shop/SHOP", 0, 0, "", 1);
-		addSprite(19687, 1, "Shop/ITEMBG");
-		setBounds(3825, 6, 8, 0, rsinterface);
-		setBounds(3902, 487, 10, 1, rsinterface);
-		setBounds(3826, 487, 10, 2, rsinterface);
-		setBounds(3900, 26, 44, 3, rsinterface);
-		setBounds(3901, 240, 11, 4, rsinterface);
-		setBounds(19679, 42, 54, 5, rsinterface);
-		setBounds(19680, 150, 54, 6, rsinterface);
-		setBounds(19681, 129, 50, 7, rsinterface);
-		rsinterface = interfaceCache[3900];
-		setChildren(1, rsinterface);
-		setBounds(19687, 6, 15, 0, rsinterface);
-		rsinterface.invSpritePadX = 15;
-		rsinterface.width = 10;
-		rsinterface.height = 4;
-		rsinterface.invSpritePadY = 25;
-		rsinterface = addTabInterface(19682);
-		addSprite(19683, 1, "Shop/SHOP");
-		addText(19684, "Main Stock", 0xbf751d, false, true, 52, TDA, 1);
-		addText(19685, "Store Info", 0xff981f, false, true, 52, TDA, 1);
-		addButton(19686, 2, "Shop/SHOP", 95, 19, "Main Stock", 1);
-		setChildren(7, rsinterface);
-		setBounds(19683, 12, 12, 0, rsinterface);
-		setBounds(3901, 240, 21, 1, rsinterface);
-		setBounds(19684, 42, 54, 2, rsinterface);
-		setBounds(19685, 150, 54, 3, rsinterface);
-		setBounds(19686, 23, 50, 4, rsinterface);
-		setBounds(3902, 471, 22, 5, rsinterface);
-		setBounds(2826, 60, 85, 6, rsinterface);
-	}*/
-		public static void addInvItems(int index)
-	{
+
+	/*
+	 * public static void Shop(TextDrawingArea[] TDA) { RSInterface rsinterface
+	 * = addTabInterface(3824); setChildren(8, rsinterface); addSprite(3825, 0,
+	 * "Shop/SHOP");
+	 * 
+	 * addHoverButton(3902, "Shop/SPRITE", 1, 13, 13, "Close", -1, 3826, 1);
+	 * addHoveredButton(3826, "Shop/SPRITE", 2, 13, 13, 3827);
+	 * 
+	 * //addHover(3902, 3, 0, 3826, 1, "Shop/CLOSE", 17, 17, "Close Window");
+	 * //addHovered(3826, 2, "Shop/CLOSE", 17, 17, 3827); addText(19679, "",
+	 * 0xff981f, false, true, 52, TDA, 1); addText(19680, "", 0xbf751d, false,
+	 * true, 52, TDA, 1); addButton(19681, 2, "Shop/SHOP", 0, 0, "", 1);
+	 * addSprite(19687, 1, "Shop/ITEMBG"); setBounds(3825, 6, 8, 0,
+	 * rsinterface); setBounds(3902, 487, 10, 1, rsinterface); setBounds(3826,
+	 * 487, 10, 2, rsinterface); setBounds(3900, 26, 44, 3, rsinterface);
+	 * setBounds(3901, 240, 11, 4, rsinterface); setBounds(19679, 42, 54, 5,
+	 * rsinterface); setBounds(19680, 150, 54, 6, rsinterface); setBounds(19681,
+	 * 129, 50, 7, rsinterface); rsinterface = interfaceCache[3900];
+	 * setChildren(1, rsinterface); setBounds(19687, 6, 15, 0, rsinterface);
+	 * rsinterface.invSpritePadX = 15; rsinterface.width = 10;
+	 * rsinterface.height = 4; rsinterface.invSpritePadY = 25; rsinterface =
+	 * addTabInterface(19682); addSprite(19683, 1, "Shop/SHOP"); addText(19684,
+	 * "Main Stock", 0xbf751d, false, true, 52, TDA, 1); addText(19685,
+	 * "Store Info", 0xff981f, false, true, 52, TDA, 1); addButton(19686, 2,
+	 * "Shop/SHOP", 95, 19, "Main Stock", 1); setChildren(7, rsinterface);
+	 * setBounds(19683, 12, 12, 0, rsinterface); setBounds(3901, 240, 21, 1,
+	 * rsinterface); setBounds(19684, 42, 54, 2, rsinterface); setBounds(19685,
+	 * 150, 54, 3, rsinterface); setBounds(19686, 23, 50, 4, rsinterface);
+	 * setBounds(3902, 471, 22, 5, rsinterface); setBounds(2826, 60, 85, 6,
+	 * rsinterface); }
+	 */
+	public static void addInvItems(int index) {
 		RSInterface rsi = interfaceCache[index] = new RSInterface();
 		rsi.itemActions = new String[5];
 		rsi.spritesX = new int[20];
@@ -4502,17 +4700,17 @@ public static void Sell(TextDrawingArea[] TDA) {
 		rsi.children = new int[0];
 		rsi.childX = new int[0];
 		rsi.childY = new int[0];
-		
+
 		rsi.centerText = false;
 		rsi.aBoolean227 = false;
 		rsi.aBoolean235 = false;
 		rsi.usableItemInterface = false;
 		rsi.isInventoryInterface = false;
-		//rsi.aBoolean251 = false;
+		// rsi.aBoolean251 = false;
 		rsi.aBoolean259 = true;
-		//rsi.interfaceShown = false;
+		// rsi.interfaceShown = false;
 		rsi.textShadow = false;
-		//rsi.hoverType = -1;
+		// rsi.hoverType = -1;
 		rsi.invSpritePadX = 12;
 		rsi.invSpritePadY = 4;
 		rsi.height = 7;
@@ -4521,7 +4719,8 @@ public static void Sell(TextDrawingArea[] TDA) {
 		rsi.id = 2800;
 		rsi.type = 2;
 	}
-	public static void Bank(TextDrawingArea[] wid){
+
+	public static void Bank(TextDrawingArea[] wid) {
 		RSInterface Interface = addTabInterface(5292);
 		setChildren(38, Interface);
 		addSprite(5293, 0, "Bank/BANK");
@@ -4529,32 +4728,48 @@ public static void Sell(TextDrawingArea[] TDA) {
 		addHover(5384, 3, 0, 5380, 1, "Bank/BANK", 17, 17, "Close Window");
 		addHovered(5380, 2, "Bank/BANK", 17, 17, 5379);
 		setBounds(5384, 476, 16, 3, Interface);
-		setBounds(5380, 476, 16, 4, Interface);	
+		setBounds(5380, 476, 16, 4, Interface);
 		addHover(5294, 4, 0, 5295, 3, "Bank/BANK", 114, 25, "Set A Bank PIN");
 		addHovered(5295, 4, "Bank/BANK", 114, 25, 5296);
 		setBounds(5294, 110, 285, 5, Interface);
 		setBounds(5295, 110, 285, 6, Interface);
-		addBankHover(22000, 4, 22001, 5, 8, "Bank/BANK", 35, 25, 304, 1, "Swap Withdraw Mode", 22002, 7, 6, "Bank/BANK", 22003, "Switch to insert items \nmode", "Switch to swap items \nmode.", 12, 20);
+		addBankHover(22000, 4, 22001, 5, 8, "Bank/BANK", 35, 25, 304, 1,
+				"Swap Withdraw Mode", 22002, 7, 6, "Bank/BANK", 22003,
+				"Switch to insert items \nmode",
+				"Switch to swap items \nmode.", 12, 20);
 		setBounds(22000, 25, 285, 7, Interface);
 		setBounds(22001, 10, 225, 8, Interface);
-		addBankHover(22004, 4, 22005, 13, 15, "Bank/BANK", 35, 25, 0, 1, "Search", 22006, 14, 16, "Bank/BANK", 22007, "Click here to search your \nbank", "Click here to search your \nbank", 12, 20);
+		addBankHover(22004, 4, 22005, 13, 15, "Bank/BANK", 35, 25, 0, 1,
+				"Search", 22006, 14, 16, "Bank/BANK", 22007,
+				"Click here to search your \nbank",
+				"Click here to search your \nbank", 12, 20);
 		setBounds(22004, 65, 285, 9, Interface);
 		setBounds(22005, 50, 225, 10, Interface);
-		addBankHover(22008, 4, 22009, 9, 11, "Bank/BANK", 35, 25, 115, 1, "Withdraw", 22010, 10, 12, "Bank/BANK", 22011, "Switch to note withdrawal \nmode", "Switch to item withdrawal \nmode", 12, 20);
+		addBankHover(22008, 4, 22009, 9, 11, "Bank/BANK", 35, 25, 115, 1,
+				"Withdraw", 22010, 10, 12, "Bank/BANK", 22011,
+				"Switch to note withdrawal \nmode",
+				"Switch to item withdrawal \nmode", 12, 20);
 		setBounds(22008, 240, 285, 11, Interface);
 		setBounds(22009, 225, 225, 12, Interface);
-		addBankHover1(22012, 5, 22013, 17, "Bank/BANK", 35, 25, "Deposit carried tems", 22014, 18, "Bank/BANK", 22015, "Empty your backpack into\nyour bank", 0, 20);
+		addBankHover1(22012, 5, 22013, 17, "Bank/BANK", 35, 25,
+				"Deposit carried tems", 22014, 18, "Bank/BANK", 22015,
+				"Empty your backpack into\nyour bank", 0, 20);
 		setBounds(22012, 375, 285, 13, Interface);
 		setBounds(22013, 360, 225, 14, Interface);
-		addBankHover1(22016, 5, 22017, 19, "Bank/BANK", 35, 25, "Deposit worn items", 22018, 20, "Bank/BANK", 22019, "Empty the items your are\nwearing into your bank", 0, 20);
+		addBankHover1(22016, 5, 22017, 19, "Bank/BANK", 35, 25,
+				"Deposit worn items", 22018, 20, "Bank/BANK", 22019,
+				"Empty the items your are\nwearing into your bank", 0, 20);
 		setBounds(22016, 415, 285, 15, Interface);
 		setBounds(22017, 400, 225, 16, Interface);
-		addBankHover1(22020, 5, 22021, 21, "Bank/BANK", 35, 25, "Deposit beast of burden inventory.", 22022, 22, "Bank/BANK", 22023, "Empty your BoB's inventory\ninto your bank", 0, 20);
+		addBankHover1(22020, 5, 22021, 21, "Bank/BANK", 35, 25,
+				"Deposit beast of burden inventory.", 22022, 22, "Bank/BANK",
+				22023, "Empty your BoB's inventory\ninto your bank", 0, 20);
 		setBounds(22020, 455, 285, 17, Interface);
 		setBounds(22021, 440, 225, 18, Interface);
 		setBounds(5383, 170, 15, 1, Interface);
 		setBounds(5385, -4, 74, 2, Interface);
-		addButton(22024, 0, "BANK/TAB", "Click here to view the full contents of your bank");
+		addButton(22024, 0, "BANK/TAB",
+				"Click here to view the full contents of your bank");
 		setBounds(22024, 22, 36, 19, Interface);
 		addButton(22025, 4, "BANK/TAB", "Drag an item here to create a new tab");
 		setBounds(22025, 70, 36, 20, Interface);
@@ -4592,11 +4807,11 @@ public static void Sell(TextDrawingArea[] TDA) {
 		setBounds(22041, 365, 39, 36, Interface);
 		addBankItem(22042, false);
 		setBounds(22042, 413, 39, 37, Interface);
-		
+
 		addText(27000, "0", 0xFF981F, false, true, 52, wid, 1);
 		addText(27001, "0", 0xFF981F, false, true, 52, wid, 1);
 		addText(27002, "0", 0xFF981F, false, true, 52, wid, 1);
-		
+
 		Interface = interfaceCache[5385];
 		Interface.height = 206;
 		Interface.width = 480;
@@ -4605,8 +4820,8 @@ public static void Sell(TextDrawingArea[] TDA) {
 		Interface.invSpritePadX = 12;
 		Interface.height = 35;
 	}
-  	public static void addBankItem(int index, Boolean hasOption)
-	{
+
+	public static void addBankItem(int index, Boolean hasOption) {
 		RSInterface rsi = interfaceCache[index] = new RSInterface();
 		rsi.itemActions = new String[5];
 		rsi.spritesX = new int[20];
@@ -4617,9 +4832,9 @@ public static void Sell(TextDrawingArea[] TDA) {
 		rsi.children = new int[0];
 		rsi.childX = new int[0];
 		rsi.childY = new int[0];
-		
-		//rsi.hasExamine = false;
-		
+
+		// rsi.hasExamine = false;
+
 		rsi.invSpritePadX = 24;
 		rsi.invSpritePadY = 24;
 		rsi.height = 5;
@@ -4628,65 +4843,49 @@ public static void Sell(TextDrawingArea[] TDA) {
 		rsi.id = index;
 		rsi.type = 2;
 	}
-	/*public static void Bank() {
-		RSInterface Interface = addTabInterface(5292);
-		setChildren(19, Interface);
-		addSprite(5293, 0, "Interfaces/Bank/BANK");
-		setBounds(5293, 13, 13, 0, Interface);
-		addHover(5384, 3, 0, 5380, 1, "Interfaces/Bank/BANK", 17, 17,
-				"Close Window");
-		addHovered(5380, 2, "Interfaces/Bank/BANK", 17, 17, 5379);
-		setBounds(5384, 476, 16, 3, Interface);
-		setBounds(5380, 476, 16, 4, Interface);
-		addHover(5294, 4, 0, 5295, 3, "Interfaces/Bank/BANK", 114, 25,
-				"Set A Bank PIN");
-		addHovered(5295, 4, "Interfaces/Bank/BANK", 114, 25, 5296);
-		setBounds(5294, 110, 285, 5, Interface);
-		setBounds(5295, 110, 285, 6, Interface);
-		addBankHover(21000, 4, 21001, 5, 8, "Interfaces/Bank/BANK", 35, 25,
-				304, 1, "Swap Withdraw Mode", 21002, 7, 6,
-				"Interfaces/Bank/BANK", 21003, "Switch to insert items \nmode",
-				"Switch to swap items \nmode.", 12, 20);
-		setBounds(21000, 25, 285, 7, Interface);
-		setBounds(21001, 10, 225, 8, Interface);
-		addBankHover(21004, 4, 21005, 13, 15, "Interfaces/Bank/BANK", 35, 25,
-				0, 1, "Search", 21006, 14, 16, "Interfaces/Bank/BANK", 21007,
-				"Click here to search your \nbank",
-				"Click here to search your \nbank", 12, 20);
-		setBounds(21004, 65, 285, 9, Interface);
-		setBounds(21005, 50, 225, 10, Interface);
-		addBankHover(21008, 4, 21009, 9, 11, "Interfaces/Bank/BANK", 35, 25,
-				115, 1, "Search", 21010, 10, 12, "Interfaces/Bank/BANK", 21011,
-				"Switch to note withdrawal \nmode",
-				"Switch to item withdrawal \nmode", 12, 20);
-		setBounds(21008, 240, 285, 11, Interface);
-		setBounds(21009, 225, 225, 12, Interface);
-		addBankHover1(21012, 5, 21013, 17, "Interfaces/Bank/BANK", 35, 25,
-				"Deposit carried tems", 21014, 18, "Interfaces/Bank/BANK",
-				21015, "Empty your backpack into\nyour bank", 0, 20);
-		setBounds(21012, 375, 285, 13, Interface);
-		setBounds(21013, 360, 225, 14, Interface);
-		addBankHover1(21016, 5, 21017, 19, "Interfaces/Bank/BANK", 35, 25,
-				"Deposit worn items", 21018, 20, "Interfaces/Bank/BANK", 21019,
-				"Empty the items your are\nwearing into your bank", 0, 20);
-		setBounds(21016, 415, 285, 15, Interface);
-		setBounds(21017, 400, 225, 16, Interface);
-		addBankHover1(21020, 5, 21021, 21, "Interfaces/Bank/BANK", 35, 25,
-				"Deposit beast of burden inventory.", 21022, 22,
-				"Interfaces/Bank/BANK", 21023,
-				"Empty your BoB's inventory\ninto your bank", 0, 20);
-		setBounds(21020, 455, 285, 17, Interface);
-		setBounds(21021, 440, 225, 18, Interface);
-		setBounds(5383, 170, 15, 1, Interface);
-		setBounds(5385, -4, 74, 2, Interface);
-		Interface = interfaceCache[5385];
-		Interface.height = 206;
-		Interface.width = 480;
-		Interface = interfaceCache[5382];
-		Interface.width = 10;
-		Interface.invSpritePadX = 12;
-		Interface.height = 35;
-	}*/
+
+	/*
+	 * public static void Bank() { RSInterface Interface =
+	 * addTabInterface(5292); setChildren(19, Interface); addSprite(5293, 0,
+	 * "Interfaces/Bank/BANK"); setBounds(5293, 13, 13, 0, Interface);
+	 * addHover(5384, 3, 0, 5380, 1, "Interfaces/Bank/BANK", 17, 17,
+	 * "Close Window"); addHovered(5380, 2, "Interfaces/Bank/BANK", 17, 17,
+	 * 5379); setBounds(5384, 476, 16, 3, Interface); setBounds(5380, 476, 16,
+	 * 4, Interface); addHover(5294, 4, 0, 5295, 3, "Interfaces/Bank/BANK", 114,
+	 * 25, "Set A Bank PIN"); addHovered(5295, 4, "Interfaces/Bank/BANK", 114,
+	 * 25, 5296); setBounds(5294, 110, 285, 5, Interface); setBounds(5295, 110,
+	 * 285, 6, Interface); addBankHover(21000, 4, 21001, 5, 8,
+	 * "Interfaces/Bank/BANK", 35, 25, 304, 1, "Swap Withdraw Mode", 21002, 7,
+	 * 6, "Interfaces/Bank/BANK", 21003, "Switch to insert items \nmode",
+	 * "Switch to swap items \nmode.", 12, 20); setBounds(21000, 25, 285, 7,
+	 * Interface); setBounds(21001, 10, 225, 8, Interface); addBankHover(21004,
+	 * 4, 21005, 13, 15, "Interfaces/Bank/BANK", 35, 25, 0, 1, "Search", 21006,
+	 * 14, 16, "Interfaces/Bank/BANK", 21007,
+	 * "Click here to search your \nbank", "Click here to search your \nbank",
+	 * 12, 20); setBounds(21004, 65, 285, 9, Interface); setBounds(21005, 50,
+	 * 225, 10, Interface); addBankHover(21008, 4, 21009, 9, 11,
+	 * "Interfaces/Bank/BANK", 35, 25, 115, 1, "Search", 21010, 10, 12,
+	 * "Interfaces/Bank/BANK", 21011, "Switch to note withdrawal \nmode",
+	 * "Switch to item withdrawal \nmode", 12, 20); setBounds(21008, 240, 285,
+	 * 11, Interface); setBounds(21009, 225, 225, 12, Interface);
+	 * addBankHover1(21012, 5, 21013, 17, "Interfaces/Bank/BANK", 35, 25,
+	 * "Deposit carried tems", 21014, 18, "Interfaces/Bank/BANK", 21015,
+	 * "Empty your backpack into\nyour bank", 0, 20); setBounds(21012, 375, 285,
+	 * 13, Interface); setBounds(21013, 360, 225, 14, Interface);
+	 * addBankHover1(21016, 5, 21017, 19, "Interfaces/Bank/BANK", 35, 25,
+	 * "Deposit worn items", 21018, 20, "Interfaces/Bank/BANK", 21019,
+	 * "Empty the items your are\nwearing into your bank", 0, 20);
+	 * setBounds(21016, 415, 285, 15, Interface); setBounds(21017, 400, 225, 16,
+	 * Interface); addBankHover1(21020, 5, 21021, 21, "Interfaces/Bank/BANK",
+	 * 35, 25, "Deposit beast of burden inventory.", 21022, 22,
+	 * "Interfaces/Bank/BANK", 21023,
+	 * "Empty your BoB's inventory\ninto your bank", 0, 20); setBounds(21020,
+	 * 455, 285, 17, Interface); setBounds(21021, 440, 225, 18, Interface);
+	 * setBounds(5383, 170, 15, 1, Interface); setBounds(5385, -4, 74, 2,
+	 * Interface); Interface = interfaceCache[5385]; Interface.height = 206;
+	 * Interface.width = 480; Interface = interfaceCache[5382]; Interface.width
+	 * = 10; Interface.invSpritePadX = 12; Interface.height = 35; }
+	 */
 
 	public static void addBankHover(int interfaceID, int actionType,
 			int hoverid, int spriteId, int spriteId2, String NAME, int Width,
@@ -5149,6 +5348,7 @@ public static void Sell(TextDrawingArea[] TDA) {
 		index++;
 
 	}
+
 	public static void unpack(StreamLoader streamLoader,
 			TextDrawingArea textDrawingAreas[], StreamLoader streamLoader_1) {
 		fonts = textDrawingAreas;
@@ -5256,18 +5456,14 @@ public static void Sell(TextDrawingArea[] TDA) {
 				for (int l3 = 0; l3 < 5; l3++) {
 					rsInterface.itemActions[l3] = stream.readString();
 					if (rsInterface.parentID == 3824)
-						rsInterface.itemActions[4] = "Buy 200";	
-						
-						
-					
-					
-					
+						rsInterface.itemActions[4] = "Buy 200";
+
 					if (rsInterface.itemActions[l3].length() == 0)
 						rsInterface.itemActions[l3] = null;
 					if (rsInterface.parentID == 1644)
 						rsInterface.itemActions[2] = "Operate";
 				}
-			
+
 			}
 			if (rsInterface.type == 3)
 				rsInterface.aBoolean227 = stream.readUnsignedByte() == 1;
@@ -5357,7 +5553,6 @@ public static void Sell(TextDrawingArea[] TDA) {
 						rsInterface.itemActions[k4] = null;
 				}
 
-				
 			}
 			if (rsInterface.atActionType == 2 || rsInterface.type == 2) {
 				rsInterface.selectedActionName = stream.readString();
@@ -5384,21 +5579,26 @@ public static void Sell(TextDrawingArea[] TDA) {
 		} while (true);
 		aMRUNodes_238 = null;
 	}
-		public static void Classes(TextDrawingArea[] TDA){
+
+	public static void Classes(TextDrawingArea[] TDA) {
 		RSInterface tab = addTabInterface(17050);
 		addSprite(17051, 1, "Interfaces/Classes/CHOOSE");
-		addHover(17052, 1, 0, 19151, 1, "Interfaces/Classes/MAGIC", 134, 180, "Choose Mage As A Class");
-		addHover(17053, 1, 0, 19151, 3, "Interfaces/Classes/MELEE", 134, 180, "Choose Melee As A Class");
-		addHover(17054, 1, 0, 19151, 2, "Interfaces/Classes/RANGE", 134, 180, "Choose Range As A Class");
+		addHover(17052, 1, 0, 19151, 1, "Interfaces/Classes/MAGIC", 134, 180,
+				"Choose Mage As A Class");
+		addHover(17053, 1, 0, 19151, 3, "Interfaces/Classes/MELEE", 134, 180,
+				"Choose Melee As A Class");
+		addHover(17054, 1, 0, 19151, 2, "Interfaces/Classes/RANGE", 134, 180,
+				"Choose Range As A Class");
 		tab.totalChildren(4);
 		tab.child(0, 17051, 10, 15);
 		tab.child(1, 17052, 30, 78);
 		tab.child(2, 17053, 182, 78);
 		tab.child(3, 17054, 334, 78);
-		}
+	}
+
 	public static void unpackCustom(StreamLoader streamLoader,
 			TextDrawingArea textDrawingAreas[]) {
-		
+
 		aMRUNodes_238 = new MRUNodes(65000);
 		aClass44 = streamLoader;
 		clanChatTabs(textDrawingAreas);
@@ -5412,12 +5612,12 @@ public static void Sell(TextDrawingArea[] TDA) {
 		SkillTeleportInterface(textDrawingAreas);
 		minigameTeleportInterface(textDrawingAreas);
 		Bank(textDrawingAreas);
-		Login(textDrawingAreas);//ace
+		Login(textDrawingAreas);// ace
 		Domtowershop3(textDrawingAreas);
 		Domtowershop2(textDrawingAreas);
-		Domtowershop(textDrawingAreas);	
+		Domtowershop(textDrawingAreas);
 		DominionTower1(textDrawingAreas);
-		DominionTower2(textDrawingAreas);		
+		DominionTower2(textDrawingAreas);
 		Domtowerwin1(textDrawingAreas);
 		Dominterface(textDrawingAreas);
 		DominionTower(textDrawingAreas);
@@ -5482,131 +5682,176 @@ public static void Sell(TextDrawingArea[] TDA) {
 		miasmic.selectedActionName = "Cast On";
 		aMRUNodes_238 = null;
 	}
-	
-		public static void SkillTeleport(TextDrawingArea[] TDA) {
-	RSInterface tab = addScreenInterface(17560);
-	
-	addSprite(17561, 0, "Interfaces/SkillTele/BACK");
-	
-	addHoverButton(17562, "Interfaces/SkillTele/SPRITEs", 1, 176, 25, "Teleport to Construction Place", -1, 17562, 1);
-    addHoverButton(17563, "Interfaces/SkillTele/SPRITEs", 2, 160, 25, "Teleport to Cooking Place", -1, 17563, 1);
-    addHoverButton(17564, "Interfaces/SkillTele/SPRITEs", 3, 159, 25, "Teleport to Crafting Place", -1, 17564, 1);
-    addHoverButton(17565, "Interfaces/SkillTele/SPRITEs", 4, 158, 25, "Teleport to Dungeoneering Place", -1, 17565, 1);
-    addHoverButton(17566, "Interfaces/SkillTele/SPRITEs", 5, 158, 27, "Teleport to Farming Place", -1, 17566, 1);
-    addHoverButton(17567, "Interfaces/SkillTele/SPRITEs", 6, 159, 25, "Teleport to Firemaking Place", -1, 17567, 1);
-    addHoverButton(17568, "Interfaces/SkillTele/SPRITEs", 7, 171, 29, "Teleport to Fishing Place", -1, 17568, 1);
-    addHoverButton(17569, "Interfaces/SkillTele/SPRITEs", 8, 157, 24, "Teleport to Fletching Place", -1, 17569, 1);
-    addHoverButton(17570, "Interfaces/SkillTele/SPRITEs", 9, 158, 24, "Teleport to Herblore Place", -1, 17570, 1);
-    addHoverButton(17571, "Interfaces/SkillTele/SPRITEs", 10, 171, 25, "Teleport to Hunter Place", -1, 17571, 1);
-    addHoverButton(17572, "Interfaces/SkillTele/SPRITEs", 11, 174, 35, "Teleport to Mining Place", -1, 17572, 1);
-    addHoverButton(17573, "Interfaces/SkillTele/SPRITEs", 12, 174, 25, "Teleport to Runecrafting Place", -1, 17573, 1);
-    addHoverButton(17574, "Interfaces/SkillTele/SPRITEs", 13, 154, 24, "Teleport to Slayer Place", -1, 17574, 1);
-    addHoverButton(17575, "Interfaces/SkillTele/SPRITEs", 14, 154, 24, "Teleport to Smithing Place", -1, 17575, 1);
-    addHoverButton(17576, "Interfaces/SkillTele/SPRITEs", 15, 152, 25, "Teleport to Summoning Place", -1, 17576, 1);
-    addHoverButton(17577, "Interfaces/SkillTele/SPRITEs", 16, 157, 26, "Teleport to Thieving Place", -1, 17577, 1);
-    addHoverButton(17578, "Interfaces/SkillTele/SPRITEs", 17, 154, 25, "Teleport to Woodcutting Place", -1, 17578, 1);
-    addHoverButton(17579, "Interfaces/SkillTele/SPRITEs", 18, 174, 25, "Teleport to Agility Place", -1, 17579, 1);
-	addHoverButton(17598, "Interfaces/SkillTele/CLOSE", 37, 25, 25, "Close", -1, 17598, 1);
-	
-	addHoveredButton(17580, "Interfaces/SkillTele/SPRITE", 19, 176, 25, 17680);
-    addHoveredButton(17581, "Interfaces/SkillTele/SPRITE", 20, 160, 25, 17681);
-    addHoveredButton(17582, "Interfaces/SkillTele/SPRITE", 21, 159, 25, 17682);
-    addHoveredButton(17583, "Interfaces/SkillTele/SPRITE", 22, 158, 25, 17683);
-    addHoveredButton(17584, "Interfaces/SkillTele/SPRITE", 23, 158, 27, 17684);
-    addHoveredButton(17585, "Interfaces/SkillTele/SPRITE", 24, 159, 25, 17685);
-    addHoveredButton(17586, "Interfaces/SkillTele/SPRITE", 25, 171, 29, 17686);
-    addHoveredButton(17587, "Interfaces/SkillTele/SPRITE", 26, 157, 24, 17687);
-    addHoveredButton(17588, "Interfaces/SkillTele/SPRITE", 27, 158, 24, 17688);
-    addHoveredButton(17589, "Interfaces/SkillTele/SPRITE", 28, 171, 25, 17689);
-    addHoveredButton(17590, "Interfaces/SkillTele/SPRITE", 29, 174, 35, 17690);
-    addHoveredButton(17591, "Interfaces/SkillTele/SPRITE", 30, 174, 25, 17691);
-    addHoveredButton(17592, "Interfaces/SkillTele/SPRITE", 31, 154, 24, 17692);
-    addHoveredButton(17593, "Interfaces/SkillTele/SPRITE", 32, 154, 24, 17693);
-    addHoveredButton(17594, "Interfaces/SkillTele/SPRITE", 33, 152, 25, 17694);
-    addHoveredButton(17595, "Interfaces/SkillTele/SPRITE", 34, 157, 26, 17695);
-    addHoveredButton(17596, "Interfaces/SkillTele/SPRITE", 35, 154, 25, 17696);
-    addHoveredButton(17597, "Interfaces/SkillTele/SPRITE", 36, 174, 25, 17697);
-	tab.totalChildren(38);
-	
-	tab.child(0, 17561, 0, 0);
-	
-	tab.child(1, 17562, 339, 229);
-	tab.child(2, 17563, 12, 83);
-	tab.child(3, 17564, 12, 193);
-	tab.child(4, 17565, 179, 264);
-	tab.child(5, 17566, 12, 158);
-	tab.child(6, 17567, 12, 120);
-	tab.child(7, 17568, 339, 264);
-	tab.child(8, 17569, 179, 83);
-	tab.child(9, 17570, 12, 264);
-	tab.child(10, 17571, 339, 193);
-	tab.child(11, 17572, 339, 83);
-	tab.child(12, 17573, 176, 158);	
-	tab.child(13, 17574, 339, 120);	
-	tab.child(14, 17575, 179, 193);	
-	tab.child(15, 17576, 179, 120);	
-	tab.child(16, 17577, 179, 229);	
-	tab.child(17, 17578, 12, 229);	
-	tab.child(18, 17579, 339, 158);	
 
-	tab.child(19, 17580, 339, 229);	
-	tab.child(20, 17581, 12, 83);	
-	tab.child(21, 17582, 12, 193);	
-	tab.child(22, 17583, 179, 264);	
-	tab.child(23, 17584, 12, 158);	
-	tab.child(24, 17585, 12, 120);	
-	tab.child(25, 17586, 339, 264);	
-	tab.child(26, 17587, 179, 83);	
-	tab.child(27, 17588, 12, 264);	
-	tab.child(28, 17589, 339, 193);	
-	tab.child(29, 17590, 339, 83);	
-	tab.child(30, 17591, 179, 158);	
-	tab.child(31, 17592, 339, 120);	
-	tab.child(32, 17593, 179, 193);	
-	tab.child(33, 17594, 179, 120);	
-	tab.child(34, 17595, 179, 229);	
-	tab.child(35, 17596, 12, 229);	
-	tab.child(36, 17597, 339, 158);	
-	
-	tab.child(37, 17598, 494, 16);	  
-	}
-	
-						public static void Login(TextDrawingArea[] TDA) {
-	RSInterface tab = addScreenInterface(14300);
-	addSprite(14309, 1, "Interfaces/Login/BACKGROUND");
-	addHoverButton(14310, "Interfaces/Login/FORUM", 1, 96, 30, "Forum", -1, 14311, 1);
-	addHoveredButton(14311, "Interfaces/Login/FORUMH", 0, 96, 30, 14351);
-	addHoverButton(14312, "Interfaces/Login/WEBSITE", 3, 96, 30, "Website", -1, 14313, 1);
-	addHoveredButton(14313, "Interfaces/Login/WEBSITEH", 0, 96, 30, 14352);
-	addHover(14314, 3, 0, 14315, 2, "Interfaces/Login/PLAYNOW", 78, 18, "Exit");
-	addHoveredButton(14315, "Interfaces/Login/PLAYNOWH", 0, 78, 18, 14353);
-	addText(14316, "Hello", 0xff9b00, false, true, 38, TDA, 1); // hello name
-	addText(14317, "Your rank is", 0xff9b00, false, true, 38, TDA, 1); //your rank
-	addText(14318, "", 0xff9b00, false, true, 38, TDA, 1); //rank
-	addText(14319, "", 0xff9b00, false, true, 38, TDA, 1);	//tip of the week
-	addText(14320, "Players On:", 0xff9b00, false, true, 38, TDA, 1);	//players online
-	addText(14321, "", 0xff9b00, false, true, 38, TDA, 1);	//tip of the week
-	addText(14322, "", 0xff9b00, false, true, 38, TDA, 1);	//tip of the week
-	tab.totalChildren(14);
-	tab.child(0, 14309, 5, 10);
-	tab.child(1, 14310, 20, 130);
-	tab.child(2, 14311, 20, 130);
-	tab.child(3, 14312, 20, 190);
-	tab.child(4, 14313, 20, 190);
-	tab.child(5, 14314, 31, 264);
-	tab.child(6, 14315, 31, 264);
-	tab.child(7, 14316, 258, 62);
-	tab.child(8, 14317, 260, 139);
-	tab.child(9, 14318, 274, 163);
-	tab.child(10, 14319, 210, 202);
-	tab.child(11, 14320, 39, 85);
-	tab.child(12, 14321, 210, 220);
-	tab.child(13, 14322, 151, 250);
-	}
-	
+	public static void SkillTeleport(TextDrawingArea[] TDA) {
+		RSInterface tab = addScreenInterface(17560);
 
-	
-		public static int x, y = 0;
+		addSprite(17561, 0, "Interfaces/SkillTele/BACK");
+
+		addHoverButton(17562, "Interfaces/SkillTele/SPRITEs", 1, 176, 25,
+				"Teleport to Construction Place", -1, 17562, 1);
+		addHoverButton(17563, "Interfaces/SkillTele/SPRITEs", 2, 160, 25,
+				"Teleport to Cooking Place", -1, 17563, 1);
+		addHoverButton(17564, "Interfaces/SkillTele/SPRITEs", 3, 159, 25,
+				"Teleport to Crafting Place", -1, 17564, 1);
+		addHoverButton(17565, "Interfaces/SkillTele/SPRITEs", 4, 158, 25,
+				"Teleport to Dungeoneering Place", -1, 17565, 1);
+		addHoverButton(17566, "Interfaces/SkillTele/SPRITEs", 5, 158, 27,
+				"Teleport to Farming Place", -1, 17566, 1);
+		addHoverButton(17567, "Interfaces/SkillTele/SPRITEs", 6, 159, 25,
+				"Teleport to Firemaking Place", -1, 17567, 1);
+		addHoverButton(17568, "Interfaces/SkillTele/SPRITEs", 7, 171, 29,
+				"Teleport to Fishing Place", -1, 17568, 1);
+		addHoverButton(17569, "Interfaces/SkillTele/SPRITEs", 8, 157, 24,
+				"Teleport to Fletching Place", -1, 17569, 1);
+		addHoverButton(17570, "Interfaces/SkillTele/SPRITEs", 9, 158, 24,
+				"Teleport to Herblore Place", -1, 17570, 1);
+		addHoverButton(17571, "Interfaces/SkillTele/SPRITEs", 10, 171, 25,
+				"Teleport to Hunter Place", -1, 17571, 1);
+		addHoverButton(17572, "Interfaces/SkillTele/SPRITEs", 11, 174, 35,
+				"Teleport to Mining Place", -1, 17572, 1);
+		addHoverButton(17573, "Interfaces/SkillTele/SPRITEs", 12, 174, 25,
+				"Teleport to Runecrafting Place", -1, 17573, 1);
+		addHoverButton(17574, "Interfaces/SkillTele/SPRITEs", 13, 154, 24,
+				"Teleport to Slayer Place", -1, 17574, 1);
+		addHoverButton(17575, "Interfaces/SkillTele/SPRITEs", 14, 154, 24,
+				"Teleport to Smithing Place", -1, 17575, 1);
+		addHoverButton(17576, "Interfaces/SkillTele/SPRITEs", 15, 152, 25,
+				"Teleport to Summoning Place", -1, 17576, 1);
+		addHoverButton(17577, "Interfaces/SkillTele/SPRITEs", 16, 157, 26,
+				"Teleport to Thieving Place", -1, 17577, 1);
+		addHoverButton(17578, "Interfaces/SkillTele/SPRITEs", 17, 154, 25,
+				"Teleport to Woodcutting Place", -1, 17578, 1);
+		addHoverButton(17579, "Interfaces/SkillTele/SPRITEs", 18, 174, 25,
+				"Teleport to Agility Place", -1, 17579, 1);
+		addHoverButton(17598, "Interfaces/SkillTele/CLOSE", 37, 25, 25,
+				"Close", -1, 17598, 1);
+
+		addHoveredButton(17580, "Interfaces/SkillTele/SPRITE", 19, 176, 25,
+				17680);
+		addHoveredButton(17581, "Interfaces/SkillTele/SPRITE", 20, 160, 25,
+				17681);
+		addHoveredButton(17582, "Interfaces/SkillTele/SPRITE", 21, 159, 25,
+				17682);
+		addHoveredButton(17583, "Interfaces/SkillTele/SPRITE", 22, 158, 25,
+				17683);
+		addHoveredButton(17584, "Interfaces/SkillTele/SPRITE", 23, 158, 27,
+				17684);
+		addHoveredButton(17585, "Interfaces/SkillTele/SPRITE", 24, 159, 25,
+				17685);
+		addHoveredButton(17586, "Interfaces/SkillTele/SPRITE", 25, 171, 29,
+				17686);
+		addHoveredButton(17587, "Interfaces/SkillTele/SPRITE", 26, 157, 24,
+				17687);
+		addHoveredButton(17588, "Interfaces/SkillTele/SPRITE", 27, 158, 24,
+				17688);
+		addHoveredButton(17589, "Interfaces/SkillTele/SPRITE", 28, 171, 25,
+				17689);
+		addHoveredButton(17590, "Interfaces/SkillTele/SPRITE", 29, 174, 35,
+				17690);
+		addHoveredButton(17591, "Interfaces/SkillTele/SPRITE", 30, 174, 25,
+				17691);
+		addHoveredButton(17592, "Interfaces/SkillTele/SPRITE", 31, 154, 24,
+				17692);
+		addHoveredButton(17593, "Interfaces/SkillTele/SPRITE", 32, 154, 24,
+				17693);
+		addHoveredButton(17594, "Interfaces/SkillTele/SPRITE", 33, 152, 25,
+				17694);
+		addHoveredButton(17595, "Interfaces/SkillTele/SPRITE", 34, 157, 26,
+				17695);
+		addHoveredButton(17596, "Interfaces/SkillTele/SPRITE", 35, 154, 25,
+				17696);
+		addHoveredButton(17597, "Interfaces/SkillTele/SPRITE", 36, 174, 25,
+				17697);
+		tab.totalChildren(38);
+
+		tab.child(0, 17561, 0, 0);
+
+		tab.child(1, 17562, 339, 229);
+		tab.child(2, 17563, 12, 83);
+		tab.child(3, 17564, 12, 193);
+		tab.child(4, 17565, 179, 264);
+		tab.child(5, 17566, 12, 158);
+		tab.child(6, 17567, 12, 120);
+		tab.child(7, 17568, 339, 264);
+		tab.child(8, 17569, 179, 83);
+		tab.child(9, 17570, 12, 264);
+		tab.child(10, 17571, 339, 193);
+		tab.child(11, 17572, 339, 83);
+		tab.child(12, 17573, 176, 158);
+		tab.child(13, 17574, 339, 120);
+		tab.child(14, 17575, 179, 193);
+		tab.child(15, 17576, 179, 120);
+		tab.child(16, 17577, 179, 229);
+		tab.child(17, 17578, 12, 229);
+		tab.child(18, 17579, 339, 158);
+
+		tab.child(19, 17580, 339, 229);
+		tab.child(20, 17581, 12, 83);
+		tab.child(21, 17582, 12, 193);
+		tab.child(22, 17583, 179, 264);
+		tab.child(23, 17584, 12, 158);
+		tab.child(24, 17585, 12, 120);
+		tab.child(25, 17586, 339, 264);
+		tab.child(26, 17587, 179, 83);
+		tab.child(27, 17588, 12, 264);
+		tab.child(28, 17589, 339, 193);
+		tab.child(29, 17590, 339, 83);
+		tab.child(30, 17591, 179, 158);
+		tab.child(31, 17592, 339, 120);
+		tab.child(32, 17593, 179, 193);
+		tab.child(33, 17594, 179, 120);
+		tab.child(34, 17595, 179, 229);
+		tab.child(35, 17596, 12, 229);
+		tab.child(36, 17597, 339, 158);
+
+		tab.child(37, 17598, 494, 16);
+	}
+
+	public static void Login(TextDrawingArea[] TDA) {
+		RSInterface tab = addScreenInterface(14300);
+		addSprite(14309, 1, "Interfaces/Login/BACKGROUND");
+		addHoverButton(14310, "Interfaces/Login/FORUM", 1, 96, 30, "Forum", -1,
+				14311, 1);
+		addHoveredButton(14311, "Interfaces/Login/FORUMH", 0, 96, 30, 14351);
+		addHoverButton(14312, "Interfaces/Login/WEBSITE", 3, 96, 30, "Website",
+				-1, 14313, 1);
+		addHoveredButton(14313, "Interfaces/Login/WEBSITEH", 0, 96, 30, 14352);
+		addHover(14314, 3, 0, 14315, 2, "Interfaces/Login/PLAYNOW", 78, 18,
+				"Exit");
+		addHoveredButton(14315, "Interfaces/Login/PLAYNOWH", 0, 78, 18, 14353);
+		addText(14316, "Hello", 0xff9b00, false, true, 38, TDA, 1); // hello
+																	// name
+		addText(14317, "Your rank is", 0xff9b00, false, true, 38, TDA, 1); // your
+																			// rank
+		addText(14318, "", 0xff9b00, false, true, 38, TDA, 1); // rank
+		addText(14319, "", 0xff9b00, false, true, 38, TDA, 1); // tip of the
+																// week
+		addText(14320, "Players On:", 0xff9b00, false, true, 38, TDA, 1); // players
+																			// online
+		addText(14321, "", 0xff9b00, false, true, 38, TDA, 1); // tip of the
+																// week
+		addText(14322, "", 0xff9b00, false, true, 38, TDA, 1); // tip of the
+																// week
+		tab.totalChildren(14);
+		tab.child(0, 14309, 5, 10);
+		tab.child(1, 14310, 20, 130);
+		tab.child(2, 14311, 20, 130);
+		tab.child(3, 14312, 20, 190);
+		tab.child(4, 14313, 20, 190);
+		tab.child(5, 14314, 31, 264);
+		tab.child(6, 14315, 31, 264);
+		tab.child(7, 14316, 258, 62);
+		tab.child(8, 14317, 260, 139);
+		tab.child(9, 14318, 274, 163);
+		tab.child(10, 14319, 210, 202);
+		tab.child(11, 14320, 39, 85);
+		tab.child(12, 14321, 210, 220);
+		tab.child(13, 14322, 151, 250);
+	}
+
+	public static int x, y = 0;
+
 	public static void achievementdropdown() {
 		RSInterface tab = addTabInterface(23139);
 		RSInterface scroll = addTabInterface(23140);
@@ -5616,8 +5861,7 @@ public static void Sell(TextDrawingArea[] TDA) {
 				0xAF6A1B, false, true, 0, 0);
 		addText(23131, "You currently have\\n147 achievement points.",
 				0xAF6A1B, false, true, 0, 0);
-		addText(23110, "Achievements",
-				0xAF6A1B, false, true, 0, 2);
+		addText(23110, "Achievements", 0xAF6A1B, false, true, 0, 2);
 		addButton(23132, 1, directory, "", 0, 3, 16, 15);
 		tab.totalChildren(6);
 		tab.child(0, 23138, 1, 1);
@@ -5644,15 +5888,15 @@ public static void Sell(TextDrawingArea[] TDA) {
 		RSInterface tab1 = addTabInterface(23133);
 		addButton(23134, 4, directory, "", 0, 0, 500, 500);
 		addText(23135, "T A S K C O M P L E T E", 0xAF6A1A, false, true, 52, 2);
-		addText(23136, "You completed the task:\\nTASKNAME!", 0xAF6A1B,
-				true, true, 0, 1);
+		addText(23136, "You completed the task:\\nTASKNAME!", 0xAF6A1B, true,
+				true, 0, 1);
 		tab1.totalChildren(3);
 		tab1.child(0, 23134, 158, 0);
 		tab1.child(1, 23135, 193, 5);
 		tab1.child(2, 23136, 254, 22);
 	}
-	
-		public static void SAMUELSUGER(TextDrawingArea[] TDA) {
+
+	public static void SAMUELSUGER(TextDrawingArea[] TDA) {
 		String directory = "Interfaces/Achieve/achievement";
 		RSInterface tab = addTabInterface(20000);
 		addButton(20001, 4, directory, "Close", 0, 0, 500, 500);
@@ -5664,52 +5908,73 @@ public static void Sell(TextDrawingArea[] TDA) {
 		tab.child(1, 20002, 193, 5);
 		tab.child(2, 20003, 254, 22);
 		tab.child(3, 20004, 254, 37);
-		}
-		
-		
-		
-		public static void achievement(TextDrawingArea[] TDA) {
-        RSInterface tab = addTabInterface(19500);
+	}
+
+	public static void achievement(TextDrawingArea[] TDA) {
+		RSInterface tab = addTabInterface(19500);
 		RSInterface scroll = addTabInterface(19501);
-        addText(19502, "Achievement List", TDA, 2, 0xFF9900, false, true);
+		addText(19502, "Achievement List", TDA, 2, 0xFF9900, false, true);
 		addSprite(19503, 0, "Interfaces/Achieve/ACH");
 		addSprite(19504, 3, "Interfaces/Achieve/ACH");
 		addSprite(19505, 0, "Interfaces/Achieve/ACH");
 		addButton(19590, 1, "QuestTab/QUEST", 18, 18, "Swap to Information", 1);
-        tab.totalChildren(6);
-        tab.child(0, 19502, 5, 5);
+		tab.totalChildren(6);
+		tab.child(0, 19502, 5, 5);
 		tab.child(1, 19503, 0, 25);
 		tab.child(2, 19504, 0, 28);
 		tab.child(3, 19505, 0, 249);
-        tab.child(4, 19501, 0, 25);
+		tab.child(4, 19501, 0, 25);
 		tab.child(5, 19590, 165, 3);
-		scroll.width = 174; scroll.height = 224; scroll.scrollMax = 1250;
-		
+		scroll.width = 174;
+		scroll.height = 224;
+		scroll.scrollMax = 1250;
+
 		addHoverText(19549, "", "", TDA, 1, 0xFF9900, false, true, 150);
 		addText(19506, "Player Killing", TDA, 2, 0xFF9900, false, true);
-		addHoverText(19507, "Kill 50 players", "", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19508, "Kill 100 players", "", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19509, "Kill 250 players", "", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19510, "Kill 400 players", "", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19511, "Kill 750 Players", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19512, "Kill 1000 players", "", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19513, "Kill 1250 players", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19514, "Kill 1500 players", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19515, "Kill 2500 players", "View", TDA, 0, 0xff0000, false, true, 150);
+		addHoverText(19507, "Kill 50 players", "", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19508, "Kill 100 players", "", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19509, "Kill 250 players", "", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19510, "Kill 400 players", "", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19511, "Kill 750 Players", "View", TDA, 0, 0xff0000,
+				false, true, 150);
+		addHoverText(19512, "Kill 1000 players", "", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19513, "Kill 1250 players", "View", TDA, 0, 0xff0000,
+				false, true, 150);
+		addHoverText(19514, "Kill 1500 players", "View", TDA, 0, 0xff0000,
+				false, true, 150);
+		addHoverText(19515, "Kill 2500 players", "View", TDA, 0, 0xff0000,
+				false, true, 150);
 		addText(19516, "Skilling", TDA, 2, 0xFF9900, false, true);
-		addHoverText(19517, "99 Mining", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19518, "99 Fishing", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19519, "99 Herblore", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19520, "99 Thieving", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19521, "99 Crafting", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19522, "99 Hunter", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19523, "99 Summoning", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19524, "99 Slayer", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19525, "Maxed Account", "View", TDA, 0, 0xff0000, false, true, 150);
-		//addText(19526, "Creations", "View", TDA, 2, 0xff0000, false, true, 150);
+		addHoverText(19517, "99 Mining", "View", TDA, 0, 0xff0000, false, true,
+				150);
+		addHoverText(19518, "99 Fishing", "View", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19519, "99 Herblore", "View", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19520, "99 Thieving", "View", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19521, "99 Crafting", "View", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19522, "99 Hunter", "View", TDA, 0, 0xff0000, false, true,
+				150);
+		addHoverText(19523, "99 Summoning", "View", TDA, 0, 0xff0000, false,
+				true, 150);
+		addHoverText(19524, "99 Slayer", "View", TDA, 0, 0xff0000, false, true,
+				150);
+		addHoverText(19525, "Maxed Account", "View", TDA, 0, 0xff0000, false,
+				true, 150);
+		// addText(19526, "Creations", "View", TDA, 2, 0xff0000, false, true,
+		// 150);
 		addText(19526, "Creations", TDA, 2, 0xFF9900, false, true);
-		addHoverText(19527, "Create: Dragonfire shield", "View", TDA, 0, 0xff0000, false, true, 150);
-		addHoverText(19528, "Create: Amulet of fury", "View", TDA, 0, 0xff0000, false, true, 150);
+		addHoverText(19527, "Create: Dragonfire shield", "View", TDA, 0,
+				0xff0000, false, true, 150);
+		addHoverText(19528, "Create: Amulet of fury", "View", TDA, 0, 0xff0000,
+				false, true, 150);
 		addHoverText(19529, "", "View", TDA, 0, 0xff0000, false, true, 150);
 		addHoverText(19530, "", "View", TDA, 0, 0xff0000, false, true, 150);
 		addHoverText(19531, "", "View", TDA, 0, 0xff0000, false, true, 150);
@@ -5775,8 +6040,8 @@ public static void Sell(TextDrawingArea[] TDA) {
 		scroll.child(41, 19547, 5, 691);
 		scroll.child(42, 19548, 5, 705);
 		scroll.child(43, 19549, 5, 6);
-    }
-	
+	}
+
 	public static void quickCurses(TextDrawingArea TDA[]) {
 		int frame = 0;
 		RSInterface tab = addTabInterface(17234);
@@ -6203,361 +6468,412 @@ public static void Sell(TextDrawingArea[] TDA) {
 		setBoundry(++index, 25102, sixthRowXPos - 2, sixthRowYPos, prayerMenu);
 		index++;
 	}
-	
 
+	public static void castleWars() {
+		RSInterface tab = addTabInterface(27955);
+		int i = 0;
+		String s = "CastleWars/";
+		addSprite(29525, s + "Main");
+		addHoverButton(29526, s + "basichelmnormal", 0, 37, 75,
+				"Buy Basic Decorative helm", 615, 29527, 1);
+		addHoveredButton(29527, s + "basichelmhov", 1, 37, 75, 29528);
+		addHoverButton(29529, s + "basicplatenormal", 0, 37, 75,
+				"Buy Basic Decorative platebody", 615, 29530, 1);
+		addHoveredButton(29530, s + "basicplatehov", 1, 37, 75, 29531);
+		addHoverButton(29532, s + "basiclegsnormal", 0, 37, 75,
+				"Buy Basic Decorative platelegs", 615, 29533, 1);
+		addHoveredButton(29533, s + "basiclegshov", 1, 37, 75, 29534);
+		addHoverButton(29535, s + "basicshieldnormal", 0, 37, 75,
+				"Buy Basic Decorative shield", 615, 29536, 1);
+		addHoveredButton(29536, s + "basicshieldhov", 1, 37, 75, 29537);
+		addHoverButton(29538, s + "basicswordnormal", 0, 37, 75,
+				"Buy Basic Decorative sword", 615, 29539, 1);
+		addHoveredButton(29539, s + "basicswordhov", 1, 37, 75, 29540);
+		addHoverButton(29541, s + "medhelmnormal", 0, 37, 75,
+				"Buy Detailed Decorative helm", 615, 29542, 1);
+		addHoveredButton(29542, s + "medhelmhov", 1, 37, 75, 29543);
+		addHoverButton(29544, s + "medplatenormal", 0, 37, 75,
+				"Buy Detailed Decorative platebody", 615, 29545, 1);
+		addHoveredButton(29545, s + "medplatehov", 1, 37, 75, 29546);
+		addHoverButton(29547, s + "medlegsnormal", 0, 37, 75,
+				"Buy Detailed Decorative platelegs", 615, 29548, 1);
+		addHoveredButton(29548, s + "medlegshov", 1, 37, 75, 29549);
+		addHoverButton(29550, s + "medshieldnormal", 0, 37, 75,
+				"Buy Detailed Decorative shield", 615, 29551, 1);
+		addHoveredButton(29551, s + "medshieldhov", 1, 37, 75, 29552);
+		addHoverButton(29553, s + "medswordnormal", 0, 37, 75,
+				"Buy Detailed Decorative sword", 615, 29554, 1);
+		addHoveredButton(29554, s + "medswordhov", 1, 37, 75, 29555);
+		addHoverButton(29556, s + "hardhelmnormal", 0, 37, 75,
+				"Buy Intricate Decorative helm", 615, 29557, 1);
+		addHoveredButton(29557, s + "hardhelmhov", 1, 37, 75, 29558);
+		addHoverButton(29559, s + "hardplatenormal", 0, 37, 75,
+				"Buy Intricate Decorative platebody", 615, 29560, 1);
+		addHoveredButton(29560, s + "hardplatehov", 1, 37, 75, 29561);
+		addHoverButton(29562, s + "hardlegsnormal", 0, 37, 75,
+				"Buy Intricate Decorative platelegs", 615, 29563, 1);
+		addHoveredButton(29563, s + "hardlegshov", 1, 37, 75, 29564);
+		addHoverButton(29565, s + "hardshieldnormal", 0, 37, 75,
+				"Buy Intricate Decorative shield", 615, 29566, 1);
+		addHoveredButton(29566, s + "hardshieldhov", 1, 37, 75, 29567);
+		addHoverButton(29568, s + "hardswordnormal", 0, 37, 75,
+				"Buy Intricate Decorative sword", 615, 29569, 1);
+		addHoveredButton(29569, s + "hardswordhov", 1, 37, 75, 29570);
+		addHoverButton(29571, s + "extremehelmnormal", 0, 37, 75,
+				"Buy Profround Decorative helm", 615, 29572, 1);
+		addHoveredButton(29572, s + "extremehelmhov", 1, 37, 75, 29573);
+		addHoverButton(29574, s + "extremeplatenormal", 0, 37, 75,
+				"Buy Profround Decorative platebody", 615, 29575, 1);
+		addHoveredButton(29575, s + "extremeplatehov", 1, 37, 75, 29576);
+		addHoverButton(29577, s + "extremelegsnormal", 0, 37, 75,
+				"Buy Profround Decorative platelegs", 615, 29578, 1);
+		addHoveredButton(29578, s + "extremelegshov", 1, 37, 75, 29579);
+		addHoverButton(29580, s + "extremeshieldnormal", 0, 37, 75,
+				"Buy Profround Decorative shield", 615, 29581, 1);
+		addHoveredButton(29581, s + "extremeshieldhov", 1, 37, 75, 29582);
+		addHoverButton(29583, s + "extremeswordnormal", 0, 37, 75,
+				"Buy Profround Decorative sword", 615, 29584, 1);
+		addHoveredButton(29584, s + "extremeswordhov", 1, 37, 75, 29585);
+		addHoverButton(29586, s + "decbuttonnormal", 0, 144, 30,
+				"Decorative Armour", 615, 29587, 1);
+		addHoveredButton(29587, s + "decbuttonhover", 1, 144, 30, 29588);
+		addHoverButton(29589, s + "consumebuttonnormal", 0, 144, 30,
+				"Consumables", 615, 29590, 1);
+		addHoveredButton(29590, s + "consumebuttonhover", 1, 144, 30, 29501);
+		addHoverButton(29592, s + "miscbuttonnormal", 0, 144, 30,
+				"Miscellaneous", 615, 29593, 1);
+		addHoveredButton(29593, s + "miscbuttonhover", 1, 144, 30, 29594);
+		addHoverButton(29595, s + "close", 0, 16, 16, "Close", 615, 29596, 1);
+		addHoveredButton(29596, s + "close", 1, 16, 16, 29597);
+		setChildren(49, tab);
+		setBounds(29525, 2, 19, i, tab);
+		i++;
+		setBounds(29526, 77, 90, i, tab);
+		i++;
+		setBounds(29527, 77, 90, i, tab);
+		i++;
+		setBounds(29529, 119, 90, i, tab);
+		i++;
+		setBounds(29530, 119, 90, i, tab);
+		i++;
+		setBounds(29532, 161, 90, i, tab);
+		i++;
+		setBounds(29533, 161, 90, i, tab);
+		i++;
+		setBounds(29535, 203, 90, i, tab);
+		i++;
+		setBounds(29536, 203, 90, i, tab);
+		i++;
+		setBounds(29538, 245, 90, i, tab);
+		i++;
+		setBounds(29539, 245, 90, i, tab);
+		i++;
+		setBounds(29541, 287, 90, i, tab);
+		i++;
+		setBounds(29542, 287, 90, i, tab);
+		i++;
+		setBounds(29544, 329, 90, i, tab);
+		i++;
+		setBounds(29545, 329, 90, i, tab);
+		i++;
+		setBounds(29547, 371, 90, i, tab);
+		i++;
+		setBounds(29548, 371, 90, i, tab);
+		i++;
+		setBounds(29550, 413, 90, i, tab);
+		i++;
+		setBounds(29551, 413, 90, i, tab);
+		i++;
+		setBounds(29553, 455, 90, i, tab);
+		i++;
+		setBounds(29554, 455, 90, i, tab);
+		i++;
+		setBounds(29556, 77, 190, i, tab);
+		i++;
+		setBounds(29557, 77, 190, i, tab);
+		i++;
+		setBounds(29559, 119, 190, i, tab);
+		i++;
+		setBounds(29560, 119, 190, i, tab);
+		i++;
+		setBounds(29562, 161, 190, i, tab);
+		i++;
+		setBounds(29563, 161, 190, i, tab);
+		i++;
+		setBounds(29565, 203, 190, i, tab);
+		i++;
+		setBounds(29566, 203, 190, i, tab);
+		i++;
+		setBounds(29568, 245, 190, i, tab);
+		i++;
+		setBounds(29569, 245, 190, i, tab);
+		i++;
+		setBounds(29571, 287, 190, i, tab);
+		i++;
+		setBounds(29572, 287, 190, i, tab);
+		i++;
+		setBounds(29574, 329, 190, i, tab);
+		i++;
+		setBounds(29575, 329, 190, i, tab);
+		i++;
+		setBounds(29577, 371, 190, i, tab);
+		i++;
+		setBounds(29578, 371, 190, i, tab);
+		i++;
+		setBounds(29580, 413, 190, i, tab);
+		i++;
+		setBounds(29581, 413, 190, i, tab);
+		i++;
+		setBounds(29583, 455, 190, i, tab);
+		i++;
+		setBounds(29584, 455, 190, i, tab);
+		i++;
+		setBounds(29586, 28, 44, i, tab);
+		i++;
+		setBounds(29587, 28, 44, i, tab);
+		i++;
+		setBounds(29589, 185, 44, i, tab);
+		i++;
+		setBounds(29590, 185, 44, i, tab);
+		i++;
+		setBounds(29592, 342, 44, i, tab);
+		i++;
+		setBounds(29593, 342, 44, i, tab);
+		i++;
+		setBounds(29595, 480, 22, i, tab);
+		i++;
+		setBounds(29596, 480, 22, i, tab);
+		i++;
+	}
 
-		public static void castleWars() {
-	      RSInterface tab = addTabInterface(27955);
-	      int i = 0;
-	      String s = "CastleWars/";
-	      addSprite(29525, s+"Main");
-	      addHoverButton(29526, s+"basichelmnormal", 0, 37, 75, "Buy Basic Decorative helm", 615, 29527, 1);
-	      addHoveredButton(29527, s+"basichelmhov", 1, 37, 75, 29528);
-	      addHoverButton(29529, s+"basicplatenormal", 0, 37, 75, "Buy Basic Decorative platebody", 615, 29530, 1);
-	      addHoveredButton(29530, s+"basicplatehov", 1, 37, 75, 29531);
-	      addHoverButton(29532, s+"basiclegsnormal", 0, 37, 75, "Buy Basic Decorative platelegs", 615, 29533, 1);
-	      addHoveredButton(29533, s+"basiclegshov", 1, 37, 75, 29534);
-	      addHoverButton(29535, s+"basicshieldnormal", 0, 37, 75, "Buy Basic Decorative shield", 615, 29536, 1);
-	      addHoveredButton(29536, s+"basicshieldhov", 1, 37, 75, 29537);
-	      addHoverButton(29538, s+"basicswordnormal", 0, 37, 75, "Buy Basic Decorative sword", 615, 29539, 1);
-	      addHoveredButton(29539, s+"basicswordhov", 1, 37, 75, 29540);
-	      addHoverButton(29541, s+"medhelmnormal", 0, 37, 75, "Buy Detailed Decorative helm", 615, 29542, 1);
-	      addHoveredButton(29542, s+"medhelmhov", 1, 37, 75, 29543);
-	      addHoverButton(29544, s+"medplatenormal", 0, 37, 75, "Buy Detailed Decorative platebody", 615, 29545, 1);
-	      addHoveredButton(29545, s+"medplatehov", 1, 37, 75, 29546);
-	      addHoverButton(29547, s+"medlegsnormal", 0, 37, 75, "Buy Detailed Decorative platelegs", 615, 29548, 1);
-	      addHoveredButton(29548, s+"medlegshov", 1, 37, 75, 29549);
-	      addHoverButton(29550, s+"medshieldnormal", 0, 37, 75, "Buy Detailed Decorative shield", 615, 29551, 1);
-	      addHoveredButton(29551, s+"medshieldhov", 1, 37, 75, 29552);
-	      addHoverButton(29553, s+"medswordnormal", 0, 37, 75, "Buy Detailed Decorative sword", 615, 29554, 1);
-	      addHoveredButton(29554, s+"medswordhov", 1, 37, 75, 29555);
-	      addHoverButton(29556, s+"hardhelmnormal", 0, 37, 75, "Buy Intricate Decorative helm", 615, 29557, 1);
-	      addHoveredButton(29557, s+"hardhelmhov", 1, 37, 75, 29558);
-	      addHoverButton(29559, s+"hardplatenormal", 0, 37, 75, "Buy Intricate Decorative platebody", 615, 29560, 1);
-	      addHoveredButton(29560, s+"hardplatehov", 1, 37, 75, 29561);
-	      addHoverButton(29562, s+"hardlegsnormal", 0, 37, 75, "Buy Intricate Decorative platelegs", 615, 29563, 1);
-	      addHoveredButton(29563, s+"hardlegshov", 1, 37, 75, 29564);
-	      addHoverButton(29565, s+"hardshieldnormal", 0, 37, 75, "Buy Intricate Decorative shield", 615, 29566, 1);
-	      addHoveredButton(29566, s+"hardshieldhov", 1, 37, 75, 29567);
-	      addHoverButton(29568, s+"hardswordnormal", 0, 37, 75, "Buy Intricate Decorative sword", 615, 29569, 1);
-	      addHoveredButton(29569, s+"hardswordhov", 1, 37, 75, 29570);
-	      addHoverButton(29571, s+"extremehelmnormal", 0, 37, 75, "Buy Profround Decorative helm", 615, 29572, 1);
-	      addHoveredButton(29572, s+"extremehelmhov", 1, 37, 75, 29573);
-	      addHoverButton(29574, s+"extremeplatenormal", 0, 37, 75, "Buy Profround Decorative platebody", 615, 29575, 1);
-	      addHoveredButton(29575, s+"extremeplatehov", 1, 37, 75, 29576);
-	      addHoverButton(29577, s+"extremelegsnormal", 0, 37, 75, "Buy Profround Decorative platelegs", 615, 29578, 1);
-	      addHoveredButton(29578, s+"extremelegshov", 1, 37, 75, 29579);
-	      addHoverButton(29580, s+"extremeshieldnormal", 0, 37, 75, "Buy Profround Decorative shield", 615, 29581, 1);
-	      addHoveredButton(29581, s+"extremeshieldhov", 1, 37, 75, 29582);
-	      addHoverButton(29583, s+"extremeswordnormal", 0, 37, 75, "Buy Profround Decorative sword", 615, 29584, 1);
-	      addHoveredButton(29584, s+"extremeswordhov", 1, 37, 75, 29585);
-	      addHoverButton(29586, s+"decbuttonnormal", 0, 144, 30, "Decorative Armour", 615, 29587, 1);
-	      addHoveredButton(29587, s+"decbuttonhover", 1, 144, 30, 29588);
-	      addHoverButton(29589, s+"consumebuttonnormal", 0, 144, 30, "Consumables", 615, 29590, 1);
-	      addHoveredButton(29590, s+"consumebuttonhover", 1, 144, 30, 29501);
-	      addHoverButton(29592, s+"miscbuttonnormal", 0, 144, 30, "Miscellaneous", 615, 29593, 1);
-	      addHoveredButton(29593, s+"miscbuttonhover", 1, 144, 30, 29594);
-	      addHoverButton(29595, s+"close", 0, 16, 16, "Close", 615, 29596, 1);
-	      addHoveredButton(29596, s+"close", 1, 16, 16, 29597);
-	      setChildren(49, tab);
-	      setBounds(29525, 2, 19, i, tab);
-	      i++;
-	      setBounds(29526, 77, 90, i, tab);
-	      i++;
-	      setBounds(29527, 77, 90, i, tab);
-	      i++;
-	      setBounds(29529, 119, 90, i, tab);
-	      i++;
-	      setBounds(29530, 119, 90, i, tab);
-	      i++;
-	      setBounds(29532, 161, 90, i, tab);
-	      i++;
-	      setBounds(29533, 161, 90, i, tab);
-	      i++;
-	      setBounds(29535, 203, 90, i, tab);
-	      i++;
-	      setBounds(29536, 203, 90, i, tab);
-	      i++;
-	      setBounds(29538, 245, 90, i, tab);
-	      i++;
-	      setBounds(29539, 245, 90, i, tab);
-	      i++;
-	      setBounds(29541, 287, 90, i, tab);
-	      i++;
-	      setBounds(29542, 287, 90, i, tab);
-	      i++;
-	      setBounds(29544, 329, 90, i, tab);
-	      i++;
-	      setBounds(29545, 329, 90, i, tab);
-	      i++;
-	      setBounds(29547, 371, 90, i, tab);
-	      i++;
-	      setBounds(29548, 371, 90, i, tab);
-	      i++;
-	      setBounds(29550, 413, 90, i, tab);
-	      i++;
-	      setBounds(29551, 413, 90, i, tab);
-	      i++;
-	      setBounds(29553, 455, 90, i, tab);
-	      i++;
-	      setBounds(29554, 455, 90, i, tab);
-	      i++;
-	      setBounds(29556, 77, 190, i, tab);
-	      i++;
-	      setBounds(29557, 77, 190, i, tab);
-	      i++;
-	      setBounds(29559, 119, 190, i, tab);
-	      i++;
-	      setBounds(29560, 119, 190, i, tab);
-	      i++;
-	      setBounds(29562, 161, 190, i, tab);
-	      i++;
-	      setBounds(29563, 161, 190, i, tab);
-	      i++;
-	      setBounds(29565, 203, 190, i, tab);
-	      i++;
-	      setBounds(29566, 203, 190, i, tab);
-	      i++;
-	      setBounds(29568, 245, 190, i, tab);
-	      i++;
-	      setBounds(29569, 245, 190, i, tab);
-	      i++;
-	      setBounds(29571, 287, 190, i, tab);
-	      i++;
-	      setBounds(29572, 287, 190, i, tab);
-	      i++;
-	      setBounds(29574, 329, 190, i, tab);
-	      i++;
-	      setBounds(29575, 329, 190, i, tab);
-	      i++;
-	      setBounds(29577, 371, 190, i, tab);
-	      i++;
-	      setBounds(29578, 371, 190, i, tab);
-	      i++;
-	      setBounds(29580, 413, 190, i, tab);
-	      i++;
-	      setBounds(29581, 413, 190, i, tab);
-	      i++;
-	      setBounds(29583, 455, 190, i, tab);
-	      i++;
-	      setBounds(29584, 455, 190, i, tab);
-	      i++;
-	      setBounds(29586, 28, 44, i, tab);
-	      i++;
-	      setBounds(29587, 28, 44, i, tab);
-	      i++;  
-	      setBounds(29589, 185, 44, i, tab);
-	      i++;
-	      setBounds(29590, 185, 44, i, tab);
-	      i++;  
-	      setBounds(29592, 342, 44, i, tab);
-	      i++;
-	      setBounds(29593, 342, 44, i, tab);
-	      i++;  
-	      setBounds(29595, 480, 22, i, tab);
-	      i++;
-	      setBounds(29596, 480, 22, i, tab);
-	      i++; 
-	  }
-	  public static void castleWars2() {
-	      RSInterface tab = addTabInterface(27956);
-	      int i = 0;
-	      String s = "CastleWars/";
-	      addSprite(29600, s+"Main");
-	      addHoverButton(29601, s+"base", 0, 37, 75, "Buy Ballista base", 615, 29602, 1);
-	      addHoveredButton(29602, s+"standhover", 1, 37, 75, 29603);
-	      addHoverButton(29604, s+"boltsack", 0, 37, 75, "Buy Ballista bolt stack", 615, 29605, 1);
-	      addHoveredButton(29605, s+"boltsack", 1, 37, 75, 29606);
-	      addHoverButton(29607, s+"bow", 0, 37, 75, "Buy Ballista bow", 615, 29608, 1);
-	      addHoveredButton(29608, s+"bow", 1, 37, 75, 29609);
-	      addHoverButton(29610, s+"chamber", 0, 37, 75, "Buy Ballista chamber", 615, 29611, 1);
-	      addHoveredButton(29611, s+"chamber", 1, 37, 75, 29612);
-	      addHoverButton(29613, s+"ammo", 0, 37, 75, "Buy Ballista ammo", 615, 29614, 1);
-	      addHoveredButton(29614, s+"ammo", 1, 37, 75, 29615);
-	      addHoverButton(29616, s+"melee", 0, 37, 75, "Buy Melee potion set", 615, 29617, 1);
-	      addHoveredButton(29617, s+"melee", 1, 37, 75, 29618);
-	      addHoverButton(29619, s+"range", 0, 37, 75, "Buy Ranged potion set", 615, 29620, 1);
-	      addHoveredButton(29620, s+"range", 1, 37, 75, 29621);
-	      addHoverButton(29622, s+"magic", 0, 37, 75, "Buy Magic potion set", 615, 29623, 1);
-	      addHoveredButton(29623, s+"mage", 1, 37, 75, 29624);
-	      addHoverButton(29586, s+"decbuttonnormal", 0, 144, 30, "Decorative Armour", 615, 29587, 1);
-	      addHoveredButton(29587, s+"decbuttonhover", 1, 144, 30, 29588);
-	      addHoverButton(29589, s+"consumebuttonnormal", 0, 144, 30, "Consumables", 615, 29590, 1);
-	      addHoveredButton(29590, s+"consumebuttonhover", 1, 144, 30, 29501);
-	      addHoverButton(29592, s+"miscbuttonnormal", 0, 144, 30, "Miscellaneous", 615, 29593, 1);
-	      addHoveredButton(29593, s+"miscbuttonhover", 1, 144, 30, 29594);
-	      addHoverButton(29595, s+"close", 0, 16, 16, "Close", 615, 29596, 1);
-	      addHoveredButton(29596, s+"close", 1, 16, 16, 29597);
-	      setChildren(25, tab);
-	      setBounds(29600, 2, 19, i, tab);
-	      i++;
-	      setBounds(29601, 119, 90, i, tab);
-	      i++;
-	      setBounds(29602, 119, 90, i, tab);
-	      i++;
-	      setBounds(29604, 161, 90, i, tab);
-	      i++;
-	      setBounds(29605, 161, 90, i, tab);
-	      i++;
-	      setBounds(29607, 203, 90, i, tab);
-	      i++;
-	      setBounds(29608, 203, 90, i, tab);
-	      i++;
-	      setBounds(29610, 245, 90, i, tab);
-	      i++;
-	      setBounds(29611, 245, 90, i, tab);
-	      i++;
-	      setBounds(29613, 287, 90, i, tab);
-	      i++;
-	      setBounds(29614, 287, 90, i, tab);
-	      i++;
-	      setBounds(29616, 119, 190, i, tab);
-	      i++;
-	      setBounds(29617, 119, 190, i, tab);
-	      i++;
-	      setBounds(29619, 203, 190, i, tab);
-	      i++;
-	      setBounds(29620, 203, 190, i, tab);
-	      i++;
-	      setBounds(29622, 287, 190, i, tab);
-	      i++;
-	      setBounds(29623, 287, 190, i, tab);
-	      i++;
-	      setBounds(29586, 28, 44, i, tab);
-	      i++;
-	      setBounds(29587, 28, 44, i, tab);
-	      i++;  
-	      setBounds(29589, 185, 44, i, tab);
-	      i++;
-	      setBounds(29590, 185, 44, i, tab);
-	      i++;  
-	      setBounds(29592, 342, 44, i, tab);
-	      i++;
-	      setBounds(29593, 342, 44, i, tab);
-	      i++;  
-	      setBounds(29595, 480, 22, i, tab);
-	      i++;
-	      setBounds(29596, 480, 22, i, tab);
-	      i++; 
-	  }
-	  public static void castleWars3() {
-	      RSInterface tab = addTabInterface(27957);
-	      int i = 0;
-	      String s = "CastleWars/";
-	      addSprite(29525, s+"Main");
-	      addHoverButton(29700, s+"saracape", 0, 37, 75, "Buy Saradomin Cloak", 615, 29701, 1);
-	      addHoveredButton(29701, s+"saracape", 1, 37, 75, 29702);
-	      addHoverButton(29703, s+"zamcape", 0, 37, 75, "Buy Zamorak Cloak", 615, 29704, 1);
-	      addHoveredButton(29704, s+"zamcape", 1, 37, 75, 29705);
-	      addHoverButton(29706, s+"sarahood", 0, 37, 75, "Buy Saradomin Hood", 615, 29707, 1);
-	      addHoveredButton(29707, s+"sarahood", 1, 37, 75, 29708);
-	      addHoverButton(29709, s+"zamhood", 0, 37, 75, "Buy Zamorak Hood", 615, 29710, 1);
-	      addHoveredButton(29710, s+"zamhood", 1, 37, 75, 29711);
-	      addHoverButton(29712, s+"flag", 0, 37, 75, "Buy Castle Wars flag cape", 615, 29713, 1);
-	      addHoveredButton(29713, s+"flag", 1, 37, 75, 29714);
-	      addHoverButton(29715, s+"kill", 0, 37, 75, "Buy Castle Wars kills cape", 615, 29716, 1);
-	      addHoveredButton(29716, s+"kill", 1, 37, 75, 29717);
-	      addHoverButton(29718, s+"hob", 0, 37, 75, "Buy Castle Wars hobbyist cape", 615, 29719, 1);
-	      addHoveredButton(29719, s+"hob", 1, 37, 75, 29720);
-	      addHoverButton(29721, s+"nerd", 0, 37, 75, "Buy Castle Wars enthusiast cape", 615, 29722, 1);
-	      addHoveredButton(29722, s+"nerd", 1, 37, 75, 29723);
-	      addHoverButton(29724, s+"nerdest", 0, 37, 75, "Buy Castle Wars professional cape", 615, 29725, 1);
-	      addHoveredButton(29725, s+"nerdest", 1, 37, 75, 29726);    
-	      addHoverButton(29727, s+"guth", 0, 37, 75, "Buy Guthix halo", 615, 29728, 1);
-	      addHoveredButton(29728, s+"guth", 1, 37, 75, 29729);     
-	      addHoverButton(29730, s+"sara", 0, 37, 75, "Buy Saradomin halo", 615, 29731, 1);
-	      addHoveredButton(29731, s+"sara", 1, 37, 75, 29732);      
-	      addHoverButton(29733, s+"zammy", 0, 37, 75, "Buy Zamorak halo", 615, 29734, 1);
-	      addHoveredButton(29734, s+"zammy", 1, 37, 75, 29735);      
-	      addHoverButton(29736, s+"faith", 0, 37, 75, "Buy Faithful shield", 615, 29737, 1);
-	      addHoveredButton(29737, s+"faith", 1, 37, 75, 29738);
-	      addHoverButton(29739, s+"free", 0, 37, 75, "Castle Wars Handbook", 615, 29740, 1);
-	      addHoveredButton(29740, s+"free", 1, 37, 75, 29741);
-	      addHoverButton(29586, s+"decbuttonnormal", 0, 144, 30, "Decorative Armour", 615, 29587, 1);
-	      addHoveredButton(29587, s+"decbuttonhover", 1, 144, 30, 29588);
-	      addHoverButton(29589, s+"consumebuttonnormal", 0, 144, 30, "Consumables", 615, 29590, 1);
-	      addHoveredButton(29590, s+"consumebuttonhover", 1, 144, 30, 29501);
-	      addHoverButton(29592, s+"miscbuttonnormal", 0, 144, 30, "Miscellaneous", 615, 29593, 1);
-	      addHoveredButton(29593, s+"miscbuttonhover", 1, 144, 30, 29594);
-	      addHoverButton(29595, s+"close", 0, 16, 16, "Close", 615, 29596, 1);
-	      addHoveredButton(29596, s+"close", 1, 16, 16, 29597);
-	      setChildren(37, tab);
-	      setBounds(29525, 2, 19, i, tab);
-	      i++;
-	      setBounds(29700, 117, 90, i, tab);
-	      i++;
-	      setBounds(29701, 117, 90, i, tab);
-	      i++;
-	      setBounds(29703, 159, 90, i, tab);
-	      i++;
-	      setBounds(29704, 159, 90, i, tab);
-	      i++;
-	      setBounds(29706, 201, 90, i, tab);
-	      i++;
-	      setBounds(29707, 201, 90, i, tab);
-	      i++;
-	      setBounds(29709, 243, 90, i, tab);
-	      i++;
-	      setBounds(29710, 243, 90, i, tab);
-	      i++;
-	      setBounds(29712, 285, 90, i, tab);
-	      i++;
-	      setBounds(29713, 285, 90, i, tab);
-	      i++;
-	      setBounds(29715, 327, 90, i, tab);
-	      i++;
-	      setBounds(29716, 327, 90, i, tab);
-	      i++;
-	      setBounds(29718, 369, 90, i, tab);
-	      i++;
-	      setBounds(29719, 369, 90, i, tab);
-	      i++;
-	      setBounds(29721, 411, 90, i, tab);
-	      i++;
-	      setBounds(29722, 411, 90, i, tab);
-	      i++;
-	      setBounds(29724, 453, 90, i, tab);
-	      i++;
-	      setBounds(29725, 453, 90, i, tab);
-	      i++;
-	      setBounds(29727, 117, 190, i, tab);
-	      i++;
-	      setBounds(29728, 117, 190, i, tab);
-	      i++;
-	      setBounds(29730, 201, 190, i, tab);
-	      i++;
-	      setBounds(29731, 201, 190, i, tab);
-	      i++;
-	      setBounds(29733, 285, 190, i, tab);
-	      i++;
-	      setBounds(29734, 285, 190, i, tab);
-	      i++;  
-	      setBounds(29736, 369, 190, i, tab);
-	      i++;
-	      setBounds(29737, 369, 190, i, tab);
-	      i++;
-	      setBounds(29739, 453, 190, i, tab);
-	      i++;
-	      setBounds(29740, 453, 190, i, tab);
-	      i++;
-	      setBounds(29586, 28, 44, i, tab);
-	      i++;
-	      setBounds(29587, 28, 44, i, tab);
-	      i++;  
-	      setBounds(29589, 185, 44, i, tab);
-	      i++;
-	      setBounds(29590, 185, 44, i, tab);
-	      i++;  
-	      setBounds(29592, 342, 44, i, tab);
-	      i++;
-	      setBounds(29593, 342, 44, i, tab);
-	      i++;  
-	      setBounds(29595, 480, 22, i, tab);
-	      i++;
-	      setBounds(29596, 480, 22, i, tab);
-	      i++; 
-	  }
-	  
+	public static void castleWars2() {
+		RSInterface tab = addTabInterface(27956);
+		int i = 0;
+		String s = "CastleWars/";
+		addSprite(29600, s + "Main");
+		addHoverButton(29601, s + "base", 0, 37, 75, "Buy Ballista base", 615,
+				29602, 1);
+		addHoveredButton(29602, s + "standhover", 1, 37, 75, 29603);
+		addHoverButton(29604, s + "boltsack", 0, 37, 75,
+				"Buy Ballista bolt stack", 615, 29605, 1);
+		addHoveredButton(29605, s + "boltsack", 1, 37, 75, 29606);
+		addHoverButton(29607, s + "bow", 0, 37, 75, "Buy Ballista bow", 615,
+				29608, 1);
+		addHoveredButton(29608, s + "bow", 1, 37, 75, 29609);
+		addHoverButton(29610, s + "chamber", 0, 37, 75, "Buy Ballista chamber",
+				615, 29611, 1);
+		addHoveredButton(29611, s + "chamber", 1, 37, 75, 29612);
+		addHoverButton(29613, s + "ammo", 0, 37, 75, "Buy Ballista ammo", 615,
+				29614, 1);
+		addHoveredButton(29614, s + "ammo", 1, 37, 75, 29615);
+		addHoverButton(29616, s + "melee", 0, 37, 75, "Buy Melee potion set",
+				615, 29617, 1);
+		addHoveredButton(29617, s + "melee", 1, 37, 75, 29618);
+		addHoverButton(29619, s + "range", 0, 37, 75, "Buy Ranged potion set",
+				615, 29620, 1);
+		addHoveredButton(29620, s + "range", 1, 37, 75, 29621);
+		addHoverButton(29622, s + "magic", 0, 37, 75, "Buy Magic potion set",
+				615, 29623, 1);
+		addHoveredButton(29623, s + "mage", 1, 37, 75, 29624);
+		addHoverButton(29586, s + "decbuttonnormal", 0, 144, 30,
+				"Decorative Armour", 615, 29587, 1);
+		addHoveredButton(29587, s + "decbuttonhover", 1, 144, 30, 29588);
+		addHoverButton(29589, s + "consumebuttonnormal", 0, 144, 30,
+				"Consumables", 615, 29590, 1);
+		addHoveredButton(29590, s + "consumebuttonhover", 1, 144, 30, 29501);
+		addHoverButton(29592, s + "miscbuttonnormal", 0, 144, 30,
+				"Miscellaneous", 615, 29593, 1);
+		addHoveredButton(29593, s + "miscbuttonhover", 1, 144, 30, 29594);
+		addHoverButton(29595, s + "close", 0, 16, 16, "Close", 615, 29596, 1);
+		addHoveredButton(29596, s + "close", 1, 16, 16, 29597);
+		setChildren(25, tab);
+		setBounds(29600, 2, 19, i, tab);
+		i++;
+		setBounds(29601, 119, 90, i, tab);
+		i++;
+		setBounds(29602, 119, 90, i, tab);
+		i++;
+		setBounds(29604, 161, 90, i, tab);
+		i++;
+		setBounds(29605, 161, 90, i, tab);
+		i++;
+		setBounds(29607, 203, 90, i, tab);
+		i++;
+		setBounds(29608, 203, 90, i, tab);
+		i++;
+		setBounds(29610, 245, 90, i, tab);
+		i++;
+		setBounds(29611, 245, 90, i, tab);
+		i++;
+		setBounds(29613, 287, 90, i, tab);
+		i++;
+		setBounds(29614, 287, 90, i, tab);
+		i++;
+		setBounds(29616, 119, 190, i, tab);
+		i++;
+		setBounds(29617, 119, 190, i, tab);
+		i++;
+		setBounds(29619, 203, 190, i, tab);
+		i++;
+		setBounds(29620, 203, 190, i, tab);
+		i++;
+		setBounds(29622, 287, 190, i, tab);
+		i++;
+		setBounds(29623, 287, 190, i, tab);
+		i++;
+		setBounds(29586, 28, 44, i, tab);
+		i++;
+		setBounds(29587, 28, 44, i, tab);
+		i++;
+		setBounds(29589, 185, 44, i, tab);
+		i++;
+		setBounds(29590, 185, 44, i, tab);
+		i++;
+		setBounds(29592, 342, 44, i, tab);
+		i++;
+		setBounds(29593, 342, 44, i, tab);
+		i++;
+		setBounds(29595, 480, 22, i, tab);
+		i++;
+		setBounds(29596, 480, 22, i, tab);
+		i++;
+	}
+
+	public static void castleWars3() {
+		RSInterface tab = addTabInterface(27957);
+		int i = 0;
+		String s = "CastleWars/";
+		addSprite(29525, s + "Main");
+		addHoverButton(29700, s + "saracape", 0, 37, 75, "Buy Saradomin Cloak",
+				615, 29701, 1);
+		addHoveredButton(29701, s + "saracape", 1, 37, 75, 29702);
+		addHoverButton(29703, s + "zamcape", 0, 37, 75, "Buy Zamorak Cloak",
+				615, 29704, 1);
+		addHoveredButton(29704, s + "zamcape", 1, 37, 75, 29705);
+		addHoverButton(29706, s + "sarahood", 0, 37, 75, "Buy Saradomin Hood",
+				615, 29707, 1);
+		addHoveredButton(29707, s + "sarahood", 1, 37, 75, 29708);
+		addHoverButton(29709, s + "zamhood", 0, 37, 75, "Buy Zamorak Hood",
+				615, 29710, 1);
+		addHoveredButton(29710, s + "zamhood", 1, 37, 75, 29711);
+		addHoverButton(29712, s + "flag", 0, 37, 75,
+				"Buy Castle Wars flag cape", 615, 29713, 1);
+		addHoveredButton(29713, s + "flag", 1, 37, 75, 29714);
+		addHoverButton(29715, s + "kill", 0, 37, 75,
+				"Buy Castle Wars kills cape", 615, 29716, 1);
+		addHoveredButton(29716, s + "kill", 1, 37, 75, 29717);
+		addHoverButton(29718, s + "hob", 0, 37, 75,
+				"Buy Castle Wars hobbyist cape", 615, 29719, 1);
+		addHoveredButton(29719, s + "hob", 1, 37, 75, 29720);
+		addHoverButton(29721, s + "nerd", 0, 37, 75,
+				"Buy Castle Wars enthusiast cape", 615, 29722, 1);
+		addHoveredButton(29722, s + "nerd", 1, 37, 75, 29723);
+		addHoverButton(29724, s + "nerdest", 0, 37, 75,
+				"Buy Castle Wars professional cape", 615, 29725, 1);
+		addHoveredButton(29725, s + "nerdest", 1, 37, 75, 29726);
+		addHoverButton(29727, s + "guth", 0, 37, 75, "Buy Guthix halo", 615,
+				29728, 1);
+		addHoveredButton(29728, s + "guth", 1, 37, 75, 29729);
+		addHoverButton(29730, s + "sara", 0, 37, 75, "Buy Saradomin halo", 615,
+				29731, 1);
+		addHoveredButton(29731, s + "sara", 1, 37, 75, 29732);
+		addHoverButton(29733, s + "zammy", 0, 37, 75, "Buy Zamorak halo", 615,
+				29734, 1);
+		addHoveredButton(29734, s + "zammy", 1, 37, 75, 29735);
+		addHoverButton(29736, s + "faith", 0, 37, 75, "Buy Faithful shield",
+				615, 29737, 1);
+		addHoveredButton(29737, s + "faith", 1, 37, 75, 29738);
+		addHoverButton(29739, s + "free", 0, 37, 75, "Castle Wars Handbook",
+				615, 29740, 1);
+		addHoveredButton(29740, s + "free", 1, 37, 75, 29741);
+		addHoverButton(29586, s + "decbuttonnormal", 0, 144, 30,
+				"Decorative Armour", 615, 29587, 1);
+		addHoveredButton(29587, s + "decbuttonhover", 1, 144, 30, 29588);
+		addHoverButton(29589, s + "consumebuttonnormal", 0, 144, 30,
+				"Consumables", 615, 29590, 1);
+		addHoveredButton(29590, s + "consumebuttonhover", 1, 144, 30, 29501);
+		addHoverButton(29592, s + "miscbuttonnormal", 0, 144, 30,
+				"Miscellaneous", 615, 29593, 1);
+		addHoveredButton(29593, s + "miscbuttonhover", 1, 144, 30, 29594);
+		addHoverButton(29595, s + "close", 0, 16, 16, "Close", 615, 29596, 1);
+		addHoveredButton(29596, s + "close", 1, 16, 16, 29597);
+		setChildren(37, tab);
+		setBounds(29525, 2, 19, i, tab);
+		i++;
+		setBounds(29700, 117, 90, i, tab);
+		i++;
+		setBounds(29701, 117, 90, i, tab);
+		i++;
+		setBounds(29703, 159, 90, i, tab);
+		i++;
+		setBounds(29704, 159, 90, i, tab);
+		i++;
+		setBounds(29706, 201, 90, i, tab);
+		i++;
+		setBounds(29707, 201, 90, i, tab);
+		i++;
+		setBounds(29709, 243, 90, i, tab);
+		i++;
+		setBounds(29710, 243, 90, i, tab);
+		i++;
+		setBounds(29712, 285, 90, i, tab);
+		i++;
+		setBounds(29713, 285, 90, i, tab);
+		i++;
+		setBounds(29715, 327, 90, i, tab);
+		i++;
+		setBounds(29716, 327, 90, i, tab);
+		i++;
+		setBounds(29718, 369, 90, i, tab);
+		i++;
+		setBounds(29719, 369, 90, i, tab);
+		i++;
+		setBounds(29721, 411, 90, i, tab);
+		i++;
+		setBounds(29722, 411, 90, i, tab);
+		i++;
+		setBounds(29724, 453, 90, i, tab);
+		i++;
+		setBounds(29725, 453, 90, i, tab);
+		i++;
+		setBounds(29727, 117, 190, i, tab);
+		i++;
+		setBounds(29728, 117, 190, i, tab);
+		i++;
+		setBounds(29730, 201, 190, i, tab);
+		i++;
+		setBounds(29731, 201, 190, i, tab);
+		i++;
+		setBounds(29733, 285, 190, i, tab);
+		i++;
+		setBounds(29734, 285, 190, i, tab);
+		i++;
+		setBounds(29736, 369, 190, i, tab);
+		i++;
+		setBounds(29737, 369, 190, i, tab);
+		i++;
+		setBounds(29739, 453, 190, i, tab);
+		i++;
+		setBounds(29740, 453, 190, i, tab);
+		i++;
+		setBounds(29586, 28, 44, i, tab);
+		i++;
+		setBounds(29587, 28, 44, i, tab);
+		i++;
+		setBounds(29589, 185, 44, i, tab);
+		i++;
+		setBounds(29590, 185, 44, i, tab);
+		i++;
+		setBounds(29592, 342, 44, i, tab);
+		i++;
+		setBounds(29593, 342, 44, i, tab);
+		i++;
+		setBounds(29595, 480, 22, i, tab);
+		i++;
+		setBounds(29596, 480, 22, i, tab);
+		i++;
+	}
+
 	public static void setBoundry(int frame, int ID, int X, int Y,
 			RSInterface RSInterface) {
 		RSInterface.children[frame] = ID;
@@ -6730,6 +7046,7 @@ public static void Sell(TextDrawingArea[] TDA) {
 		DrawingArea.drawPixels(1, yPos + 69, xPos, 0x2e2b23, 175);
 		DrawingArea.method335(0, yPos, 174, 68, 220, xPos);
 	}
+
 	public static void addButton(int id, int sid, String spriteName) {
 		RSInterface tab = interfaceCache[id] = new RSInterface();
 		tab.id = id;
@@ -6744,6 +7061,7 @@ public static void Sell(TextDrawingArea[] TDA) {
 		tab.width = tab.sprite1.myWidth;
 		tab.height = tab.sprite2.myHeight;
 	}
+
 	public static void addButton(int id, int sid, String spriteName,
 			String tooltip) {
 		RSInterface tab = interfaceCache[id] = new RSInterface();
@@ -6778,8 +7096,8 @@ public static void Sell(TextDrawingArea[] TDA) {
 		RSInterface.tooltip = S;
 	}
 
-		
-		public static void AddInterfaceButton(int id, int sid, String spriteName, String tooltip, int mOver, int atAction, int width, int height) {
+	public static void AddInterfaceButton(int id, int sid, String spriteName,
+			String tooltip, int mOver, int atAction, int width, int height) {
 		RSInterface tab = interfaceCache[id] = new RSInterface();
 		tab.id = id;
 		tab.parentID = id;
@@ -6794,16 +7112,17 @@ public static void Sell(TextDrawingArea[] TDA) {
 		tab.height = height;
 		tab.tooltip = tooltip;
 		tab.inventoryhover = true;
-	}	
-	
-	public static void AddInterfaceButton(int id, int sid, String spriteName, String tooltip) {
+	}
+
+	public static void AddInterfaceButton(int id, int sid, String spriteName,
+			String tooltip) {
 		RSInterface tab = interfaceCache[id] = new RSInterface();
 		tab.id = id;
 		tab.parentID = id;
 		tab.type = 5;
 		tab.atActionType = 1;
 		tab.contentType = 0;
-		tab.opacity = (byte)0;
+		tab.opacity = (byte) 0;
 		tab.mOverInterToTrigger = 52;
 		tab.sprite1 = imageLoader(sid, spriteName);
 		tab.sprite2 = imageLoader(sid, spriteName);
@@ -6811,6 +7130,7 @@ public static void Sell(TextDrawingArea[] TDA) {
 		tab.height = tab.sprite2.myHeight;
 		tab.tooltip = tooltip;
 	}
+
 	public static void addPrayer(int i, int configId, int configFrame,
 			int requiredValues, int spriteID, String prayerName) {
 		RSInterface tab = addTabInterface(i);
@@ -6999,7 +7319,7 @@ public static void Sell(TextDrawingArea[] TDA) {
 	public static void sprite1(int id, int sprite) {
 		RSInterface class9 = interfaceCache[id];
 		class9.sprite1 = CustomSpriteLoader(sprite, "");
-	}//so you cachepacked it? What no
+	}// so you cachepacked it? What no
 
 	public static void addActionButton(int id, int sprite, int sprite2,
 			int width, int height, String s) {
@@ -7404,6 +7724,7 @@ public static void Sell(TextDrawingArea[] TDA) {
 		scroll.height = 260;
 		scroll.scrollMax = 610;
 	}
+
 	public static void optionTab(TextDrawingArea tda[]) {
 		RSInterface Interface = addTabInterface(904);
 		setChildren(46, Interface);
@@ -7555,49 +7876,51 @@ public static void Sell(TextDrawingArea[] TDA) {
 		rsinterface.valueIndexArray[0][1] = configFrame;
 		rsinterface.valueIndexArray[0][2] = 0;
 	}
-	
-		public static void clanChatTabs(TextDrawingArea[] tda) {
-        RSInterface tab = addTabInterface(18128);
+
+	public static void clanChatTabs(TextDrawingArea[] tda) {
+		RSInterface tab = addTabInterface(18128);
 		addButton(18250, 0, "/Clan Chat/Lootshare", "Toggle lootshare");
-        addHoverButton(18129, "/Clan Chat/SPRITE", 6, 29, 29, "Join Chat", 550, 18130, 1);
-        addHoveredButton(18130, "/Clan Chat/SPRITE", 7, 29, 29, 18131);
-        addHoverButton(18132, "/Clan Chat/SPRITE", 9, 29, 29, "Leave Chat", -1, 18133, 1);
-        addHoveredButton(18133, "/Clan Chat/SPRITE", 10, 29, 29, 18134);
-        addSprite(18137, 1, "/Clan Chat/SPRITE");
-        addText(18139, "Talking in: Not in chat", tda, 0, 0xff9b00, false, true);
-        addText(18140, "Owner: None", tda, 0, 0xff9b00, false, true);
-        tab.totalChildren(11);
-        tab.child(0, 16126, 0, 221);
-        tab.child(1, 16126, 0, 59);
-        tab.child(2, 18137, 0, 35);
-        tab.child(3, 18143, 0, 37);
-        tab.child(4, 18129, 5, 237);
-        tab.child(5, 18130, 4, 237);
-        tab.child(6, 18132, 25, 237);
-        tab.child(7, 18133, 24, 237);
-        tab.child(8, 18139, 64, 3);
-        tab.child(9, 18140, 70, 18);
+		addHoverButton(18129, "/Clan Chat/SPRITE", 6, 29, 29, "Join Chat", 550,
+				18130, 1);
+		addHoveredButton(18130, "/Clan Chat/SPRITE", 7, 29, 29, 18131);
+		addHoverButton(18132, "/Clan Chat/SPRITE", 9, 29, 29, "Leave Chat", -1,
+				18133, 1);
+		addHoveredButton(18133, "/Clan Chat/SPRITE", 10, 29, 29, 18134);
+		addSprite(18137, 1, "/Clan Chat/SPRITE");
+		addText(18139, "Talking in: Not in chat", tda, 0, 0xff9b00, false, true);
+		addText(18140, "Owner: None", tda, 0, 0xff9b00, false, true);
+		tab.totalChildren(11);
+		tab.child(0, 16126, 0, 221);
+		tab.child(1, 16126, 0, 59);
+		tab.child(2, 18137, 0, 35);
+		tab.child(3, 18143, 0, 37);
+		tab.child(4, 18129, 5, 237);
+		tab.child(5, 18130, 4, 237);
+		tab.child(6, 18132, 25, 237);
+		tab.child(7, 18133, 24, 237);
+		tab.child(8, 18139, 64, 3);
+		tab.child(9, 18140, 70, 18);
 		tab.child(10, 18250, 155, 233);
-        /* Text area */
-        RSInterface list = addTabInterface(18143);
-        list.totalChildren(100);
-        for(int i = 18144; i <= 18244; i++) {
-            addText(i, "", tda, 0, 0xffffff, false, true);
-        }
-        for(int id = 18144, i = 0; id <= 18243 && i <= 99; id++, i++) {
-            list.children[i] = id; list.childX[i] = 5;
-            for(int id2 = 18144, i2 = 1; id2 <= 18243 && i2<= 99; id2++, i2++) {
-                list.childY[0] = 2;
-                list.childY[i2] = list.childY[i2 - 1] + 14;
-            }
-        }
-        list.height = 191; list.width = 175;
-        list.scrollMax = 1405;
-    }
+		/* Text area */
+		RSInterface list = addTabInterface(18143);
+		list.totalChildren(100);
+		for (int i = 18144; i <= 18244; i++) {
+			addText(i, "", tda, 0, 0xffffff, false, true);
+		}
+		for (int id = 18144, i = 0; id <= 18243 && i <= 99; id++, i++) {
+			list.children[i] = id;
+			list.childX[i] = 5;
+			for (int id2 = 18144, i2 = 1; id2 <= 18243 && i2 <= 99; id2++, i2++) {
+				list.childY[0] = 2;
+				list.childY[i2] = list.childY[i2 - 1] + 14;
+			}
+		}
+		list.height = 191;
+		list.width = 175;
+		list.scrollMax = 1405;
+	}
 
-
-
-		public Sprite disabledHover;
+	public Sprite disabledHover;
 	public Sprite enabledHover;
 
 	public static void addText(int i, String s, int k, boolean l, boolean m,
@@ -7618,10 +7941,10 @@ public static void Sell(TextDrawingArea[] TDA) {
 		RSInterface.disabledText = "";
 		RSInterface.textColor = k;
 	}
-	
-		public static void SettingsTab(TextDrawingArea[] tda) {
+
+	public static void SettingsTab(TextDrawingArea[] tda) {
 		RSInterface tab = addTabInterface(3333);
-        addSprite(37001, 1, "Switcher/Background");
+		addSprite(37001, 1, "Switcher/Background");
 		addButton(37046, 1, "Switcher/Top", 63, 24, "Settings Menu", 1);
 		addText(37050, "Fullscreen", tda, 0, 0xFFFFFF, false, true);
 		addText(37051, "Change Appearance", tda, 0, 0xFFFFFF, false, true);
@@ -7647,36 +7970,45 @@ public static void Sell(TextDrawingArea[] TDA) {
 		addButton(37007, 1, "Switcher/TextBox", 63, 24, "Toggle On/Off", 1);
 		addButton(37008, 1, "Switcher/TextBox", 63, 24, "Toggle On/Off", 1);
 		addButton(37009, 1, "Switcher/TextBox", 63, 24, "Toggle On/Off", 1);
-		addHoverButton(37020, "Switcher/SmallButton", 0, 200, 30, "Toggle On/Off", -1, 37021, 1);
+		addHoverButton(37020, "Switcher/SmallButton", 0, 200, 30,
+				"Toggle On/Off", -1, 37021, 1);
 		addHoveredButton(37021, "Switcher/SmallButton", 1, 200, 30, 37022);
-		addHoverButton(37023, "Switcher/SmallButton", 0, 200, 30, "Toggle On/Off", -1, 37024, 1);
+		addHoverButton(37023, "Switcher/SmallButton", 0, 200, 30,
+				"Toggle On/Off", -1, 37024, 1);
 		addHoveredButton(37024, "Switcher/SmallButton", 1, 200, 30, 37025);
-		addHoverButton(37026, "Switcher/SmallButton", 0, 200, 30, "Toggle On/Off", -1, 37027, 1);
+		addHoverButton(37026, "Switcher/SmallButton", 0, 200, 30,
+				"Toggle On/Off", -1, 37027, 1);
 		addHoveredButton(37027, "Switcher/SmallButton", 1, 200, 30, 37028);
-		addHoverButton(37029, "Switcher/SmallButton", 0, 200, 30, "Toggle On/Off", -1, 37030, 1);
+		addHoverButton(37029, "Switcher/SmallButton", 0, 200, 30,
+				"Toggle On/Off", -1, 37030, 1);
 		addHoveredButton(37030, "Switcher/SmallButton", 1, 200, 30, 37031);
-		addHoverButton(37033, "Switcher/SmallButton", 0, 200, 30, "Toggle On/Off", -1, 37034, 1);
+		addHoverButton(37033, "Switcher/SmallButton", 0, 200, 30,
+				"Toggle On/Off", -1, 37034, 1);
 		addHoveredButton(37034, "Switcher/SmallButton", 1, 200, 30, 37035);
-		addHoverButton(37036, "Switcher/SmallButton", 0, 200, 30, "Toggle On/Off", -1, 37037, 1);
+		addHoverButton(37036, "Switcher/SmallButton", 0, 200, 30,
+				"Toggle On/Off", -1, 37037, 1);
 		addHoveredButton(37037, "Switcher/SmallButton", 1, 200, 30, 37038);
-		addHoverButton(37039, "Switcher/SmallButton", 0, 200, 30, "Toggle On/Off", -1, 37040, 1);
+		addHoverButton(37039, "Switcher/SmallButton", 0, 200, 30,
+				"Toggle On/Off", -1, 37040, 1);
 		addHoveredButton(37040, "Switcher/SmallButton", 1, 200, 30, 37042);
-		addHoverButton(37043, "Switcher/SmallButton", 0, 200, 30, "Toggle On/Off", -1, 37044, 1);
+		addHoverButton(37043, "Switcher/SmallButton", 0, 200, 30,
+				"Toggle On/Off", -1, 37044, 1);
 		addHoveredButton(37044, "Switcher/SmallButton", 1, 200, 30, 37045);
-       	addHoverButton(37047, "Interfaces/Minigame/Back", 0, 16, 16, "Back", -1, 37048, 1);
-       	addHoveredButton(37048, "Interfaces/Minigame/Back", 1, 16, 16, 37049);
+		addHoverButton(37047, "Interfaces/Minigame/Back", 0, 16, 16, "Back",
+				-1, 37048, 1);
+		addHoveredButton(37048, "Interfaces/Minigame/Back", 1, 16, 16, 37049);
 		tab.totalChildren(44);
-		/*BUTTONS*/
-       		tab.child(0, 37001, 5, 0);
-       		tab.child(1, 37002, 5, 20);
-       		tab.child(2, 37003, 5, 50);
-       		tab.child(3, 37004, 5, 80);
-       		tab.child(4, 37005, 5, 110);
-       		tab.child(5, 37006, 5, 140);
-       		tab.child(6, 37007, 5, 170);
-       		tab.child(7, 37008, 5, 200);
-       		tab.child(8, 37009, 5, 230);
-		/*HOVER/HOVERED BUTTONS*/
+		/* BUTTONS */
+		tab.child(0, 37001, 5, 0);
+		tab.child(1, 37002, 5, 20);
+		tab.child(2, 37003, 5, 50);
+		tab.child(3, 37004, 5, 80);
+		tab.child(4, 37005, 5, 110);
+		tab.child(5, 37006, 5, 140);
+		tab.child(6, 37007, 5, 170);
+		tab.child(7, 37008, 5, 200);
+		tab.child(8, 37009, 5, 230);
+		/* HOVER/HOVERED BUTTONS */
 		tab.child(9, 37020, 150, 20);
 		tab.child(10, 37021, 150, 20);
 		tab.child(11, 37023, 150, 50);
@@ -7693,11 +8025,11 @@ public static void Sell(TextDrawingArea[] TDA) {
 		tab.child(22, 37040, 150, 200);
 		tab.child(23, 37043, 150, 230);
 		tab.child(24, 37044, 150, 230);
-		/*TOP SPRITE*/
+		/* TOP SPRITE */
 		tab.child(25, 37046, 35, 0);
 		tab.child(26, 37047, 0, 0);
 		tab.child(27, 37048, 0, 0);
-		/*TEXT*/
+		/* TEXT */
 		tab.child(43, 37050, 8, 23);
 		tab.child(28, 37051, 8, 53);
 		tab.child(29, 37052, 8, 83);
@@ -7706,7 +8038,7 @@ public static void Sell(TextDrawingArea[] TDA) {
 		tab.child(32, 37055, 8, 173);
 		tab.child(33, 37056, 8, 203);
 		tab.child(34, 37057, 8, 233);
-		//dddd
+		// dddd
 		tab.child(35, 37058, 159, 23);
 		tab.child(36, 37059, 159, 53);
 		tab.child(37, 37060, 159, 83);
@@ -7716,150 +8048,173 @@ public static void Sell(TextDrawingArea[] TDA) {
 		tab.child(41, 37064, 159, 203);
 		tab.child(42, 37065, 159, 233);
 
+	}
 
-	}
-	
-			public static void monsterTele(TextDrawingArea[] TDA) {
-	RSInterface Interface = addTabInterface(34000); //Interface ID
-	//Background here
-	addSprite(34001, 1, "Interfaces/monsterTele/BACKGROUND");
-	addText(34002, "Monster Teleports", TDA, 2, 0xd67b29, true, true);
-	addHoverButton(34003, "Interfaces/monsterTele/HOVER", 1, 124, 26, "Teleport to @gre@Rock Crabs", -1, 34004, 1);
-	addHoveredButton(34004, "Interfaces/monsterTele/SHADE", 2, 124, 26, 34005);
-	addHoverButton(34006, "Interfaces/monsterTele/HOVER", 1, 124, 26, "Teleport to @gre@Taverly Dungeon", -1, 34007, 1);
-	addHoveredButton(34007, "Interfaces/monsterTele/SHADE", 2, 124, 26, 34008);
-	addHoverButton(34009, "Interfaces/monsterTele/HOVER", 1, 124, 26, "Teleport to @gre@Slayer Tower", -1, 34010, 1);
-	addHoveredButton(34010, "Interfaces/monsterTele/SHADE", 2, 124, 26, 34011);
-	addHoverButton(34012, "Interfaces/monsterTele/HOVER", 1, 124, 26, "Teleport to @gre@Rock Crabs", -1, 34013, 1);
-	addHoveredButton(34013, "Interfaces/monsterTele/SHADE", 2, 124, 26, 34014);
-	addText(34015, "Rock Crabs", TDA, 0, 0xFFFFFF, true, true); //0xd67b29
-	addText(34016, "Taverly Dungeon", TDA, 0, 0xFFFFFF, true, true); //0xd67b29
-	addText(34017, "Slayer Tower", TDA, 0, 0xFFFFFF, true, true); //0xd67b29
-	addText(34018, "Brimhaven Dungeon", TDA, 0, 0xFFFFFF, true, true); //0xd67b29
-	addHoverButton(34019, "Interfaces/monsterTele/shadedMageBook", 1, 43, 35, "Back To Your Spell Book", -1, 34020, 1);
-	addHoveredButton(34020, "Interfaces/monsterTele/hoveredMageBook", 2, 43, 35, 34021);
-	addHoverButton(34022, "Interfaces/monsterTele/shadedArrow", 1, 43, 35, "Next Page", -1, 34023, 1);
-	addHoveredButton(34023, "Interfaces/monsterTele/HoveredArrow", 2, 43, 35, 34024);
-	
-	setChildren(18, Interface); //Number of sprites/buttons
-	setBounds(34001, 0, 0, 0, Interface);
-	setBounds(34002, 95, 7, 1, Interface);
-	setBounds(34003, 25, 36, 2, Interface);
-	setBounds(34004, 25, 36, 3, Interface);
-	setBounds(34006, 25, 86, 4, Interface);
-	setBounds(34007, 25, 86, 5, Interface);
-	setBounds(34009, 25, 139, 6, Interface);
-	setBounds(34010, 25, 139, 7, Interface);
-	setBounds(34012, 25, 188, 8, Interface);
-	setBounds(34013, 25, 188, 9, Interface);
-	setBounds(34015, 87, 43, 10, Interface);
-	setBounds(34016, 87, 93, 11, Interface);
-	setBounds(34017, 87, 146, 12, Interface);
-	setBounds(34018, 87, 195, 13, Interface);
-	setBounds(34019, 0, 221, 14, Interface);
-	setBounds(34020, 0, 221, 15, Interface);
-	setBounds(34022, 147, 221, 16, Interface);
-	setBounds(34023, 147, 221, 17, Interface);
-	}
-public static void monsterTeleb(TextDrawingArea[] TDA) {
-	RSInterface Interface = addTabInterface(39000); //Interface ID
-	//Background here
-	addSprite(39001, 1, "Interfaces/monsterTeleb/BACKGROUND");
-	//Title
-	addText(39002, "Monster Teleports", TDA, 2, 0xd67b29, true, true);
-	//Tele Buttons
-	addHoverButton(39003, "Interfaces/monsterTeleb/HOVER", 1, 124, 26, "Teleport to @gre@Experiments", -1, 39004, 1);
-	addHoveredButton(39004, "Interfaces/monsterTeleb/SHADE", 2, 124, 26, 39005);
-	addHoverButton(39006, "Interfaces/monsterTeleb/HOVER", 1, 124, 26, "Teleport to @gre@Strykewyrms", -1, 39007, 1);
-	addHoveredButton(39007, "Interfaces/monsterTeleb/SHADE", 2, 124, 26, 39008);
-	//Tele Button Text
-	addText(39009, "Experiments", TDA, 0, 0xFFFFFF, true, true); //0xd67b29
-	addText(39010, "Strykewyrms", TDA, 0, 0xFFFFFF, true, true); //0xd67b29
-	//Bottom Buttons
-	addHoverButton(39011, "Interfaces/monsterTeleb/shadedMageBook", 1, 43, 35, "Back To Your Spell Book", -1, 39012, 1);
-	addHoveredButton(39012, "Interfaces/monsterTeleb/hoveredMageBook", 2, 43, 35, 39013);
-	addHoverButton(39014, "Interfaces/monsterTeleb/shadedArrow", 1, 43, 35, "Next Page", -1, 39015, 1);
-	addHoveredButton(39015, "Interfaces/monsterTeleb/HoveredArrow", 2, 43, 35, 39016);
-	
-	setChildren(12, Interface); //Number of sprites/buttons
-	setBounds(39001, 0, 0, 0, Interface);
-	setBounds(39002, 95, 7, 1, Interface);
-	setBounds(39003, 25, 36, 2, Interface);
-	setBounds(39004, 25, 36, 3, Interface);
-	setBounds(39006, 25, 86, 4, Interface);
-	setBounds(39007, 25, 86, 5, Interface);
-	setBounds(39009, 87, 43, 6, Interface);
-	setBounds(39010, 87, 93, 7, Interface);
-	setBounds(39011, 147, 221, 8, Interface);
-	setBounds(39012, 147, 221, 9, Interface);
-	setBounds(39014, 0, 221, 10, Interface);
-	setBounds(39015, 0, 221, 11, Interface);
-	}
-	
-	
-    public static void Pestpanel(TextDrawingArea atextdrawingarea[])
-    {
-        RSInterface rsinterface = addInterface(21005);
-        addText(21006, "Next Departure:", 0xCCCBCB, false, true, 52, atextdrawingarea, 1);
-        addText(21007, "Players Ready:", 0x5BD230, false, true, 52, atextdrawingarea, 1);
-        addText(21008, "(Need 5 to 25 players)", 0xDED36A, false, true, 52, atextdrawingarea, 1);
-        addText(21009, "Pest Points:", 0x99FFFF, false, true, 52, atextdrawingarea, 1);
-        byte byte0 = 4;
-        rsinterface.children = new int[byte0];
-        rsinterface.childX = new int[byte0];
-        rsinterface.childY = new int[byte0];
-        setBounds(21006, 15, 12, 0, rsinterface);
-        setBounds(21007, 15, 30, 1, rsinterface);
-        setBounds(21008, 15, 48, 2, rsinterface);
-        setBounds(21009, 15, 66, 3, rsinterface);
-    }
+	public static void monsterTele(TextDrawingArea[] TDA) {
+		RSInterface Interface = addTabInterface(34000); // Interface ID
+		// Background here
+		addSprite(34001, 1, "Interfaces/monsterTele/BACKGROUND");
+		addText(34002, "Monster Teleports", TDA, 2, 0xd67b29, true, true);
+		addHoverButton(34003, "Interfaces/monsterTele/HOVER", 1, 124, 26,
+				"Teleport to @gre@Rock Crabs", -1, 34004, 1);
+		addHoveredButton(34004, "Interfaces/monsterTele/SHADE", 2, 124, 26,
+				34005);
+		addHoverButton(34006, "Interfaces/monsterTele/HOVER", 1, 124, 26,
+				"Teleport to @gre@Taverly Dungeon", -1, 34007, 1);
+		addHoveredButton(34007, "Interfaces/monsterTele/SHADE", 2, 124, 26,
+				34008);
+		addHoverButton(34009, "Interfaces/monsterTele/HOVER", 1, 124, 26,
+				"Teleport to @gre@Slayer Tower", -1, 34010, 1);
+		addHoveredButton(34010, "Interfaces/monsterTele/SHADE", 2, 124, 26,
+				34011);
+		addHoverButton(34012, "Interfaces/monsterTele/HOVER", 1, 124, 26,
+				"Teleport to @gre@Rock Crabs", -1, 34013, 1);
+		addHoveredButton(34013, "Interfaces/monsterTele/SHADE", 2, 124, 26,
+				34014);
+		addText(34015, "Rock Crabs", TDA, 0, 0xFFFFFF, true, true); // 0xd67b29
+		addText(34016, "Taverly Dungeon", TDA, 0, 0xFFFFFF, true, true); // 0xd67b29
+		addText(34017, "Slayer Tower", TDA, 0, 0xFFFFFF, true, true); // 0xd67b29
+		addText(34018, "Brimhaven Dungeon", TDA, 0, 0xFFFFFF, true, true); // 0xd67b29
+		addHoverButton(34019, "Interfaces/monsterTele/shadedMageBook", 1, 43,
+				35, "Back To Your Spell Book", -1, 34020, 1);
+		addHoveredButton(34020, "Interfaces/monsterTele/hoveredMageBook", 2,
+				43, 35, 34021);
+		addHoverButton(34022, "Interfaces/monsterTele/shadedArrow", 1, 43, 35,
+				"Next Page", -1, 34023, 1);
+		addHoveredButton(34023, "Interfaces/monsterTele/HoveredArrow", 2, 43,
+				35, 34024);
 
-    public static void Pestpanel2(TextDrawingArea atextdrawingarea[])
-    {
-        RSInterface rsinterface = addInterface(21100);
-        addSprite(21101, 0, "Pest Control/PEST1");
-        addSprite(21102, 1, "Pest Control/PEST1");
-        addSprite(21103, 2, "Pest Control/PEST1");
-        addSprite(21104, 3, "Pest Control/PEST1");
-        addSprite(21105, 4, "Pest Control/PEST1");
-        addSprite(21106, 5, "Pest Control/PEST1");
-        addText(21107, "W", 0xcc00cc, false, true, 52, atextdrawingarea, 1);
-        addText(21108, "E", 0x0000FF, false, true, 52, atextdrawingarea, 1);
-        addText(21109, "SE", 0xffff44, false, true, 52, atextdrawingarea, 1);
-        addText(21110, "SW", 0xcc0000, false, true, 52, atextdrawingarea, 1);
-        addText(21111, "250", 0x99ff33, false, true, 52, atextdrawingarea, 1);
-        addText(21112, "250", 0x99ff33, false, true, 52, atextdrawingarea, 1);
-        addText(21113, "250", 0x99ff33, false, true, 52, atextdrawingarea, 1);
-        addText(21114, "250", 0x99ff33, false, true, 52, atextdrawingarea, 1);
-        addText(21115, "***", 0x99ff33, false, true, 52, atextdrawingarea, 1);
-        addText(21116, "***", 0x99ff33, false, true, 52, atextdrawingarea, 1);
-        addText(21117, "Time Remaining:", 0xffffff, false, true, 52, atextdrawingarea, 0);
-        addText(21118, "10 Minutes", 0xffffff, false, true, 52, atextdrawingarea, 0);
-        byte byte0 = 18;
-        rsinterface.children = new int[byte0];
-        rsinterface.childX = new int[byte0];
-        rsinterface.childY = new int[byte0];
-        setBounds(21101, 361, 26, 0, rsinterface);
-        setBounds(21102, 396, 26, 1, rsinterface);
-        setBounds(21103, 436, 26, 2, rsinterface);
-        setBounds(21104, 474, 26, 3, rsinterface);
-        setBounds(21105, 3, 21, 4, rsinterface);
-        setBounds(21106, 3, 50, 5, rsinterface);
-        setBounds(21107, 371, 60, 6, rsinterface);
-        setBounds(21108, 409, 60, 7, rsinterface);
-        setBounds(21109, 443, 60, 8, rsinterface);
-        setBounds(21110, 479, 60, 9, rsinterface);
-        setBounds(21111, 362, 10, 10, rsinterface);
-        setBounds(21112, 398, 10, 11, rsinterface);
-        setBounds(21113, 436, 10, 12, rsinterface);
-        setBounds(21114, 475, 10, 13, rsinterface);
-        setBounds(21115, 32, 32, 14, rsinterface);
-        setBounds(21116, 32, 62, 15, rsinterface);
-        setBounds(21117, 8, 88, 16, rsinterface);
-        setBounds(21118, 87, 88, 17, rsinterface);
-    }
-	
-		/* Pest Control Interface */
+		setChildren(18, Interface); // Number of sprites/buttons
+		setBounds(34001, 0, 0, 0, Interface);
+		setBounds(34002, 95, 7, 1, Interface);
+		setBounds(34003, 25, 36, 2, Interface);
+		setBounds(34004, 25, 36, 3, Interface);
+		setBounds(34006, 25, 86, 4, Interface);
+		setBounds(34007, 25, 86, 5, Interface);
+		setBounds(34009, 25, 139, 6, Interface);
+		setBounds(34010, 25, 139, 7, Interface);
+		setBounds(34012, 25, 188, 8, Interface);
+		setBounds(34013, 25, 188, 9, Interface);
+		setBounds(34015, 87, 43, 10, Interface);
+		setBounds(34016, 87, 93, 11, Interface);
+		setBounds(34017, 87, 146, 12, Interface);
+		setBounds(34018, 87, 195, 13, Interface);
+		setBounds(34019, 0, 221, 14, Interface);
+		setBounds(34020, 0, 221, 15, Interface);
+		setBounds(34022, 147, 221, 16, Interface);
+		setBounds(34023, 147, 221, 17, Interface);
+	}
+
+	public static void monsterTeleb(TextDrawingArea[] TDA) {
+		RSInterface Interface = addTabInterface(39000); // Interface ID
+		// Background here
+		addSprite(39001, 1, "Interfaces/monsterTeleb/BACKGROUND");
+		// Title
+		addText(39002, "Monster Teleports", TDA, 2, 0xd67b29, true, true);
+		// Tele Buttons
+		addHoverButton(39003, "Interfaces/monsterTeleb/HOVER", 1, 124, 26,
+				"Teleport to @gre@Experiments", -1, 39004, 1);
+		addHoveredButton(39004, "Interfaces/monsterTeleb/SHADE", 2, 124, 26,
+				39005);
+		addHoverButton(39006, "Interfaces/monsterTeleb/HOVER", 1, 124, 26,
+				"Teleport to @gre@Strykewyrms", -1, 39007, 1);
+		addHoveredButton(39007, "Interfaces/monsterTeleb/SHADE", 2, 124, 26,
+				39008);
+		// Tele Button Text
+		addText(39009, "Experiments", TDA, 0, 0xFFFFFF, true, true); // 0xd67b29
+		addText(39010, "Strykewyrms", TDA, 0, 0xFFFFFF, true, true); // 0xd67b29
+		// Bottom Buttons
+		addHoverButton(39011, "Interfaces/monsterTeleb/shadedMageBook", 1, 43,
+				35, "Back To Your Spell Book", -1, 39012, 1);
+		addHoveredButton(39012, "Interfaces/monsterTeleb/hoveredMageBook", 2,
+				43, 35, 39013);
+		addHoverButton(39014, "Interfaces/monsterTeleb/shadedArrow", 1, 43, 35,
+				"Next Page", -1, 39015, 1);
+		addHoveredButton(39015, "Interfaces/monsterTeleb/HoveredArrow", 2, 43,
+				35, 39016);
+
+		setChildren(12, Interface); // Number of sprites/buttons
+		setBounds(39001, 0, 0, 0, Interface);
+		setBounds(39002, 95, 7, 1, Interface);
+		setBounds(39003, 25, 36, 2, Interface);
+		setBounds(39004, 25, 36, 3, Interface);
+		setBounds(39006, 25, 86, 4, Interface);
+		setBounds(39007, 25, 86, 5, Interface);
+		setBounds(39009, 87, 43, 6, Interface);
+		setBounds(39010, 87, 93, 7, Interface);
+		setBounds(39011, 147, 221, 8, Interface);
+		setBounds(39012, 147, 221, 9, Interface);
+		setBounds(39014, 0, 221, 10, Interface);
+		setBounds(39015, 0, 221, 11, Interface);
+	}
+
+	public static void Pestpanel(TextDrawingArea atextdrawingarea[]) {
+		RSInterface rsinterface = addInterface(21005);
+		addText(21006, "Next Departure:", 0xCCCBCB, false, true, 52,
+				atextdrawingarea, 1);
+		addText(21007, "Players Ready:", 0x5BD230, false, true, 52,
+				atextdrawingarea, 1);
+		addText(21008, "(Need 5 to 25 players)", 0xDED36A, false, true, 52,
+				atextdrawingarea, 1);
+		addText(21009, "Pest Points:", 0x99FFFF, false, true, 52,
+				atextdrawingarea, 1);
+		byte byte0 = 4;
+		rsinterface.children = new int[byte0];
+		rsinterface.childX = new int[byte0];
+		rsinterface.childY = new int[byte0];
+		setBounds(21006, 15, 12, 0, rsinterface);
+		setBounds(21007, 15, 30, 1, rsinterface);
+		setBounds(21008, 15, 48, 2, rsinterface);
+		setBounds(21009, 15, 66, 3, rsinterface);
+	}
+
+	public static void Pestpanel2(TextDrawingArea atextdrawingarea[]) {
+		RSInterface rsinterface = addInterface(21100);
+		addSprite(21101, 0, "Pest Control/PEST1");
+		addSprite(21102, 1, "Pest Control/PEST1");
+		addSprite(21103, 2, "Pest Control/PEST1");
+		addSprite(21104, 3, "Pest Control/PEST1");
+		addSprite(21105, 4, "Pest Control/PEST1");
+		addSprite(21106, 5, "Pest Control/PEST1");
+		addText(21107, "W", 0xcc00cc, false, true, 52, atextdrawingarea, 1);
+		addText(21108, "E", 0x0000FF, false, true, 52, atextdrawingarea, 1);
+		addText(21109, "SE", 0xffff44, false, true, 52, atextdrawingarea, 1);
+		addText(21110, "SW", 0xcc0000, false, true, 52, atextdrawingarea, 1);
+		addText(21111, "250", 0x99ff33, false, true, 52, atextdrawingarea, 1);
+		addText(21112, "250", 0x99ff33, false, true, 52, atextdrawingarea, 1);
+		addText(21113, "250", 0x99ff33, false, true, 52, atextdrawingarea, 1);
+		addText(21114, "250", 0x99ff33, false, true, 52, atextdrawingarea, 1);
+		addText(21115, "***", 0x99ff33, false, true, 52, atextdrawingarea, 1);
+		addText(21116, "***", 0x99ff33, false, true, 52, atextdrawingarea, 1);
+		addText(21117, "Time Remaining:", 0xffffff, false, true, 52,
+				atextdrawingarea, 0);
+		addText(21118, "10 Minutes", 0xffffff, false, true, 52,
+				atextdrawingarea, 0);
+		byte byte0 = 18;
+		rsinterface.children = new int[byte0];
+		rsinterface.childX = new int[byte0];
+		rsinterface.childY = new int[byte0];
+		setBounds(21101, 361, 26, 0, rsinterface);
+		setBounds(21102, 396, 26, 1, rsinterface);
+		setBounds(21103, 436, 26, 2, rsinterface);
+		setBounds(21104, 474, 26, 3, rsinterface);
+		setBounds(21105, 3, 21, 4, rsinterface);
+		setBounds(21106, 3, 50, 5, rsinterface);
+		setBounds(21107, 371, 60, 6, rsinterface);
+		setBounds(21108, 409, 60, 7, rsinterface);
+		setBounds(21109, 443, 60, 8, rsinterface);
+		setBounds(21110, 479, 60, 9, rsinterface);
+		setBounds(21111, 362, 10, 10, rsinterface);
+		setBounds(21112, 398, 10, 11, rsinterface);
+		setBounds(21113, 436, 10, 12, rsinterface);
+		setBounds(21114, 475, 10, 13, rsinterface);
+		setBounds(21115, 32, 32, 14, rsinterface);
+		setBounds(21116, 32, 62, 15, rsinterface);
+		setBounds(21117, 8, 88, 16, rsinterface);
+		setBounds(21118, 87, 88, 17, rsinterface);
+	}
+
+	/* Pest Control Interface */
 	public static void PestControl(TextDrawingArea[] wid) {
 		/* Experience Tab */
 		RSInterface tab = addTabInterface(18700);
@@ -7889,11 +8244,13 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		addButton(18725, 1, "Interfaces/PestControl/B", 48, 14, "Select", 1);
 		addButton(18726, 2, "Interfaces/PestControl/B", 46, 14, "Select", 1);
 		addButton(18727, 2, "Interfaces/PestControl/B", 46, 14, "Select", 1);
-		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16, "Close Window", 1);
+		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16,
+				"Close Window", 1);
 		addText(18729, "10", wid, 0, 0xFFA500, false, true);
 		addButton(18774, 0, "Interfaces/PestControl/X", 102, 22, "Equipment", 1);
-		addButton(18775, 0, "Interfaces/PestControl/X", 102, 22, "Consumables", 1);
-		//addButton(18776, 0, "Interfaces/PestControl/X", 102, 22, "extra", 1);
+		addButton(18775, 0, "Interfaces/PestControl/X", 102, 22, "Consumables",
+				1);
+		// addButton(18776, 0, "Interfaces/PestControl/X", 102, 22, "extra", 1);
 		tab.totalChildren(31);
 		tab.child(0, 18701, 4, 16);
 		tab.child(1, 18702, 4, 16);
@@ -7926,7 +8283,7 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		tab.child(28, 18729, 460, 288);
 		tab.child(29, 18774, 124, 46);
 		tab.child(30, 18775, 229, 46);
-		//tab.child(31, 18776, 334, 46);
+		// tab.child(31, 18776, 334, 46);
 
 		/* Equipment Tab */
 		RSInterface tab1 = addTabInterface(18730);
@@ -7942,11 +8299,14 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		addButton(18741, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
 		addButton(18742, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
 		addButton(18743, 5, "Interfaces/PestControl/B", 90, 56, "Select", 1);
-		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16, "Close Window", 1);
+		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16,
+				"Close Window", 1);
 		addText(18729, "10", wid, 0, 0xFFA500, false, true);
-		addButton(18773, 0, "Interfaces/PestControl/X", 102, 22, "Experience", 1);
-		addButton(18775, 0, "Interfaces/PestControl/X", 102, 22, "Consumables", 1);
-	//	addButton(18776, 0, "Interfaces/PestControl/X", 102, 22, "extra", 1);
+		addButton(18773, 0, "Interfaces/PestControl/X", 102, 22, "Experience",
+				1);
+		addButton(18775, 0, "Interfaces/PestControl/X", 102, 22, "Consumables",
+				1);
+		// addButton(18776, 0, "Interfaces/PestControl/X", 102, 22, "extra", 1);
 		tab1.totalChildren(17);
 		tab1.child(0, 18731, 4, 16);
 		tab1.child(1, 18732, 4, 16);
@@ -7965,7 +8325,7 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		tab1.child(14, 18729, 460, 288);
 		tab1.child(15, 18773, 19, 46);
 		tab1.child(16, 18775, 229, 46);
-		//tab1.child(17, 18776, 334, 46);
+		// tab1.child(17, 18776, 334, 46);
 
 		/* Equipment Tab Void */
 		RSInterface tab2 = addTabInterface(18746);
@@ -7973,11 +8333,14 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		addButton(18748, 6, "Interfaces/PestControl/B", 90, 56, "Select", 1);
 		addButton(18749, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
 		addButton(18750, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
-		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16, "Close Window", 1);
+		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16,
+				"Close Window", 1);
 		addText(18729, "10", wid, 0, 0xFFA500, false, true);
-		addButton(18773, 0, "Interfaces/PestControl/X", 102, 22, "Experience", 1);
-		addButton(18775, 0, "Interfaces/PestControl/X", 102, 22, "Consumables", 1);
-	//	addButton(18776, 0, "Interfaces/PestControl/X", 102, 22, "extra", 1);
+		addButton(18773, 0, "Interfaces/PestControl/X", 102, 22, "Experience",
+				1);
+		addButton(18775, 0, "Interfaces/PestControl/X", 102, 22, "Consumables",
+				1);
+		// addButton(18776, 0, "Interfaces/PestControl/X", 102, 22, "extra", 1);
 		tab2.totalChildren(8);
 		tab2.child(0, 18747, 4, 16);
 		tab2.child(1, 18748, 56, 231);
@@ -7987,7 +8350,7 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		tab2.child(5, 18729, 460, 288);
 		tab2.child(6, 18773, 19, 46);
 		tab2.child(7, 18775, 229, 46);
-	//	tab2.child(8, 18776, 334, 46);
+		// tab2.child(8, 18776, 334, 46);
 
 		/* Consumables Tab */
 		RSInterface tab3 = addTabInterface(18753);
@@ -7998,11 +8361,13 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		addButton(18758, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
 		addButton(18759, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
 		addButton(18760, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
-		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16, "Close Window", 1);
+		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16,
+				"Close Window", 1);
 		addText(18729, "10", wid, 0, 0xFFA500, false, true);
-		addButton(18773, 0, "Interfaces/PestControl/X", 102, 22, "Experience", 1);
+		addButton(18773, 0, "Interfaces/PestControl/X", 102, 22, "Experience",
+				1);
 		addButton(18774, 0, "Interfaces/PestControl/X", 102, 22, "Equipment", 1);
-	//	addButton(18776, 0, "Interfaces/PestControl/X", 102, 22, "extra", 1);
+		// addButton(18776, 0, "Interfaces/PestControl/X", 102, 22, "extra", 1);
 		tab3.totalChildren(11);
 		tab3.child(0, 18754, 4, 16);
 		tab3.child(1, 18755, 30, 127);
@@ -8015,7 +8380,7 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		tab3.child(8, 18729, 460, 288);
 		tab3.child(9, 18773, 19, 46);
 		tab3.child(10, 18774, 124, 46);
-		//tab3.child(11, 18776, 334, 46);
+		// tab3.child(11, 18776, 334, 46);
 
 		/* extra Tab */
 		RSInterface tab4 = addTabInterface(18763);
@@ -8026,11 +8391,14 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		addButton(18768, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
 		addButton(18769, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
 		addButton(18770, 3, "Interfaces/PestControl/B", 142, 14, "Select", 1);
-		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16, "Close Window", 1);
+		addButton(18728, 1, "Interfaces/PestControl/SPRITE", 16, 16,
+				"Close Window", 1);
 		addText(18729, "10", wid, 0, 0xFFA500, false, true);
-		addButton(18773, 0, "Interfaces/PestControl/X", 102, 22, "Experience", 1);
+		addButton(18773, 0, "Interfaces/PestControl/X", 102, 22, "Experience",
+				1);
 		addButton(18774, 0, "Interfaces/PestControl/X", 102, 22, "Equipment", 1);
-		addButton(18775, 0, "Interfaces/PestControl/X", 102, 22, "Consumables", 1);
+		addButton(18775, 0, "Interfaces/PestControl/X", 102, 22, "Consumables",
+				1);
 		tab4.totalChildren(12);
 		tab4.child(0, 18764, 4, 16);
 		tab4.child(1, 18765, 30, 127);
@@ -8368,12 +8736,15 @@ public static void monsterTeleb(TextDrawingArea[] TDA) {
 		Interface.childX[26] = 0;
 		Interface.childY[26] = 0;
 		Interface = addInterface(27650);
-/*addSprite(19146, 1, "Equipment/aura");
-addAura(10794);
-addButton(29145, 2, "Equipment/aura", 36, 36, "Remove", 1);		*/
+		/*
+		 * addSprite(19146, 1, "Equipment/aura"); addAura(10794);
+		 * addButton(29145, 2, "Equipment/aura", 36, 36, "Remove", 1);
+		 */
 		addButton(27651, 6, "Interfaces/Equipment/BOX", "Lock/Unlock XP",
 				27659, 1, 26, 33);
-		addTooltip(27659, "Locks/unlocks your EXP"); // dw just finnish  i dont really care about that small thing ^^
+		addTooltip(27659, "Locks/unlocks your EXP"); // dw just finnish i dont
+														// really care about
+														// that small thing ^^
 		addButton(27653, 1, "Interfaces/Equipment/BOX", "Show Equipment Stats",
 				27655, 1, 40, 39);
 		addTooltip(27655, "Show Equipment Stats");
@@ -8389,84 +8760,80 @@ addButton(29145, 2, "Equipment/aura", 36, 36, "Remove", 1);		*/
 		setBounds(27657, 39, 240, 5, Interface);
 		setBounds(29145, 37, 5, 6, Interface);
 		setBounds(19146, 37, 5, 7, Interface);
-		setBounds(10794, 39, 7, 8, Interface);		
+		setBounds(10794, 39, 7, 8, Interface);
 	}/*
-	public static void EquipmentTab(TextDrawingArea[] wid) {
-		RSInterface Interface = interfaceCache[1644];
-		addSprite(15101, 0, "Equipment/bl");
-		addSprite(15102, 1, "Equipment/bl");
-		addSprite(15109, 2, "Equipment/bl");
-		addSprite(15110, 3, "Equipment/bl");
-		removeSomething(15103);	removeSomething(15104);
-		Interface.children[23] = 15101;	Interface.childX[23] = 40;			Interface.childY[23] = 205;
-		Interface.children[24] = 15102;	Interface.childX[24] = 110;			Interface.childY[24] = 205;
-		Interface.children[25] = 15109;	Interface.childX[25] = 39;			Interface.childY[25] = 240;
-		Interface.children[26] = 27650; Interface.childX[26] = 0;			Interface.childY[26] = 0;
-		Interface = addInterface(27650);
-		addSprite(27665, 0, "Equipment/aura");
-addSprite(19146, 1, "Equipment/aura");
-addAura(10794);
-addButton(29145, 2, "Equipment/aura", 36, 36, "Remove", 1);		
-		addHoverButton(27651, "Equipment/CUSTOM", 1, 40, 40, "Show Equipment Screen", 0, 27652, 1, 0);
-		addHoveredButton(27652, "Equipment/CUSTOM", 5, 40, 40, 27653);	
-		addHoverButton(27657, "Equipment/CUSTOM", 2, 40, 40, "Items Kept on Death", 0, 27658, 1, 0);
-		addHoveredButton(27658, "Equipment/CUSTOM", 4, 40, 40, 27659);	
-		addHoverButton(27654, "Equipment/CUSTOM", 9, 40, 40, "Toolbelt", 0, 27655, 1, 0);
-		addHoveredButton(27655, "Equipment/CUSTOM", 10, 40, 40, 27656);		
-		//addHoverButton(27662, "Equipment/CUSTOM", 3, 40, 45, "Price Checker", 0, 27663, 1, 0);
-		//addHoveredButton(27663, "Equipment/CUSTOM", 6, 40, 45, 27664);
-		setChildren(9, Interface);
-		//setBounds(27665, 37, 4, 0, Interface);
-		setBounds(27651, 21, 210, 0, Interface);
-		setBounds(27652, 21, 210, 1, Interface);
-		setBounds(27657, 75, 210, 2, Interface);
-		setBounds(27658, 75, 210, 3, Interface);
-		setBounds(27654, 129, 210, 4, Interface);
-		setBounds(27655, 129, 210, 5, Interface);
-        setBounds(29145, 37, 5, 6, Interface);
-		setBounds(19146, 37, 5, 7, Interface);
-		setBounds(10794, 39, 7, 8, Interface);		
-		//setBounds(27662, 127, 2, 6, Interface);
-		//setBounds(27663, 127, 2, 7, Interface);
-		//setBounds(27665, 37, 4, 6, Interface);
-	}	*/
-	public static void addAura(int i)
-    {
-        RSInterface rsinterface = interfaceCache[i] = new RSInterface();
-        rsinterface.itemActions = new String[5];
-        rsinterface.spritesX = new int[20];
-        rsinterface.invStackSizes = new int[30];
-        rsinterface.inv = new int[30];
-        rsinterface.spritesY = new int[20];
-        rsinterface.children = new int[0];
-        rsinterface.childX = new int[0];
-        rsinterface.childY = new int[0];
-        rsinterface.spritesY[0] = 0;
-        rsinterface.invStackSizes[0] = 0;
-        rsinterface.inv[0] = 0;
-        rsinterface.spritesX[0] = 0;
-        rsinterface.itemActions[0] = "Time left";
-        rsinterface.itemActions[1] = "Activate";
-        rsinterface.itemActions[2] = null;
-        rsinterface.itemActions[3] = null;
-        rsinterface.itemActions[4] = null;
-        rsinterface.centerText = false;
-        rsinterface.aBoolean227 = false;
-        rsinterface.aBoolean235 = false;
-        rsinterface.usableItemInterface = false;
-        rsinterface.isInventoryInterface = false;
-        rsinterface.aBoolean259 = true;
-       // rsinterface.interfaceShown = false;
-        rsinterface.textShadow = false;
-        rsinterface.width = 6;
-        rsinterface.type = -1;
-        rsinterface.invSpritePadX = 24;
-        rsinterface.parentID = 10794;
-        rsinterface.invSpritePadY = 24;
-        rsinterface.type = 2;
-        rsinterface.height = 5;
-    }
-	public static void addHoverButton(int i, String imageName, int j, int width, int height, String text, int contentType, int hoverOver, int aT, int dummy) {//hoverable button
+	 * public static void EquipmentTab(TextDrawingArea[] wid) { RSInterface
+	 * Interface = interfaceCache[1644]; addSprite(15101, 0, "Equipment/bl");
+	 * addSprite(15102, 1, "Equipment/bl"); addSprite(15109, 2, "Equipment/bl");
+	 * addSprite(15110, 3, "Equipment/bl"); removeSomething(15103);
+	 * removeSomething(15104); Interface.children[23] = 15101;
+	 * Interface.childX[23] = 40; Interface.childY[23] = 205;
+	 * Interface.children[24] = 15102; Interface.childX[24] = 110;
+	 * Interface.childY[24] = 205; Interface.children[25] = 15109;
+	 * Interface.childX[25] = 39; Interface.childY[25] = 240;
+	 * Interface.children[26] = 27650; Interface.childX[26] = 0;
+	 * Interface.childY[26] = 0; Interface = addInterface(27650);
+	 * addSprite(27665, 0, "Equipment/aura"); addSprite(19146, 1,
+	 * "Equipment/aura"); addAura(10794); addButton(29145, 2, "Equipment/aura",
+	 * 36, 36, "Remove", 1); addHoverButton(27651, "Equipment/CUSTOM", 1, 40,
+	 * 40, "Show Equipment Screen", 0, 27652, 1, 0); addHoveredButton(27652,
+	 * "Equipment/CUSTOM", 5, 40, 40, 27653); addHoverButton(27657,
+	 * "Equipment/CUSTOM", 2, 40, 40, "Items Kept on Death", 0, 27658, 1, 0);
+	 * addHoveredButton(27658, "Equipment/CUSTOM", 4, 40, 40, 27659);
+	 * addHoverButton(27654, "Equipment/CUSTOM", 9, 40, 40, "Toolbelt", 0,
+	 * 27655, 1, 0); addHoveredButton(27655, "Equipment/CUSTOM", 10, 40, 40,
+	 * 27656); //addHoverButton(27662, "Equipment/CUSTOM", 3, 40, 45,
+	 * "Price Checker", 0, 27663, 1, 0); //addHoveredButton(27663,
+	 * "Equipment/CUSTOM", 6, 40, 45, 27664); setChildren(9, Interface);
+	 * //setBounds(27665, 37, 4, 0, Interface); setBounds(27651, 21, 210, 0,
+	 * Interface); setBounds(27652, 21, 210, 1, Interface); setBounds(27657, 75,
+	 * 210, 2, Interface); setBounds(27658, 75, 210, 3, Interface);
+	 * setBounds(27654, 129, 210, 4, Interface); setBounds(27655, 129, 210, 5,
+	 * Interface); setBounds(29145, 37, 5, 6, Interface); setBounds(19146, 37,
+	 * 5, 7, Interface); setBounds(10794, 39, 7, 8, Interface);
+	 * //setBounds(27662, 127, 2, 6, Interface); //setBounds(27663, 127, 2, 7,
+	 * Interface); //setBounds(27665, 37, 4, 6, Interface); }
+	 */
+
+	public static void addAura(int i) {
+		RSInterface rsinterface = interfaceCache[i] = new RSInterface();
+		rsinterface.itemActions = new String[5];
+		rsinterface.spritesX = new int[20];
+		rsinterface.invStackSizes = new int[30];
+		rsinterface.inv = new int[30];
+		rsinterface.spritesY = new int[20];
+		rsinterface.children = new int[0];
+		rsinterface.childX = new int[0];
+		rsinterface.childY = new int[0];
+		rsinterface.spritesY[0] = 0;
+		rsinterface.invStackSizes[0] = 0;
+		rsinterface.inv[0] = 0;
+		rsinterface.spritesX[0] = 0;
+		rsinterface.itemActions[0] = "Time left";
+		rsinterface.itemActions[1] = "Activate";
+		rsinterface.itemActions[2] = null;
+		rsinterface.itemActions[3] = null;
+		rsinterface.itemActions[4] = null;
+		rsinterface.centerText = false;
+		rsinterface.aBoolean227 = false;
+		rsinterface.aBoolean235 = false;
+		rsinterface.usableItemInterface = false;
+		rsinterface.isInventoryInterface = false;
+		rsinterface.aBoolean259 = true;
+		// rsinterface.interfaceShown = false;
+		rsinterface.textShadow = false;
+		rsinterface.width = 6;
+		rsinterface.type = -1;
+		rsinterface.invSpritePadX = 24;
+		rsinterface.parentID = 10794;
+		rsinterface.invSpritePadY = 24;
+		rsinterface.type = 2;
+		rsinterface.height = 5;
+	}
+
+	public static void addHoverButton(int i, String imageName, int j,
+			int width, int height, String text, int contentType, int hoverOver,
+			int aT, int dummy) {// hoverable button
 		RSInterface tab = addTabInterface(i);
 		tab.id = i;
 		tab.parentID = i;
@@ -8480,7 +8847,7 @@ addButton(29145, 2, "Equipment/aura", 36, 36, "Remove", 1);
 		tab.width = width;
 		tab.height = height;
 		tab.tooltip = text;
-	}	
+	}
 
 	public static void equipmentScreen(TextDrawingArea[] TDA) {
 		RSInterface Interface = addInterface(19148);
@@ -8601,7 +8968,7 @@ addButton(29145, 2, "Equipment/aura", 36, 36, "Remove", 1);
 		setBounds(1688, 29, 111, frame, Interface);
 		frame++;
 	}
-	
+
 	private static Sprite imageLoader(String s) {
 		long l = (TextClass.method585(s) << 8);
 		Sprite sprite = (Sprite) aMRUNodes_238.insertFromCache(l);
@@ -9337,7 +9704,7 @@ addButton(29145, 2, "Equipment/aura", 36, 36, "Remove", 1);
 	public static StreamLoader aClass44;
 	public boolean drawsTransparent;
 	public Sprite sprite1;
-		public boolean inventoryhover;
+	public boolean inventoryhover;
 	public int anInt208;
 	public Sprite sprites[];
 	public static RSInterface interfaceCache[];
