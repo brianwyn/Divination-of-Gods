@@ -1441,17 +1441,8 @@ public class ClickingButtons implements PacketType {
 				c.sendMessage("You cannot bank items while shopping! - Walk then try.");
 				return;
 			}
-			if (c.isBanking) {
+			if (c.isBanking)
 				c.getItems().depositInventory();
-				/*
-				 * for(int i = 0; i < c.playerItems.length; i++) {
-				 * if(c.playerItems[i] > 0)
-				 * c.getItems().bankItem(c.playerItems[i]-1,
-				 * c.getItems().getItemSlot(c.playerItems[i]-1),
-				 * c.playerItemsN[i]); } c.getPA().searchBank(c, c.searchTerm);
-				 * c.sendMessage("You bank your inventory.");
-				 */
-			}
 			break;
 		case 86000: // Deposit Worn Items
 			if (!c.isBanking) {
@@ -1461,35 +1452,7 @@ public class ClickingButtons implements PacketType {
 				c.sendMessage("You cannot bank items while shopping! - Walk then try.");
 				return;
 			}
-			int[] invItems = new int[28];
-			int[] invItemsN = new int[28];
-			for (int i = 0; i < c.playerItems.length; i++) {// Delete items from
-															// inventory temp
-				invItems[i] = c.playerItems[i];
-				invItemsN[i] = c.playerItemsN[i];
-				c.playerItems[i] = 0;
-				c.playerItemsN[i] = 0;
-			}
-			for (int r = 0; r < c.playerEquipment.length; r++) {// Add equipment
-																// to inventory
-				int item2 = c.playerEquipment[r];
-				if ((item2 > 0) && (item2 < 19999))
-					if (item2 != 552)
-						c.getItems().removeItem(item2, r);
-			}
-			for (int i = 0; i < c.playerItems.length; i++) {
-				if (c.playerItems[i] > 0)
-					c.getItems().bankItem(c.playerItems[i] - 1,
-							c.getItems().getItemSlot(c.playerItems[i] - 1),
-							c.playerItemsN[i]);
-			}
-			for (int i = 0; i < invItems.length; i++) {// Add items back to
-														// inventory
-				c.playerItems[i] = invItems[i];
-				c.playerItemsN[i] = invItemsN[i];
-			}
-			c.getItems().updateInventory = true;
-			c.getItems().updateInventory();
+			c.getItems().bankEquipment();
 			c.getPA().searchBank(c, c.searchTerm);
 			c.sendMessage("You bank your equipment.");
 			break;

@@ -708,24 +708,6 @@ public class PlayerAssistant {
 		}
 	}
 
-	public void bankEquipment() {
-		for (int i = 0; i < c.playerEquipment.length; i++) {
-			if (c.playerEquipment[i] > 0 && c.playerEquipmentN[i] > 0) {
-				c.getItems().addItemToBank(c.playerEquipment[i],
-						c.playerEquipmentN[i]);
-			}
-			c.getItems().replaceEquipment(i, -1);
-			resetAnimation();
-		}
-		c.isFullHelm = Item
-				.isFullHelm(c.playerEquipment[server.model.players.Player.playerHat]);
-		c.isFullMask = Item
-				.isFullMask(c.playerEquipment[server.model.players.Player.playerHat]);
-		c.isFullBody = Item
-				.isFullBody(c.playerEquipment[server.model.players.Player.playerChest]);
-		c.setAppearanceUpdateRequired(true);
-	}
-
 	public void BoBToBank(int slot, int amount) {
 		if (c.InDung() || c.inTrade) {
 			c.sendMessage("You cannot do this at the moment!");

@@ -207,18 +207,6 @@ public class ItemAssistant {
 		return false;
 	}
 
-	public void addItemToBank(int itemId, int amount) {
-		for (int i = 0; i < Config.BANK_SIZE; i++) {
-			if (c.bankItems[i] <= 0 || c.bankItems[i] == itemId + 1
-					&& c.bankItemsN[i] + amount < Integer.MAX_VALUE) {
-				c.bankItems[i] = itemId + 1;
-				c.bankItemsN[i] += amount;
-				resetBank();
-				return;
-			}
-		}
-	}
-
 	/**
 	 * Weapons special bar, adds the spec bars to weapons that require them and
 	 * removes the spec bars from weapons which don't require them
@@ -358,6 +346,49 @@ public class ItemAssistant {
 		case 2526:
 			c.voidStatus[4]++;
 			break;
+		}
+	}
+
+	/**
+	 * Banks our equipment for us
+	 */
+	public void bankEquipment() {
+		for (int i = 0; i < c.playerEquipment.length; i++) {
+			if (c.playerEquipment[i] > 0 && c.playerEquipmentN[i] > 0)
+				c.getItems().addItemToBank(c.playerEquipment[i],
+						c.playerEquipmentN[i]);
+		}
+		for (int i1 = 0; i1 < c.playerEquipment.length; i1++) {
+			deleteEquipment(c.playerEquipment[i1], i1);
+		}
+		c.updateRequired = true;
+		c.setAppearanceUpdateRequired(true);
+		c.isFullHelm = Item
+				.isFullHelm(c.playerEquipment[Player.playerHat]);
+		c.isFullMask = Item
+				.isFullMask(c.playerEquipment[Player.playerHat]);
+		c.isFullBody = Item
+				.isFullBody(c.playerEquipment[Player.playerChest]);
+	}
+
+	/**
+	 * Adds an item to the bank without checking if the player has it in there
+	 * inventory
+	 * 
+	 * @param itemId
+	 *            the id of the item were banking
+	 * @param amount
+	 *            amount of items to bank
+	 */
+	public void addItemToBank(int itemId, int amount) {
+		for (int i = 0; i < Config.BANK_SIZE; i++) {
+			if (c.bankItems[i] <= 0 || c.bankItems[i] == itemId + 1
+					&& c.bankItemsN[i] + amount < Integer.MAX_VALUE) {
+				c.bankItems[i] = itemId + 1;
+				c.bankItemsN[i] += amount;
+				resetBank();
+				return;
+			}
 		}
 	}
 
@@ -3234,22 +3265,6 @@ public class ItemAssistant {
 					}
 				}
 			}
-		}
-	}
-
-	public void replaceEquipment(int slot, int replaceItem) {
-		if (c.playerEquipment[slot] > 0) {
-			c.playerEquipment[slot] = replaceItem;
-			if (replaceItem <= 0) {
-				c.playerEquipmentN[slot] = 0;
-				c.updateRequired = true;
-				c.getPA().requestUpdates();
-				c.setAppearanceUpdateRequired(true);
-			}
-			c.getItems().updateSlot(slot);
-			resetBonus();
-			getBonus();
-			writeBonus();
 		}
 	}
 
