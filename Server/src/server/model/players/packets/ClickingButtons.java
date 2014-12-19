@@ -31,7 +31,6 @@ import server.model.players.content.skills.Dungeoneering;
 import server.model.players.content.skills.Prayer;
 import server.model.players.content.skills.Smithing;
 import server.model.players.content.skills.Summoning;
-import server.model.players.content.skills.impl.ABEPouchMakinByGabbe;
 import server.model.players.content.skills.impl.Cons;
 import server.model.players.content.skills.impl.ConstructionObjects.Lecterns;
 import server.model.players.content.skills.impl.ConstructionObjects.Rugs;
@@ -70,8 +69,6 @@ public class ClickingButtons implements PacketType {
 	public void processPacket(final Client c, int packetType, int packetSize) {
 		int actionButtonId = Misc.hexToInt(c.getInStream().buffer, 0,
 				packetSize);
-		ABEPouchMakinByGabbe.makePouch(c, packetType, packetSize);
-		// Summoning.makeSummoningPouch(c, actionButtonId);
 		GabbesXPLamp.handleXPLampButtons(c, packetType, packetSize);
 		Cons.HandleConstructionInterface(c, packetType, packetSize);
 		LoyaltyHandler.HandleLoyaltyMisc(c, packetType, packetSize);
@@ -87,6 +84,9 @@ public class ClickingButtons implements PacketType {
 			c.sendMessage(c.playerName + " - actionbutton: " + actionButtonId);
 			Misc.println(c.playerName + " - actionbutton: " + actionButtonId);
 		}
+
+		if (Summoning.createPouch(c, actionButtonId))
+			return;
 
 		for (int i = 0; i < c.qCAB.length; i++) {
 			if (actionButtonId == c.qCAB[i][0]) {
@@ -3146,7 +3146,7 @@ public class ClickingButtons implements PacketType {
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 1)) {
 					c.getItems().deleteItem(2996, 1);
-					ABEPouchMakinByGabbe.addSkillXP2(c, 20000, 16);
+					c.getPA().addSkillXP2(20000, 16);
 					c.getPA().refreshSkill(16);
 					c.sendMessage("You receive 20000 Agility XP.");
 					return;
@@ -3369,7 +3369,7 @@ public class ClickingButtons implements PacketType {
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 5)) {
 					c.getItems().deleteItem(2996, 5);
-					ABEPouchMakinByGabbe.addSkillXP2(c, 110000, 16);
+					c.getPA().addSkillXP2(110000, 16);
 					c.getPA().refreshSkill(16);
 					c.sendMessage("You receive 110000 Agility XP.");
 					return;
@@ -3583,7 +3583,7 @@ public class ClickingButtons implements PacketType {
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 10)) {
 					c.getItems().deleteItem(2996, 10);
-					ABEPouchMakinByGabbe.addSkillXP2(c, 220000, 16);
+					c.getPA().addSkillXP2(220000, 16);
 					c.getPA().refreshSkill(16);
 					c.sendMessage("You receive 220000 Agility XP.");
 					return;
@@ -3774,7 +3774,7 @@ public class ClickingButtons implements PacketType {
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 15)) {
 					c.getItems().deleteItem(2996, 15);
-					ABEPouchMakinByGabbe.addSkillXP2(c, 330000, 16);
+					c.getPA().addSkillXP2(330000, 16);
 					c.getPA().refreshSkill(16);
 					c.sendMessage("You receive 330000 Agility XP.");
 					return;
@@ -4080,11 +4080,7 @@ public class ClickingButtons implements PacketType {
 
 				return;
 			}
-			if (c.teleAction == 12144) {
-				Summoning.makeSummoningPouch(c, 12155, 2859);
-				c.getPA().closeAllWindows();
-				return;
-			}
+
 			if (c.dialogueAction == 579) {
 				c.getPA().closeAllWindows();
 				c.getDungeoneering();
@@ -4607,12 +4603,6 @@ public class ClickingButtons implements PacketType {
 
 			if (c.dialogueAction == 893) {
 				c.getShops().openShop(3);
-				return;
-			}
-
-			if (c.teleAction == 12144) {
-				Summoning.makeSummoningPouch(c, 12155, 2859);
-				c.getPA().closeAllWindows();
 				return;
 			}
 			if (c.dialogueAction == 579) {

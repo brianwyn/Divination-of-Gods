@@ -3798,11 +3798,7 @@ public class ActionHandler {
 			break;
 
 		case 209:
-			// if(c.bMQ >= 3) {
 			c.getShops().openShop(74);
-			// } else {
-			// c.sendMessage("You need to complete the Herblore quest - talk to Kaqemeex!");
-			// }
 			break;
 
 		case 659:

@@ -3,65 +3,277 @@ package server.model.players.content.skills;
 import server.Config;
 import server.Server;
 import server.model.items.Item;
+import server.model.items.ItemAssistant;
 import server.model.npcs.NPCHandler;
 import server.model.players.Client;
 import server.model.players.content.GabbesAchievements;
 
 public class Summoning {
 
-	Client c;
+	private static final int GOLD = 12158, GREEN = 12159, CRIMSON = 12160,
+			ABYSSAL = 12161, TALON = 12162, BLUE = 12163, RAVAGER = 12164,
+			SHIFTER = 12165, SPINNER = 12166, TORCHER = 12167,
+			OBSIDIAN = 12168;// ALL CHARMS
 
-	private final static int POUCH = 12155;
+	private final static int POUCH = 12155, SHARDS = 18016;
 
-	public static void makeSummoningPouch(Client c, int usedItem, int usedWith) {
-		for (int i = 0; i < summoningPouchData.length; i++) {
-			if (usedItem == POUCH) {
-				if (usedWith == c.getItems()
-						.getItemId(summoningPouchData[i][2])) {
-					if (c.getItems().playerHasItem(POUCH)
-							&& c.getItems().playerHasItem(SHARD,
-									Integer.parseInt(summoningPouchData[i][3]))
-							&& c.getItems().playerHasItem(
-									c.getItems().getItemId(
-											summoningPouchData[i][1]))
-							&& c.getItems().playerHasItem(
-									c.getItems().getItemId(
-											summoningPouchData[i][2]))) {
-						if (c.playerLevel[21] >= Integer
-								.parseInt(summoningPouchData[i][4])) {
-							c.getItems().deleteItem(POUCH, 1);
-							c.getItems().deleteItem(SHARD,
-									Integer.parseInt(summoningPouchData[i][3]));
-							c.getItems().deleteItem(
-									c.getItems().getItemId(
-											summoningPouchData[i][1]), 1);
-							c.getItems().deleteItem(
-									c.getItems().getItemId(
-											summoningPouchData[i][2]), 1);
-							c.getItems().addItem(
-									c.getItems().getItemId(
-											summoningPouchData[i][0]), 1);
-							c.getPA()
-									.addSkillXP(
-											Integer.parseInt(summoningPouchData[i][4]) * 900,
-											21);
-							break;
-						} else {
-							c.sendMessage("You do not have the required level to make this pouch");
-							break;
-						}
-					} else {
-						c.sendMessage("You do not have the required items to make this pouch.");
-						c.sendMessage("You need: " + summoningPouchData[i][3]
-								+ " Shards ");
-						c.sendMessage("You need a " + summoningPouchData[i][1]
-								+ " and a  " + summoningPouchData[i][2] + "");
-						break;
-					}
-				}
-			}
+	public enum PouchData {
+		SPIRIT_WOLF( new int[] {91184 }, 1, 7, GOLD, 2859, 12047, 4.8, 12425, 6829),
+		DREADFOWL( new int[] {91192 }, 4, 8, GOLD, 2138, 12043, 9.3, 12445, 6825),
+		SPIRIT_SPIDER( new int[] {91200 }, 10, 8, GOLD, 6291, 12059, 12.6, 12428, 6841),
+		THORNY_SNAIL( new int[] {91208 }, 13, 9, GOLD, 3363, 12019, 12.6, 12459, 6806),
+		GRANITE_CRAB( new int[] {91216 }, 16, 7, GOLD, 440, 12009, 21.6, 12533, 6796),
+		SPIRIT_MOSQUITO( new int[] {91224 }, 17, 1, GOLD, 6319, 12778, 46.5, 12838, 7331),
+		DESERT_WYRM( new int[] {91232 }, 18, 45, GREEN, 1783, 12049, 31.2, 12460, 6831),
+		SPIRIT_SCORPION( new int[] {91240 }, 19, 57, CRIMSON, 3095, 12055, 83.2, 12432, 6837),
+		SPIRIT_TZ_KIH( new int[] { 91248}, 22, 64, CRIMSON, OBSIDIAN, 12808, 96.8, 12839, 7361),
+		ALBINO_RAT( new int[] {92000 }, 23, 75, BLUE, 2134, 12067, 202.4, 12430, 6847),
+		SPIRIT_KALPHITE( new int[] {92008 }, 25, 51, BLUE, 3138, 12063, 220,  12446, 6994),
+		COMPOST_MOUND( new int[] {92016 }, 28, 47, GREEN, 6032, 12091, 49.8, 12440, 6871),
+		GIANT_CHINCHOMPA( new int[] {92024 }, 29, 84, BLUE, 9976, 12800, 255.2, 12834, 7353),
+		VAMPIRE_BAT( new int[] {92032 }, 31, 81, CRIMSON, 3325, 12053, 136, 12447, 6835),
+		HONEY_BADGER( new int[] {92040 }, 32, 84, CRIMSON, 12156, 12065, 140.8, 12433, 6845),
+		BEAVER( new int[] {92048 }, 33, 72, GREEN, 1519, 12022, 57.6, 12429, 6807),
+		VOID_RAVAGER( new int[] {92056 }, 34, 74, GREEN, RAVAGER, 12818, 59.6, 12443, 7370),
+		VOID_SHIFTR( new int[] {92064 }, 34, 74, BLUE, SHIFTER, 12814, 59.6, 12443, 7367),
+		VOID_SPINNER( new int[] {92072 }, 34, 74, BLUE, SPINNER, 12780, 59.6, 12443, 7333),
+		VOID_TORCHER( new int[] {92080 }, 34, 74, BLUE, TORCHER, 12798, 59.6, 12443, 7333),
+		BRONZE_MINOTAUR( new int[] {92088 }, 36, 102, BLUE, 2349, 12073, 316.8, 12461, 6853),
+		BULL_ANT( new int[] {92096 }, 40, 11, GOLD, 6010, 12087, 52.8, 12431, 6867),					
+		MACAW( new int[] {92112 }, 41, 78, GREEN, 249, 12071, 72.4, 12422, 6851),
+		EVIL_TURNIP( new int[] {92120 }, 42, 104, CRIMSON, 12153, 12051, 184.8, 12448, 6833),
+		IRON_MINOTAUR( new int[] {92176 }, 46, 125, BLUE, 2351, 12075, 404.8, 12462, 6855),
+		PYRELORD( new int[] {92184 }, 46, 111, CRIMSON, 590, 12816, 202.4, 12829, 7377),
+		MAGPIE( new int[] {92192 }, 47, 88, GREEN, 1635, 12041, 83.2, 12426, 6824),
+		BLOATED_LEECH( new int[] {92200 }, 49, 117,  CRIMSON, 2132, 12061, 215.2, 12444, 6843),
+		SPIRIT_TERRORBIRD( new int[] {92208 }, 52, 12, GOLD, 9978, 12007, 68.4, 12441, 3596),		
+		ABYSSAL_PARASITE( new int[] {92216 }, 54, 106, GREEN, ABYSSAL, 12035, 94.8, 12454, 6818),
+		SPIRIT_JELLY( new int[] {92224 }, 55, 151, BLUE, 1937, 12027, 484, 12453, 6922),
+		STEEL_MINOTAUR( new int[] {92232 }, 56, 141, BLUE, 2353, 12077, 492.8, 12463, 6857),
+		IBIS( new int[] {92240 }, 56, 109, GREEN, 311, 12531, 98.8, 12424, 6991),
+		SPIRIT_GRAAHK( new int[] {92248 }, 57, 154, BLUE, 10099, 12810, 501.6, 12836, 3588),
+		SPIRIT_KYATT( new int[] {93000 }, 57, 153, BLUE, 10103, 12812, 501.6, 12840, 7365),
+		SPIRIT_LARUPIA( new int[] {93008 }, 57, 155, BLUE, 10095, 12784, 501.6, 12835, 7337),
+		KARAMTHULHU_OVERLORD( new int[] {93016 }, 58, 144, BLUE, 6667, 12023, 510.4, 12455, 6809),
+		SMOKE_DEVIL( new int[] {93024 }, 61, 141, CRIMSON, 9736, 12085, 268, 12468, 6865),
+		ABYSSAL_LURKER( new int[] {93032 }, 62, 119, GREEN, ABYSSAL, 12037, 109.6, 12427, 6820),
+		SPIRIT_COBRA( new int[] {93040 }, 63, 116, CRIMSON, 6287, 12015, 276.8, 12436, 6802),
+		MITHRIL_MINOTAUR( new int[] {93048 }, 66, 152, BLUE, 2359, 12079, 580.8, 12464, 6859),
+		BARKER_TOAD( new int[] {93064 }, 66, 11,  GOLD, 2150, 12123, 87, 12452, 6889),
+
+		STEEL_TITAN( new int[] {94032 }, 99, 178, CRIMSON, 1119, 12790, 435.2, 12825, 3591),
+		PACK_YAK( new int[] {94024 }, 96, 211, CRIMSON, 10818, 12093, 422.4, 12435, 3594),
+		IRON_TITAN( new int[] {94016 }, 95, 198, CRIMSON, 1115, 12822, 417.6, 12828, 7375),
+		ABYSSAL_TITAN( new int[] {94008 }, 93, 113, GREEN, 12161, 12796, 163.2, 12827, 7349),
+		WOLPERTINGER( new int[] {94000 }, 92, 203, CRIMSON, new int[] {3226,2859}, 12089, 404.8, 12437, 3593),
+		GEYSER_TITAN( new int[] {93248 }, 89, 222, BLUE, 1444, 12786, 783.2, 12833, 7339),
+		UNICORN_STALLION( new int[] {93240 }, 88, 140, GREEN, 237, 12039, 154.4, 12434, 3592),
+		RUNE_MINOTAUR( new int[] {93232 }, 86, 111, BLUE, 2363, 12083, 756.8, 12466, 6863),
+		SWAMP_TITAN( new int[] {93224 }, 85, 150, CRIMSON, 10149, 12776, 373.6, 12832, 7329),
+		LAVA_TITAN( new int[] {93216 }, 83, 219, BLUE, 12168, 12788, 730.4, 12837, 7341),
+		SPIRIT_DAGANNOTH( new int[] {93208 }, 83, 122, CRIMSON, 6155, 12017, 364.8, 12456, 6804),
+		HYDRA( new int[] {93200 }, 80, 128, GREEN, 571, 12025, 140.8, 12442, 6811),
+		MOSS_TITAN( new int[] {93184 }, 79, 202, BLUE, 1440, 12804, 695.2, 12824, 7357),
+		ICE_TITAN( new int[] {93192 }, 79, 198, BLUE, new int[] { 1438, 1444} , 12806, 695.2, 12824, 7359),
+		FIRE_TITAN( new int[] {93176 }, 79, 198, BLUE, 1442, 12802, 695.2, 12824, 7355),
+		GIANT_ENT( new int[] {93168 }, 78, 124, GREEN, 5933, 12013, 136.8, 12457, 6800),
+		TALON_BEAST( new int[] {93160 }, 77, 174, CRIMSON, TALON, 12794, 1015.2, 12831, 7347),
+		FORGE_REGENT( new int[] {93152 }, 76, 141, GREEN, 10020, 12782, 134, 12841, 7335),
+		ADAMANT_MINOTAUR( new int[] {93144 }, 76, 144, BLUE, 2361, 12081, 668.8, 12465, 6861),
+		PRAYING_MANTIS( new int[] {93136 }, 75, 168, CRIMSON, 2460, 12011, 329.6, 12450, 6798),
+		GRANITE_LOBSTER( new int[] {93128 }, 74, 166, CRIMSON, 6979, 12069, 325.6, 12449, 6849),
+		OBSIDIAN_GOLEM( new int[] {93120 }, 73, 195, BLUE, 12168, 12792, 642.4, 12826, 7345),
+		PHOENIX( new int[] {93112 }, 72, 165, CRIMSON, 14616, 14623, 301, 14622, 1911),
+		ARCTIC_BEAR( new int[] {93104 }, 71, 14, CRIMSON, 10117, 12057, 93.2, 12451, 6839),
+		RAVENOUS_LOCUST( new int[] {93096 }, 70, 79, CRIMSON, 1933, 12820, 132, 12830, 7372),
+		FRUIT_BAT( new int[] {93088 }, 69, 130, GREEN, 1963, 12033, 121.2, 12423, 6817),
+		BUNYIP( new int[] {93080 }, 68, 110, GREEN, 383, 12029, 110, 12438, 6813),
+		WAR_TORTOISE( new int[] {93072 }, 67, 1, GOLD, 7939, 12031, 58.6, 12431, 6815);
+
+		private int levelReq, shardReq, charmId, pouchMade, scrollId, npcID;
+		private int[] clickingIds, secondaryIds;
+		private double xpGain;
+
+		PouchData(int[] clickingIds, int levelReq, int shardReq, int charmId,
+				int secondaryId, int pouchMade, double xpGain, int scrollId,
+				int npcID) {
+			this.clickingIds = clickingIds;
+			this.levelReq = levelReq;
+			this.shardReq = shardReq;
+			this.charmId = charmId;
+			this.secondaryIds = new int[] { secondaryId };
+			this.pouchMade = pouchMade;
+			this.xpGain = xpGain;
+			this.scrollId = scrollId;
+			this.npcID = npcID;
+		}
+
+		PouchData(int[] clickingIds, int levelReq, int shardReq, int charmId,
+				int[] secondaryIds, int pouchMade, double xpGain, int scrollId,
+				int npcID) {
+			this.clickingIds = clickingIds;
+			this.levelReq = levelReq;
+			this.shardReq = shardReq;
+			this.charmId = charmId;
+			this.secondaryIds = secondaryIds;
+			this.pouchMade = pouchMade;
+			this.xpGain = xpGain;
+			this.scrollId = scrollId;
+			this.npcID = npcID;
+		}
+
+		/**
+		 * @return the levelReq
+		 */
+		public int getLevelReq() {
+			return levelReq;
+		}
+
+		/**
+		 * @return the shardReq
+		 */
+		public int getShardReq() {
+			return shardReq;
+		}
+
+		/**
+		 * @return the charmId
+		 */
+		public int getCharmId() {
+			return charmId;
+		}
+
+		/**
+		 * @return the secondaryIds
+		 */
+		public int[] getSecondaryIds() {
+			return secondaryIds;
+		}
+
+		/**
+		 * @return the pouchMade
+		 */
+		public int getPouchMade() {
+			return pouchMade;
+		}
+
+		/**
+		 * @return the xpGain
+		 */
+		public double getXpGain() {
+			return xpGain;
+		}
+
+		/**
+		 * @return the scrollId
+		 */
+		public int getScrollId() {
+			return scrollId;
+		}
+
+		/**
+		 * @return the npcID
+		 */
+		public int getNpcID() {
+			return npcID;
+		}
+
+		/**
+		 * @return the clickingIds
+		 */
+		public int[] getClickingIds() {
+			return clickingIds;
 		}
 	}
+
+	public static PouchData getPouch(int clickId) {
+		for (PouchData pouch : PouchData.values())
+			for (int id : pouch.getClickingIds())
+				if (clickId == id)
+					return pouch;
+		return null;
+	}
+
+	private static boolean playerHasItems(Client c, PouchData pouch) {
+		if (!c.getItems().playerHasItem(POUCH))
+			return false;
+		if (!c.getItems().playerHasItem(SHARDS, pouch.getShardReq()))
+			return false;
+		if (!c.getItems().playerHasItem(pouch.getCharmId()))
+			return false;
+		if (pouch.getSecondaryIds().length > 1) {
+			for (int item : pouch.getSecondaryIds())
+				if (!c.getItems().playerHasItem(item))
+					return false;
+		} else {
+			if (!c.getItems().playerHasItem(pouch.getSecondaryIds()[0]))
+				return false;
+		}
+		return true;
+	}
+	
+	private static String getSecondary(PouchData pouch) {
+		String ret = "";
+		if(pouch.getSecondaryIds().length == 1)
+			return "and " + ItemAssistant.getItemName2(pouch.getSecondaryIds()[0]) + ".";
+		else {
+			for(int i = 0; i < pouch.getSecondaryIds().length;i++) {
+				if(i != (pouch.getSecondaryIds().length - 1))
+					ret += ItemAssistant.getItemName2(pouch.getSecondaryIds()[i]) + ", ";
+				else
+					ret += "and " + ItemAssistant.getItemName2(pouch.getSecondaryIds()[i]) + ".";
+					
+			}
+		}
+		return ret;
+	}
+
+	public static boolean createPouch(Client c, int actionButtonId) {
+		PouchData pouchToMake = getPouch(actionButtonId);
+		if (pouchToMake == null)
+			return false;
+		if (!playerHasItems(c, pouchToMake)) {
+			c.sendMessage("You need: 1 pouch, 1 " + ItemAssistant.getItemName2(pouchToMake.getCharmId()) + ", "
+					+ pouchToMake.getShardReq() + " shards, " + getSecondary(pouchToMake));
+			return false;
+		}
+		int amountToMake = c.getItems().getItemAmount(SHARDS)
+				/ pouchToMake.getShardReq();
+
+		if (c.getItems().getItemAmount(pouchToMake.getCharmId()) < amountToMake)
+			amountToMake = c.getItems().getItemAmount(pouchToMake.getCharmId());
+		for (int item : pouchToMake.getSecondaryIds())
+			if (c.getItems().getItemAmount(item) < amountToMake)
+				amountToMake = c.getItems().getItemAmount(item);
+
+		if (c.getItems().getItemAmount(POUCH) < amountToMake)
+			amountToMake = c.getItems().getItemAmount(POUCH);
+
+		if (amountToMake < 1)
+			return false;
+		c.getItems().deleteItem2(SHARDS,
+				(pouchToMake.getShardReq() * amountToMake));
+		c.getItems().deleteItem2(pouchToMake.getCharmId(), (1 * amountToMake));
+		for (int item : pouchToMake.getSecondaryIds())
+			c.getItems().deleteItem2(item, (1 * amountToMake));
+		c.getItems().deleteItem2(POUCH, (1 * amountToMake));
+		c.getItems().addItem(pouchToMake.getPouchMade(), (1 * amountToMake));
+		c.getPA()
+				.addSkillXP(
+						((int) (pouchToMake.getXpGain() * Config.SUMMONING_EXP_BONUS) * amountToMake),
+						21);
+		c.sendMessage("You infused "
+				+ amountToMake
+				+ " "
+				+ ItemAssistant.getItemName2(pouchToMake.getPouchMade())
+				+ " for "
+				+ ((int) (pouchToMake.getXpGain() * Config.SUMMONING_EXP_BONUS) * amountToMake)
+				+ " Summoning experience.");
+		c.getPA().removeAllWindows();
+		return true;
+	}
+
+	Client c;
 
 	public static void openInterface(Client c) {
 		c.isBanking = true;
@@ -202,10 +414,6 @@ public class Summoning {
 
 	}
 
-	public int pouchreq;
-	// public boolean hasitem();
-	private final static int SHARD = 18016; // 14015
-
 	public static void resetFrame(Client c) {
 		for (int k = 0; k < 28; k++) {
 			if (c.storeditems[k] > 0) {
@@ -225,196 +433,15 @@ public class Summoning {
 
 	public int fromSlot;
 
-	private static final String[][] summoningPouchData = {
-			// Summoning pouch making
-			// Pouch id, pouch charm, item1, Shardamount, LVL, Spec scroll,
-			// NPCID
-			// TODO need to add NPCDEF's
-			{ "Spirit wolf pouch", "Gold Charm", "Wolf bones", "7", "1",
-					"Howl scroll", "6829" },
-			{ "Dreadfowl pouch", "Gold Charm", "Raw chicken", "8", "4",
-					"Dreadfowl strike scroll", "6825" },
-			{ "Spirit spider pouch", "Gold Charm", "Spider carcass", "8", "10",
-					"Egg spawn scroll", "6841" },
-			{ "Thorny Snail pouch", "Gold Charm", "Thin snail", "9", "13",
-					"Slime spray scroll", "6806" },
-			{ "Granite Crab pouch", "Gold Charm", "Iron ore", "7", "16",
-					"Stony shell scroll", "6796" },
-			{ "Mosquito pouch", "Gold Charm", "Proboscis", "1", "17",
-					"Pester scroll", "7331" },
-			{ "Desert wyrm pouch", "Green Charm", "Bucket of sand", "45", "18",
-					"Electric lash scroll", "6831" },
-			{ "Spirit Scorpion pouch", "Crimson Charm", "Bronze claws", "57",
-					"19", "Venom shot scroll", "6837" },
-			{ "Spirit tz-kih pouch", "crimson charm", "Obsidian charm", "64",
-					"22", "Fireball assault scroll", "7361" },
-			{ "Albino rat pouch", "Blue Charm", "Raw rat meat", "75", "23",
-					"Cheese feast scroll", "6847" },
-			{ "Spirit kalphite pouch", "blue Charm", "potato cactus", "51",
-					"25", "Sandstorm scroll", "6994" },
-			{ "Compost mound pouch", "Green charm", "compost", "47", "28",
-					"Generate compost scroll", "6871" },
-			{ "Giant chinchompa pouch", "Blue Charm", "Chinchompa", "84", "29",
-					"Explode scroll", "7353" },
-			{ "Vampire bat pouch", "Crimson Charm", "Vampire dust", "81", "31",
-					"Vampire touch scroll", "6835" },
-			{ "Honey badger pouch", "Crimson Charm", "Honeycomb", "84", "32",
-					"Insane ferocity scroll", "6845" },
-			{ "Beaver pouch", "Green Charm", "Willow logs", "72", "33",
-					"Multichop scroll", "6807" },
-			{ "Void ravager pouch", "green Charm", "Ravager Charm", "74", "34",
-					"Call to arms scroll", "7370" },
-			{ "Void shifter pouch", "blue charm", "Shifter charm", "74", "34",
-					"Call to arms scroll", "7367" },
-			{ "void spinner pouch", "blue Charm", "spinner Charm", "74", "34",
-					"Call to arms scroll", "7333" },
-			{ "Void Torcher pouch", "blue Charm", "Torcher Charm", "74", "34",
-					"Call to arms scroll", "7351" },
-			{ "Bronze minotaur pouch", "Blue Charm", "Bronze bar", "102", "36",
-					"Bronze bull rush scroll", "6853" },
-			{ "Bull ant pouch", "gold Charm", "Marigolds", "11", "40",
-					"Unburden scroll", "6867" },
-			{ "Macaw pouch", "green Charm", "Clean guam", "78", "41",
-					"Herbcall scroll", "6851" },
-
-			{ "Evil turnip pouch", "crimson Charm", "Carved turnip", "104",
-					"42", "Evil flames scroll", "6833" },
-
-			{ "Iron minotaur pouch", "Blue Charm", "Iron bar", "125", "46",
-					"Iron bull rush scroll", "6855" },
-			{ "Pyrelord pouch", "Crimson Charm", "Tinderbox", "111", "46",
-					"Immense heat scroll", "7377" },
-			{ "Magpie pouch", "green Charm", "Gold ring", "88", "47",
-					"Thieving fingers scroll", "6824" },
-
-			{ "Bloated leech pouch", "Crimson Charm", "Raw beef", "117", "49",
-					"Blood drain scroll", "6843" },
-			{ "Spirit terrorbird pouch", "Gold Charm", "Raw bird meat", "12",
-					"52", "Tireless run scroll", "3596" },
-			{ "Abyssal parasite pouch", "green Charm", "Abyssal charm", "106",
-					"54", "Abyssal drain scroll", "6818" },
-			{ "Spirit jelly pouch", "blue Charm", "Jug of water", "151", "55",
-					"Dissolve scroll", "6922" },
-			{ "Steel minotaur pouch", "blue Charm", "steel bar", "141", "56",
-					"Fish rain scroll", "6857" },
-			{ "Ibis pouch", "green Charm", "Harpoon", "109", "56",
-					"Steel bull rush scroll", "6991" },
-			{ "Spirit Graahk pouch", "blue Charm", "graahk fur", "154", "57",
-					"Ambush scroll", "3588" },
-			{ "Spirit Kyatt pouch", "blue Charm", "Kyatt fur", "153", "57",
-					"Rending scroll", "7365" },
-			{ "Spirit larupia pouch", "blue Charm", "larupia fur", "155", "57",
-					"Goad scroll", "7337" },
-			{ "Karamthulhu overlord pouch", "blue Charm", "Empty fishbowl",
-					"144", "58", "Doomsphere scroll", "6809" },
-			{ "Smoke devil pouch", "Crimson Charm", "Goat horn dust", "141",
-					"61", "Dust cloud scroll", "6865" },
-			{ "Abyssal lurker", "green Charm", "Abyssal charm", "119", "62",
-					"Abyssal stealth scroll", "6820" },
-			{ "Spirit cobra pouch", "Crimson Charm", "Snake hide", "116", "63",
-					"Ophidian incubation scroll", "6802" },
-			{ "Stranger plant pouch", "Crimson Charm", "Bagged plant", "128",
-					"64", "Poisonous blast scroll", "6827" },
-			{ "Mithril minotaur pouch", "Blue Charm", "Mithril bar", "152",
-					"66", "Mithril bull rush scroll", "6859" },
-			{ "Barker toad pouch", "Gold Charm", "Swamp toad", "11", "66",
-					"Toad bark scroll", "6889" },
-			{ "War tortoise pouch", "Gold Charm", "Tortoise shell", "1", "67",
-					"Testudo scroll", "6815" },
-			{ "Bunyip pouch", "Green Charm", "Raw shark", "110", "68",
-					"Swallow whole scroll", "6813" },
-			{ "Fruit bat pouch", "Green Charm", "Banana", "130", "69",
-					"Fruitfall scroll", "6817" },
-			{ "Ravenous Locust pouch", "Crimson Charm", "Pot of Flour", "79",
-					"70", "Famine scroll", "7372" },
-			{ "Arctic bear pouch", "Gold Charm", "Polar kebbit fur", "14",
-					"71", "Arctic blast scroll", "6839" },
-			{ "Phoenix pouch", "Crimson Charm", "Phoenix Quill", "165", "72",
-					"Phoenix unknown scroll", "1911" },
-			{ "Obsidian Golem pouch", "Blue Charm", "Obsidian Charm", "195",
-					"73", "Volcanic strength scroll", "7345" },
-			{ "Granite lobster pouch", "Crimson Charm", "Granite (500g)",
-					"166", "74", "Crushing claw scroll", "6849" },
-			{ "Praying mantis pouch", "Crimson Charm", "Flowers", "168", "75",
-					"Mantis strike scroll", "6798" },
-			{ "Adamant minotaur pouch", "Blue Charm", "Adamant Bar", "144",
-					"76", "Inferno scroll", "6861" },
-			{ "Forge Regent pouch", "Green Charm", "Ruby harvest", "141", "76",
-					"Adamant bull rush scroll", "7335" },
-			{ "Talon Beast pouch", "Crimson Charm", "Talon Beast charm", "174",
-					"77", "Deadly claw scroll", "7347" },
-			{ "Giant ent pouch", "Green Charm", "Willow branch", "124", "78",
-					"Acorn missile scroll", "6800" },
-			{ "Fire titan pouch", "Blue Charm", "Fire talisman", "198", "79",
-					"Titan's constitution scroll", "7355" },
-			{ "Ice titan pouch", "Blue Charm", "Water talisman", "198", "79",
-					"Titan's constitution scroll", "7359" },
-			{ "Moss titan pouch", "Blue Charm", "Earth talisman", "202", "79",
-					"Titan's constitution scroll", "7357" },
-			{ "Hydra pouch", "Green Charm", "Water orb", "128", "80",
-					"Regrowth scroll", "6811" },
-			{ "Spirit dagannoth", "Crimson Charm", "Dagannoth hide", "122",
-					"83", "Spike shot scroll", "6804" },
-			{ "Lava titan pouch", "Blue Charm", "Obsidian Charm", "219", "83",
-					"Ebon thunder scroll", "7341" },
-			{ "Swamp titan pouch", "Blue Charm", "Swamp lizard", "150", "85",
-					"Swamp plague scroll", "7329" },
-			{ "Rune minotaur pouch", "Blue Charm", "Rune bar", "111", "86",
-					"Rune bull rush scroll", "6863" },
-			{ "Unicorn stallion pouch", "green Charm", "Unicorn Horn", "140",
-					"88", "Healing aura scroll", "3592" },
-			{ "Geyser titan pouch", "blue Charm", "Water talisman", "222",
-					"89", "Boil scroll", "7339" },
-			{ "Wolpertinger pouch", "crimson Charm", "Raw rabbit", "203", "92",
-					"Magic focus scroll", "3593" },
-			{ "Abyssal titan pouch", "green Charm", "Abyssal charm", "113",
-					"93", "Essence shipment scroll", "7349" },
-			{ "Iron titan pouch", "crimson Charm", "Iron platebody", "198",
-					"95", "Iron within scroll", "7375" },
-			{ "Pack yak pouch", "Crimson Charm", "Yak-hide", "211", "96",
-					"Winter storage scroll", "3594" },
-			{ "Steel titan pouch", "Blue Charm", "Steel platebody", "178",
-					"99", "Steel of legends scroll", "3591" },
-
-	};
-
-	public int pouch = 12155;
-
 	public int req;
+	
+	public int pouchreq;
 
 	public Summoning(Client c) {
 		this.c = c;
 	}
 
 	public void ItemonItem(int itemUsed, int useWith) {
-	}
-
-	public void makeSummoningScroll(Client c, int pouchUsed) {
-
-		for (int i = 0; i < summoningPouchData.length; i++) {
-			if (pouchUsed == c.getItems().getItemId(summoningPouchData[i][0])) {
-				if (c.getItems().playerHasItem(
-						c.getItems().getItemId(summoningPouchData[i][0]), 1)
-						&& c.playerLevel[21] >= Integer
-								.parseInt(summoningPouchData[i][4])) {
-					c.getItems()
-							.deleteItem(
-									c.getItems().getItemId(
-											summoningPouchData[i][0]), 1);
-					c.getItems()
-							.addItem(
-									c.getItems().getItemId(
-											summoningPouchData[i][5]), 1);
-					c.getPA().addSkillXP(
-							Integer.parseInt(summoningPouchData[i][4]) * 900,
-							21);
-					break;
-				} else {
-					c.sendMessage("You need a higher summoning level to make this scroll");
-					break;
-				}
-			}
-		}
 	}
 
 	public void removeItems() {
@@ -429,8 +456,7 @@ public class Summoning {
 		}
 	}
 
-	public void store() // redone by gabbe- THERE SHOULD BE NO DUPES!!!
-	{
+	public void store() {
 		if (c.InDung()) {
 			c.sendMessage("You can't do this in dung idiot!");
 			return;
@@ -449,35 +475,6 @@ public class Summoning {
 			c.getTradeAndDuel().declineDuel();
 			return;
 		}
-		/*
-		 * 
-		 * c.getPA().sendFrame126("Summoning BoB", 7421); for (int k = 0; k <
-		 * 29; k++) { if(c.storeditems[k] > 0) { c.getPA().Frame34(7423,
-		 * c.storeditems[k], k, 1); }
-		 * 
-		 * 
-		 * if(c.storeditems[k] <= 0) { c.getPA().Frame34(7423, -1, k, 1); }
-		 * 
-		 * }
-		 * 
-		 * 
-		 * c.isBanking = true; c.storing = true; c.getItems().resetItems(5064);
-		 * 
-		 * c.getItems().rearrangeBank(); c.getItems().resetBank();
-		 * c.getItems().resetTempItems(); //c.getOutStream().createFrame(248);
-		 * 
-		 * //c.getOutStream().writeWordA(4465);
-		 * //c.getOutStream().writeWord(5063);
-		 * //c.getOutStream().writeWord(10600); //c.getPA().sendFrame87(286, 0);
-		 * 
-		 * c.flushOutStream();
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * //c.ResetKeepItems();
-		 */
 		openInterface(c);
 	}
 
@@ -493,7 +490,6 @@ public class Summoning {
 		int maxhit = 0;
 		int attack = 0;
 		int defence = 0;
-		// c.getPA().sendFrame75(c.hasFollower, 17027);
 
 		switch (npcID) {
 		case 6830:

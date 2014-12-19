@@ -7,7 +7,6 @@ package server.model.players.packets;
 import server.model.items.UseItem;
 import server.model.players.Client;
 import server.model.players.PacketType;
-import server.model.players.content.skills.Summoning;
 import server.util.Misc;
 
 public class ItemOnItem implements PacketType {
@@ -21,8 +20,6 @@ public class ItemOnItem implements PacketType {
 		int actionButtonId = Misc.hexToInt(c.getInStream().buffer, 0,
 				packetSize);
 		int itemUsed = c.playerItems[itemUsedSlot] - 1;
-
-		Summoning.makeSummoningPouch(c, useWith, itemUsed);
 		UseItem.ItemonItem(c, itemUsed, useWith);
 	}
 }

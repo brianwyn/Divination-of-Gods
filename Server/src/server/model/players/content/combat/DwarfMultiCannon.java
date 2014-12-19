@@ -8,7 +8,6 @@ import server.model.npcs.NPC;
 import server.model.npcs.NPCHandler;
 import server.model.objects.Objects;
 import server.model.players.Client;
-import server.model.players.content.skills.impl.ABEPouchMakinByGabbe;
 import server.util.Misc;
 
 public class DwarfMultiCannon {
@@ -46,7 +45,7 @@ public class DwarfMultiCannon {
 			n.hitUpdateRequired = true;
 			n.killerId = players.playerId;
 			n.facePlayer(players.playerId);
-			ABEPouchMakinByGabbe.addSkillXP2(players, damage * 200, 4);
+			players.getPA().addSkillXP2(damage * 200, 4);
 			// n.forceChat("im hit, multi");
 		} else {
 			if (n.underAttackBy > 0 && n.underAttackBy != players.playerId)
@@ -59,7 +58,7 @@ public class DwarfMultiCannon {
 			n.killerId = players.playerId;
 			n.facePlayer(players.playerId);
 			// n.forceChat("im hit, single");
-			ABEPouchMakinByGabbe.addSkillXP2(players, damage * 200, 4);
+			players.getPA().addSkillXP2(damage * 200, 4);
 		}
 		players.cannonBalls--;
 

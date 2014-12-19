@@ -26,7 +26,6 @@ public class UseItem {
 				&& useWith == CrystalChest.toothHalf()) {
 			CrystalChest.makeKey(c);
 		}
-
 		if (itemUsed == 12093 && useWith == 12093) { // PACK YAK SCROLL MAKING
 			c.getItems().deleteItem(12093, 1);
 			c.getItems().addItem(12435, 1);

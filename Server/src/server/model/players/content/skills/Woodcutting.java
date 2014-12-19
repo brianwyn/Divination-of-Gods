@@ -8,7 +8,6 @@ import server.core.event.CycleEventHandler;
 import server.model.players.Client;
 import server.model.players.Player;
 import server.model.players.PlayerHandler;
-import server.model.players.content.skills.impl.ABEPouchMakinByGabbe;
 import server.util.Misc;
 
 public class Woodcutting extends SkillHandler {
@@ -377,13 +376,13 @@ public class Woodcutting extends SkillHandler {
 		if (c.playerEquipment[Player.playerWeapon] == 13661) {
 			if (c.playerSkillProp[8][6] == 1511)
 				c.sendMessage("The log automaticly starts burning! You gain 1000 Firemaking XP..");
-			ABEPouchMakinByGabbe.addSkillXP2(c, 1000, 11);
+			c.getPA().addSkillXP2(1000, 11);
 			if (c.playerSkillProp[8][6] == 1513)
 				c.sendMessage("The log automaticly starts burning! You gain 6000 Firemaking XP..");
-			ABEPouchMakinByGabbe.addSkillXP2(c, 6000, 11);
+			c.getPA().addSkillXP2(6000, 11);
 			if (c.playerSkillProp[8][6] == 1515)
 				c.sendMessage("The log automaticly starts burning! You gain 4000 Firemaking XP..");
-			ABEPouchMakinByGabbe.addSkillXP2(c, 4000, 11);
+			c.getPA().addSkillXP2(4000, 11);
 
 		}
 	}
