@@ -267,6 +267,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 
 	public void mouseWheelMoved(MouseWheelEvent event) {
 		int rotation = event.getWheelRotation();
+		handleInterfaceScrolling(event);
 		if (mouseX > 0 && mouseX < 512
 				&& mouseY > 342 + client.getChatBackIncreaseY()) {
 			int i = client.anInt1089;
@@ -282,17 +283,68 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 		}
 		if (mouseY > 210 && mouseY < 473 && mouseX > 514 && mouseX < 762
 				|| mouseX > 0 && mouseX < 512 && mouseY > 0 && mouseY < 334) {
-			if (client.tabInterfaceIDs[client.tabID] == 638)
+			/*if (client.tabInterfaceIDs[client.tabID] == 638)
 				RSInterface.interfaceCache[639].scrollPosition += rotation * 30;
 			if (client.openInterfaceID == 5292)
 				RSInterface.interfaceCache[5385].scrollPosition += rotation * 30;
 			if (client.openInterfaceID == 22760)
 				RSInterface.interfaceCache[22767].scrollPosition += rotation * 30;
 			if (client.openInterfaceID == 147)
-				RSInterface.interfaceCache[148].scrollPosition += rotation * 30;
+				RSInterface.interfaceCache[148].scrollPosition += rotation * 30;*/
 		}
 	}
-
+	
+	public void handleInterfaceScrolling(MouseWheelEvent event) {
+		int rotation = event.getWheelRotation();
+		int positionX = 0;
+		int positionY = 0;
+		int width = 0;
+		int height = 0;
+		int offsetX = 0;
+		int offsetY = 0;
+		int childID = 0;
+		/* Tab interface scrolling */
+		int tabInterfaceID = client.tabInterfaceIDs[client.tabID];
+		if (tabInterfaceID != -1) {
+			RSInterface tab = RSInterface.interfaceCache[tabInterfaceID];
+			offsetX = 765 - 218;
+			offsetY = 503 - 298;
+			for (int index = 0; index < tab.children.length; index++) {
+				if (RSInterface.interfaceCache[tab.children[index]].scrollMax > 0) {
+					childID = index;
+					positionX = tab.childX[index];
+					positionY = tab.childY[index];
+					width = RSInterface.interfaceCache[tab.children[index]].width;
+					height = RSInterface.interfaceCache[tab.children[index]].height;
+					break;
+				}
+			}
+			if (mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
+				RSInterface.interfaceCache[tab.children[childID]].scrollPosition += rotation * 30;
+				client.tabAreaAltered = true;
+				client.needDrawTabArea = true;
+			}
+		}
+		/* Main interface scrolling */
+		if (client.openInterfaceID != -1) {
+			RSInterface rsi = RSInterface.interfaceCache[client.openInterfaceID];
+			offsetX = 4;
+			offsetY = 4;
+			for (int index = 0; index < rsi.children.length; index++) {
+				if (RSInterface.interfaceCache[rsi.children[index]].scrollMax > 0) {
+					childID = index;
+					positionX = rsi.childX[index];
+					positionY = rsi.childY[index];
+					width = RSInterface.interfaceCache[rsi.children[index]].width;
+					height = RSInterface.interfaceCache[rsi.children[index]].height;
+					break;
+				}
+			}
+			if (mouseX > offsetX + positionX && mouseY > offsetY + positionY && mouseX < offsetX + positionX + width && mouseY < offsetY + positionY + height) {
+				RSInterface.interfaceCache[rsi.children[childID]].scrollPosition += rotation * 30;
+			}
+		}
+	}
 	public final void mousePressed(MouseEvent mouseevent) {
 		int i = mouseevent.getX();
 		int j = mouseevent.getY();
