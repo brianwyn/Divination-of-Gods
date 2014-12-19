@@ -24,10 +24,10 @@ final class WorldController {
 	public static void nullLoader() {
 		aClass28Array462 = null;
 		anIntArray473 = null;
-		aClass47ArrayArray474 = (Class47[][]) null;
+		aClass47ArrayArray474 = null;
 		aClass19_477 = null;
-		aBooleanArrayArrayArrayArray491 = (boolean[][][][]) null;
-		aBooleanArrayArray492 = (boolean[][]) null;
+		aBooleanArrayArrayArrayArray491 = null;
+		aBooleanArrayArray492 = null;
 	}
 
 	public void initToNull() {

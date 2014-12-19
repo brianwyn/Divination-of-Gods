@@ -4,8 +4,6 @@ package com;
 // Decompiler options: packimports(3) 
 // Source File Name:   Animation.java
 
-import java.io.PrintStream;
-
 public final class Animation
 {
 

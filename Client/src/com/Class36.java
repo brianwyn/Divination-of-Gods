@@ -16,7 +16,7 @@ public final class Class36
 	
 	public static void load_641(int file){
 		try {
-	    Stream stream = new Stream(FileOperations.ReadFile(signlink.findcachedir() + "/GabbeIsABoss/" + file + ".dat"));
+	    Stream stream = new Stream(FileOperations.ReadFile(signlink.findcachedir() + "/Data/Animation/641/"+file+".dat"));
         //Stream stream1 = new Stream(DataBase.allSkinlist[file]);
 		Class18 class18 = new Class18(stream, 0);
         int k1 = stream.readUnsignedWord();
@@ -178,7 +178,7 @@ public final class Class36
             Stream stream1 = new Stream(DataBase.allSkinlist[file]);
             Class18 class18 = new Class18(stream1, 0);
             int k1 = stream.readUnsignedWord();
-            animationlist[file] = new Class36[(int)((double)k1 * 1.5D)];
+            animationlist[file] = new Class36[(int)(k1 * 1.5D)];
             int ai[] = new int[500];
             int ai1[] = new int[500];
             int ai2[] = new int[500];
@@ -256,7 +256,7 @@ public final class Class36
 
     public static void nullLoader()
     {
-        animationlist = (Class36[][])null;
+        animationlist = null;
     }
 
     public static Class36 method531(int j)

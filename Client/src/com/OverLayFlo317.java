@@ -96,9 +96,9 @@ public class OverLayFlo317 {
     }
 
     private void method262(int arg0) {
-        double d = (double) (arg0 >> 16 & 0xff) / 256.0;
-        double d_5_ = (double) (arg0 >> 8 & 0xff) / 256.0;
-        double d_6_ = (double) (arg0 & 0xff) / 256.0;
+        double d = (arg0 >> 16 & 0xff) / 256.0;
+        double d_5_ = (arg0 >> 8 & 0xff) / 256.0;
+        double d_6_ = (arg0 & 0xff) / 256.0;
         double d_7_ = d;
         if (d_5_ < d_7_)
             d_7_ = d_5_;
@@ -142,7 +142,7 @@ public class OverLayFlo317 {
             anInt398 = (int) (d_11_ * d_10_ * 512.0);
         if (anInt398 < 1)
             anInt398 = 1;
-        anInt397 = (int) (d_9_ * (double) anInt398);
+        anInt397 = (int) (d_9_ * anInt398);
         int i = anInt394 + (int) (Math.random() * 16.0) - 8;
         if (i < 0)
             i = 0;

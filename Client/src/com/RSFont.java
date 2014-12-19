@@ -122,13 +122,13 @@ public class RSFont extends DrawingArea {
             int shadow, int randomMod, int randomMod2) {
         if (string != null) {
             setColorAndShadow(color, shadow);
-            double d = 7.0 - (double) randomMod2 / 8.0;
+            double d = 7.0 - randomMod2 / 8.0;
             if (d < 0.0) {
                 d = 0.0;
             }
             int[] yOffset = new int[string.length()];
             for (int index = 0; index < string.length(); index++) {
-                yOffset[index] = (int) (Math.sin((double) index / 1.5 + (double) randomMod) * d);
+                yOffset[index] = (int) (Math.sin(index / 1.5 + randomMod) * d);
             }
             drawBaseStringMoveXY(string, drawX - getTextWidth(string) / 2, drawY, null, yOffset);
         }
@@ -187,8 +187,8 @@ public class RSFont extends DrawingArea {
             int[] xMods = new int[string.length()];
             int[] yMods = new int[string.length()];
             for (int index = 0; index < string.length(); index++) {
-                xMods[index] = (int) (Math.sin((double) index / 5.0 + (double) randomMod / 5.0) * 5.0);
-                yMods[index] = (int) (Math.sin((double) index / 3.0 + (double) randomMod / 5.0) * 5.0);
+                xMods[index] = (int) (Math.sin(index / 5.0 + randomMod / 5.0) * 5.0);
+                yMods[index] = (int) (Math.sin(index / 3.0 + randomMod / 5.0) * 5.0);
             }
             drawBaseStringMoveXY(string, drawX - getTextWidth(string) / 2, drawY, xMods,
                                  yMods);
@@ -201,7 +201,7 @@ public class RSFont extends DrawingArea {
             setColorAndShadow(color, shadow);
             int[] yOffset = new int[class100.length()];
             for (int index = 0; index < class100.length(); index++) {
-                yOffset[index] = (int) (Math.sin((double) index / 2.0 + (double) i_54_ / 5.0) * 5.0);
+                yOffset[index] = (int) (Math.sin(index / 2.0 + i_54_ / 5.0) * 5.0);
             }
             drawBaseStringMoveXY(class100, drawX - getTextWidth(class100) / 2, drawY, null,
                                  yOffset);
@@ -298,7 +298,7 @@ public class RSFont extends DrawingArea {
                     }
                     int lineWidth = characterScreenWidths[character];
                     if (strikethroughColor != -1) {
-                        rsDrawingArea.drawHorizontalLine(drawX,drawY + (int) ((double) baseCharacterHeight * 0.69999999999999996D), lineWidth,strikethroughColor);
+                        rsDrawingArea.drawHorizontalLine(drawX,drawY + (int) (baseCharacterHeight * 0.69999999999999996D), lineWidth,strikethroughColor);
                     }
                     if (underlineColor != -1) {
             rsDrawingArea.drawHorizontalLine(drawX,drawY +  baseCharacterHeight, lineWidth,underlineColor);
@@ -436,7 +436,7 @@ public class RSFont extends DrawingArea {
                     int i_109_ = characterScreenWidths[character];
                     if (strikethroughColor != -1) {
                         rsDrawingArea.drawHorizontalLine(drawX,
-                                                         drawY + (int) ((double) baseCharacterHeight * 0.7),
+                                                         drawY + (int) (baseCharacterHeight * 0.7),
                                                          i_109_, strikethroughColor);
                     }
                     if (underlineColor != -1) {

@@ -448,7 +448,7 @@ public final void method171(Class11 aclass11[],
 		int k = (method176(i + 45365, j + 0x16713, 4) - 128)
 		+ (method176(i + 10294, j + 37821, 2) - 128 >> 1)
 		+ (method176(i, j, 1) - 128 >> 2);
-		k = (int) ((double) k * 0.29999999999999999D) + 35;
+		k = (int) (k * 0.29999999999999999D) + 35;
 		if (k < 10)
 			k = 10;
 		else if (k > 60)

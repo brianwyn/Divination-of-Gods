@@ -174,10 +174,10 @@ final class Censor {
 	}
 
 	private static void method501(char ac[]) {
-		char ac1[] = (char[]) ac.clone();
+		char ac1[] = ac.clone();
 		char ac2[] = { '(', 'a', ')' };
 		method509((byte[][]) null, ac1, ac2);
-		char ac3[] = (char[]) ac.clone();
+		char ac3[] = ac.clone();
 		char ac4[] = { 'd', 'o', 't' };
 		method509((byte[][]) null, ac3, ac4);
 		for (int i = aCharArrayArray623.length - 1; i >= 0; i--)
@@ -271,10 +271,10 @@ final class Censor {
 	}
 
 	private static void method505(char ac[]) {
-		char ac1[] = (char[]) ac.clone();
+		char ac1[] = ac.clone();
 		char ac2[] = { 'd', 'o', 't' };
 		method509((byte[][]) null, ac1, ac2);
-		char ac3[] = (char[]) ac.clone();
+		char ac3[] = ac.clone();
 		char ac4[] = { 's', 'l', 'a', 's', 'h' };
 		method509((byte[][]) null, ac3, ac4);
 		for (int i = 0; i < aCharArrayArray624.length; i++)

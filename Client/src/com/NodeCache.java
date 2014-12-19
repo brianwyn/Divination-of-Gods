@@ -25,7 +25,7 @@ final class NodeCache
 
     public Node findNodeByID(long l)
     {
-        Node node = cache[(int)(l & (long)(size - 1))];
+        Node node = cache[(int)(l & size - 1)];
         for(Node node_1 = node.prev; node_1 != node; node_1 = node_1.prev)
             if(node_1.id == l)
                 return node_1;
@@ -39,7 +39,7 @@ final class NodeCache
         {
             if(node.next != null)
                 node.unlink();
-            Node node_1 = cache[(int)(l & (long)(size - 1))];
+            Node node_1 = cache[(int)(l & size - 1)];
             node.next = node_1.next;
             node.prev = node_1;
             node.next.prev = node;

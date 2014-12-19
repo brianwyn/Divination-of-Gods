@@ -156,7 +156,7 @@ public final class TextDrawingArea extends DrawingArea
         {
             char c = s.charAt(i1);
             if(c != ' ')
-                method392(aByteArrayArray1491[c], j + anIntArray1494[c], l + anIntArray1495[c] + (int)(Math.sin((double)i1 / 2D + (double)k / 5D) * 5D), anIntArray1492[c], anIntArray1493[c], i);
+                method392(aByteArrayArray1491[c], j + anIntArray1494[c], l + anIntArray1495[c] + (int)(Math.sin(i1 / 2D + k / 5D) * 5D), anIntArray1492[c], anIntArray1493[c], i);
             j += anIntArray1496[c];
         }
 
@@ -172,7 +172,7 @@ public final class TextDrawingArea extends DrawingArea
         {
             char c = s.charAt(i1);
             if(c != ' ')
-                method392(aByteArrayArray1491[c], i + anIntArray1494[c] + (int)(Math.sin((double)i1 / 5D + (double)j / 5D) * 5D), k + anIntArray1495[c] + (int)(Math.sin((double)i1 / 3D + (double)j / 5D) * 5D), anIntArray1492[c], anIntArray1493[c], l);
+                method392(aByteArrayArray1491[c], i + anIntArray1494[c] + (int)(Math.sin(i1 / 5D + j / 5D) * 5D), k + anIntArray1495[c] + (int)(Math.sin(i1 / 3D + j / 5D) * 5D), anIntArray1492[c], anIntArray1493[c], l);
             i += anIntArray1496[c];
         }
 
@@ -182,7 +182,7 @@ public final class TextDrawingArea extends DrawingArea
     {
         if(s == null)
             return;
-        double d = 7D - (double)i / 8D;
+        double d = 7D - i / 8D;
         if(d < 0.0D)
             d = 0.0D;
         l -= method384(s) / 2;
@@ -191,7 +191,7 @@ public final class TextDrawingArea extends DrawingArea
         {
             char c = s.charAt(k1);
             if(c != ' ')
-                method392(aByteArrayArray1491[c], l + anIntArray1494[c], k + anIntArray1495[c] + (int)(Math.sin((double)k1 / 1.5D + (double)j) * d), anIntArray1492[c], anIntArray1493[c], i1);
+                method392(aByteArrayArray1491[c], l + anIntArray1494[c], k + anIntArray1495[c] + (int)(Math.sin(k1 / 1.5D + j) * d), anIntArray1492[c], anIntArray1493[c], i1);
             l += anIntArray1496[c];
         }
 
@@ -225,7 +225,7 @@ public final class TextDrawingArea extends DrawingArea
         }
 
         if(aBoolean1499)
-            DrawingArea.method339(k + (int)((double)anInt1497 * 0.69999999999999996D), 0x800000, i - l, l);
+            DrawingArea.method339(k + (int)(anInt1497 * 0.69999999999999996D), 0x800000, i - l, l);
     }
 
     public void method390(int i, int j, String s, int k, int i1)

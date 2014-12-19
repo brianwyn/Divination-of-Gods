@@ -362,7 +362,7 @@ public final class ObjectDef {
 		if (anIntArray776 == null) {
 			if (j != 10)
 				return null;
-			l1 = (long) ((type << 6) + l) + ((long) (k + 1) << 32);
+			l1 = (type << 6) + l + ((long) (k + 1) << 32);
 			Model model_1 = (Model) mruNodes2.insertFromCache(l1);
 			if (model_1 != null)
 				return model_1;
@@ -400,7 +400,7 @@ public final class ObjectDef {
 
 			if (i1 == -1)
 				return null;
-			l1 = (long) ((type << 6) + (i1 << 3) + l) + ((long) (k + 1) << 32);
+			l1 = (type << 6) + (i1 << 3) + l + ((long) (k + 1) << 32);
 			Model model_2 = (Model) mruNodes2.insertFromCache(l1);
 			if (model_2 != null)
 				return model_2;

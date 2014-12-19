@@ -7260,7 +7260,7 @@ public final class RSInterface {
 	}
 
 	private static Sprite CustomSpriteLoader(int id, String s) {
-		long l = (TextClass.method585(s) << 8) + (long) id;
+		long l = (TextClass.method585(s) << 8) + id;
 		Sprite sprite = (Sprite) aMRUNodes_238.insertFromCache(l);
 		if (sprite != null)
 			return sprite;
@@ -8625,7 +8625,7 @@ public final class RSInterface {
 	}
 
 	private static Sprite imageLoader(int i, String s) {
-		long l = (TextClass.method585(s) << 8) + (long) i;
+		long l = (TextClass.method585(s) << 8) + i;
 		Sprite sprite = (Sprite) aMRUNodes_238.insertFromCache(l);
 		if (sprite != null)
 			return sprite;
@@ -8671,7 +8671,7 @@ public final class RSInterface {
 	}
 
 	private static Sprite method207(int i, StreamLoader streamLoader, String s) {
-		long l = (TextClass.method585(s) << 8) + (long) i;
+		long l = (TextClass.method585(s) << 8) + i;
 		Sprite sprite = (Sprite) aMRUNodes_238.insertFromCache(l);
 		if (sprite != null)
 			return sprite;

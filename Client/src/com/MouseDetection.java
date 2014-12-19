@@ -9,7 +9,8 @@ final class MouseDetection
     implements Runnable
 {
 
-    public void run()
+    @Override
+	public void run()
     {
         while(running) 
         {

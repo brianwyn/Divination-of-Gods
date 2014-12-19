@@ -231,6 +231,7 @@ mapAmount++;
 		return 41761;// return modelIndices[i] & 0xff;
 	}
 
+	@Override
 	public void run() {
 		try {
 			while (running) {
@@ -388,6 +389,7 @@ mapAmount++;
 		return -1;
 	}
 
+	@Override
 	public void method548(int i) {
 		method558(0, i);
 	}

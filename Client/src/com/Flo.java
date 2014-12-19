@@ -55,9 +55,9 @@ public final class Flo {
 	}
 
 	private void method262(int i) {
-		double d = (double) (i >> 16 & 0xff) / 256D;
-		double d1 = (double) (i >> 8 & 0xff) / 256D;
-		double d2 = (double) (i & 0xff) / 256D;
+		double d = (i >> 16 & 0xff) / 256D;
+		double d1 = (i >> 8 & 0xff) / 256D;
+		double d2 = (i & 0xff) / 256D;
 		double d3 = d;
 		if (d1 < d3)
 			d3 = d1;
@@ -101,7 +101,7 @@ public final class Flo {
 			anInt398 = (int) (d7 * d6 * 512D);
 		if (anInt398 < 1)
 			anInt398 = 1;
-		anInt397 = (int) (d5 * (double) anInt398);
+		anInt397 = (int) (d5 * anInt398);
 		int k = (anInt394 + (int) (Math.random() * 16D)) - 8;
 		if (k < 0)
 			k = 0;

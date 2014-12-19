@@ -69,7 +69,7 @@ final class TextClass
         long l = 0L;
         for(int i = 0; i < s.length(); i++)
         {
-            l = (l * 61L + (long)s.charAt(i)) - 32L;
+            l = (l * 61L + s.charAt(i)) - 32L;
             l = l + (l >> 56) & 0xffffffffffffffL;
         }
 

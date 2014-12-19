@@ -8,7 +8,8 @@ package com;
 final class Animable_Sub5 extends Animable
 {
 
-    public Model getRotatedModel()
+    @Override
+	public Model getRotatedModel()
     {
         int j = -1;
         if(aAnimation_1607 != null)
@@ -86,8 +87,8 @@ final class Animable_Sub5 extends Animable
             anInt1608 = client.loopCycle;
             if(flag && aAnimation_1607.anInt356 != -1)
             {
-                anInt1599 = (int)(Math.random() * (double)aAnimation_1607.anInt352);
-                anInt1608 -= (int)(Math.random() * (double)aAnimation_1607.method258(anInt1599));
+                anInt1599 = (int)(Math.random() * aAnimation_1607.anInt352);
+                anInt1608 -= (int)(Math.random() * aAnimation_1607.method258(anInt1599));
             }
         }
         ObjectDef class46 = ObjectDef.forID(anInt1610);

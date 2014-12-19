@@ -174,8 +174,8 @@ final int v(int i) {
 	}
 
 	public long readQWord() {
-		long l = (long) readDWord() & 0xffffffffL;
-		long l1 = (long) readDWord() & 0xffffffffL;
+		long l = readDWord() & 0xffffffffL;
+		long l1 = readDWord() & 0xffffffffL;
 		return (l << 32) + l1;
 	}
 

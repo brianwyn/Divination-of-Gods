@@ -294,9 +294,9 @@ public final class ItemDef {
 		if (zoom != -1)
 			k3 = (itemDef.modelZoom * 100) / zoom;
 		if (k == -1)
-			k3 = (int) ((double) k3 * 1.5D);
+			k3 = (int) (k3 * 1.5D);
 		if (k > 0)
-			k3 = (int) ((double) k3 * 1.04D);
+			k3 = (int) (k3 * 1.04D);
 		int l3 = Texture.anIntArray1470[itemDef.modelRotation1] * k3 >> 16;
 		int i4 = Texture.anIntArray1471[itemDef.modelRotation1] * k3 >> 16;
 		model.method482(itemDef.modelRotation2, itemDef.anInt204,
@@ -3449,9 +3449,9 @@ itemDef.itemActions[0] = "Open";
 		Texture.method364();
 		int k3 = itemDef.modelZoom;
 		if (k == -1)
-			k3 = (int) ((double) k3 * 1.5D);
+			k3 = (int) (k3 * 1.5D);
 		if (k > 0)
-			k3 = (int) ((double) k3 * 1.04D);
+			k3 = (int) (k3 * 1.04D);
 		int l3 = Texture.anIntArray1470[itemDef.modelRotation1] * k3 >> 16;
 		int i4 = Texture.anIntArray1471[itemDef.modelRotation1] * k3 >> 16;
 		model.method482(itemDef.modelRotation2, itemDef.anInt204,

@@ -38,6 +38,7 @@ final class RSImageProducer implements ImageProducer, ImageObserver {
 		g.drawImage(anImage320, k, i, this);
 	}
 
+	@Override
 	public synchronized void addConsumer(ImageConsumer imageconsumer) {
 		anImageConsumer319 = imageconsumer;
 		imageconsumer.setDimensions(anInt316, anInt317);
@@ -46,19 +47,23 @@ final class RSImageProducer implements ImageProducer, ImageObserver {
 		imageconsumer.setHints(14);
 	}
 
+	@Override
 	public synchronized boolean isConsumer(ImageConsumer imageconsumer) {
 		return anImageConsumer319 == imageconsumer;
 	}
 
+	@Override
 	public synchronized void removeConsumer(ImageConsumer imageconsumer) {
 		if (anImageConsumer319 == imageconsumer)
 			anImageConsumer319 = null;
 	}
 
+	@Override
 	public void startProduction(ImageConsumer imageconsumer) {
 		addConsumer(imageconsumer);
 	}
 
+	@Override
 	public void requestTopDownLeftRightResend(ImageConsumer imageconsumer) {
 		System.out.println("TDLR");
 	}
@@ -71,6 +76,7 @@ final class RSImageProducer implements ImageProducer, ImageObserver {
 		}
 	}
 
+	@Override
 	public boolean imageUpdate(Image image, int i, int j, int j1, int k1, int l1) {
 		return true;
 	}

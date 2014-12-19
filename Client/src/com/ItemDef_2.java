@@ -825,7 +825,7 @@ if(i == 3789) {
 		if (i == 19111) {
 			itemDef.name = "TokHaar-Kal";
 		 itemDef.anInt200 = 62582;
-			itemDef.needsItemThroughCharFix = true;
+			ItemDef.needsItemThroughCharFix = true;
 			itemDef.value = 60000;
 			itemDef.anInt165 = 62575;
 			itemDef.anInt200 = 62582;

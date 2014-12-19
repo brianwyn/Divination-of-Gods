@@ -23,22 +23,6 @@ import java.awt.event.MouseWheelListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.awt.event.*;
-
-import javax.imageio.ImageIO;
-
-import java.awt.image.BufferedImage;
-
-import javax.swing.filechooser.FileFilter;
-
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.net.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 import javax.swing.*;
 
 import com.sign.signlink;
@@ -110,6 +94,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 		getGameComponent().setCursor(getGameComponent().getToolkit().createCustomCursor(image, new Point(0, 0), null));
 	}
 
+	@Override
 	public void run() {
 		getGameComponent().addMouseWheelListener(this);
 		getGameComponent().addMouseListener(this);
@@ -148,12 +133,12 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 				j = k1;
 				k = i2;
 			} else if (l2 > aLongArray7[i])
-				j = (int) ((long) (2560 * delayTime) / (l2 - aLongArray7[i]));
+				j = (int) (2560 * delayTime / (l2 - aLongArray7[i]));
 			if (j < 25)
 				j = 25;
 			if (j > 256) {
 				j = 256;
-				k = (int) ((long) delayTime - (l2 - aLongArray7[i]) / 10L);
+				k = (int) (delayTime - (l2 - aLongArray7[i]) / 10L);
 			}
 			if (k > delayTime)
 				k = delayTime;
@@ -231,16 +216,19 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 		delayTime = 1000 / i;
 	}
 
+	@Override
 	public final void start() {
 		if (anInt4 >= 0)
 			anInt4 = 0;
 	}
 
+	@Override
 	public final void stop() {
 		if (anInt4 >= 0)
 			anInt4 = 4000 / delayTime;
 	}
 
+	@Override
 	public final void destroy() {
 		anInt4 = -1;
 		try {
@@ -251,6 +239,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 			exit();
 	}
 
+	@Override
 	public final void update(Graphics g) {
 		if (graphics == null)
 			graphics = g;
@@ -258,6 +247,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 		raiseWelcomeScreen();
 	}
 
+	@Override
 	public final void paint(Graphics g) {
 		if (graphics == null)
 			graphics = g;
@@ -265,6 +255,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 		raiseWelcomeScreen();
 	}
 
+	@Override
 	public void mouseWheelMoved(MouseWheelEvent event) {
 		int rotation = event.getWheelRotation();
 		handleInterfaceScrolling(event);
@@ -345,6 +336,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 			}
 		}
 	}
+	@Override
 	public final void mousePressed(MouseEvent mouseevent) {
 		int i = mouseevent.getX();
 		int j = mouseevent.getY();
@@ -366,24 +358,29 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 		}
 	}
 
+	@Override
 	public final void mouseReleased(MouseEvent mouseevent) {
 		idleTime = 0;
 		clickMode2 = 0;
 	}
 
+	@Override
 	public final void mouseClicked(MouseEvent mouseevent1) {
 	}
 
+	@Override
 	public final void mouseEntered(MouseEvent mouseevent1) {
 	}
 
+	@Override
 	public final void mouseExited(MouseEvent mouseevent) {
 		idleTime = 0;
 		mouseX = -1;
 		mouseY = -1;
 	}
 	
- public final void mouseDragged(MouseEvent mouseevent)
+ @Override
+public final void mouseDragged(MouseEvent mouseevent)
     {
         int i = mouseevent.getX();
         int j = mouseevent.getY();
@@ -403,7 +400,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
         }
     }
 
- public final void mouseMoved(MouseEvent mouseevent)
+ @Override
+public final void mouseMoved(MouseEvent mouseevent)
     {
         int i = mouseevent.getX();
         int j = mouseevent.getY();
@@ -423,6 +421,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
       }
     }
 
+	@Override
 	public final void keyPressed(KeyEvent keyevent) {
 		idleTime = 0;
 		int i = keyevent.getKeyCode();
@@ -550,6 +549,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 		}
 	}
 
+	@Override
 	public final void keyReleased(KeyEvent keyevent) {
 		idleTime = 0;
 		int i = keyevent.getKeyCode();
@@ -578,6 +578,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 			keyArray[c] = 0;
 	}
 
+	@Override
 	public final void keyTyped(KeyEvent keyevent1) {
 	}
 
@@ -590,12 +591,14 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 		return k;
 	}
 
+	@Override
 	public final void focusGained(FocusEvent focusevent) {
 		awtFocus = true;
 		shouldClearScreen = true;
 		raiseWelcomeScreen();
 	}
 
+	@Override
 	public final void focusLost(FocusEvent focusevent) {
 		awtFocus = false;
 		for (int i = 0; i < 128; i++)
@@ -603,25 +606,32 @@ public class RSApplet extends Applet implements Runnable, MouseListener,
 
 	}
 
+	@Override
 	public final void windowActivated(WindowEvent windowevent1) {
 	}
 
+	@Override
 	public final void windowClosed(WindowEvent windowevent1) {
 	}
 
+	@Override
 	public final void windowClosing(WindowEvent windowevent) {
 		destroy();
 	}
 
+	@Override
 	public final void windowDeactivated(WindowEvent windowevent1) {
 	}
 
+	@Override
 	public final void windowDeiconified(WindowEvent windowevent1) {
 	}
 
+	@Override
 	public final void windowIconified(WindowEvent windowevent1) {
 	}
 
+	@Override
 	public final void windowOpened(WindowEvent windowevent1) {
 	}
 

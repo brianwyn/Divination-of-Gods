@@ -7,7 +7,8 @@ package com;
  * To change this template use File | Settings | File Templates.
  */
 public class MemoryMonitor implements Runnable {
-    public void run() {
+    @Override
+	public void run() {
         while (true) {
             System.gc();
             try {

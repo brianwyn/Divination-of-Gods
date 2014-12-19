@@ -19,36 +19,14 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 import java.util.zip.*;
-import java.applet.Applet;
-import java.awt.Dimension;
-import java.net.URL;
 import java.net.URLConnection;
-import java.applet.AppletContext;
-import java.math.BigInteger;
 import java.util.Enumeration;
 import java.util.Scanner;
-import java.net.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.*;
-import javax.swing.plaf.metal.MetalLookAndFeel;
-
 import java.io.File;
 import java.io.IOException;
-import java.awt.event.*;
-
-import javax.imageio.ImageIO;
-
-import java.awt.image.BufferedImage;
-
-import javax.swing.filechooser.FileFilter;
-
 import com.sign.signlink;
 
 import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
 
 public class client extends RSApplet {
 	
@@ -79,7 +57,7 @@ public class client extends RSApplet {
 		
 		public void drawSmoothLoading(int i, String s)
 	    {
-	        for(float f = LP; f < (float)i; f = (float)((double)f + 0.29999999999999999D))
+	        for(float f = LP; f < i; f = (float)(f + 0.29999999999999999D))
 	            drawLoadingText((int)f, s);
 
 	        LP = i;
@@ -269,6 +247,7 @@ public class client extends RSApplet {
 				objects[D] = Integer.parseInt(s.substring(s.indexOf("[")+1,s.indexOf("]")));
 					D++;
 			}
+			in.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -1189,6 +1168,7 @@ public byte[] getModel(int Index) {
 		}
 	}*/
 	
+	@Override
 	public void init() {
         try {
             nodeID = 10;
@@ -1206,6 +1186,7 @@ public byte[] getModel(int Index) {
         }
     }
 	
+	@Override
 	public void startRunnable(Runnable runnable, int i) {
 		if(i > 10)
 			i = 10;
@@ -2415,10 +2396,10 @@ if (rsinterfacechildren.spellName.endsWith("Rush")
 					anIntArray978[anInt974] = boldFont.anInt1497;
 					anIntArray976[anInt974] = spriteDrawX;
 					anIntArray977[anInt974] = spriteDrawY;
-					anIntArray980[anInt974] = ((Entity)(Entity)obj).anInt1513;
-					anIntArray981[anInt974] = ((Entity)(Entity)obj).anInt1531;
-					anIntArray982[anInt974] = ((Entity)(Entity)obj).textCycle;
-					aStringArray983[anInt974++] = ((Entity)(Entity)obj).textSpoken;
+					anIntArray980[anInt974] = ((Entity)obj).anInt1513;
+					anIntArray981[anInt974] = ((Entity)obj).anInt1531;
+					anIntArray982[anInt974] = ((Entity)obj).textCycle;
+					aStringArray983[anInt974++] = ((Entity)obj).textSpoken;
 					if(anInt1249 == 0 && ((Entity) (obj)).anInt1531 >= 1 && ((Entity) (obj)).anInt1531 <= 3)
 					{
 						anIntArray978[anInt974] += 10;
@@ -2438,7 +2419,7 @@ if (rsinterfacechildren.spellName.endsWith("Rush")
 					{
 						if(healthBars) {
 							int amount = 56;
-							int j2 = (((Entity)(Entity)obj).currentHealth * amount) / ((Entity)(Entity)obj).maxHealth;
+							int j2 = (((Entity)obj).currentHealth * amount) / ((Entity)obj).maxHealth;
 							if(j2 > amount)
 								j2 = amount;
 							HPBarEmpty.drawSprite(spriteDrawX - 28, spriteDrawY - 3);
@@ -3287,6 +3268,7 @@ if (rsinterfacechildren.spellName.endsWith("Rush")
 		stream.finishBitAccess();
 	}
 
+	@Override
 	public void processGameLoop() {
 		if(rsAlreadyLoaded || loadingError || genericLoadingError)
 			return;
@@ -3753,6 +3735,7 @@ if (rsinterfacechildren.spellName.endsWith("Rush")
 
 	}
 
+	@Override
 	public AppletContext getAppletContext()
 	{
 		if(signlink.mainapp != null)
@@ -4483,6 +4466,7 @@ if (rsinterfacechildren.spellName.endsWith("Rush")
 		//}
 	//}
 	
+	@Override
 	void drawLoadingText(int i, String s)
     {
         anInt1079 = i;
@@ -4513,7 +4497,7 @@ if (rsinterfacechildren.spellName.endsWith("Rush")
             }
         }
 		
-			void drawCacheDownloading(int i, String s)
+			void drawLoadingCache(int i, String s)
 	{
 		anInt1079 = i;
 		aString1049 = s;
@@ -6052,6 +6036,7 @@ private void doAction(int i) {
 			anInt1251 = 0;
 	}
 
+	@Override
 	public void run() {
 		if(drawFlames) {
 			drawFlames();
@@ -6259,6 +6244,7 @@ private void doAction(int i) {
 		}
 	}
 
+	@Override
 	public void cleanUpForQuit()
 	{
 		HPBarFull = null;
@@ -6423,6 +6409,7 @@ private void doAction(int i) {
 		super.shouldDebug = true;
 	}
 
+	@Override
 	Component getGameComponent() {
 		if(signlink.mainapp != null)
 			return signlink.mainapp;
@@ -7296,7 +7283,7 @@ private void doAction(int i) {
 		if(j == 327)
 		{
 			class9.modelRotation1 = 150;
-			class9.modelRotation2 = (int)(Math.sin((double)loopCycle / 40D) * 256D) & 0x7ff;
+			class9.modelRotation2 = (int)(Math.sin(loopCycle / 40D) * 256D) & 0x7ff;
 			if(aBoolean1031)
 			{
 				for(int k1 = 0; k1 < 7; k1++)
@@ -7341,7 +7328,7 @@ private void doAction(int i) {
 		if(j == 328) {
 			RSInterface rsInterface = class9;
 			int verticleTilt = 150;
-			int animationSpeed = (int)(Math.sin((double)loopCycle / 40D) * 256D) & 0x7ff;
+			int animationSpeed = (int)(Math.sin(loopCycle / 40D) * 256D) & 0x7ff;
 			rsInterface.modelRotation1 = verticleTilt;
 			rsInterface.modelRotation2 = animationSpeed;
 			if(aBoolean1031) {
@@ -9092,8 +9079,8 @@ public void WhatWorldIsWhatIp () {
 						Stream stream = Sounds.method241(anIntArray1241[i],
 								anIntArray1207[i]);
 						if (System.currentTimeMillis()
-								+ (long) (stream.currentOffset / 22) > aLong1172
-								+ (long) (anInt1257 / 22)) {
+								+ stream.currentOffset / 22 > aLong1172
+								+ anInt1257 / 22) {
 							anInt1257 = stream.currentOffset;
 							aLong1172 = System.currentTimeMillis();
 							if (saveWave(stream.buffer, stream.currentOffset)) {
@@ -9190,8 +9177,8 @@ if(!toggleFullscreen) {
 			for (Enumeration enumeration = zipfile.entries(); enumeration
 			.hasMoreElements();) {
 				ZipEntry zipentry = (ZipEntry) enumeration.nextElement();
-				drawCacheDownloading(5, "Unpacking files "
-						+ ((int) ((++i * 100) / length)) + "%");
+				drawLoadingCache(5, "Unpacking files "
+						+ ((++i * 100) / length) + "%");
 				if (zipentry.isDirectory()) {
 
 					System.out.println((new StringBuilder()).append(
@@ -9263,52 +9250,11 @@ if(!toggleFullscreen) {
 		} catch (Exception exception) {
 		}
 		if (abyte0 == null) {
-			drawCacheDownloading(15, "Downloading Cache");
-			String url = "https://dl.dropboxusercontent.com/s/99nmukjhfy8x50x/InsanityCacheV6.zip";
-			if (Math.random() > 0.5) {
-				url = "https://dl.dropboxusercontent.com/s/99nmukjhfy8x50x/InsanityCacheV6.zip";
-				System.out.println("InsanityX - Download Cache? Or does the cache exist? Checking now..");
-			}
-			/*
-			 * if(Math.random() > 0.5) url =
-			 * "https://dl.dropboxusercontent.com/s/99nmukjhfy8x50x/InsanityCacheV6.zip";
-			 */
-			downloadcache(url, "InsanityCacheV6.zip", "", "InsanityCacheV6");
-			// abyte0 = decompressors[0].decompress(i);
-			try {
-				String s2 = signlink.findcachedir();
-				File file = new File((new StringBuilder()).append(s2).append(
-				"main_file_cache.dat").toString());
-				/*
-				 * if(file.exists() && file.length() > 0x3200000L) {
-				 * file.delete(); }
-				 */
-				signlink.cache_dat = new RandomAccessFile((new StringBuilder())
-						.append(s2).append("main_file_cache.dat").toString(),
-				"rw");
-				for (int j1 = 0; j1 < 5; j1++) {
-					signlink.cache_idx[j1] = new RandomAccessFile(
-							(new StringBuilder()).append(s2).append(
-							"main_file_cache.idx").append(j1)
-							.toString(), "rw");
-				}
-
-				if (signlink.cache_dat != null) {
-					for (int k1 = 0; k1 < 5; k1++) {
-						decompressors[k1] = new Decompressor(
-								signlink.cache_dat, signlink.cache_idx[k1],
-								k1 + 1);
-					}
-
-				}
+			new CacheDownloader(this).downloadCache();
 				if (decompressors[0] != null) {
 					abyte0 = decompressors[0].decompress(i);
 				}
-			} catch (Exception exception1) {
-			}
 		}
-		if (abyte0 == null)
-			
 		if (abyte0 != null) {
 			StreamLoader streamLoader = new StreamLoader(abyte0, s);
 			return streamLoader;
@@ -9452,7 +9398,7 @@ if(!toggleFullscreen) {
 				int l = (int) (((double) j / (double) i) * 100D);
 				int downloadSpeed = (int) ((j / 1024) / (1 + ((System
 						.currentTimeMillis() - startTime) / 1000)));
-				drawCacheDownloading(l, (new StringBuilder()).append(
+				drawLoadingCache(l, (new StringBuilder()).append(
 						"Downloading Cache - ").append(l).append(
 								"% @ " + downloadSpeed + " Kb/s").toString());
 			}
@@ -9460,12 +9406,12 @@ if(!toggleFullscreen) {
 				inputstream.close();
 				fileoutputstream.close();
 			} else {
-				drawCacheDownloading(5, "Unpacking files...");
+				drawLoadingCache(5, "Unpacking files...");
 				inputstream.close();
 				fileoutputstream.close();
 				if (unZipFile())
 					delete = false;
-				drawCacheDownloading(10, "Unpacking was complete");
+				drawLoadingCache(10, "Unpacking was complete");
 			//		setNewMaps();
 			//maps();
 			}
@@ -9482,12 +9428,12 @@ if(!toggleFullscreen) {
 		return abyte0 == null || signlink.wavesave(abyte0, i);
 	}
 
+	@Override
 	void startUp()
 	{
 	new Thread(new MemoryMonitor()).start();
-		drawCacheDownloading(20, "Starting Client - Hold on..");
-		//new CacheDownloader(this).downloadCache();
-		//drawLoadingText(40, "Checking models");	
+		drawLoadingCache(20, "Starting Client - Hold on..");
+		new CacheDownloader(this).downloadCache();
 		
 	if(signlink.sunjava)
 			super.minDelay = 5;
@@ -9505,7 +9451,6 @@ if(!toggleFullscreen) {
 				decompressors[i] = new Decompressor(signlink.cache_dat, signlink.cache_idx[i], i + 1);
 		}
 		try {
-						//maps();
 			titleStreamLoader = streamLoaderForName(1, "title screen", "title", expectedCRCs[1], 25);
 			smallFont = new TextDrawingArea(false, "p11_full", titleStreamLoader);
 			normalFont = new TextDrawingArea(false, "p12_full", titleStreamLoader);
@@ -10035,6 +9980,7 @@ if(!toggleFullscreen) {
 		}
 	}
 
+	@Override
 	public URL getCodeBase() {		
 		try {
 			return new URL(serverip +":" + (80 + portOff));
@@ -11367,7 +11313,7 @@ if(!toggleFullscreen) {
 			anIntArray1190[k] = 0;
 
 		for(int l = 0; l < 5000; l++) {
-			int i1 = (int)(Math.random() * 128D * (double)j);
+			int i1 = (int)(Math.random() * 128D * j);
 			anIntArray1190[i1] = (int)(Math.random() * 256D);
 		}
 		for(int j1 = 0; j1 < 20; j1++) {
@@ -11653,6 +11599,7 @@ if(!toggleFullscreen) {
 		}
 	}
 
+	@Override
 	public void processDrawing()
 	{
 		if(rsAlreadyLoaded || loadingError || genericLoadingError)
@@ -12189,6 +12136,7 @@ if(!toggleFullscreen) {
 	
 	}
 	
+	@Override
 	public String getParameter(String s)
 	{
 		if(signlink.mainapp != null)
@@ -13108,6 +13056,7 @@ public void drawFlames() {
 		drawingFlames = false;
 	}
 
+	@Override
 	public void raiseWelcomeScreen() {
 		welcomeScreenRaised = true;
 	}
@@ -15870,7 +15819,7 @@ public void drawFlames() {
 		int l1 = xCameraCurve;
 		for(int i2 = 0; i2 < 5; i2++)
 			if(aBooleanArray876[i2]) {
-				int j2 = (int)((Math.random() * (double)(anIntArray873[i2] * 2 + 1) - (double)anIntArray873[i2]) + Math.sin((double)anIntArray1030[i2] * ((double)anIntArray928[i2] / 100D)) * (double)anIntArray1203[i2]);
+				int j2 = (int)((Math.random() * (anIntArray873[i2] * 2 + 1) - anIntArray873[i2]) + Math.sin(anIntArray1030[i2] * (anIntArray928[i2] / 100D)) * anIntArray1203[i2]);
 				if(i2 == 0)
 					xCameraPos += j2;
 				if(i2 == 1)
@@ -16714,7 +16663,7 @@ static final int[][] anIntArrayArray1003 = {
 		int i = 0;
 		for(int j = 0; j < 99; j++) {
 			int l = j + 1;
-			int i1 = (int)((double)l + 300D * Math.pow(2D, (double)l / 7D));
+			int i1 = (int)(l + 300D * Math.pow(2D, l / 7D));
 			i += i1;
 			anIntArray1019[j] = i / 4;
 		}

@@ -8,7 +8,7 @@ public final class EntityDef {
 
 	public static EntityDef forID(int i) {
 		for (int j = 0; j < 20; j++)
-			if (cache[j].type == (long) i)
+			if (cache[j].type == i)
 				return cache[j];
 
 		anInt56 = (anInt56 + 1) % 20;
@@ -1049,8 +1049,8 @@ if(i == 6359){
 		if (anInt91 != 128 || anInt86 != 128)
 			model_1.method478(anInt91, anInt91, anInt86);
 		model_1.method466();
-		model_1.anIntArrayArray1658 = (int[][]) null;
-		model_1.anIntArrayArray1657 = (int[][]) null;
+		model_1.anIntArrayArray1658 = null;
+		model_1.anIntArrayArray1657 = null;
 		if (aByte68 == 1)
 			model_1.aBoolean1659 = true;
 		return model_1;

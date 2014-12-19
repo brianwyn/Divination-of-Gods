@@ -18,8 +18,6 @@ import javax.swing.ImageIcon;
 
 import com.sign.signlink;
 
-import java.util.Random;
-
 public final class Sprite extends DrawingArea {
 
 	public Sprite(int i, int j) {
@@ -834,8 +832,8 @@ public final class Sprite extends DrawingArea {
 		try {
 			int j2 = -l1 / 2;
 			int k2 = -i / 2;
-			int l2 = (int) (Math.sin((double) j / 326.11000000000001D) * 65536D);
-			int i3 = (int) (Math.cos((double) j / 326.11000000000001D) * 65536D);
+			int l2 = (int) (Math.sin(j / 326.11000000000001D) * 65536D);
+			int i3 = (int) (Math.cos(j / 326.11000000000001D) * 65536D);
 			l2 = l2 * k >> 8;
 			i3 = i3 * k >> 8;
 			int j3 = (i2 << 16) + (k2 * l2 + j2 * i3);

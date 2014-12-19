@@ -125,7 +125,7 @@ public static void transparentBox(int i, int j, int k, int l, int i1, int j1, in
     }
 
 	public static void createFadingBox(int x, int y, int w, int h, int c) {
-		double alphaYFade = (128D / (double) h) * 1.3500000000000001D;
+		double alphaYFade = (128D / h) * 1.3500000000000001D;
 		for (int pX = x; pX < w + x; pX++) {
 			double alphaY = 128D;
 			for (int pY = (h + y) - 1; pY > y; pY--) {
@@ -152,7 +152,7 @@ public static void transparentBox(int i, int j, int k, int l, int i1, int j1, in
 	}
 
 	public static void createFadingLine(int x, int y, int colour, int w) {
-		double alphaYFade = (255D / (double) w) * 1.3500000000000001D;
+		double alphaYFade = (255D / w) * 1.3500000000000001D;
 		double alphaY = 255D;
 		for (int pX = x; pX < w + x; pX++) {
 			int pixelXY = pX + y * width;

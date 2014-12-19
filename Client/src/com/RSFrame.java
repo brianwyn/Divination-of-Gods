@@ -5,25 +5,6 @@ package com;
 // Source File Name:   RSFrame.java
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.awt.event.*;
-
-import javax.imageio.ImageIO;
-
-import java.awt.image.BufferedImage;
-
-import javax.swing.filechooser.FileFilter;
-
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.net.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.*;
-
-import com.sign.signlink;
 
 final class RSFrame extends Frame {
 
@@ -66,6 +47,7 @@ final class RSFrame extends Frame {
 		this(rsapplet, width, height, false, false);
 	}
 
+	@Override
 	public Graphics getGraphics() {
 		Graphics g = super.getGraphics();
 		Insets insets = getInsets();
@@ -73,10 +55,12 @@ final class RSFrame extends Frame {
 		return g;
 	}
 
+	@Override
 	public void update(Graphics g) {
 		rsApplet.update(g);
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		rsApplet.paint(g);
 	}
