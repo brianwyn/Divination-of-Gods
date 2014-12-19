@@ -3,7 +3,7 @@
 // Decompiler options: packimports(3)
 // Source File Name:   signlink.java
 
-package sign;
+package com.sign;
 
 import java.applet.Applet;
 import java.io.*;
