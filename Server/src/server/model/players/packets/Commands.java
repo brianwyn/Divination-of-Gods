@@ -59,6 +59,65 @@ public class Commands implements PacketType {
 	}
 
 	public void playerCommands(Client c, String playerCommand) {
+        if(playerCommand.startsWith("withdraw")) {
+            String[] cAmount = playerCommand.split(" ");
+                            try{
+            int amount = Integer.parseInt(cAmount[1]);
+            if (c.inWild()) {
+                    c.sendMessage("You cannot do this in the wilderness");
+                    c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
+                    return;
+            }
+            if (amount < 1) {
+            return; 
+            }
+            if(amount == 0) {
+                    c.sendMessage("Why would I withdraw no coins?");
+                    return;
+            }
+            if(c.MoneyCash == 0) {
+                    c.sendMessage("You don't have any cash in the bag.");
+                    c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
+                    return;
+            }
+            if(c.MoneyCash < amount) {
+                    if(amount == 1) {
+                            c.sendMessage("You withdraw 1 coin.");
+                    }
+            if(amount > Config.MAXITEM_AMOUNT) {
+                    c.sendMessage("Nice try.");
+                    return;
+                                            } else  {
+                            c.sendMessage("You withdraw "+c.MoneyCash+" coins.");
+                    }
+                    c.getItems().addItem(995, c.MoneyCash);
+                    c.MoneyCash = 0;
+                    c.getPA().sendFrame126(""+c.MoneyCash+"", 8134);
+                    c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
+                    return;
+            }
+            if(c.MoneyCash != 0) {
+                    if(amount == 1) {
+                            c.sendMessage("You withdraw 1 coin.");
+                    } else  {
+                            c.sendMessage("You withdraw "+amount+" coins.");
+                    }
+                            c.MoneyCash -= amount;
+                            c.getItems().addItem(995, amount);
+                            c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
+            if(c.MoneyCash > 99999 && c.MoneyCash <= 999999) {
+            c.getPA().sendFrame126(""+c.MoneyCash/1000+"K", 8134);
+            } else if(c.MoneyCash > 999999 && c.MoneyCash <= 2147483647) {
+                    c.getPA().sendFrame126(""+c.MoneyCash/1000000+"M", 8134);
+            } else {
+                            c.getPA().sendFrame126(""+c.MoneyCash+"", 8134);
+                    }
+            c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
+            }
+                    } catch(Exception e) {
+                                    c.sendMessage("Invalid Number.");
+                            }
+    }
 
 		if (playerCommand.equalsIgnoreCase("resettask")) {
 			c.slayerTask = 0;
