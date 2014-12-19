@@ -8,6 +8,7 @@ import server.core.event.CycleEventHandler;
 import server.model.objects.Object;
 import server.model.players.Client;
 import server.model.players.content.GabbesAchievements;
+import server.model.players.content.skills.LogData.logData;
 import server.util.Misc;
 import server.world.clip.region.Region;
 
@@ -154,291 +155,58 @@ public class Firemaking extends SkillHandler {
 		}
 	}
 
-	// ADD ON FIRES
+	public static logData getLogData(int logId) {
+		for (final LogData.logData l : LogData.logData.values()) {
+			if (l.getLogId() == logId)
+				return l;
+		}
+		return null;
+	}
 
-	public static void handle10Logs(final Client c, final int id) {
-		if (c == null) {
-			return;
-		}
-		if (id == 0) {
-			c.sendMessage("An error occured. Please try again!");
-			return;
-		}
-		if (!c.getItems().playerHasItem(id, 1)) {
-			c.sendMessage("You do not have any logs left.");
-			c.getPA().closeAllWindows();
-			return;
-		}
-		c.isWalking = false;
-		c.logsOffered = 0;
-		c.getPA().closeAllWindows();
+	public static logData getLogData(Client c) {
+		for (final logData log : logData.values())
+			if (c.getItems().playerHasItem(log.getLogId()))
+				return log;
+		return null;
+	}
+
+	public static boolean handleBonfire(Client c, int logId) {
+		if (getLogData(logId) == null || c.playerIsFiremaking
+				|| !c.getItems().playerHasItem(logId))
+			return false;
+
+		c.startAnimation(827);
+		c.getItems().deleteItem(getLogData(logId).getLogId(), 1);
+		c.getPA().addSkillXP((int) (getLogData(logId).getXp()), 11);
+		c.playerIsFiremaking = true;
 		CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
+			logData usedLog = getLogData(logId);
+
 			@Override
 			public void execute(CycleEventContainer container) {
-				if (c.disconnected) {
+				if (!c.playerIsFiremaking) {
 					container.stop();
 					return;
 				}
-				if (c.isWalking == true) {
-					container.stop();
-					return;
-				}
-				if (!c.getItems().playerHasItem(id, 1)) {
+				if (!c.getItems().playerHasItem(usedLog.getLogId(), 1))
+					usedLog = getLogData(c);
+				if (usedLog == null) {
 					c.sendMessage("You do not have any logs left.");
 					c.getPA().closeAllWindows();
 					container.stop();
 					return;
 				}
-				if (c.getItems().playerHasItem(id, 1) && c.logsOffered < 11) {
-					// c.turnPlayerTo(c.objectX, c.objectY);
-					c.startAnimation(827);
-					c.getItems()
-							.deleteItem(id, c.getItems().getItemSlot(id), 1);
-					for (final LogData.logData l : LogData.logData.values()) {
-						c.getPA().addSkillXP((int) (l.getXp()), 11);
-					}
-					c.logsOffered += 1;
-					if (c.logsOffered == 10 || c.logsOffered > 10) {
-						c.logsOffered = 0;
-						container.stop();
-						return;
-					}
-					// spinning = true;
-					// container.stop();
-				}
+				c.startAnimation(827);
+				c.getItems().deleteItem(usedLog.getLogId(), 1);
+				c.getPA().addSkillXP((int) (usedLog.getXp()), 11);
 			}
 
 			@Override
 			public void stop() {
-				// TODO Auto-generated method stub
-
+				c.startAnimation(65535);
+				c.playerIsFiremaking = false;
 			}
-		}, 2);
-	}
-
-	public static void handle1Log(final Client c, final int id) {
-		if (c == null) {
-			return;
-		}
-		if (id == 0) {
-			c.sendMessage("An error occured. Please try again!");
-			return;
-		}
-		if (!c.getItems().playerHasItem(id, 1)) {
-			c.sendMessage("You do not have any logs left.");
-			c.getPA().closeAllWindows();
-			return;
-		}
-		c.isWalking = false;
-		c.getPA().closeAllWindows();
-		CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
-			@Override
-			public void execute(CycleEventContainer container) {
-				if (c.disconnected) {
-					container.stop();
-					return;
-				}
-				if (c.isWalking == true) {
-					container.stop();
-					return;
-				}
-				if (!c.getItems().playerHasItem(id, 1)) {
-					c.sendMessage("You do not have any logs left.");
-					c.getPA().closeAllWindows();
-					container.stop();
-					return;
-				}
-				if (c.getItems().playerHasItem(id, 1)) {
-					// c.turnPlayerTo(c.objectX, c.objectY);
-					c.startAnimation(827);
-					c.getItems()
-							.deleteItem(id, c.getItems().getItemSlot(id), 1);
-					for (final LogData.logData l : LogData.logData.values()) {
-						c.getPA().addSkillXP((int) (l.getXp()), 11);
-					}
-					container.stop();
-					// spinning = true;
-					// container.stop();
-				}
-			}
-
-			@Override
-			public void stop() {
-				// TODO Auto-generated method stub
-
-			}
-		}, 2);
-	}
-
-	public static void handle20Logs(final Client c, final int id) {
-		if (c == null) {
-			return;
-		}
-		if (id == 0) {
-			c.sendMessage("An error occured. Please try again!");
-			return;
-		}
-		if (!c.getItems().playerHasItem(id, 1)) {
-			c.sendMessage("You do not have any logs left.");
-			c.getPA().closeAllWindows();
-			return;
-		}
-		c.isWalking = false;
-		c.logsOffered = 0;
-		c.getPA().closeAllWindows();
-		CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
-			@Override
-			public void execute(CycleEventContainer container) {
-				if (c.disconnected) {
-					container.stop();
-					return;
-				}
-				if (c.isWalking == true) {
-					container.stop();
-					return;
-				}
-				if (!c.getItems().playerHasItem(id, 1)) {
-					c.sendMessage("You do not have any logs left.");
-					c.getPA().closeAllWindows();
-					container.stop();
-					return;
-				}
-				if (c.getItems().playerHasItem(id, 1) && c.logsOffered < 21) {
-					// c.turnPlayerTo(c.objectX, c.objectY);
-					c.startAnimation(827);
-					c.getItems()
-							.deleteItem(id, c.getItems().getItemSlot(id), 1);
-					for (final LogData.logData l : LogData.logData.values()) {
-						c.getPA().addSkillXP((int) (l.getXp()), 11);
-					}
-					c.logsOffered += 1;
-					if (c.logsOffered == 20 || c.logsOffered > 20) {
-						c.logsOffered = 0;
-						container.stop();
-						return;
-					}
-					// spinning = true;
-					// container.stop();
-				}
-			}
-
-			@Override
-			public void stop() {
-				// TODO Auto-generated method stub
-
-			}
-		}, 2);
-	}
-
-	public static void handle5Logs(final Client c, final int id) {
-		if (c == null) {
-			return;
-		}
-		if (id == 0) {
-			c.sendMessage("An error occured. Please try again!");
-			return;
-		}
-		if (!c.getItems().playerHasItem(id, 1)) {
-			c.sendMessage("You do not have any logs left.");
-			c.getPA().closeAllWindows();
-			return;
-		}
-		c.isWalking = false;
-		c.logsOffered = 0;
-		c.getPA().closeAllWindows();
-		CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
-			@Override
-			public void execute(CycleEventContainer container) {
-				if (c.disconnected) {
-					container.stop();
-					return;
-				}
-				if (c.isWalking == true) {
-					container.stop();
-					return;
-				}
-				if (!c.getItems().playerHasItem(id, 1)) {
-					c.sendMessage("You do not have any logs left.");
-					c.getPA().closeAllWindows();
-					container.stop();
-					return;
-				}
-				if (c.getItems().playerHasItem(id, 1) && c.logsOffered < 6) {
-					// c.turnPlayerTo(c.objectX, c.objectY);
-					c.startAnimation(827);
-					c.getItems()
-							.deleteItem(id, c.getItems().getItemSlot(id), 1);
-					for (final LogData.logData l : LogData.logData.values()) {
-						c.getPA().addSkillXP((int) (l.getXp()), 11);
-					}
-					c.logsOffered += 1;
-					if (c.logsOffered == 5 || c.logsOffered > 5) {
-						c.logsOffered = 0;
-						container.stop();
-						return;
-					}
-					// spinning = true;
-					// container.stop();
-				}
-			}
-
-			@Override
-			public void stop() {
-				// TODO Auto-generated method stub
-
-			}
-		}, 2);
-	}
-
-	public static void handleLogsOnFire(final Client c) {
-
-	}
-
-	public static int hasALog(Client c) {
-		if (c.getItems().playerHasItem(1511, 1)) {
-			nameOfLog = "Logs";
-			return 1511;
-		}
-		if (c.getItems().playerHasItem(2862, 1)) {
-			nameOfLog = "Achey tree Logs";
-			return 2862;
-		}
-		if (c.getItems().playerHasItem(1521, 1)) {
-			nameOfLog = "Oak Logs";
-			return 1521;
-		}
-		if (c.getItems().playerHasItem(1519, 1)) {
-			nameOfLog = "Willow Logs";
-			return 1519;
-		}
-		if (c.getItems().playerHasItem(6333, 1)) {
-			nameOfLog = "Teak Logs";
-			return 6333;
-		}
-		if (c.getItems().playerHasItem(10810, 1)) {
-			nameOfLog = "Arctic pine Logs";
-			return 10810;
-		}
-		if (c.getItems().playerHasItem(1517, 1)) {
-			nameOfLog = "Maple logs";
-			return 1517;
-		}
-		if (c.getItems().playerHasItem(6332, 1)) {
-			nameOfLog = "Mahogany logs";
-			return 6332;
-		}
-		if (c.getItems().playerHasItem(12581, 1)) {
-			nameOfLog = "";
-			return 12581;
-		}
-		if (c.getItems().playerHasItem(1515, 1)) {
-			nameOfLog = "Yew logs";
-			return 1515;
-		}
-		if (c.getItems().playerHasItem(1513, 1)) {
-			nameOfLog = "Magic logs";
-			return 1513;
-		}
-		return 0;
+		}, 4);
+		return true;
 	}
 }

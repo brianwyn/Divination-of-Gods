@@ -1,5 +1,6 @@
 package server.model.players.packets;
 
+import server.core.event.CycleEventHandler;
 import server.model.players.Client;
 import server.model.players.PacketType;
 import server.model.players.PlayerHandler;
@@ -28,6 +29,10 @@ public class Walking implements PacketType {
 			c.getPA().closeAllWindows();
 			return;
 		}
+		if(c.playerIsFiremaking) {
+			CycleEventHandler.getSingleton().stopEvents(c);
+		}
+		
 		if (c.isAttacking == true) {
 			c.isAttacking = false;
 		}

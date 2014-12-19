@@ -186,18 +186,10 @@ public class Cooking extends SkillHandler {
 			cookFish(p, i, 150, 62, i + 4, i + 2, object);
 			break;
 		default:
-			if (i == Firemaking.hasALog(p)) {
-				p.teleAction = 26;
-				p.getDH().sendOption4("Add 1 Log", "Add 5 Logs", "Add 10 Logs",
-						"Add 20 Logs");
-				p.logId = i;
-				if (!Firemaking.nameOfLog.equalsIgnoreCase("")) {
-					p.sendMessage("" + Firemaking.nameOfLog
-							+ " were found in your inventory.");
-				}
-				return;
-			}
-			p.sendMessage("You can't cook this!");
+			if (Firemaking.getLogData(i) != null)
+				Firemaking.handleBonfire(p, i);
+			else
+				p.sendMessage("You can't cook this!");
 			break;
 		}
 	}

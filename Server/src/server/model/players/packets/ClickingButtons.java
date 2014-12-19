@@ -28,7 +28,6 @@ import server.model.players.content.interfaces.DrHousesShop;
 import server.model.players.content.skills.Construction;
 import server.model.players.content.skills.Cooking;
 import server.model.players.content.skills.Dungeoneering;
-import server.model.players.content.skills.Firemaking;
 import server.model.players.content.skills.Prayer;
 import server.model.players.content.skills.Smithing;
 import server.model.players.content.skills.Summoning;
@@ -3142,15 +3141,6 @@ public class ClickingButtons implements PacketType {
 				c.getPA().closeAllWindows();
 				GabbesAchievements.checkReqs(c);
 			}
-			if (c.teleAction == 26) {
-				c.getPA().closeAllWindows();
-				if (c.logId == 0) {
-					c.sendMessage("An error occured. Please try again.");
-					return;
-				}
-				Firemaking.handle1Log(c, c.logId);
-				return;
-			}
 
 			if (c.dialogueAction == 24524) { // Tickets exchange
 				c.getPA().closeAllWindows();
@@ -3375,15 +3365,6 @@ public class ClickingButtons implements PacketType {
 				GabbesAchievements.vetCape(c);
 				return;
 			}
-			if (c.teleAction == 26) {
-				c.getPA().closeAllWindows();
-				if (c.logId == 0) {
-					c.sendMessage("An error occured. Please try again.");
-					return;
-				}
-				Firemaking.handle5Logs(c, c.logId);
-				return;
-			}
 			if (c.dialogueAction == 24524) { // Tickets exchange
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 5)) {
@@ -3598,15 +3579,6 @@ public class ClickingButtons implements PacketType {
 				GabbesAchievements.handleMaxCape(c);
 				return;
 			}
-			if (c.teleAction == 26) {
-				c.getPA().closeAllWindows();
-				if (c.logId == 0) {
-					c.sendMessage("An error occured. Please try again.");
-					return;
-				}
-				Firemaking.handle10Logs(c, c.logId);
-				return;
-			}
 			if (c.dialogueAction == 24524) { // Tickets exchange
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 10)) {
@@ -3796,15 +3768,6 @@ public class ClickingButtons implements PacketType {
 			if (c.teleAction == 535) {
 				c.getPA().closeAllWindows();
 				GabbesAchievements.handleMilestoneCapes(c);
-				return;
-			}
-			if (c.teleAction == 26) {
-				c.getPA().closeAllWindows();
-				if (c.logId == 0) {
-					c.sendMessage("An error occured. Please try again.");
-					return;
-				}
-				Firemaking.handle20Logs(c, c.logId);
 				return;
 			}
 			if (c.dialogueAction == 24524) { // Tickets exchange

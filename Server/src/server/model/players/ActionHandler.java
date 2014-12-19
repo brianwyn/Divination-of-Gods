@@ -1087,20 +1087,10 @@ public class ActionHandler {
 					c.clickObjectType, objectType);
 			break;
 		case 2732:
-			int i = Firemaking.hasALog(c);
-			if (i > 0) {
-				c.sendMessage("" + Firemaking.nameOfLog
-						+ " were found in your inventory.");
-				c.teleAction = 26;
-				c.getDH().sendOption4("Add 1 Log", "Add 5 Logs", "Add 10 Logs",
-						"Add 20 Logs");
-				c.logId = i;
-				// Firemaking.handleLogsOnFire(c);
-			} else {
-				c.sendMessage("No logs were found in your inventory.");
-				c.sendMessage("Try using the logs on the fire instead.");
-				return;
-			}
+			if(Firemaking.getLogData(c) != null)
+				Firemaking.handleBonfire(c, Firemaking.getLogData(c).getLogId());
+			else
+				c.sendMessage("You need logs to throw into the bonfire.");
 			break;
 		case 2783:
 			c.getDH().sendOption5("Bronze", "Iron", "Steel", "Mithril",
