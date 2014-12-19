@@ -1,6 +1,5 @@
 package server.model.players.packets;
 
-import server.Config;
 import server.model.players.Client;
 import server.model.players.PacketType;
 import server.model.players.content.SlayerRing;
