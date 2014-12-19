@@ -23,52 +23,44 @@ public class Mining {
 	public final int[][] Pick_Settings = { { 1265, 1, 1, 6753 }, // Bronze
 			{ 1267, 1, 2, 6754 }, // Iron
 			{ 1269, 6, 3, 6755 }, // Steel
-			{ 1271, 31, 5, 6756 }, // Addy
 			{ 1273, 21, 4, 6757 }, // Mithril
+			{ 1271, 31, 5, 6756 }, // Addy
 			{ 1275, 41, 6, 6752 }, // Rune
 			{ 15259, 61, 7, 12188 }, // Dragon
 			{ 13661, 80, 7, 10222 } // Adze
 	};
 
 	public final int[][] Rock_Settings = { { 11938, 1, 40, 3, 436 }, // Copper
-			{ 11933, 1, 40, 3, 438 }, // Tin
-			{ 2093, 15, 60, 7, 440 }, // Iron
-			{ 2097, 30, 80, 38, 453 }, // Coal
-			{ 11944, 55, 100, 70, 447 }, // Mithril
-			{ 11941, 75, 125, 150, 449 }, // Addy
-			{ 14859, 85, 145, 170, 451 }, // Rune
 			{ 2090, 1, 40, 3, 436 }, // Copper
+			{ 11933, 1, 40, 3, 438 }, // Tin
 			{ 2094, 1, 40, 3, 438 }, // Tin
+			{ 2093, 15, 60, 7, 440 }, // Iron
 			{ 2092, 15, 60, 7, 440 }, // Iron
+			{ 2097, 30, 80, 38, 453 }, // Coal
 			{ 2096, 30, 80, 38, 453 }, // Coal
-			{ 2102, 55, 100, 155, 447 }, // Mithril
-			{ 2104, 75, 125, 315, 449 }, // Addy
-			{ 2106, 50, 145, 970, 451 }, // Rune
+			{ 11963, 30, 80, 38, 453 }, // Coal
+			{ 11964, 30, 80, 38, 453 }, // Coal
+			{ 11965, 30, 80, 38, 453 }, // Coal
 			{ 2100, 20, 40, 78, 442 }, // Silver
 			{ 2101, 20, 40, 78, 442 }, // Silver
 			{ 2098, 40, 65, 78, 444 }, // Gold
 			{ 2099, 40, 65, 78, 444 }, // Gold
+			{ 2102, 55, 100, 155, 447 }, // Mithril
+			{ 11944, 55, 100, 70, 447 }, // Mithril
+			{ 11945, 55, 100, 155, 447 }, // Mithril
+			{ 11946, 55, 100, 155, 447 }, // Mithril
+			{ 11947, 55, 100, 155, 447 }, // Mithril
 			{ 11942, 55, 80, 70, 447 }, // Mithril
 			{ 11943, 55, 80, 70, 447 }, // Mithril
 			{ 11939, 50, 95, 150, 449 }, // Addy
-
-			{ 11963, 30, 80, 38, 453 }, // Coal //samyfix
-			{ 11964, 30, 80, 38, 453 }, // Coal
-			{ 11965, 30, 80, 38, 453 }, // Coal
-
-			{ 11945, 55, 100, 155, 447 }, // Mithril
-			{ 11946, 55, 100, 155, 447 }, // Mithril
-			{ 11947, 55, 100, 155, 447 } // Mithril //samyfix
+			{ 2104, 75, 125, 315, 449 }, // Addy
+			{ 11941, 75, 125, 150, 449 }, // Addy
+			{ 14859, 85, 145, 170, 451 }, // Rune
+			{ 2106, 50, 145, 970, 451 }, // Rune
 	};
 
-	int a = -1;
-
-	/*
-	 * public int getTimer(int b, int c, int level) { double timer =
-	 * (int)((Rock_Settings[b][1] * 2) + 20 +
-	 * Misc.random(20))-((Pick_Settings[c][2] * (Pick_Settings[c][2] * 0.75)) +
-	 * level); if (timer < 2.0) { return 2; } else { return (int)timer; } }
-	 */
+	int currentPick = -1;
+	
 	public static int gems[] = { 1617, 1615, 1619, 1621, 1625 };
 
 	public static int lastGem = 0;
@@ -116,7 +108,7 @@ public class Mining {
 		if (c.mining)
 			return;
 		final int miningLevel = c.playerLevel[Player.playerMining];
-		a = -1;
+		currentPick = -1;
 		c.turnPlayerTo(x, y);
 		if (Rock_Settings[j][1] > miningLevel) {
 			c.sendMessage("You need a Mining level of " + Rock_Settings[j][1]
@@ -127,11 +119,11 @@ public class Mining {
 			if (c.getItems().playerHasItem(Pick_Settings[i][0])
 					|| c.playerEquipment[Player.playerWeapon] == Pick_Settings[i][0]) {
 				if (Pick_Settings[i][1] <= miningLevel) {
-					a = i;
+					currentPick = i;
 				}
 			}
 		}
-		if (a == -1) {
+		if (currentPick == -1) {
 			c.sendMessage("You need a pickaxe to mine this rock.");
 			return;
 		}
@@ -141,12 +133,12 @@ public class Mining {
 		}
 		c.isWalking = false;
 		c.stopPlayerSkill = true;
-		c.startAnimation(Pick_Settings[a][3]);
+		c.startAnimation(Pick_Settings[currentPick][3]);
 		c.isMining = true;
 		c.rockX = x;
 		c.rockY = y;
 		c.mining = true;
-		int pickAxe = Timers.handlePickAxe(a);
+		int pickAxe = Timers.handlePickAxe(currentPick);
 		if (c.isWalking) {
 			return;
 		}
@@ -167,7 +159,7 @@ public class Mining {
 				}
 
 				if (c.isMining) {
-					c.startAnimation(Pick_Settings[a][3]);
+					c.startAnimation(Pick_Settings[currentPick][3]);
 					c.getItems().addItem(Rock_Settings[j][4], 1);
 					if (lastGem == 0 && Misc.random(10) == 9) {
 						handleGems(c);
