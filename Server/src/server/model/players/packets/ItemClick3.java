@@ -47,11 +47,11 @@ public class ItemClick3 implements PacketType {
 				c.getPA().sendFrame126("" + c.MoneyCash + "", 8135);
 				return;
 			}
-			if (c.MoneyCash == 2147483647) {
+			if (c.MoneyCash == Integer.MAX_VALUE) {
 				c.sendMessage("Your pouch is full!");
 				return;
 			}
-			if ((c.MoneyCash + cashAmount) <= Config.MAXITEM_AMOUNT
+			if ((c.MoneyCash + cashAmount) <= Integer.MAX_VALUE
 					&& (c.MoneyCash + cashAmount) > -1) {
 				if (cashAmount == 1) {
 					c.sendMessage("You add 1 coin to your pouch.");
@@ -72,18 +72,17 @@ public class ItemClick3 implements PacketType {
 				c.getPA().sendFrame126("" + c.MoneyCash + "", 8135);
 				return;
 			}
-			int Joker = c.MoneyCash - 2147483647 - cashAmount;
-			int DisIs = c.MoneyCash + cashAmount - 2147483647;
-			if ((c.MoneyCash + cashAmount) < 2147483647) {
+			int cashAdd = c.MoneyCash + cashAmount - Integer.MAX_VALUE;
+			if ((c.MoneyCash + cashAmount) < Integer.MAX_VALUE) {
 				c.getItems().deleteItem(995, cashAmount);
 				c.getItems()
-						.addItem(995, c.MoneyCash + cashAmount - 2147483647);
-				if (DisIs == 1) {
+						.addItem(995, c.MoneyCash + cashAmount - Integer.MAX_VALUE);
+				if (cashAdd == 1) {
 					c.sendMessage("You add 1 coin to your pouch.");
 				} else {
-					c.sendMessage("You add " + Joker + " coins to your pouch.");
+					c.sendMessage("You add " + cashAdd + " coins to your pouch.");
 				}
-				c.MoneyCash = 2147483647;
+				c.MoneyCash = Integer.MAX_VALUE;
 				if (c.MoneyCash > 99999 && c.MoneyCash <= 999999) {
 					c.getPA().sendFrame126("" + c.MoneyCash / 1000 + "K", 8134);
 				} else if (c.MoneyCash > 999999 && c.MoneyCash <= 2147483647) {
