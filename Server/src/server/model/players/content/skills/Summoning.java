@@ -270,6 +270,8 @@ public class Summoning {
 				+ ((int) (pouchToMake.getXpGain() * Config.SUMMONING_EXP_BONUS) * amountToMake)
 				+ " Summoning experience.");
 		c.getPA().removeAllWindows();
+		c.startAnimation(725);
+		c.gfx0(1207);
 		return true;
 	}
 
