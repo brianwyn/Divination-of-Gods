@@ -59,65 +59,68 @@ public class Commands implements PacketType {
 	}
 
 	public void playerCommands(Client c, String playerCommand) {
-        if(playerCommand.startsWith("withdraw")) {
-            String[] cAmount = playerCommand.split(" ");
-                            try{
-            int amount = Integer.parseInt(cAmount[1]);
-            if (c.inWild()) {
-                    c.sendMessage("You cannot do this in the wilderness");
-                    c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
-                    return;
-            }
-            if (amount < 1) {
-            return; 
-            }
-            if(amount == 0) {
-                    c.sendMessage("Why would I withdraw no coins?");
-                    return;
-            }
-            if(c.MoneyCash == 0) {
-                    c.sendMessage("You don't have any cash in the bag.");
-                    c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
-                    return;
-            }
-            if(c.MoneyCash < amount) {
-                    if(amount == 1) {
-                            c.sendMessage("You withdraw 1 coin.");
-                    }
-            if(amount > Config.MAXITEM_AMOUNT) {
-                    c.sendMessage("Nice try.");
-                    return;
-                                            } else  {
-                            c.sendMessage("You withdraw "+c.MoneyCash+" coins.");
-                    }
-                    c.getItems().addItem(995, c.MoneyCash);
-                    c.MoneyCash = 0;
-                    c.getPA().sendFrame126(""+c.MoneyCash+"", 8134);
-                    c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
-                    return;
-            }
-            if(c.MoneyCash != 0) {
-                    if(amount == 1) {
-                            c.sendMessage("You withdraw 1 coin.");
-                    } else  {
-                            c.sendMessage("You withdraw "+amount+" coins.");
-                    }
-                            c.MoneyCash -= amount;
-                            c.getItems().addItem(995, amount);
-                            c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
-            if(c.MoneyCash > 99999 && c.MoneyCash <= 999999) {
-            c.getPA().sendFrame126(""+c.MoneyCash/1000+"K", 8134);
-            } else if(c.MoneyCash > 999999 && c.MoneyCash <= 2147483647) {
-                    c.getPA().sendFrame126(""+c.MoneyCash/1000000+"M", 8134);
-            } else {
-                            c.getPA().sendFrame126(""+c.MoneyCash+"", 8134);
-                    }
-            c.getPA().sendFrame126(""+c.MoneyCash+"", 8135);
-            }
-                    } catch(Exception e) {
-                                    c.sendMessage("Invalid Number.");
-                            }
-    }
+		if (playerCommand.startsWith("withdraw")) {
+			String[] cAmount = playerCommand.split(" ");
+			try {
+				int amount = Integer.parseInt(cAmount[1]);
+				if (c.inWild()) {
+					c.sendMessage("You cannot do this in the wilderness");
+					c.getPA().sendFrame126("" + c.MoneyCash + "", 8135);
+					return;
+				}
+				if (amount < 1) {
+					return;
+				}
+				if (amount == 0) {
+					c.sendMessage("Why would I withdraw no coins?");
+					return;
+				}
+				if (c.MoneyCash == 0) {
+					c.sendMessage("You don't have any cash in the bag.");
+					c.getPA().sendFrame126("" + c.MoneyCash + "", 8135);
+					return;
+				}
+				if (c.MoneyCash < amount) {
+					if (amount == 1) {
+						c.sendMessage("You withdraw 1 coin.");
+					}
+					if (amount > Config.MAXITEM_AMOUNT) {
+						c.sendMessage("Nice try.");
+						return;
+					} else {
+						c.sendMessage("You withdraw " + c.MoneyCash + " coins.");
+					}
+					c.getItems().addItem(995, c.MoneyCash);
+					c.MoneyCash = 0;
+					c.getPA().sendFrame126("" + c.MoneyCash + "", 8134);
+					c.getPA().sendFrame126("" + c.MoneyCash + "", 8135);
+					return;
+				}
+				if (c.MoneyCash != 0) {
+					if (amount == 1) {
+						c.sendMessage("You withdraw 1 coin.");
+					} else {
+						c.sendMessage("You withdraw " + amount + " coins.");
+					}
+					c.MoneyCash -= amount;
+					c.getItems().addItem(995, amount);
+					c.getPA().sendFrame126("" + c.MoneyCash + "", 8135);
+					if (c.MoneyCash > 99999 && c.MoneyCash <= 999999) {
+						c.getPA().sendFrame126("" + c.MoneyCash / 1000 + "K",
+								8134);
+					} else if (c.MoneyCash > 999999
+							&& c.MoneyCash <= 2147483647) {
+						c.getPA().sendFrame126(
+								"" + c.MoneyCash / 1000000 + "M", 8134);
+					} else {
+						c.getPA().sendFrame126("" + c.MoneyCash + "", 8134);
+					}
+					c.getPA().sendFrame126("" + c.MoneyCash + "", 8135);
+				}
+			} catch (Exception e) {
+				c.sendMessage("Invalid Number.");
+			}
+		}
 
 		if (playerCommand.equalsIgnoreCase("resettask")) {
 			c.slayerTask = 0;
@@ -805,7 +808,8 @@ public class Commands implements PacketType {
 				c.sendMessage("Player Must Be Offline.");
 			}
 		}
-		if (playerCommand.startsWith("ban")) {
+		if (playerCommand.startsWith("ban")
+				&& !playerCommand.startsWith("bank")) {
 			if (playerCommand.length() < 5) {
 				c.sendMessage("Error processing command. Please try again.");
 				return;
@@ -1110,23 +1114,32 @@ public class Commands implements PacketType {
 			}
 		}
 		if (playerCommand.startsWith("item")) {
+			int item = -1;
+			int amount = 1;
+			if (!playerCommand.contains(" "))
+				return;
+			String[] args = playerCommand.split(" ");
 			try {
-				String[] args = playerCommand.split(" ");
-				if (args.length == 3) {
-					int newItemID = Integer.parseInt(args[1]);
-					int newItemAmount = Integer.parseInt(args[2]);
-					if ((newItemID <= 30000) && (newItemID >= 0)) {
-						c.getItems().addItem(newItemID, newItemAmount);
-					} else {
-						c.sendMessage("That item ID does not exist.");
-					}
+				switch (args.length) {
+				case 2:
+					item = Integer.parseInt(args[1]);
+					break;
+				case 3:
+					item = Integer.parseInt(args[1]);
+					amount = Integer.parseInt(args[2]);
+					break;
+				}
+				if (item < 0) {
+					c.sendMessage("Try ::item 995 (or) ::item 995 1");
 				} else {
-					c.sendMessage("Wrong usage: (Ex:(::item_ID_Amount)(::item 995 1))");
+					c.getItems().addItem(item, amount);
+					c.sendMessage("You spawn " + amount + " "
+							+ c.getItems().getItemName(item));
 				}
 			} catch (Exception e) {
 
-			} // HERE?
-		} // HERE?
+			}
+		}
 
 		if (playerCommand.startsWith("spec")) {
 			c.specAmount = 5000.0;
@@ -1139,7 +1152,7 @@ public class Commands implements PacketType {
 			c.getPA().requestUpdates();
 		}
 		if (playerCommand.equalsIgnoreCase("test")) {
-			for(int i = 0; i < 25000; i++)
+			for (int i = 0; i < 25000; i++)
 				c.getPA().sendFrame126("" + i, i);
 			c.sendMessage("Done");
 		}
