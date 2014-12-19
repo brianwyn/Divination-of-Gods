@@ -972,17 +972,7 @@ public class Client extends Player {
 			return false;
 		}
 	}
-
-	/*
-	 * public synchronized boolean processQueuedPackets() { Packet p = null;
-	 * synchronized (queuedPackets) { p = queuedPackets.poll(); } if (p == null)
-	 * { return false; } inStream.currentOffset = 0; packetType = p.getId();
-	 * packetSize = p.getLength(); inStream.buffer = p.getData(); if (packetType
-	 * > 0) { // sendMessage("PacketType: " + packetType);
-	 * PacketHandler.processPacket(this, packetType, packetSize);
-	 * processPackets++; } timeOutCounter = 0; /*if (processPackets >
-	 * Config.MAX_PROCESS_PACKETS) { return false; }* return true; }
-	 */
+	
 	public void correctCoordinates() {
 		if (inPcGame()) {
 			getPA().movePlayer(2657, 2639, 0);
