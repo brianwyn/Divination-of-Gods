@@ -6569,11 +6569,10 @@ private void doAction(int i) {
 						} else {
 						int amount = 0;
 						amount = Integer.parseInt(promptInput);
-						if(amount == 2000000000 || amount > 2000000000) {
-						return;
-						}
-						inputString = "::withdraw "+promptInput;
-						sendPacket(103);
+						if(amount < 0)
+							return;
+							inputString = "::withdraw "+promptInput;
+							sendPacket(103);
 						
 						}
 						}
@@ -16451,7 +16450,7 @@ static final int[][] anIntArrayArray1003 = {
 	private int anInt1100;
 	private int anInt1101;
 	private int anInt1102;
-	private static boolean tabAreaAltered;
+	public static boolean tabAreaAltered;
 	private int systemUpdatetime;
 	private RSImageProducer aRSImageProducer_1107;
 	private RSImageProducer aRSImageProducer_1108;
@@ -16494,7 +16493,7 @@ static final int[][] anIntArrayArray1003 = {
 	private Sprite[] crosses;
 	private boolean musicEnabled;
 	private Background[] aBackgroundArray1152s;
-	private static boolean needDrawTabArea;
+	public static boolean needDrawTabArea;
 	private int unreadMessages;
 	private static int anInt1155;
 	private static boolean fpsOn;
