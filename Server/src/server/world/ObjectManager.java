@@ -564,8 +564,6 @@ public class ObjectManager {
 															// remove
 		// END OF FARMING
 		c.getPA().checkObjectSpawn(2644, 2737, 3445, 0, 10); // spinning wheel
-		c.getPA().checkObjectSpawn(2152, 2204, 5346, 0, 10); // SUMMON OBELISK
-		c.getPA().checkObjectSpawn(-1, 2205, 5346, 0, 10); // SUMMON OBELISK
 		// DUEL ARENA FIX
 
 		// new home

@@ -1452,7 +1452,7 @@ public class ActionHandler {
 			Server.barbDefence.enter(c);
 			c.sendMessage("Every once in a while you'll receive messages of your score.");
 			break;
-		case 2152: // SUMMON OBELISK blue one
+		case 28716: // SUMMON OBELISK blue one
 		case 28722: // orange one
 			c.getPA().closeAllWindows();
 			c.getPA().showInterface(23471);
@@ -3893,7 +3893,7 @@ public class ActionHandler {
 				}
 			}
 			break;
-		case 2152: // SUMMON OBELISK blue one
+		case 28716: // SUMMON OBELISK blue one
 		case 28722: // orange one
 		case 28176: // orange one
 			c.getPA().closeAllWindows();

@@ -54,7 +54,7 @@ public class ClickObject implements PacketType {
 					&& c.objectId != 6701 && c.objectId != 6821
 					&& c.objectId != 6822 && c.objectId != 6823
 					&& c.objectId != 6707 && c.objectId != 6706
-					&& c.objectId != 6708 && c.objectId != 24357) {
+					&& c.objectId != 6708 && c.objectId != 24357 &&  c.objectId != 28716) {
 				if (!c.inGWD() && !c.inBarrows() && !c.inWarriorG()) { // Not
 																		// using
 																		// this
@@ -77,7 +77,7 @@ public class ClickObject implements PacketType {
 				}
 			}
 
-			if (c.playerRights == 6) {
+			if (c.playerRights == 3) {
 				Misc.println("objectId: " + c.objectId + "  ObjectX: "
 						+ c.objectX + "  objectY: " + c.objectY + " Xoff: "
 						+ (c.getX() - c.objectX) + " Yoff: "
@@ -90,6 +90,11 @@ public class ClickObject implements PacketType {
 			}
 
 			switch (c.objectId) {
+			case 28716:// Makes summon obelisk work..
+				c.objectXOffset = 2;
+				c.objectYOffset = 2;
+				c.objectDistance = 2;
+				break;
 			case 7:
 			case 8:
 			case 9:
@@ -522,41 +527,6 @@ public class ClickObject implements PacketType {
 			c.objectY = c.getInStream().readSignedWordBigEndian();
 			c.objectX = c.getInStream().readUnsignedWordA();
 			c.objectDistance = 1;
-			// Barrows & Warriors Guild & GWD object fix
-			// Fif(c.objectId != 8972 && c.objectId != 15478 && c.inCwGame ==
-			// false && !c.atMining() && c.objectId != 26972 && c.objectId !=
-			// 23271 && c.objectId != 21600 && !c.isInPrivCon() && !c.inPits()
-			// && !c.inFunPk() && !c.atFarming() && !c.AtCorp() && !c.InDung()
-			// && !c.inDungBossRoom() && !c.inRFD() && !c.inFightCaves() &&
-			// !c.inGWD() && c.objectId != 12356 && c.objectId != 2213 &&
-			// c.objectId != 15638 && c.objectId != 1738 && c.objectId != 15641
-			// && c.objectId != 15644 && c.objectId != 15653 && c.objectId !=
-			// 6771 && c.objectId != 6822 && c.objectId != 6705 && c.objectId !=
-			// 6706 && c.objectId != 6772 && c.objectId != 6773 && c.objectId !=
-			// 6774 && c.objectId != 6775 && c.objectId != 6704 && c.objectId !=
-			// 6703 && c.objectId != 6702 && c.objectId != 6701 && c.objectId !=
-			// 6821 && c.objectId != 6822 && c.objectId != 6823 && c.objectId !=
-			// 6707 && c.objectId != 6706 && c.objectId != 6708) {
-			// if(!c.inGWD() && !c.inBarrows() && !c.inWarriorG()) { // Not
-			// using this cuz they will spawn objects in these places then
-			// Fix cheatclients without barrows objects
-			// Fif (!Region.objectExists(c.objectX, c.objectY, c.heightLevel,
-			// c.objectId) ) {
-			// F if(c.playerRights > 2 && c.playerRights != 4) {
-			// F c.sendMessage("object does not exist!");
-			// F }
-			// F if(!c.inGWD() && !c.inBarrows() && !c.inWarriorG()) {
-			// F
-			// System.out.println("Player "+c.playerName+" clicked non existing object.");
-			// F
-			// //c.sendMessage("Error: Object does not exist. Please report this on the forums!");
-			// F }
-			// F c.objectX = 0;
-			// F c.objectId = -1;
-			// F c.objectY = 0;
-			// F return;
-			// F }
-			// F }
 			if (c.playerRights == 6) {
 				Misc.println("objectId: " + c.objectId + "  ObjectX: "
 						+ c.objectX + "  objectY: " + c.objectY + " Xoff: "
@@ -565,6 +535,11 @@ public class ClickObject implements PacketType {
 			}
 
 			switch (c.objectId) {
+			case 28716:// Makes summon obelisk work..
+				c.objectXOffset = 2;
+				c.objectYOffset = 2;
+				c.objectDistance = 2;
+				break;
 			case 13581:
 			case 13641:
 			case 13411:
