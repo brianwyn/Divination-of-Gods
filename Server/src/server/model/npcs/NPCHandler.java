@@ -1077,8 +1077,8 @@ public class NPCHandler {
 		c.getPA().calculateTask();
 	}
 
-	public void appendSlayerRewards(int i) {
-		Client c = (Client) PlayerHandler.players[npcs[i].killedBy];
+	public void appendSlayerRewards(int npcIndex) {
+		Client c = (Client) PlayerHandler.players[npcs[npcIndex].killedBy];
 		if (c == null || c.hasGivenSlayReward)
 			return;
 		if (!c.task1[9]) {
@@ -1099,9 +1099,9 @@ public class NPCHandler {
 			GabbesAchievements.handleEliteTask(c, 9, 3,
 					"Complete 100 Slayer tasks!");
 		}
-		if (isEasyTask(i) && c.taskType == 1) {
+		if (isEasyTask(npcs[npcIndex].npcType) && c.taskType == 1) {
 			c.getPA().addSkillXP2(
-					(npcs[i].MaxHP * 8) * Config.SLAYER_EXPERIENCE, 18);
+					(npcs[npcIndex].MaxHP * 8) * Config.SLAYER_EXPERIENCE, 18);
 			c.sendMessage("You completed your EASY slayer task. Please see a slayer master to get a new one.");
 			if (c.slayerTaskStreak == 0) {
 				c.slayerTaskStreak += 1;
@@ -1111,9 +1111,9 @@ public class NPCHandler {
 				giveSlayerPointsReward(c, 6);
 			}
 		}
-		if (isMediumTask(i) && c.taskType == 2) {
+		if (isMediumTask(npcs[npcIndex].npcType) && c.taskType == 2) {
 			c.getPA().addSkillXP2(
-					(npcs[i].MaxHP * 10) * Config.SLAYER_EXPERIENCE, 18);
+					(npcs[npcIndex].MaxHP * 10) * Config.SLAYER_EXPERIENCE, 18);
 			c.sendMessage("You completed your MEDIUM slayer task. Please see a slayer master to get a new one.");
 			if (c.slayerTaskStreak == 0) {
 				c.slayerTaskStreak += 1;
@@ -1124,9 +1124,9 @@ public class NPCHandler {
 			}
 		}
 
-		if (isHardTask(i) && c.taskType == 3) {
+		if (isHardTask(npcs[npcIndex].npcType) && c.taskType == 3) {
 			c.getPA().addSkillXP2(
-					(npcs[i].MaxHP * 12) * Config.SLAYER_EXPERIENCE, 18);
+					(npcs[npcIndex].MaxHP * 12) * Config.SLAYER_EXPERIENCE, 18);
 			c.sendMessage("You completed your HARD slayer task. Please see a slayer master to get a new one.");
 			if (c.slayerTaskStreak == 0) {
 				c.slayerTaskStreak += 1;
@@ -1136,9 +1136,9 @@ public class NPCHandler {
 				giveSlayerPointsReward(c, 14);
 			}
 		}
-		if (isEXTREMETask(i) && c.taskType == 4) {
+		if (isEXTREMETask(npcs[npcIndex].npcType) && c.taskType == 4) {
 			c.getPA().addSkillXP2(
-					(npcs[i].MaxHP * 14) * Config.SLAYER_EXPERIENCE, 18);
+					(npcs[npcIndex].MaxHP * 14) * Config.SLAYER_EXPERIENCE, 18);
 			c.sendMessage("You completed your EXTREME slayer task. Please see a slayer master to get a new one.");
 			if (c.slayerTaskStreak == 0) {
 				c.slayerTaskStreak += 1;
@@ -4333,7 +4333,7 @@ public class NPCHandler {
 	}
 
 	public boolean isEasyTask(int i) {
-		switch (npcs[i].npcType) {
+		switch (i) {
 		case 117:
 		case 1265:
 		case 103:
@@ -4346,7 +4346,7 @@ public class NPCHandler {
 	}
 
 	public boolean isEXTREMETask(int i) {
-		switch (npcs[i].npcType) {
+		switch (i) {
 		case 9467:
 		case 9465:
 		case 9463:
@@ -4376,7 +4376,7 @@ public class NPCHandler {
 	}
 
 	public boolean isHardTask(int i) {
-		switch (npcs[i].npcType) {
+		switch (i) {
 		case 50:
 		case 1624:
 		case 1610:
@@ -4394,7 +4394,7 @@ public class NPCHandler {
 	}
 
 	public boolean isMediumTask(int i) {
-		switch (npcs[i].npcType) {
+		switch (i) {
 		case 1643:
 		case 1618:
 		case 941:
