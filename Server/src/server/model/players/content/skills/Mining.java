@@ -17,6 +17,59 @@ import server.util.Misc;
  */
 
 public class Mining {
+	
+	public enum RockData {
+		CLAY(new int[] { 2109, 10949 }, 1, 5, 3, 5, 420),
+		COPPER(new int[] {2090, 2091, 11936, 11938, 31080, 31081 }, 1, 18, 3, 5, 436),
+		TIN(new int[] { 2094, 2095, 11933, 31077, 31078, 31079 }, 1, 18, 3, 5, 438),
+		IRON(new int[] { 2092, 2093, 11954, 31071, 31072, 31073 }, 15, 35, 8, 20, 440),
+		COAL(new int[] { 2096, 2097, 3181, 10948, 11963, 11964, 11965, 31070, 31068 }, 30, 50, 50, 70, 453),
+		GOLD(new int[] { 2098, 2099, 11951, 31065, 31066 }, 40, 65, 100, 50, 444),
+		SILVER(new int[] { 2100, 2101 }, 20, 40, 100, 50, 442),
+		MITHRIL(new int[] { 2102, 2103, 11942, 11943, 11944, 11945, 11946, 11947, 31086, 31088, 31069 }, 55, 80, 200, 80, 447),
+		ADAMANTITE(new int[] { 2104, 2105, 11939, 11941, 31083, 31085 }, 70, 95, 400, 90, 449),
+		RUNITE(new int[] {2106, 2107, 14859 }, 85, 125, 1300, 100, 451),
+		ESSENCE(new int[] { 2491 },15, 15, 0, 7, 7936),
+		GRANITE(new int[] { 10947 }, 45, 50, 6, 12, 6979),
+		SANDSTONE(new int[] { 10946 }, 35, 30, 6, 39, 6985);
+
+		private int[] objectId;
+		private int levelReq, exp, timer, delay, itemToGive;
+
+		RockData(int[] objectId, int levelReq, int exp, int timer, int delay,
+				int itemToGive) {
+			this.objectId = objectId;
+			this.levelReq = levelReq;
+			this.exp = exp;
+			this.timer = timer;
+			this.delay = delay;
+			this.itemToGive = itemToGive;
+		}
+
+		public int[] getObjectId() {
+			return objectId;
+		}
+
+		public int getLevelReq() {
+			return levelReq;
+		}
+
+		public int getTimer() {
+			return timer;
+		}
+
+		public int getDelay() {
+			return delay;
+		}
+
+		public int getExp() {
+			return exp;
+		}
+
+		public int getItemToGive() {
+			return itemToGive;
+		}
+	}
 
 	private Client c;
 
@@ -30,37 +83,8 @@ public class Mining {
 			{ 13661, 80, 7, 10222 } // Adze
 	};
 
-	public final int[][] Rock_Settings = { { 11938, 1, 40, 3, 436 }, // Copper
-			{ 2090, 1, 40, 3, 436 }, // Copper
-			{ 11933, 1, 40, 3, 438 }, // Tin
-			{ 2094, 1, 40, 3, 438 }, // Tin
-			{ 2093, 15, 60, 7, 440 }, // Iron
-			{ 2092, 15, 60, 7, 440 }, // Iron
-			{ 2097, 30, 80, 38, 453 }, // Coal
-			{ 2096, 30, 80, 38, 453 }, // Coal
-			{ 11963, 30, 80, 38, 453 }, // Coal
-			{ 11964, 30, 80, 38, 453 }, // Coal
-			{ 11965, 30, 80, 38, 453 }, // Coal
-			{ 2100, 20, 40, 78, 442 }, // Silver
-			{ 2101, 20, 40, 78, 442 }, // Silver
-			{ 2098, 40, 65, 78, 444 }, // Gold
-			{ 2099, 40, 65, 78, 444 }, // Gold
-			{ 2102, 55, 100, 155, 447 }, // Mithril
-			{ 11944, 55, 100, 70, 447 }, // Mithril
-			{ 11945, 55, 100, 155, 447 }, // Mithril
-			{ 11946, 55, 100, 155, 447 }, // Mithril
-			{ 11947, 55, 100, 155, 447 }, // Mithril
-			{ 11942, 55, 80, 70, 447 }, // Mithril
-			{ 11943, 55, 80, 70, 447 }, // Mithril
-			{ 11939, 50, 95, 150, 449 }, // Addy
-			{ 2104, 75, 125, 315, 449 }, // Addy
-			{ 11941, 75, 125, 150, 449 }, // Addy
-			{ 14859, 85, 145, 170, 451 }, // Rune
-			{ 2106, 50, 145, 970, 451 }, // Rune
-	};
-
 	int currentPick = -1;
-	
+
 	public static int gems[] = { 1617, 1615, 1619, 1621, 1625 };
 
 	public static int lastGem = 0;
@@ -98,9 +122,18 @@ public class Mining {
 		}
 	}
 
-	public void startMining(final int j, final int x, final int y,
-			final int type, final int oreType) {
-		if (c == null) {
+	private RockData getRock(int objectId) {
+		for(RockData rock : RockData.values())
+			for(int object : rock.getObjectId())
+				if(objectId == object)
+					return rock;
+		return null;
+	}
+
+	public void startMining(final int x, final int y, final int clickType,
+			final int objectId) {
+		RockData rock = getRock(objectId);
+		if (c == null || rock == null) {
 			return;
 		}
 		if (c.isMining)
@@ -110,8 +143,8 @@ public class Mining {
 		final int miningLevel = c.playerLevel[Player.playerMining];
 		currentPick = -1;
 		c.turnPlayerTo(x, y);
-		if (Rock_Settings[j][1] > miningLevel) {
-			c.sendMessage("You need a Mining level of " + Rock_Settings[j][1]
+		if (rock.getLevelReq() > miningLevel) {
+			c.sendMessage("You need a Mining level of " + rock.getLevelReq()
 					+ " to mine this rock.");
 			return;
 		}
@@ -160,11 +193,11 @@ public class Mining {
 
 				if (c.isMining) {
 					c.startAnimation(Pick_Settings[currentPick][3]);
-					c.getItems().addItem(Rock_Settings[j][4], 1);
+					c.getItems().addItem(rock.getItemToGive(), 1);
 					if (lastGem == 0 && Misc.random(10) == 9) {
 						handleGems(c);
 					}
-					if (Rock_Settings[j][4] == 440 && !c.task1[2]) {
+					if (rock.getItemToGive() == 440 && !c.task1[2]) {
 						c.task1[2] = true;
 						c.sendMessage("You've completed the task: Mine some iron!");
 						c.TPoints += 1;
@@ -178,13 +211,13 @@ public class Mining {
 						c.achievementInterface("Mine some iron!");
 					}
 					c.rocksM += 1;
-					if (Rock_Settings[j][4] == 451 && !c.task3[2]
+					if (rock.getItemToGive() == 451 && !c.task3[2]
 							&& c.rocksM >= 150) {
 						GabbesAchievements.handleEliteTask(c, 2, 3,
 								"Mine 150 Runite ores!");
 					}
 					c.getPA().addSkillXP(
-							Rock_Settings[j][2] * Config.MINING_EXPERIENCE * 2,
+							rock.getExp() * Config.MINING_EXPERIENCE * 2,
 							Player.playerMining);
 					c.stopPlayerSkill = true;
 				}
@@ -192,8 +225,8 @@ public class Mining {
 					c.sendMessage("You have ran out of inventory slots.");
 					container.stop();
 				}
-				mineRock(c, Timers.getMiningRespawnTimer(oreType), x, y, type,
-						oreType);
+				mineRock(c, Timers.getMiningRespawnTimer(objectId), x, y, clickType,
+						objectId);
 				c.isMining = false;
 				container.stop();
 			}
@@ -208,7 +241,7 @@ public class Mining {
 				c.mining = false;
 				return;
 			}
-		}, Timers.getMiningTimer(oreType, pickAxe, miningLevel));
+		}, Timers.getMiningTimer(objectId, pickAxe, miningLevel));
 	}
 
 }

@@ -842,7 +842,6 @@ public class ActionHandler {
 		}
 	}
 
-	@SuppressWarnings("static-access")
 	public void firstClickObject(int objectType, int obX, int obY) {
 		c.clickObjectType = 0;
 
@@ -852,6 +851,8 @@ public class ActionHandler {
 			Woodcutting.attemptData(c, objectType, obX, obY);
 			return;
 		}
+		c.getMining().startMining(c.objectX, c.objectY,
+				c.clickObjectType, objectType);
 		switch (objectType) {
 		case 25819:
 			if (c.absY == 3502) {
@@ -991,100 +992,6 @@ public class ActionHandler {
 
 		case 172:
 			CrystalChest.searchChest(c, objectType, c.objectX, c.objectY);
-			break;
-		case 2091:
-		case 11938:
-		case 11937:
-		case 11936:
-			c.getMining().startMining(0, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2095:
-		case 11933:
-			c.getMining().startMining(1, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2093:
-		case 11954:
-			c.getMining().startMining(2, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2097:
-		case 11963:
-		case 11964:
-		case 11965:
-		case 11932:
-		case 11930:
-		case 11931:
-			c.getMining().startMining(3, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2103:
-		case 11942:
-		case 11944:
-		case 11943:
-			c.getMining().startMining(4, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2105:
-		case 11941:
-		case 11939:
-			c.getMining().startMining(5, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2107:
-			c.getMining().startMining(6, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2090:
-			c.getMining().startMining(7, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2094:
-			c.getMining().startMining(8, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2092:
-			c.getMining().startMining(9, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2096:
-			c.getMining().startMining(10, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2102:
-		case 11945:
-		case 11946:
-		case 11947:
-
-			c.getMining().startMining(11, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2104:
-			c.getMining().startMining(12, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2106:
-		case 14859:
-			c.getMining().startMining(13, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2100:
-			c.getMining().startMining(14, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2101:
-			c.getMining().startMining(15, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2098:
-		case 11951:
-			c.getMining().startMining(16, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
-			break;
-		case 2099:
-			c.getMining().startMining(17, c.objectX, c.objectY,
-					c.clickObjectType, objectType);
 			break;
 		case 2732:
 			if(Firemaking.getLogData(c) != null)

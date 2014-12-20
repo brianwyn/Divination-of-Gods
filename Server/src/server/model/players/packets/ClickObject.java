@@ -18,6 +18,20 @@ public class ClickObject implements PacketType {
 
 	}
 
+	int[] extras = { 8972, 30624, 29537, 2908, 2909, 3782, 15478, 26972, 23271,
+			21600, 12356, 2213, 15638, 1738, 15641, 15644, 15653, 6771, 6822,
+			6705, 6706, 6772, 6773, 6774, 6775, 6704, 6703, 6702, 6701, 6821,
+			6822, 6823, 6707, 6706, 6708, 24357, 28716, 31070, 31071, 31073,
+			31068, 31077, 31078, 31079, 31083, 31085, 31081, 31080, 31072,
+			31086, 31088, 31069, 31065, 31066};
+
+	private boolean isExtra(int object) {
+		for (int e : extras)
+			if (object == e)
+				return true;
+		return false;
+	}
+
 	@Override
 	public void processPacket(final Client c, int packetType, int packetSize) {
 		c.clickObjectType = c.objectX = c.objectId = c.objectY = 0;
@@ -33,41 +47,12 @@ public class ClickObject implements PacketType {
 			c.objectY = c.getInStream().readUnsignedWordA();
 			c.objectDistance = 1;
 			// Barrows & Warriors Guild & GWD object fix 29537
-			if (c.objectId != 8972 && c.objectId != 30624
-					&& c.objectId != 29537 && c.objectId != 2908
-					&& c.objectId != 2909 && c.objectId != 3782
-					&& c.objectId != 15478 && c.inCwGame == false
-					&& !c.atMining() && c.objectId != 26972
-					&& c.objectId != 23271 && c.objectId != 21600
-					&& !c.isInPrivCon() && !c.inPits() && !c.inFunPk()
-					&& !c.atFarming() && !c.AtCorp() && !c.InDung()
-					&& !c.inDungBossRoom() && !c.inRFD() && !c.inFightCaves()
-					&& !c.inGWD() && c.objectId != 12356 && c.objectId != 2213
-					&& c.objectId != 15638 && c.objectId != 1738
-					&& c.objectId != 15641 && c.objectId != 15644
-					&& c.objectId != 15653 && c.objectId != 6771
-					&& c.objectId != 6822 && c.objectId != 6705
-					&& c.objectId != 6706 && c.objectId != 6772
-					&& c.objectId != 6773 && c.objectId != 6774
-					&& c.objectId != 6775 && c.objectId != 6704
-					&& c.objectId != 6703 && c.objectId != 6702
-					&& c.objectId != 6701 && c.objectId != 6821
-					&& c.objectId != 6822 && c.objectId != 6823
-					&& c.objectId != 6707 && c.objectId != 6706
-					&& c.objectId != 6708 && c.objectId != 24357 &&  c.objectId != 28716) {
-				if (!c.inGWD() && !c.inBarrows() && !c.inWarriorG()) { // Not
-																		// using
-																		// this
-																		// cuz
-																		// they
-																		// will
-																		// spawn
-																		// objects
-																		// in
-																		// these
-																		// places
-																		// then
-					// Fix cheatclients without barrows objects
+			if (c.inCwGame == false && !c.atMining() && !c.isInPrivCon()
+					&& !c.inPits() && !c.inFunPk() && !c.atFarming()
+					&& !c.AtCorp() && !c.InDung() && !c.inDungBossRoom()
+					&& !c.inRFD() && !c.inFightCaves() && !c.inGWD()
+					&& !isExtra(c.objectId)) {
+				if (!c.inGWD() && !c.inBarrows() && !c.inWarriorG()) {
 					if (!Region.objectExists(c.objectX, c.objectY,
 							c.heightLevel, c.objectId)) {
 						System.out.println("Nonexisting " + c.objectId
