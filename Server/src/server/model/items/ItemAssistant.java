@@ -1767,7 +1767,7 @@ public class ItemAssistant {
 		return -1;
 	}
 
-	public String getItemName(int ItemID) {
+	public static String getItemName(int ItemID) {
 		for (int i = 0; i < Config.ITEM_LIMIT; i++) {
 			if (Server.itemHandler.ItemList[i] != null) {
 				if (Server.itemHandler.ItemList[i].itemId == ItemID) {
