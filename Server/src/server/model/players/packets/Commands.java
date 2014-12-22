@@ -39,6 +39,11 @@ public class Commands implements PacketType {
 		playerCommand.split("-");
 		if (!playerCommand.startsWith("/")) {
 			c.getPA().writeCommandLog(playerCommand);
+		} else {
+			if (c.clanId >= 0)
+				Server.clanChat.playerMessageToClan(c.playerId, playerCommand.substring(1), c.clanId);
+			else
+				c.sendMessage("You are not in a clan.");
 		}
 
 		if (Config.SERVER_DEBUG)

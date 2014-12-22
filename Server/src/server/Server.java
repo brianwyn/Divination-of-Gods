@@ -26,9 +26,11 @@ import server.model.npcs.NPCHandler;
 import server.model.players.PlayerHandler;
 import server.model.players.SQL;
 import server.model.players.content.ImpSpawn;
+import server.model.players.packets.PJClans;
 import server.net.PipelineFactory;
 import server.util.SimpleTimer;
 import server.util.log.Logger;
+import server.world.ClanChatHandler;
 import server.world.ItemHandler;
 import server.world.ObjectHandler;
 import server.world.ObjectManager;
@@ -86,20 +88,17 @@ public class Server {
 	public static NPCHandler npcHandler = new NPCHandler();
 	public static ShopHandler shopHandler = new ShopHandler();
 	public static ObjectHandler objectHandler = new ObjectHandler();
-	// public static InfractionManager infractionManager = new
-	// InfractionManager();
 	public static ObjectManager objectManager = new ObjectManager();
-	// public static PestControl pestControl = new PestControl();
 	public static int days, hours, minutes, secundes;
 	public static NPCDrops npcDrops = new NPCDrops();
 	public static FightCaves fightCaves = new FightCaves();
 	public static HardCaves hardCaves = new HardCaves();
+	public static PJClans pJClans = new PJClans();
+	public static ClanChatHandler clanChat = new ClanChatHandler();
 	public static Nomad Nomad = new Nomad();
 	public static Goblin Goblin = new Goblin();
 	public static RFD rfd = new RFD();
 	public static int garbageCollector = 0;
-	// public static MadTurnipConnection md;
-	// public static WorldMap worldMap = new WorldMap();
 	public static long[] TIMES = new long[5];
 	/**
 	 * The task scheduler.
@@ -208,8 +207,9 @@ public class Server {
 		System.out
 				.println("[DivinationofGods] Launching Divination of Gods..cuz jal knight is awesome");
 		SQL.createConnection();
-		System.out.println("Oh look! The Connection to HS has been made!");
-		// World.getWorld();
+		if(SQL.connectionMade)
+			System.out.println("Oh look! The Connection to HS has been made!");
+		pJClans.initialize();
 		Connection.initialize();
 		ImpSpawn.spawnImps();
 

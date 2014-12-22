@@ -7152,4 +7152,14 @@ public class PlayerAssistant {
 		writeQuestTab();
 		// writeDungTab();
 	}
+	
+	public void clearClanChat() {
+		c.clanId = -1;
+		c.inAclan = false;
+		c.getPA().sendFrame126("Talking in: ", 18139);
+		c.getPA().sendFrame126("Owner: ", 18140);
+		for (int j = 18144; j < 18244; j++)
+			c.getPA().sendFrame126("", j);
+		sendFrame36(724, 0);
+	}
 }

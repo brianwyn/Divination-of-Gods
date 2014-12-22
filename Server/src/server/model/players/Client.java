@@ -60,6 +60,7 @@ import server.net.Packet;
 import server.net.Packet.Type;
 import server.util.Misc;
 import server.util.Stream;
+import server.world.ClanChatHandler;
 import server.world.LoginHandler;
 
 public class Client extends Player {
@@ -972,7 +973,7 @@ public class Client extends Player {
 			return false;
 		}
 	}
-	
+
 	public void correctCoordinates() {
 		if (inPcGame()) {
 			getPA().movePlayer(2657, 2639, 0);
@@ -1192,7 +1193,9 @@ public class Client extends Player {
 		if (session == null)
 			return;
 		PlayerSave.saveGame(this);
-		PlayerSave.saveGame(this);
+		if (clanId >= 0)
+			Server.clanChat.removeIdFromClan(clanId, playerId);
+
 		if (disconnected == true) {
 			saveCharacter = true;
 		}
@@ -1445,11 +1448,11 @@ public class Client extends Player {
 		return cannon;
 	}
 
-	public Client getClient(int id) {
+	public static Client getClient(int id) {
 		return (Client) PlayerHandler.players[id];
 	}
 
-	public Client getClient(String name) {
+	public static Client getClient(String name) {
 		name = name.toLowerCase();
 		for (int i = 0; i < Config.MAX_PLAYERS; i++) {
 			if (validClient(i)) {
@@ -2695,7 +2698,10 @@ public class Client extends Player {
 		if (hasFollower == 4241) {
 			hasFollower = -1;
 		}
-
+		if (clanName != null && clanName.length() > 0)
+			Server.clanChat.joinClan(this, clanName);
+		else
+			getPA().clearClanChat();
 		Construction.spawnButler(this, 4241, 3, true, 4240);
 		PvPHandler.handleLogin(this);
 
@@ -2829,6 +2835,7 @@ public class Client extends Player {
 			SQL.saveHighScore(this);
 			SQL.destroyConnection();
 			PvPHandler.handleLogout(this);
+			Server.clanChat.removeIdFromClan(clanId, playerId);
 			if (inDung) {
 				if (Partner.equalsIgnoreCase("None")) {
 					getDungeoneering();
@@ -4133,11 +4140,11 @@ public class Client extends Player {
 		}
 	}
 
-	public boolean validClient(Client client) {
+	public static boolean validClient(Client client) {
 		return (client != null && !client.disconnected);
 	}
 
-	public boolean validClient(int id) {
+	public static boolean validClient(int id) {
 		if (id < 0 || id > Config.MAX_PLAYERS) {
 			return false;
 		}
@@ -4307,5 +4314,14 @@ public class Client extends Player {
 				getClient(i).sendMessage(s);
 			}
 		}
+	}
+
+	public void sendClan(String name, String message, String clan, int rights) {
+		outStream.createFrameVarSizeWord(217);
+		outStream.writeString(name);
+		outStream.writeString(message);
+		outStream.writeString(clan);
+		outStream.writeWord(rights);
+		outStream.endFrameVarSize();
 	}
 }

@@ -23,7 +23,12 @@ public abstract class Player {
 	// DUNG - BIND
 	public int bind1 = -1, bind2 = -1, bind3 = -1, bind4 = -1, destroy = 0,
 			droppedItem = -1;
-
+	// Clan stuff
+	public int clanId = -1;
+	public String clanName;
+	public String clanPass = null;
+	public boolean hasClan = false, inAclan = false;
+	// End clan stuff
 	// PLAYERS LOOK UPDATING
 	public int updateTimer = -1;
 	// DUNG
@@ -3422,6 +3427,11 @@ public abstract class Player {
 		default:
 			return "<col=FF0000><shad=0>[Player]";
 		}
+	}
+	
+	public String getPlayerName() {
+		// TODO Auto-generated method stub
+		return Misc.optimizeText(playerName);
 	}
 	
 	public String getYellTitle() {

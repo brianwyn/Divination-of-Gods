@@ -334,6 +334,10 @@ public class PlayerSave {
 						p.epDelay = Integer.parseInt(token2);
 					} else if (token.equals("taskType")) {
 						p.taskType = Integer.parseInt(token2);
+					} else if (token.equals("clan-name")) {
+						p.clanName = token2;
+					} else if (token.equals("clan-owner")) {
+						p.hasClan = Boolean.parseBoolean(token2);
 					} else if (token.equals("bankPin1")) {
 						p.bankPin1 = Integer.parseInt(token2);
 					} else if (token.equals("bankPin2")) {
@@ -1484,6 +1488,10 @@ public class PlayerSave {
 			characterfile.write("hasBankPin = ", 0, 13);
 			characterfile.write(Boolean.toString(p.hasBankPin), 0, Boolean
 					.toString(p.hasBankPin).length());
+			characterfile.newLine();
+			characterfile.write("clan-name = " + p.clanName);
+			characterfile.newLine();
+			characterfile.write("clan-owner = " + p.hasClan);
 			characterfile.newLine();
 			characterfile.write("bankPin1 = ", 0, 11);
 			characterfile.write(Integer.toString(p.bankPin1), 0, Integer

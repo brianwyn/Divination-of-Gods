@@ -7,6 +7,7 @@ import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
 import server.model.items.GameItem;
+import server.model.items.ItemAssistant;
 import server.model.minigames.DominionTowerByGabbe;
 import server.model.minigames.Gambling;
 import server.model.minigames.PestControl;
@@ -103,6 +104,27 @@ public class ClickingButtons implements PacketType {
 		}
 
 		switch (actionButtonId) { // 7002
+		
+		case 70212:
+			Server.clanChat.leaveClan(c.playerId, c.clanId);
+			break;
+			
+		case 71074:
+			if (Server.clanChat.isOwner(c)) {
+				if (System.currentTimeMillis() - c.lastEmote >= 1500) {
+					Server.clanChat.setLootshare(c,
+							(Server.clanChat.clans[c.clanId].lootshare ? false
+									: true));
+					Server.clanChat.updateClanChat(c.clanId);
+					c.lastEmote = System.currentTimeMillis();
+				}
+			} else {
+				if (c.clanId > 0)
+					c.sendMessage("Only the owner of the clan has the power to do that.");
+				else
+					c.sendMessage("You must be in a clan to use this button.");
+			}
+			break;
 
 		// Monster Teleports Start
 		case 132211:
@@ -2787,9 +2809,6 @@ public class ClickingButtons implements PacketType {
 				c.sendMessage("The Brutal Avatar of Destruction, Good Luck!");
 				c.sendMessage("He has 2x hp bars, more then 2 ppl recommended!");
 			}
-			break;
-
-		case 71074:
 			break;
 		case 34185:
 		case 34184:
@@ -6568,14 +6587,11 @@ public class ClickingButtons implements PacketType {
 
 		case 24017:
 			c.getPA().resetAutocast();
-			// c.sendFrame246(329, 200, c.playerEquipment[c.playerWeapon]);
-			c.getItems().sendWeapon(
-					c.playerEquipment[Player.playerWeapon],
-					c.getItems().getItemName(
-							c.playerEquipment[Player.playerWeapon]));
-			// c.setSidebarInterface(0, 328);
-			// c.setSidebarInterface(6, c.playerMagicBook == 0 ? 1151 :
-			// c.playerMagicBook == 1 ? 12855 : 1151);
+			c.getItems()
+					.sendWeapon(
+							c.playerEquipment[Player.playerWeapon],
+							ItemAssistant
+									.getItemName(c.playerEquipment[Player.playerWeapon]));
 			break;
 		}
 		if (c.isAutoButton(actionButtonId))

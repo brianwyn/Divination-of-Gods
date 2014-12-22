@@ -2,6 +2,7 @@ package server.world;
 
 import server.Config;
 import server.Server;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.Player;
 import server.model.players.PlayerHandler;
@@ -13,25 +14,9 @@ import server.util.Misc;
  **/
 public class LoginHandler {
 	public static void handleAllLoginCRAP(Client c) {
-		/*
-		 * if(c.playerRights > 0 && c.playerRights != 4) {
-		 * System.out.println("Player "
-		 * +c.playerName+" just logged in with rights "+c.playerRights+"!"); }
-		 */
 		c.sendMessage("<shad=16105973>[Server]</shad> <shad=12606464>Welome to Divination of Gods, please type ::vote and ::donate to support us!</shad>");
-		c.sendMessage("<shad=16105973>[Update]</shad> <shad=12606464>12/7/2014 At 11:36P.M. Est - A new client has been uploaded!</shad>");
+		c.sendMessage("<shad=16105973>[Update]</shad> <shad=12606464>12/24/2014 At 12:00A.M. MST - A new client has been uploaded!</shad>");
 		c.sendMessage("<shad=16105973>[Update]</shad> <shad=12606464>Please download it at www.divinationofgods.com</shad>");
-		/*
-		 * c.sendMessage(
-		 * "<shad=2320482>[Divination of Gods]</shad> <shad=258024802>Type ::donate & ::vote daily for great rewards!</shad>"
-		 * ); if(c.hasRecov == 0) { c.sendMessage(
-		 * "<shad=2320482>[Server]</shad> <shad=258024802>To be able to recover your account, type ::setemail MAIL!!!</shad>"
-		 * ); } else { c.sendMessage(
-		 * "<shad=2320482>[Server]</shad> <shad=258024802>Your email is: "
-		 * +c.email+""); c.sendMessage(
-		 * "<shad=2320482>[Server]</shad> <shad=258024802>If the email you've set is invalid, ask for a change on ::forums!"
-		 * ); }
-		 */
 		if (!c.task2[5] && c.hasRecov == 1) {
 			c.task2[5] = true;
 			c.sendMessage("You've completed the task: Set an Email!");
@@ -224,8 +209,7 @@ public class LoginHandler {
 		c.getItems().resetItems(3214);
 		c.getItems().sendWeapon(
 				c.playerEquipment[Player.playerWeapon],
-				c.getItems()
-						.getItemName(c.playerEquipment[Player.playerWeapon]));
+				ItemAssistant.getItemName(c.playerEquipment[Player.playerWeapon]));
 		c.getItems().resetBonus();
 		c.getItems().getBonus();
 		c.getPA()
@@ -235,8 +219,7 @@ public class LoginHandler {
 					c.playerEquipmentN[equip], equip);
 		c.getItems().writeBonus();
 		c.getCombat().getPlayerAnimIndex(
-				c.getItems()
-						.getItemName(c.playerEquipment[Player.playerWeapon])
+				ItemAssistant.getItemName(c.playerEquipment[Player.playerWeapon])
 						.toLowerCase());
 		c.getPA().logIntoPM();
 		c.getPA().sendFrame75(c.npcType, 17027);

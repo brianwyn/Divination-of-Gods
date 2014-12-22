@@ -11,6 +11,7 @@ import server.model.players.packets.ChallengePlayer;
 import server.model.players.packets.ChangeAppearance;
 import server.model.players.packets.ChangeRegions;
 import server.model.players.packets.Chat;
+import server.model.players.packets.ClanChat;
 import server.model.players.packets.ClickItem;
 import server.model.players.packets.ClickNPC;
 import server.model.players.packets.ClickObject;
@@ -50,6 +51,7 @@ public class PacketHandler {
 
 	static {
 		final SilentPacket u = new SilentPacket();
+		PacketHandler.packetId[60] = new ClanChat();
 		PacketHandler.packetId[3] = u;
 		PacketHandler.packetId[202] = u;
 		PacketHandler.packetId[77] = u;
