@@ -1,4 +1,5 @@
 package com;
+
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
@@ -19,392 +20,401 @@ public final class EntityDef {
 		if (i == 1374) { // done
 			entityDef.name = "Ganodermic runt";
 			entityDef.anIntArray94 = new int[] { 13895 };
-			entityDef.itemActions = new String[] { null, "Attack", null, null, null };
+			entityDef.itemActions = new String[] { null, "Attack", null, null,
+					null };
 			entityDef.combatLevel = 140;
 		}
 		if (i == 1381) { // done
 			entityDef.name = "Ganodermic beast";
 			entityDef.anIntArray94 = new int[] { 13888 };
 			entityDef.aByte68 = 3;
-			entityDef.itemActions = new String[] { null, "Attack", null, null, null };
+			entityDef.itemActions = new String[] { null, "Attack", null, null,
+					null };
 			entityDef.combatLevel = 280;
 		}
-			if(i == 6128){
-		entityDef.anIntArray94 = new int[1];
-		entityDef.anIntArray94[0] = 66066;
-		entityDef.name = "TokHaar-Tok-Xil";
-		entityDef.aByte68 = 3;
-		entityDef.itemActions = new String[5];
-		entityDef.itemActions[1] = "Attack";
-		entityDef.combatLevel = 1001;
-		entityDef.description = "The God of Zaros.".getBytes();
+		if (i == 6128) {
+			entityDef.anIntArray94 = new int[1];
+			entityDef.anIntArray94[0] = 66066;
+			entityDef.name = "TokHaar-Tok-Xil";
+			entityDef.aByte68 = 3;
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 1001;
+			entityDef.description = "The God of Zaros.".getBytes();
 
-		entityDef.standAnim = 6128;//stand animation
-		entityDef.walkAnim = 6129;//walk animation
-		
-}
-	if(i == 6032) {
-        stream.currentOffset = streamIndices[630];
-        entityDef.aByte68 = 1;
-        entityDef.readValues(stream); // Collect original NPC data
-        entityDef.itemActions = new String[5];
-        entityDef.itemActions[1] = "Attack";
-        entityDef.anIntArray94 = new int[1];
-        entityDef.anIntArray94[0] = 35223;//Npc's plate
-        entityDef.name = "Pikachu";
-        entityDef.combatLevel = 105;//Combat Level
-        entityDef.description = "Its Pikachu!".getBytes();
-        entityDef.standAnim = 6320;//stand animation
-        entityDef.walkAnim = 6319;//walk animation
-        }
-		if(i == 5092) {
-        stream.currentOffset = streamIndices[630];
-        entityDef.aByte68 = 1;
-        entityDef.readValues(stream); // Collect original NPC data
-        entityDef.itemActions = new String[5];
-        entityDef.itemActions[1] = "Attack";
-        entityDef.anIntArray94 = new int[1];
-        entityDef.anIntArray94[0] = 39990;//Npc's plate
-        entityDef.name = "Banana";
-        entityDef.combatLevel = 105;//Combat Level
-        entityDef.description = "Its a Banana!".getBytes();
-        entityDef.standAnim = 6320;//stand animation
-        entityDef.walkAnim = 6319;//walk animation
-        }
+			entityDef.standAnim = 6128;// stand animation
+			entityDef.walkAnim = 6129;// walk animation
+
+		}
+		if (i == 6032) {
+			stream.currentOffset = streamIndices[630];
+			entityDef.aByte68 = 1;
+			entityDef.readValues(stream); // Collect original NPC data
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.anIntArray94 = new int[1];
+			entityDef.anIntArray94[0] = 35223;// Npc's plate
+			entityDef.name = "Pikachu";
+			entityDef.combatLevel = 105;// Combat Level
+			entityDef.description = "Its Pikachu!".getBytes();
+			entityDef.standAnim = 6320;// stand animation
+			entityDef.walkAnim = 6319;// walk animation
+		}
+		if (i == 5092) {
+			stream.currentOffset = streamIndices[630];
+			entityDef.aByte68 = 1;
+			entityDef.readValues(stream); // Collect original NPC data
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.anIntArray94 = new int[1];
+			entityDef.anIntArray94[0] = 39990;// Npc's plate
+			entityDef.name = "Banana";
+			entityDef.combatLevel = 105;// Combat Level
+			entityDef.description = "Its a Banana!".getBytes();
+			entityDef.standAnim = 6320;// stand animation
+			entityDef.walkAnim = 6319;// walk animation
+		}
 		if (i == 5088) {
-        	entityDef.name = "Luigi";
-       	 	entityDef.anIntArray94 = new int[]{75106};
-        	entityDef.itemActions = new String[5];
-        	entityDef.itemActions[1] = "Attack";
-        	entityDef.combatLevel = 250;
-                }
-	if(i == 5092) {
-	entityDef.anIntArray94 = new int[]{39990};
-	entityDef.name = "Banana";
-	entityDef.itemActions = new String[5];
-	entityDef.itemActions[1] = "Attack";
-	entityDef.combatLevel = 136;
-        }
+			entityDef.name = "Luigi";
+			entityDef.anIntArray94 = new int[] { 75106 };
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 250;
+		}
+		if (i == 5092) {
+			entityDef.anIntArray94 = new int[] { 39990 };
+			entityDef.name = "Banana";
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 136;
+		}
 		if (i == 5087) {
-        	entityDef.name = "Megaman";
-        	entityDef.anIntArray94 = new int[]{75105};
-        	entityDef.itemActions = new String[5];
-        	entityDef.itemActions[1] = "Attack";
-        	entityDef.combatLevel = 200;
-                }
-		
+			entityDef.name = "Megaman";
+			entityDef.anIntArray94 = new int[] { 75105 };
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 200;
+		}
+
 		if (i == 5086) {
-		entityDef.name = "Pikachu";
-		entityDef.anIntArray94 = new int[]{75104};
-		entityDef.itemActions = new String[5];
-		entityDef.itemActions[1] = "Attack";
-		entityDef.combatLevel = 210;
-        	}
-		
+			entityDef.name = "Pikachu";
+			entityDef.anIntArray94 = new int[] { 75104 };
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 210;
+		}
+
 		if (i == 5085) {
-        	entityDef.name = "Spongebob";
-        	entityDef.anIntArray94 = new int[]{75103};
-        	entityDef.itemActions = new String[5];
-        	entityDef.itemActions[1] = "Attack";
-        	entityDef.combatLevel = 140;
-        	}
+			entityDef.name = "Spongebob";
+			entityDef.anIntArray94 = new int[] { 75103 };
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 140;
+		}
 
 		if (i == 5094) {
-		entityDef.name = "Homer Simpson";
-		entityDef.anIntArray94 = new int[]{35229};
-		entityDef.itemActions = new String[5];
-		entityDef.itemActions[1] = "Attack";
-		entityDef.combatLevel = 250;
-                }
+			entityDef.name = "Homer Simpson";
+			entityDef.anIntArray94 = new int[] { 35229 };
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 250;
+		}
 
 		if (i == 5098) {
-		entityDef.name = "Phoenix";
-		entityDef.anIntArray94 = new int[]{35233};
-		entityDef.itemActions = new String[5];
-		entityDef.itemActions[1] = "Attack";
-		entityDef.combatLevel = 250;
-                }
-		
+			entityDef.name = "Phoenix";
+			entityDef.anIntArray94 = new int[] { 35233 };
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 250;
+		}
+
 		if (i == 5097) {
-		entityDef.name = "Onix";
-		entityDef.anIntArray94 = new int[]{35232};
-		entityDef.itemActions = new String[5];
-		entityDef.itemActions[1] = "Attack";
-		entityDef.combatLevel = 250;
-                }
-		
+			entityDef.name = "Onix";
+			entityDef.anIntArray94 = new int[] { 35232 };
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 250;
+		}
+
 		if (i == 5096) {
-		entityDef.name = "Charmeleon";
-		entityDef.anIntArray94 = new int[]{35231};
-		entityDef.itemActions = new String[5];
-		entityDef.itemActions[1] = "Attack";
-		entityDef.combatLevel = 250;
-                }
-
-
-		if(i == 1382) {
-		entityDef.name = "Glacor";
-		entityDef.anIntArray94 = new int[]{58940};
-		entityDef.aByte68 = 3;
-		entityDef.anInt86 = 200;
-		entityDef.itemActions = new String[]{null, "Attack", null, null, null};
-		entityDef.combatLevel = 475;
-		entityDef.anInt91 = 123;
-		entityDef.aBoolean93 = true;
-	}
-		if(i == 1383) {
-		entityDef.name = "Unstable glacyte";
-		entityDef.anIntArray94 = new int[]{58942};
-		entityDef.itemActions = new String[]{null, "Attack", null, null, null};
-		entityDef.combatLevel = 101;
-		entityDef.aBoolean93 = false;
-	}
-		if(i == 1384) {
-		entityDef.name = "Sapping glacyte";
-		entityDef.anIntArray94 = new int[]{58939};
-		entityDef.itemActions = new String[]{null, "Attack", null, null, null};
-		entityDef.combatLevel = 101;
-		entityDef.aBoolean93 = true;
-	}
-		if(i == 1385) {
-		entityDef.name = "Enduring glacyte";
-		entityDef.anIntArray94 = new int[]{58937};
-		entityDef.itemActions = new String[]{null, "Attack", null, null, null};
-		entityDef.combatLevel = 101;
-		entityDef.aBoolean93 = true;
-	}
-
-			if(i == 2566) {
-				entityDef.anIntArray94 = new int[]{7409};
-			}
-			
-			
-			if(i == 588) {
-				entityDef.itemActions = new String[5];
-				entityDef.anIntArray94 = new int[]{69042};
-				entityDef.standAnim = 808;//stand animation
-				entityDef.walkAnim = 819;
-				entityDef.itemActions[0] = "Trade";
-				entityDef.name = "OutFit Store";
-				entityDef.description = "Official Pure Melee Store.".getBytes();
-			}
-		if(i == 1777) {
-		stream.currentOffset = streamIndices[630]; 
-	entityDef.aByte68 = 3;
-	entityDef.readValues(stream); // Collect original NPC data
-		entityDef.name = "@red@Pk @gre@Master";
-		entityDef.description = "Legendary pker".getBytes();
-		entityDef.combatLevel = 2147;
-		entityDef.itemActions = new String[5];
-		entityDef.itemActions[0] = "Talk To";
-		entityDef.itemActions[1] = "Rewards";
-	entityDef.anIntArray94 = new int[9];
-	entityDef.anIntArray94[0] = 83;//Npc's Cape
-	entityDef.anIntArray94[1] = 3188;//Npc's Head
-	entityDef.anIntArray94[2] = 62746;//Npc's Plate
-	entityDef.anIntArray94[3] = 62743;//Npc's Legs
-	entityDef.anIntArray94[4] = 67705;//Npc's Weapon
-	entityDef.anIntArray94[5] = 55728;//Npc's Gloves
-	entityDef.anIntArray94[6] = 53327;//Npc's Boots
-	//entityDef.anIntArray94[7] = 17461;//Npc's Shadow
-	entityDef.anIntArray94[7] = 20147;//Npc's Arms (don't edit)
-	entityDef.anIntArray94[8] = 40939;//Npc's Off hand
-				entityDef.standAnim = 808;//stand animation
-				entityDef.walkAnim = 819;
-}	
-			if(i == 7121) {
-				entityDef.itemActions = new String[5];
-				entityDef.anIntArray94 = new int[]{47262};
-				entityDef.standAnim = 808;//stand animation
-				entityDef.walkAnim = 819;
-				entityDef.itemActions[0] = "Talk To";
-				entityDef.name = "Milestones Handler";
-				entityDef.description = "Official Pure Melee Store.".getBytes();
-			}
-			
-			if(i == 402) {
-				entityDef.itemActions = new String[5];
-				entityDef.anIntArray94 = new int[]{71826};
-				entityDef.standAnim = 808;//stand animation
-				entityDef.walkAnim = 819;
-				entityDef.itemActions[0] = "Trade";
-				entityDef.name = "Pure Store";
-				entityDef.description = "Official Divination Melee Store.".getBytes();
-			}
-			
-			if(i == 7010) {
-				entityDef.itemActions = new String[5];
-				entityDef.anIntArray94 = new int[]{31749};
-				entityDef.standAnim = 808;//stand animation
-				entityDef.walkAnim = 819;
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Melee Store";
-				entityDef.description = "Official Divination Melee Store.".getBytes();
-			}
-
-			if(i == 7012) {
-				entityDef.itemActions = new String[5];
-				entityDef.anIntArray94 = new int[]{31746};
-				entityDef.standAnim = 808;//stand animation
-				entityDef.walkAnim = 819;
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Range Store";
-				entityDef.description = "Official Divination Range Store.".getBytes();
-			}
-						if(i == 884) {
-				entityDef.itemActions = new String[5];
-				entityDef.anIntArray94 = new int[]{31748};
-				entityDef.itemActions[2] = "Trade";
-				entityDef.standAnim = 0;//stand animation
-				entityDef.walkAnim = 0;
-				entityDef.name = "Vote Shop";
-				entityDef.description = "Official Divination Guide.".getBytes();
-			}
-		
-			
-			if(i == 7015) {
-				entityDef.itemActions = new String[5];
-				entityDef.anIntArray94 = new int[]{31818};
-				entityDef.standAnim = 808;//stand animation
-				entityDef.walkAnim = 819;
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Mage Store";
-				entityDef.description = "Official Divination Mage Store.".getBytes();
-			}
-
-
-
-			if(i == 883) {
-					entityDef.itemActions = new String[5];
-				entityDef.anIntArray94 = new int[]{46484};
-				entityDef.standAnim = 0;//stand animation
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Donator Store";
-				entityDef.description = "Official Divination Donator Store.".getBytes();
-			}
-
-			if(i == 1861) {
-					entityDef.itemActions = new String[5];
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Ranging Store";
-				entityDef.description = "Official Divination Range Supplier.".getBytes();
-			}
-			if(i == 705) {
+			entityDef.name = "Charmeleon";
+			entityDef.anIntArray94 = new int[] { 35231 };
 			entityDef.itemActions = new String[5];
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Melee Store";
-				entityDef.description = "Official Divination Melee Supplier.".getBytes();
-			}
-			if(i == 4707) {
-			entityDef.itemActions = new String[5];
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Magic Store";
-				entityDef.description = "Official Divination Magic Supplier.".getBytes();
-			}
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 250;
+		}
 
-			if(i == 884) {
+		if (i == 1382) {
+			entityDef.name = "Glacor";
+			entityDef.anIntArray94 = new int[] { 58940 };
+			entityDef.aByte68 = 3;
+			entityDef.anInt86 = 200;
+			entityDef.itemActions = new String[] { null, "Attack", null, null,
+					null };
+			entityDef.combatLevel = 475;
+			entityDef.anInt91 = 123;
+			entityDef.aBoolean93 = true;
+		}
+		if (i == 1383) {
+			entityDef.name = "Unstable glacyte";
+			entityDef.anIntArray94 = new int[] { 58942 };
+			entityDef.itemActions = new String[] { null, "Attack", null, null,
+					null };
+			entityDef.combatLevel = 101;
+			entityDef.aBoolean93 = false;
+		}
+		if (i == 1384) {
+			entityDef.name = "Sapping glacyte";
+			entityDef.anIntArray94 = new int[] { 58939 };
+			entityDef.itemActions = new String[] { null, "Attack", null, null,
+					null };
+			entityDef.combatLevel = 101;
+			entityDef.aBoolean93 = true;
+		}
+		if (i == 1385) {
+			entityDef.name = "Enduring glacyte";
+			entityDef.anIntArray94 = new int[] { 58937 };
+			entityDef.itemActions = new String[] { null, "Attack", null, null,
+					null };
+			entityDef.combatLevel = 101;
+			entityDef.aBoolean93 = true;
+		}
+
+		if (i == 2566) {
+			entityDef.anIntArray94 = new int[] { 7409 };
+		}
+
+		if (i == 588) {
 			entityDef.itemActions = new String[5];
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Voting Shop";
-				entityDef.description = "Official Divination Magic Supplier.".getBytes();
-			}
-			if(i == 587) {
+			entityDef.anIntArray94 = new int[] { 69042 };
+			entityDef.standAnim = 808;// stand animation
+			entityDef.walkAnim = 819;
+			entityDef.itemActions[0] = "Trade";
+			entityDef.name = "OutFit Store";
+			entityDef.description = "Official Pure Melee Store.".getBytes();
+		}
+		if (i == 1777) {
+			stream.currentOffset = streamIndices[630];
+			entityDef.aByte68 = 3;
+			entityDef.readValues(stream); // Collect original NPC data
+			entityDef.name = "@red@Pk @gre@Master";
+			entityDef.description = "Legendary pker".getBytes();
+			entityDef.combatLevel = 2147;
 			entityDef.itemActions = new String[5];
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Supplies Shop";
-				entityDef.description = "Official Divination Magic Supplier.".getBytes();
-			}
-			if(i == 945) {
+			entityDef.itemActions[0] = "Talk To";
+			entityDef.itemActions[1] = "Rewards";
+			entityDef.anIntArray94 = new int[9];
+			entityDef.anIntArray94[0] = 83;// Npc's Cape
+			entityDef.anIntArray94[1] = 3188;// Npc's Head
+			entityDef.anIntArray94[2] = 62746;// Npc's Plate
+			entityDef.anIntArray94[3] = 62743;// Npc's Legs
+			entityDef.anIntArray94[4] = 67705;// Npc's Weapon
+			entityDef.anIntArray94[5] = 55728;// Npc's Gloves
+			entityDef.anIntArray94[6] = 53327;// Npc's Boots
+			// entityDef.anIntArray94[7] = 17461;//Npc's Shadow
+			entityDef.anIntArray94[7] = 20147;// Npc's Arms (don't edit)
+			entityDef.anIntArray94[8] = 40939;// Npc's Off hand
+			entityDef.standAnim = 808;// stand animation
+			entityDef.walkAnim = 819;
+		}
+		if (i == 7121) {
 			entityDef.itemActions = new String[5];
-				entityDef.itemActions[2] = "Trade";
-				entityDef.name = "Loyalty Shop";
-				entityDef.description = "Official Divination Magic Supplier.".getBytes();
-			}
+			entityDef.anIntArray94 = new int[] { 47262 };
+			entityDef.standAnim = 808;// stand animation
+			entityDef.walkAnim = 819;
+			entityDef.itemActions[0] = "Talk To";
+			entityDef.name = "Milestones Handler";
+			entityDef.description = "Official Pure Melee Store.".getBytes();
+		}
+
+		if (i == 402) {
+			entityDef.itemActions = new String[5];
+			entityDef.anIntArray94 = new int[] { 71826 };
+			entityDef.standAnim = 808;// stand animation
+			entityDef.walkAnim = 819;
+			entityDef.itemActions[0] = "Trade";
+			entityDef.name = "Pure Store";
+			entityDef.description = "Official Divination Melee Store."
+					.getBytes();
+		}
+
+		if (i == 7010) {
+			entityDef.itemActions = new String[5];
+			entityDef.anIntArray94 = new int[] { 31749 };
+			entityDef.standAnim = 808;// stand animation
+			entityDef.walkAnim = 819;
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Melee Store";
+			entityDef.description = "Official Divination Melee Store."
+					.getBytes();
+		}
+
+		if (i == 7012) {
+			entityDef.itemActions = new String[5];
+			entityDef.anIntArray94 = new int[] { 31746 };
+			entityDef.standAnim = 808;// stand animation
+			entityDef.walkAnim = 819;
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Range Store";
+			entityDef.description = "Official Divination Range Store."
+					.getBytes();
+		}
+		if (i == 884) {
+			entityDef.itemActions = new String[5];
+			entityDef.anIntArray94 = new int[] { 31748 };
+			entityDef.itemActions[2] = "Trade";
+			entityDef.standAnim = 0;// stand animation
+			entityDef.walkAnim = 0;
+			entityDef.name = "Vote Shop";
+			entityDef.description = "Official Divination Guide.".getBytes();
+		}
+
+		if (i == 7015) {
+			entityDef.itemActions = new String[5];
+			entityDef.anIntArray94 = new int[] { 31818 };
+			entityDef.standAnim = 808;// stand animation
+			entityDef.walkAnim = 819;
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Mage Store";
+			entityDef.description = "Official Divination Mage Store."
+					.getBytes();
+		}
+
+		if (i == 883) {
+			entityDef.itemActions = new String[5];
+			entityDef.anIntArray94 = new int[] { 46484 };
+			entityDef.standAnim = 0;// stand animation
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Donator Store";
+			entityDef.description = "Official Divination Donator Store."
+					.getBytes();
+		}
+
+		if (i == 1861) {
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Ranging Store";
+			entityDef.description = "Official Divination Range Supplier."
+					.getBytes();
+		}
+		if (i == 705) {
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Melee Store";
+			entityDef.description = "Official Divination Melee Supplier."
+					.getBytes();
+		}
+		if (i == 4707) {
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Magic Store";
+			entityDef.description = "Official Divination Magic Supplier."
+					.getBytes();
+		}
+
+		if (i == 884) {
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Voting Shop";
+			entityDef.description = "Official Divination Magic Supplier."
+					.getBytes();
+		}
+		if (i == 587) {
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Supplies Shop";
+			entityDef.description = "Official Divination Magic Supplier."
+					.getBytes();
+		}
+		if (i == 945) {
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[2] = "Trade";
+			entityDef.name = "Loyalty Shop";
+			entityDef.description = "Official Divination Magic Supplier."
+					.getBytes();
+		}
 		if (i == 4677) {
 			entityDef.itemActions = new String[5];
 			entityDef.itemActions[1] = "Attack";
 			entityDef.name = "Elvarg";
 			entityDef.combatLevel = 150;
 		}
-					 if(i == 666)
-		 {
-	entityDef.itemActions = new String[5];
-	entityDef.itemActions[0] = "Pick-up";
-	entityDef.itemActions[2] = "Talk";
-	entityDef.itemActions[3] = "Interact-with";
-	entityDef.anIntArray94 = new int[1]; 
-	entityDef.anIntArray94[0] = 44751;
-	entityDef.name = "@red@Pet Jad";
-	entityDef.description = "A fearsome obsidian beast... Aww, so cute.".getBytes();
-	}
-					 if(i == 3376)
-		 {
-	entityDef.name = "@gre@Prince Black Dragon";
-	entityDef.description = "I told his dad i'd baby sit :)".getBytes();
-	}	
-	if(i == 2083)
-		 {
-	entityDef.itemActions = new String[5];
-	entityDef.itemActions[1] = "Attack";
-	entityDef.name = "Sigmund";
-		entityDef.combatLevel = 122;
-	entityDef.description = "A fearsome warrior..".getBytes();
-	}
-		if(i == 4995) {
-		stream.currentOffset = streamIndices[630]; 
-	entityDef.aByte68 = 3;
-	entityDef.readValues(stream); // Collect original NPC data
-		entityDef.name = "@red@Mod @gre@Jesse";
-		entityDef.description = "I Wish i was like him...".getBytes();
-		entityDef.combatLevel = 1337;
-		entityDef.itemActions = new String[5];
-		entityDef.itemActions[0] = "Talk To";
-		entityDef.itemActions[1] = "Rewards";
-	entityDef.anIntArray94 = new int[9];
-	entityDef.anIntArray94[0] = 83;//Npc's Cape
-	entityDef.anIntArray94[1] = 79920;//Npc's Head
-	entityDef.anIntArray94[2] = 62746;//Npc's Plate
-	entityDef.anIntArray94[3] = 62743;//Npc's Legs
-	entityDef.anIntArray94[4] = 79922;//Npc's Weapon
-	entityDef.anIntArray94[5] = 55728;//Npc's Gloves
-	entityDef.anIntArray94[6] = 53327;//Npc's Boots
-	//entityDef.anIntArray94[7] = 17461;//Npc's Shadow
-	entityDef.anIntArray94[7] = 20147;//Npc's Arms (don't edit)
-	entityDef.anIntArray94[8] = 40939;//Npc's Off hand
-				entityDef.standAnim = 808;//stand animation
-				entityDef.walkAnim = 819;
-}	
-if(i == 42) {
-		stream.currentOffset = streamIndices[630]; 
-	entityDef.aByte68 = 3;
-	entityDef.readValues(stream); // Collect original NPC data
-		entityDef.name = "@or1@Divination Masteer";
-		entityDef.description = "Everyone looks up to him!".getBytes();
-		entityDef.itemActions = new String[5];
-		entityDef.itemActions[0] = "Talk To";
-	entityDef.anIntArray94 = new int[9];
-	entityDef.anIntArray94[0] = 65297;//Npc's Cape
-	entityDef.anIntArray94[1] = 70662;//Npc's Head
-	//entityDef.anIntArray94[2] = 70669;//Npc's Plate
-	//entityDef.anIntArray94[3] = 70665;//Npc's Legs	
-	entityDef.anIntArray94[2] = 10490;//Npc's Plate
-	entityDef.anIntArray94[3] = 10486;//Npc's Legs
-	entityDef.anIntArray94[4] = 62768;//Npc's Weapon
-	entityDef.anIntArray94[5] = 70655;//Npc's Gloves
-	entityDef.anIntArray94[6] = 70653;//Npc's Boots
-	//entityDef.anIntArray94[7] = 17461;//Npc's Shadow
-	entityDef.anIntArray94[7] = 20147;//Npc's Arms (don't edit)
-	entityDef.anIntArray94[8] = 62367;//Npc's Off hand
-				entityDef.standAnim = 808;//stand animation
-				entityDef.walkAnim = 819;
-}	
+		if (i == 666) {
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[0] = "Pick-up";
+			entityDef.itemActions[2] = "Talk";
+			entityDef.itemActions[3] = "Interact-with";
+			entityDef.anIntArray94 = new int[1];
+			entityDef.anIntArray94[0] = 44751;
+			entityDef.name = "@red@Pet Jad";
+			entityDef.description = "A fearsome obsidian beast... Aww, so cute."
+					.getBytes();
+		}
+		if (i == 3376) {
+			entityDef.name = "@gre@Prince Black Dragon";
+			entityDef.description = "I told his dad i'd baby sit :)".getBytes();
+		}
+		if (i == 2083) {
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.name = "Sigmund";
+			entityDef.combatLevel = 122;
+			entityDef.description = "A fearsome warrior..".getBytes();
+		}
+		if (i == 4995) {
+			stream.currentOffset = streamIndices[630];
+			entityDef.aByte68 = 3;
+			entityDef.readValues(stream); // Collect original NPC data
+			entityDef.name = "@red@Mod @gre@Jesse";
+			entityDef.description = "I Wish i was like him...".getBytes();
+			entityDef.combatLevel = 1337;
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[0] = "Talk To";
+			entityDef.itemActions[1] = "Rewards";
+			entityDef.anIntArray94 = new int[9];
+			entityDef.anIntArray94[0] = 83;// Npc's Cape
+			entityDef.anIntArray94[1] = 79920;// Npc's Head
+			entityDef.anIntArray94[2] = 62746;// Npc's Plate
+			entityDef.anIntArray94[3] = 62743;// Npc's Legs
+			entityDef.anIntArray94[4] = 79922;// Npc's Weapon
+			entityDef.anIntArray94[5] = 55728;// Npc's Gloves
+			entityDef.anIntArray94[6] = 53327;// Npc's Boots
+			// entityDef.anIntArray94[7] = 17461;//Npc's Shadow
+			entityDef.anIntArray94[7] = 20147;// Npc's Arms (don't edit)
+			entityDef.anIntArray94[8] = 40939;// Npc's Off hand
+			entityDef.standAnim = 808;// stand animation
+			entityDef.walkAnim = 819;
+		}
+		if (i == 42) {
+			stream.currentOffset = streamIndices[630];
+			entityDef.aByte68 = 3;
+			entityDef.readValues(stream); // Collect original NPC data
+			entityDef.name = "@or1@Divination Masteer";
+			entityDef.description = "Everyone looks up to him!".getBytes();
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[0] = "Talk To";
+			entityDef.anIntArray94 = new int[9];
+			entityDef.anIntArray94[0] = 65297;// Npc's Cape
+			entityDef.anIntArray94[1] = 70662;// Npc's Head
+			// entityDef.anIntArray94[2] = 70669;//Npc's Plate
+			// entityDef.anIntArray94[3] = 70665;//Npc's Legs
+			entityDef.anIntArray94[2] = 10490;// Npc's Plate
+			entityDef.anIntArray94[3] = 10486;// Npc's Legs
+			entityDef.anIntArray94[4] = 62768;// Npc's Weapon
+			entityDef.anIntArray94[5] = 70655;// Npc's Gloves
+			entityDef.anIntArray94[6] = 70653;// Npc's Boots
+			// entityDef.anIntArray94[7] = 17461;//Npc's Shadow
+			entityDef.anIntArray94[7] = 20147;// Npc's Arms (don't edit)
+			entityDef.anIntArray94[8] = 62367;// Npc's Off hand
+			entityDef.standAnim = 808;// stand animation
+			entityDef.walkAnim = 819;
+		}
 		int myass = 4247;
-		
+
 		if (i == myass) {
 			entityDef.itemActions[2] = "Visit house";
 			entityDef.itemActions[3] = "Store";
-		}	
-
+		}
 
 		if (i == 10040) {
 			entityDef.itemActions[1] = "Attack";
@@ -441,29 +451,29 @@ if(i == 42) {
 			entityDef.combatLevel = 1001;
 			// entityDef.headicon = 19;
 		}
-				if (i == 607) {
+		if (i == 607) {
 			entityDef.name = "Braven";
-				entityDef.itemActions = new String[5];
+			entityDef.itemActions = new String[5];
 			entityDef.itemActions[2] = "Agility Shop";
 			entityDef.itemActions[3] = "High-Level-Agility";
-		}	
-if(i == 6359){
-            entityDef.name = "Pest Queen";
-            entityDef.anIntArray94 = new int[1];
-            entityDef.anIntArray94[0] = 60929;
-            entityDef.aByte68 = 5;
-            /*entityDef.standAnim = 14778;
-            entityDef.walkAnim = 14777;
-            entityDef.anInt58 = 14777;
-            entityDef.anInt83 = 14777;
-            entityDef.anInt55 = 14777;*/
-            entityDef.itemActions = new String[5];
-            entityDef.itemActions[1] = "Attack";
-            entityDef.combatLevel = 599;
-            entityDef.anInt85 = 20;
-            entityDef.anInt92 = 125;
-            entityDef.description = "The mother of all pests!".getBytes();
-        }
+		}
+		if (i == 6359) {
+			entityDef.name = "Pest Queen";
+			entityDef.anIntArray94 = new int[1];
+			entityDef.anIntArray94[0] = 60929;
+			entityDef.aByte68 = 5;
+			/*
+			 * entityDef.standAnim = 14778; entityDef.walkAnim = 14777;
+			 * entityDef.anInt58 = 14777; entityDef.anInt83 = 14777;
+			 * entityDef.anInt55 = 14777;
+			 */
+			entityDef.itemActions = new String[5];
+			entityDef.itemActions[1] = "Attack";
+			entityDef.combatLevel = 599;
+			entityDef.anInt85 = 20;
+			entityDef.anInt92 = 125;
+			entityDef.description = "The mother of all pests!".getBytes();
+		}
 		if (i == 2587) {
 			entityDef.itemActions = new String[5];
 			entityDef.itemActions[1] = "Attack";
@@ -588,7 +598,7 @@ if(i == 6359){
 			entityDef.anInt79 = 32;
 			entityDef.aBoolean84 = true;
 		}
-				if (i == 2638) {
+		if (i == 2638) {
 			entityDef.anIntArray94 = new int[1];
 			entityDef.anIntArray94[0] = 1;
 			entityDef.name = "Nex";

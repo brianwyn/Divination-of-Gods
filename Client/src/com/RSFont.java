@@ -15,6 +15,7 @@ public class RSFont extends DrawingArea {
     public byte[][] fontPixels;
     public int[] characterScreenWidths;
     public Sprite[] chatImages;
+    public Sprite[] clanCrowns;
     public static String aRSString_4135;
     public static String startTransparency;
     public static String startDefaultShadow;
@@ -28,6 +29,7 @@ public class RSFont extends DrawingArea {
     public static String startStrikethrough;
     public static String endColor;
     public static String startImage;
+	public static String ccStartImage;
     public static String endUnderline;
     public static String defaultStrikethrough;
     public static String startShadow;
@@ -212,9 +214,14 @@ public class RSFont extends DrawingArea {
         chatImages = icons;
     }
 
+	public void unpackCChatImages(Sprite[] icons) {
+		clanCrowns = icons;
+	}
+
     public void drawBasicString(String string, int drawX, int drawY) {
         drawY -= baseCharacterHeight;
         int startIndex = -1;
+		@SuppressWarnings("unused")
         int i_70_ = -1;
         for (int currentCharacter = 0; currentCharacter < string.length(); currentCharacter++) {
             int character = string.charAt(currentCharacter);
@@ -248,13 +255,35 @@ public class RSFont extends DrawingArea {
                             try {
                                 int imageId = Integer.valueOf(effectString.substring(4));
                                 Sprite icon = chatImages[imageId];
-                                int iconModY = icon.anInt1445;
-                                if (transparency == 256) {
-                                    icon.method346(drawX, (drawY + baseCharacterHeight - iconModY));
-                                } else {
-                                    icon.drawSprite(drawX,(drawY + baseCharacterHeight - iconModY), transparency);
-                                }
-                                drawX += icon.anInt1444;
+                                int iconModY = icon.maxHeight;
+    							if (transparency == 256) {
+    								icon.drawSprite(drawX, (drawY
+    										+ baseCharacterHeight - iconModY));
+    							} else {
+    								icon.drawSprite(drawX, (drawY
+    										+ baseCharacterHeight - iconModY),
+    										transparency);
+    							}
+                                drawX += icon.maxWidth;
+                                i_70_ = -1;
+                            } catch (Exception exception) {
+                                /* empty */
+                            }
+                        }
+                        if (effectString.startsWith(ccStartImage)) {
+                            try {
+                                int imageId = Integer.valueOf(effectString.substring(3));
+                                Sprite icon = clanCrowns[imageId];
+                                int iconModY = icon.maxHeight;
+    							if (transparency == 256) {
+    								icon.drawSprite(drawX, (drawY
+    										+ baseCharacterHeight - iconModY));
+    							} else {
+    								icon.drawSprite(drawX, (drawY
+    										+ baseCharacterHeight - iconModY),
+    										transparency);
+    							}
+                                drawX += icon.maxWidth;
                                 i_70_ = -1;
                             } catch (Exception exception) {
                                 /* empty */
@@ -365,17 +394,53 @@ public class RSFont extends DrawingArea {
                                 }
                                 modifierOffset++;
                                 int iconId = Integer.valueOf(effectString.substring(4));
-                                Sprite class92 = chatImages[iconId];
-                                int iconOffsetY = class92.anInt1445;
-                                if (transparency == 256) {
-                                    class92.drawSprite(drawX + xModI,
-                                                       (drawY + baseCharacterHeight - iconOffsetY + yMod));
+								Sprite sprite_1 = chatImages[iconId];
+								int iconOffsetY = sprite_1.maxHeight;
+								if (transparency == 256) {
+									sprite_1.drawSprite(drawX + xModI,
+											(drawY + baseCharacterHeight
+													- iconOffsetY + yMod));
+								} else {
+									sprite_1.drawSprite(drawX + xModI,
+											(drawY + baseCharacterHeight
+													- iconOffsetY + yMod),
+											transparency);
+								}
+								drawX += sprite_1.maxWidth;
+                                i_96_ = -1;
+                            } catch (Exception exception) {
+                                /* empty */
+                            }
+                        }
+                        if (effectString.startsWith(ccStartImage)) {
+                            try {
+                                int xModI;
+                                if (xModifier != null) {
+                                    xModI = xModifier[modifierOffset];
                                 } else {
-                                    class92.drawSprite(drawX + xModI,
-                                                                  (drawY + baseCharacterHeight - iconOffsetY + yMod),
-                                                                  transparency);
+                                    xModI = 0;
                                 }
-                                drawX += class92.anInt1444;
+                                int yMod;
+                                if (yModifier != null) {
+                                    yMod = yModifier[modifierOffset];
+                                } else {
+                                    yMod = 0;
+                                }
+                                modifierOffset++;
+                                int iconId = Integer.valueOf(effectString.substring(3));
+								Sprite sprite_1 = clanCrowns[iconId];
+								int iconOffsetY = sprite_1.maxHeight;
+								if (transparency == 256) {
+									sprite_1.drawSprite(drawX + xModI,
+											(drawY + baseCharacterHeight
+													- iconOffsetY + yMod));
+								} else {
+									sprite_1.drawSprite(drawX + xModI,
+											(drawY + baseCharacterHeight
+													- iconOffsetY + yMod),
+											transparency);
+								}
+								drawX += sprite_1.maxWidth;
                                 i_96_ = -1;
                             } catch (Exception exception) {
                                 /* empty */
@@ -541,7 +606,16 @@ public class RSFont extends DrawingArea {
                         if (effectString.startsWith(startImage)) {
                             try {//<img=
                                 int iconId = Integer.valueOf(effectString.substring(4));
-                                finalWidth += chatImages[iconId].anInt1444;
+                                finalWidth += chatImages[iconId].maxWidth;
+                                i_126_ = -1;
+                            } catch (Exception exception) {
+                                /* empty */
+                            }
+                        }
+                        if (effectString.startsWith(ccStartImage)) {
+                            try {//<img=
+                                int iconId = Integer.valueOf(effectString.substring(3));
+                                finalWidth += clanCrowns[iconId].maxWidth;
                                 i_126_ = -1;
                             } catch (Exception exception) {
                                 /* empty */
@@ -585,6 +659,7 @@ public class RSFont extends DrawingArea {
         aRSString_4163 = null;
         aRSString_4169 = null;
         startImage = null;
+        ccStartImage = null;
         lineBreak = null;
         startColor = null;
         endColor = null;
@@ -746,6 +821,7 @@ public class RSFont extends DrawingArea {
         defaultStrikethrough = "str";
         endUnderline = "/u";
         startImage = "img=";
+		ccStartImage = "cc=";
         startShadow = "shad=";
         startUnderline = "u=";
         endColor = "/col";

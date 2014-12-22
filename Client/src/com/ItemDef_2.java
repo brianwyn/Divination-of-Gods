@@ -1,781 +1,797 @@
 package com;
+
 public class ItemDef_2 {
 	public static ItemDef itemDef(int i, ItemDef itemDef) {
-if(i == 17807) {
-itemDef.name = "Raw web snipper (T6)";
-}
-if(i == 17616) {
-itemDef.name = "Strong prayer potion";
-}
-if(i == 17811) {
-itemDef.name = "Raw salve eel (T8)";
-}
-if(i == 18173) {
-itemDef.name = "Salve eel (T8)";
-}
-if(i == 18169) {
-itemDef.name = "Web snipper (T6)";
-}
-if(i == 16889) {
-itemDef.name = "Novite 2h sword (T1)";
-}
-if(i == 16935) {
-itemDef.name = "Novite rapier (T1)";
-}
-if(i == 16691) {
-itemDef.name = "Novite full helm (T1)";
-}
-if(i == 17239) {
-itemDef.name = "Novite platebody (T1)";
-}
-if(i == 16669) {
-itemDef.name = "Novite platelegs (T1)";
-}
-if(i == 16895) {
-itemDef.name = "Kratonite 2h sword (T4)";
-}
-if(i == 16941) {
-itemDef.name = "Kratonite rapier (T4)";
-}
-if(i == 16697) {
-itemDef.name = "Kratonite full helm (T4)";
-}
-if(i == 17245) {
-itemDef.name = "Kratonite platebody (T4)";
-}
-if(i == 16675) {
-itemDef.name = "Kratonite platelegs (T4)";
-}
-if(i == 16901) {
-itemDef.name = "Argonite 2h sword (T7)";
-}
-if(i == 16947) {
-itemDef.name = "Argonite rapier (T7)";
-}
-if(i == 16703) {
-itemDef.name = "Argonite full helm (T7)";
-}
-if(i == 17251) {
-itemDef.name = "Argonite platebody (T7)";
-}
-if(i == 16681) {
-itemDef.name = "Argonite platelegs (T7)";
-}
-if(i == 16907) {
-itemDef.name = "Promethium 2h sword (T10)";
-}
-if(i == 16953) {
-itemDef.name = "Promethium rapier (T10)";
-}
-if(i == 16709) {
-itemDef.name = "Promethium full helm (T10)";
-}
-if(i == 17257) {
-itemDef.name = "Promethium platebody (T10)";
-}
-if(i == 16678) {
-itemDef.name = "Promethium platelegs (T10)";
-}
-if(i == 16678) {
-itemDef.name = "Promethium platelegs (T10)";
-}
-if(i == 16867) {
-itemDef.name = "Tangle gum shortbow (T1)";
-}
-if(i == 16873) {
-itemDef.name = "Utuku shortbow (T4)";
-}
-if(i == 16879) {
-itemDef.name = "Thigat shortbow (T7)";
-}
-if(i == 16885) {
-itemDef.name = "Grave creeper shortbow (T10)";
-}
-if(i == 17047) {
-itemDef.name = "Archleather coif (T4)";
-}
-if(i == 17179) {
-itemDef.name = "Archleather body (T4)";
-}
-if(i == 17325) {
-itemDef.name = "Archleather chaps (T4)";
-}
-if(i == 17059) {
-itemDef.name = "Tyrannoleather coif (T10)";
-}
-if(i == 17191) {
-itemDef.name = "Tyrannoleather body (T10)";
-}
-if(i == 17337) {
-itemDef.name = "Tyrannoleather chaps (T10)";
-}
-if(i == 151) {
-itemDef.name = "Overload(3)";
-itemDef.itemActions = new String[6];
-itemDef.itemActions[0] = "Drink";
-}
-if(i == 11967) {
-itemDef.name = "Dwarf Cannon Set";
-itemDef.itemActions = new String[6];
-itemDef.itemActions[0] = "Open";
-}
-if(i == 2438) {
-itemDef.name = "Overload(4)";
-itemDef.itemActions = new String[6];
-itemDef.itemActions[0] = "Drink";
-}
-if(i == 153) {
-itemDef.itemActions = new String[6];
-itemDef.itemActions[0] = "Drink";
-}
-if(i == 155) {
-itemDef.name = "Overload(2)";
-itemDef.itemActions = new String[6];
-itemDef.itemActions[0] = "Drink";
-}
-if(i == 15246) {
-itemDef.name = "Barrage-Runes Package";
-}
-if(i == 15247) {
-itemDef.modelID = 48514; // ^ Model id
-itemDef.itemActions = new String[6];
-itemDef.itemActions[0] = "Open";
-itemDef.name = "Veng-Runes Package";
-}
-if (i == 18375) {
-itemDef.name = "Steadfast Boots";
-itemDef.modelID = 53835;
-itemDef.modelZoom = 900;
-itemDef.modelRotation2 = 165;
-	itemDef.stackable = false;
-itemDef.modelRotation1 = 99;
-itemDef.modelOffset1 = 3;
-itemDef.modelOffset2 =-7;
-itemDef.anInt165 = 53327;
-itemDef.anInt200 = 53327;
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-itemDef.description = "Some Steadfast boots.";
-}
+		if (i == 17807) {
+			itemDef.name = "Raw web snipper (T6)";
+		}
+		if (i == 17616) {
+			itemDef.name = "Strong prayer potion";
+		}
+		if (i == 17811) {
+			itemDef.name = "Raw salve eel (T8)";
+		}
+		if (i == 18173) {
+			itemDef.name = "Salve eel (T8)";
+		}
+		if (i == 18169) {
+			itemDef.name = "Web snipper (T6)";
+		}
+		if (i == 16889) {
+			itemDef.name = "Novite 2h sword (T1)";
+		}
+		if (i == 16935) {
+			itemDef.name = "Novite rapier (T1)";
+		}
+		if (i == 16691) {
+			itemDef.name = "Novite full helm (T1)";
+		}
+		if (i == 17239) {
+			itemDef.name = "Novite platebody (T1)";
+		}
+		if (i == 16669) {
+			itemDef.name = "Novite platelegs (T1)";
+		}
+		if (i == 16895) {
+			itemDef.name = "Kratonite 2h sword (T4)";
+		}
+		if (i == 16941) {
+			itemDef.name = "Kratonite rapier (T4)";
+		}
+		if (i == 16697) {
+			itemDef.name = "Kratonite full helm (T4)";
+		}
+		if (i == 17245) {
+			itemDef.name = "Kratonite platebody (T4)";
+		}
+		if (i == 16675) {
+			itemDef.name = "Kratonite platelegs (T4)";
+		}
+		if (i == 16901) {
+			itemDef.name = "Argonite 2h sword (T7)";
+		}
+		if (i == 16947) {
+			itemDef.name = "Argonite rapier (T7)";
+		}
+		if (i == 16703) {
+			itemDef.name = "Argonite full helm (T7)";
+		}
+		if (i == 17251) {
+			itemDef.name = "Argonite platebody (T7)";
+		}
+		if (i == 16681) {
+			itemDef.name = "Argonite platelegs (T7)";
+		}
+		if (i == 16907) {
+			itemDef.name = "Promethium 2h sword (T10)";
+		}
+		if (i == 16953) {
+			itemDef.name = "Promethium rapier (T10)";
+		}
+		if (i == 16709) {
+			itemDef.name = "Promethium full helm (T10)";
+		}
+		if (i == 17257) {
+			itemDef.name = "Promethium platebody (T10)";
+		}
+		if (i == 16678) {
+			itemDef.name = "Promethium platelegs (T10)";
+		}
+		if (i == 16678) {
+			itemDef.name = "Promethium platelegs (T10)";
+		}
+		if (i == 16867) {
+			itemDef.name = "Tangle gum shortbow (T1)";
+		}
+		if (i == 16873) {
+			itemDef.name = "Utuku shortbow (T4)";
+		}
+		if (i == 16879) {
+			itemDef.name = "Thigat shortbow (T7)";
+		}
+		if (i == 16885) {
+			itemDef.name = "Grave creeper shortbow (T10)";
+		}
+		if (i == 17047) {
+			itemDef.name = "Archleather coif (T4)";
+		}
+		if (i == 17179) {
+			itemDef.name = "Archleather body (T4)";
+		}
+		if (i == 17325) {
+			itemDef.name = "Archleather chaps (T4)";
+		}
+		if (i == 17059) {
+			itemDef.name = "Tyrannoleather coif (T10)";
+		}
+		if (i == 17191) {
+			itemDef.name = "Tyrannoleather body (T10)";
+		}
+		if (i == 17337) {
+			itemDef.name = "Tyrannoleather chaps (T10)";
+		}
+		if (i == 151) {
+			itemDef.name = "Overload(3)";
+			itemDef.itemActions = new String[6];
+			itemDef.itemActions[0] = "Drink";
+		}
+		if (i == 11967) {
+			itemDef.name = "Dwarf Cannon Set";
+			itemDef.itemActions = new String[6];
+			itemDef.itemActions[0] = "Open";
+		}
+		if (i == 2438) {
+			itemDef.name = "Overload(4)";
+			itemDef.itemActions = new String[6];
+			itemDef.itemActions[0] = "Drink";
+		}
+		if (i == 153) {
+			itemDef.itemActions = new String[6];
+			itemDef.itemActions[0] = "Drink";
+		}
+		if (i == 155) {
+			itemDef.name = "Overload(2)";
+			itemDef.itemActions = new String[6];
+			itemDef.itemActions[0] = "Drink";
+		}
+		if (i == 15246) {
+			itemDef.name = "Barrage-Runes Package";
+		}
+		if (i == 15247) {
+			itemDef.modelID = 48514; // ^ Model id
+			itemDef.itemActions = new String[6];
+			itemDef.itemActions[0] = "Open";
+			itemDef.name = "Veng-Runes Package";
+		}
+		if (i == 18375) {
+			itemDef.name = "Steadfast Boots";
+			itemDef.modelID = 53835;
+			itemDef.modelZoom = 900;
+			itemDef.modelRotation2 = 165;
+			itemDef.stackable = false;
+			itemDef.modelRotation1 = 99;
+			itemDef.modelOffset1 = 3;
+			itemDef.modelOffset2 = -7;
+			itemDef.anInt165 = 53327;
+			itemDef.anInt200 = 53327;
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.description = "Some Steadfast boots.";
+		}
 
-if (i == 17835) {
-itemDef.modelID = 65256;
-itemDef.name = "Milestone cape 10";
-itemDef.description = "A cape worn by those who've achieved at least level 10 in all skills";
-itemDef.modelZoom = 1579;
-itemDef.modelOffset1 = 3;
-itemDef.modelOffset2 = -3;
-itemDef.modelRotation1 = 245;
-itemDef.modelRotation2 = 1035;
-itemDef.stackable = false;
-itemDef.anInt165 = 65294;
-itemDef.anInt200 = 65315;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17846) {
-itemDef.stackable = false;
-itemDef.modelID = 65257;
-itemDef.name = "Classic cape";
-itemDef.description = "A cape worn by those who've seen the world in a different light.";
-itemDef.modelZoom = 1513;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation2 = 948;
-itemDef.anInt165 = 65302;
-itemDef.anInt200 = 65327;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-itemDef.modifiedModelColors = new int[4];
-itemDef.originalModelColors = new int[4];
-itemDef.modifiedModelColors[0] = 0;
-itemDef.originalModelColors[0] = 1;
-}
-if (i == 17836) {
-itemDef.modelID = 65266;
-itemDef.name = "Milestone cape 20";
-itemDef.description = "A cape worn by those who've achieved at least level 20 in all skills";
-itemDef.modelZoom = 1579;
-itemDef.modelOffset1 = 3;
-itemDef.modelOffset2 = -3;
-itemDef.modelRotation1 = 245;
-itemDef.modelRotation2 = 1035;
-itemDef.anInt165 = 65298;
-itemDef.stackable = false;
-itemDef.anInt200 = 65317;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17837) {
-itemDef.stackable = false;
-itemDef.modelID = 65272;
-itemDef.name = "Milestone cape 30";
-itemDef.description = "A cape worn by those who've achieved at least level 30 in all skills";
-itemDef.modelZoom = 1579;
-itemDef.modelOffset1 = 3;
-itemDef.modelOffset2 = -3;
-itemDef.modelRotation1 = 245;
-itemDef.modelRotation2 = 1035;
-itemDef.anInt165 = 65306;
-itemDef.anInt200 = 65323;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17838) {
-itemDef.stackable = false;
-itemDef.modelID = 65260;
-itemDef.name = "Milestone cape 40";
-itemDef.description = "A cape worn by those who've achieved at least level 40 in all skills";
-itemDef.modelZoom = 1579;
-itemDef.modelOffset1 = 3;
-itemDef.modelOffset2 = -3;
-itemDef.modelRotation1 = 245;
-itemDef.modelRotation2 = 1035;
-itemDef.anInt165 = 65296;
-itemDef.anInt200 = 65321;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17839) {
-itemDef.stackable = false;
-itemDef.modelID = 65263;
-itemDef.name = "Milestone cape 50";
-itemDef.description = "A cape worn by those who've achieved at least level 50 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation2 = 948;
-itemDef.anInt165 = 65301;
-itemDef.anInt200 = 65324;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17840) {
-itemDef.stackable = false;
-itemDef.modelID = 65259;
-itemDef.name = "Milestone cape 60";
-itemDef.description = "A cape worn by those who've achieved at least level 60 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation2 = 948;
-itemDef.anInt165 = 65304;
-itemDef.anInt200 = 65319;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17841) {
-itemDef.stackable = false;
-itemDef.modelID = 65267;
-itemDef.name = "Milestone cape 70";
-itemDef.description = "A cape worn by those who've achieved at least level 70 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation2 = 948;
-itemDef.anInt165 = 65299;
-itemDef.anInt200 = 65326;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17842) {
-itemDef.stackable = false;
-itemDef.modelID = 65264;
-itemDef.name = "Milestone cape 80";
-itemDef.description = "A cape worn by those who've achieved at least level 80 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation2 = 948;
-itemDef.anInt165 = 65303;
-itemDef.anInt200 = 65320;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17843) {
-itemDef.stackable = false;
-itemDef.modelID = 65265;
-itemDef.name = "Milestone cape 90";
-itemDef.description = "A cape worn by those who've achieved at least level 90 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation2 = 948;
-itemDef.anInt165 = 65293;
-itemDef.anInt200 = 65325;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17844) {
-itemDef.stackable = false;
-itemDef.modelID = 65262;
-itemDef.name = "Max cape";
-itemDef.description = "A cape worn by those who've achieved 99 in all skills.";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation2 = 948;
-itemDef.anInt165 = 65300;
-itemDef.anInt200 = 65322;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 18377) {
-itemDef.name = "Ragefire boots";
-itemDef.modelID = 53897;
-itemDef.modelZoom = 900;
-itemDef.modelRotation2 = 165;
-itemDef.modelRotation1 = 99;
-	itemDef.stackable = false;
-itemDef.modelOffset1 = 3;
-itemDef.modelOffset2 =-7;
-itemDef.anInt165 = 53330;
-itemDef.anInt200 = 53330;
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-itemDef.description = "Some Ragefire boots.";
-}
-if (i == 18379) {
-itemDef.name = "Glaiven boots";
-itemDef.modelID = 53828;
-itemDef.modelZoom = 900;
-	itemDef.stackable = false;
-itemDef.modelRotation2 = 165;
-itemDef.modelRotation1 = 99;
-itemDef.modelOffset1 = 3;
-itemDef.modelOffset2 =-7;
-itemDef.anInt165 = 53309;
-itemDef.anInt200 = 53309;
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-itemDef.description = "Some Glaiven boots.";
-}
+		if (i == 17835) {
+			itemDef.modelID = 65256;
+			itemDef.name = "Milestone cape 10";
+			itemDef.description = "A cape worn by those who've achieved at least level 10 in all skills";
+			itemDef.modelZoom = 1579;
+			itemDef.modelOffset1 = 3;
+			itemDef.modelOffset2 = -3;
+			itemDef.modelRotation1 = 245;
+			itemDef.modelRotation2 = 1035;
+			itemDef.stackable = false;
+			itemDef.anInt165 = 65294;
+			itemDef.anInt200 = 65315;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17846) {
+			itemDef.stackable = false;
+			itemDef.modelID = 65257;
+			itemDef.name = "Classic cape";
+			itemDef.description = "A cape worn by those who've seen the world in a different light.";
+			itemDef.modelZoom = 1513;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation2 = 948;
+			itemDef.anInt165 = 65302;
+			itemDef.anInt200 = 65327;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.modifiedModelColors = new int[4];
+			itemDef.originalModelColors = new int[4];
+			itemDef.modifiedModelColors[0] = 0;
+			itemDef.originalModelColors[0] = 1;
+		}
+		if (i == 17836) {
+			itemDef.modelID = 65266;
+			itemDef.name = "Milestone cape 20";
+			itemDef.description = "A cape worn by those who've achieved at least level 20 in all skills";
+			itemDef.modelZoom = 1579;
+			itemDef.modelOffset1 = 3;
+			itemDef.modelOffset2 = -3;
+			itemDef.modelRotation1 = 245;
+			itemDef.modelRotation2 = 1035;
+			itemDef.anInt165 = 65298;
+			itemDef.stackable = false;
+			itemDef.anInt200 = 65317;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17837) {
+			itemDef.stackable = false;
+			itemDef.modelID = 65272;
+			itemDef.name = "Milestone cape 30";
+			itemDef.description = "A cape worn by those who've achieved at least level 30 in all skills";
+			itemDef.modelZoom = 1579;
+			itemDef.modelOffset1 = 3;
+			itemDef.modelOffset2 = -3;
+			itemDef.modelRotation1 = 245;
+			itemDef.modelRotation2 = 1035;
+			itemDef.anInt165 = 65306;
+			itemDef.anInt200 = 65323;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17838) {
+			itemDef.stackable = false;
+			itemDef.modelID = 65260;
+			itemDef.name = "Milestone cape 40";
+			itemDef.description = "A cape worn by those who've achieved at least level 40 in all skills";
+			itemDef.modelZoom = 1579;
+			itemDef.modelOffset1 = 3;
+			itemDef.modelOffset2 = -3;
+			itemDef.modelRotation1 = 245;
+			itemDef.modelRotation2 = 1035;
+			itemDef.anInt165 = 65296;
+			itemDef.anInt200 = 65321;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17839) {
+			itemDef.stackable = false;
+			itemDef.modelID = 65263;
+			itemDef.name = "Milestone cape 50";
+			itemDef.description = "A cape worn by those who've achieved at least level 50 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation2 = 948;
+			itemDef.anInt165 = 65301;
+			itemDef.anInt200 = 65324;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17840) {
+			itemDef.stackable = false;
+			itemDef.modelID = 65259;
+			itemDef.name = "Milestone cape 60";
+			itemDef.description = "A cape worn by those who've achieved at least level 60 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation2 = 948;
+			itemDef.anInt165 = 65304;
+			itemDef.anInt200 = 65319;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17841) {
+			itemDef.stackable = false;
+			itemDef.modelID = 65267;
+			itemDef.name = "Milestone cape 70";
+			itemDef.description = "A cape worn by those who've achieved at least level 70 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation2 = 948;
+			itemDef.anInt165 = 65299;
+			itemDef.anInt200 = 65326;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17842) {
+			itemDef.stackable = false;
+			itemDef.modelID = 65264;
+			itemDef.name = "Milestone cape 80";
+			itemDef.description = "A cape worn by those who've achieved at least level 80 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation2 = 948;
+			itemDef.anInt165 = 65303;
+			itemDef.anInt200 = 65320;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17843) {
+			itemDef.stackable = false;
+			itemDef.modelID = 65265;
+			itemDef.name = "Milestone cape 90";
+			itemDef.description = "A cape worn by those who've achieved at least level 90 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation2 = 948;
+			itemDef.anInt165 = 65293;
+			itemDef.anInt200 = 65325;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17844) {
+			itemDef.stackable = false;
+			itemDef.modelID = 65262;
+			itemDef.name = "Max cape";
+			itemDef.description = "A cape worn by those who've achieved 99 in all skills.";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation2 = 948;
+			itemDef.anInt165 = 65300;
+			itemDef.anInt200 = 65322;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 18377) {
+			itemDef.name = "Ragefire boots";
+			itemDef.modelID = 53897;
+			itemDef.modelZoom = 900;
+			itemDef.modelRotation2 = 165;
+			itemDef.modelRotation1 = 99;
+			itemDef.stackable = false;
+			itemDef.modelOffset1 = 3;
+			itemDef.modelOffset2 = -7;
+			itemDef.anInt165 = 53330;
+			itemDef.anInt200 = 53330;
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.description = "Some Ragefire boots.";
+		}
+		if (i == 18379) {
+			itemDef.name = "Glaiven boots";
+			itemDef.modelID = 53828;
+			itemDef.modelZoom = 900;
+			itemDef.stackable = false;
+			itemDef.modelRotation2 = 165;
+			itemDef.modelRotation1 = 99;
+			itemDef.modelOffset1 = 3;
+			itemDef.modelOffset2 = -7;
+			itemDef.anInt165 = 53309;
+			itemDef.anInt200 = 53309;
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.description = "Some Glaiven boots.";
+		}
 		if (i == 995) {
 			itemDef.name = "Coins";
 			itemDef.itemActions = new String[5];
 			itemDef.itemActions[4] = "Drop";
 			itemDef.itemActions[3] = "Add-to-pouch";
 		}
-if (i == 17835) {
-itemDef.modelID = 65256;
-itemDef.name = "Milestone cape 10";
-itemDef.description = "A cape worn by those who've achieved at least level 10 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65294;
-itemDef.anInt200 = 65315;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 11137) {
-itemDef.name = "XP Lamp";
-itemDef.description = "Grants XP in any skill of your choise.";
-}
-if(i == 15332) {
-	itemDef.name = "Overload (4)";
-	itemDef.modelZoom = 550;
-	itemDef.modelRotation2 = 84;
-	itemDef.modelRotation1 = 1996;
-	itemDef.modelOffset1 = -1;
-	itemDef.itemActions = new String[5];
-	itemDef.groundActions[1] ="Take";
-	itemDef.itemActions[1] = "Drink";
-		itemDef.anInt200 = 61;
-	itemDef.itemActions[2] = "Use";
-	itemDef.itemActions[3] = "Empty";
-	itemDef.modelID = 2789;
-}
-if (i == 15333) {
-	itemDef.name = "Overload (3)";
-	itemDef.modelZoom = 550;
-	itemDef.modelRotation2 = 84;
-	itemDef.modelRotation1 = 1996;
-	itemDef.modelOffset1 = -1;
-	itemDef.itemActions = new String[5];
-	itemDef.groundActions[1] ="Take";
-	itemDef.itemActions[1] = "Drink";
-	itemDef.itemActions[2] = "Use";
-	itemDef.itemActions[3] = "Empty";
-	itemDef.modelID = 2697;
-	itemDef.anInt200 = 61;
-}
-if (i == 15334) {
-	itemDef.name = "Overload (2)";
-	itemDef.modelZoom = 550;
-	itemDef.modelRotation2 = 84;
-	itemDef.modelRotation1 = 1996;
-	itemDef.modelOffset1 = -1;
-	itemDef.groundActions[1] ="Take";
-	itemDef.itemActions[1] = "Drink";
-	itemDef.itemActions[2] = "Use";
-	itemDef.itemActions[3] = "Empty";
-		itemDef.anInt200 = 61;
-	itemDef.modelID = 2384;
-}
-if (i == 15335) {
-	itemDef.name = "Overload (1)";
-	itemDef.modelZoom = 550;
-	itemDef.modelRotation2 = 84;
-	itemDef.modelRotation1 = 1996;
-	itemDef.modelOffset1 = -1;
-	itemDef.itemActions = new String[5];
-	itemDef.groundActions[1] ="Take";
-	itemDef.itemActions[1] = "Drink";
-	itemDef.itemActions[2] = "Use";
-		itemDef.anInt200 = 61;
-	itemDef.itemActions[3] = "Empty";
-	itemDef.modelID = 2621;
-}
-if (i == 1) {
-	itemDef.name = "Prayer renewal (1)";
-	itemDef.modelZoom = 550;
-	itemDef.modelRotation2 = 84;
-	itemDef.modelRotation1 = 1996;
-	itemDef.modelOffset1 = -1;
-	itemDef.anInt165 = 926;
-	itemDef.anInt200 = 61;
-	itemDef.groundActions[1] ="Take";
-	itemDef.itemActions[1] = "Drink";
-	itemDef.itemActions[2] = "Use";
-	itemDef.itemActions[3] = "Empty";
-	itemDef.modelID = 2621;
-}
-if (i == 15098) {
-itemDef.name = "Dice";
-itemDef.description = "A dicebag.";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Public";
-itemDef.itemActions[2] = "Clan";
-itemDef.itemActions[3] = "QC";
-}
-if (i == 19959) {
-itemDef.name = "Spin Ticket(1)";
-itemDef.modelID = 41993;
-itemDef.description = "Click Claim to Get 1 Spins!";
-itemDef.itemActions = new String[5]; // makes the options show u must have this, it defines the variable itemActions
-itemDef.itemActions[1] = "Claim"; // first option on item
-}
-if (i == 19960) {
-itemDef.name = "Spin Ticket(2)";
-itemDef.modelID = 41993;
-itemDef.description = "Click Claim to Get 2 Spins!";
-itemDef.itemActions = new String[5]; // makes the options show u must have this, it defines the variable itemActions
-itemDef.itemActions[1] = "Claim"; // first option on item
-}
-if (i == 19961) {
-itemDef.name = "Spin Ticket(3)";
-itemDef.modelID = 41993;
-itemDef.description = "Click Claim to Get 3 Spins!";
-itemDef.itemActions = new String[5]; // makes the options show u must have this, it defines the variable itemActions
-itemDef.itemActions[1] = "Claim"; // first option on item
-}
-if (i == 19962) {
-itemDef.name = "Spin Ticket(5)";
-itemDef.modelID = 41993;
-itemDef.description = "Click Claim to Get 5 Spins!";
-itemDef.itemActions = new String[5]; // makes the options show u must have this, it defines the variable itemActions
-itemDef.itemActions[1] = "Claim"; // first option on item
-}
-if (i == 19963) {
-itemDef.name = "Spin Ticket(10)";
-itemDef.modelID = 41993; // looks ugleeeh
-itemDef.description = "Click Claim to Get 10 Spins!";
-itemDef.itemActions = new String[5]; // makes the options show u must have this, it defines the variable itemActions
-itemDef.itemActions[1] = "Claim"; // first option on item
-}
-if (i == 17836) {
-itemDef.modelID = 65266;
-itemDef.name = "Milestone cape 20";
-itemDef.description = "A cape worn by those who've achieved at least level 20 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65298;
-itemDef.anInt200 = 65317;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17837) {
-itemDef.modelID = 65272;
-itemDef.name = "Milestone cape 30";
-itemDef.description = "A cape worn by those who've achieved at least level 30 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65306;
-itemDef.anInt200 = 65323;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17838) {
-itemDef.modelID = 65260;
-itemDef.name = "Milestone cape 40";
-itemDef.description = "A cape worn by those who've achieved at least level 40 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65296;
-itemDef.anInt200 = 65321;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17839) {
-itemDef.modelID = 65263;
-itemDef.name = "Milestone cape 50";
-itemDef.description = "A cape worn by those who've achieved at least level 50 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65301;
-itemDef.anInt200 = 65324;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17840) {
-itemDef.modelID = 65259;
-itemDef.name = "Milestone cape 60";
-itemDef.description = "A cape worn by those who've achieved at least level 60 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65304;
-itemDef.anInt200 = 65319;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
+		if (i == 17835) {
+			itemDef.modelID = 65256;
+			itemDef.name = "Milestone cape 10";
+			itemDef.description = "A cape worn by those who've achieved at least level 10 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65294;
+			itemDef.anInt200 = 65315;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 11137) {
+			itemDef.name = "XP Lamp";
+			itemDef.description = "Grants XP in any skill of your choise.";
+		}
+		if (i == 15332) {
+			itemDef.name = "Overload (4)";
+			itemDef.modelZoom = 550;
+			itemDef.modelRotation2 = 84;
+			itemDef.modelRotation1 = 1996;
+			itemDef.modelOffset1 = -1;
+			itemDef.itemActions = new String[5];
+			itemDef.groundActions[1] = "Take";
+			itemDef.itemActions[1] = "Drink";
+			itemDef.anInt200 = 61;
+			itemDef.itemActions[2] = "Use";
+			itemDef.itemActions[3] = "Empty";
+			itemDef.modelID = 2789;
+		}
+		if (i == 15333) {
+			itemDef.name = "Overload (3)";
+			itemDef.modelZoom = 550;
+			itemDef.modelRotation2 = 84;
+			itemDef.modelRotation1 = 1996;
+			itemDef.modelOffset1 = -1;
+			itemDef.itemActions = new String[5];
+			itemDef.groundActions[1] = "Take";
+			itemDef.itemActions[1] = "Drink";
+			itemDef.itemActions[2] = "Use";
+			itemDef.itemActions[3] = "Empty";
+			itemDef.modelID = 2697;
+			itemDef.anInt200 = 61;
+		}
+		if (i == 15334) {
+			itemDef.name = "Overload (2)";
+			itemDef.modelZoom = 550;
+			itemDef.modelRotation2 = 84;
+			itemDef.modelRotation1 = 1996;
+			itemDef.modelOffset1 = -1;
+			itemDef.groundActions[1] = "Take";
+			itemDef.itemActions[1] = "Drink";
+			itemDef.itemActions[2] = "Use";
+			itemDef.itemActions[3] = "Empty";
+			itemDef.anInt200 = 61;
+			itemDef.modelID = 2384;
+		}
+		if (i == 15335) {
+			itemDef.name = "Overload (1)";
+			itemDef.modelZoom = 550;
+			itemDef.modelRotation2 = 84;
+			itemDef.modelRotation1 = 1996;
+			itemDef.modelOffset1 = -1;
+			itemDef.itemActions = new String[5];
+			itemDef.groundActions[1] = "Take";
+			itemDef.itemActions[1] = "Drink";
+			itemDef.itemActions[2] = "Use";
+			itemDef.anInt200 = 61;
+			itemDef.itemActions[3] = "Empty";
+			itemDef.modelID = 2621;
+		}
+		if (i == 1) {
+			itemDef.name = "Prayer renewal (1)";
+			itemDef.modelZoom = 550;
+			itemDef.modelRotation2 = 84;
+			itemDef.modelRotation1 = 1996;
+			itemDef.modelOffset1 = -1;
+			itemDef.anInt165 = 926;
+			itemDef.anInt200 = 61;
+			itemDef.groundActions[1] = "Take";
+			itemDef.itemActions[1] = "Drink";
+			itemDef.itemActions[2] = "Use";
+			itemDef.itemActions[3] = "Empty";
+			itemDef.modelID = 2621;
+		}
+		if (i == 15098) {
+			itemDef.name = "Dice";
+			itemDef.description = "A dicebag.";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Public";
+			itemDef.itemActions[2] = "Clan";
+			itemDef.itemActions[3] = "QC";
+		}
+		if (i == 19959) {
+			itemDef.name = "Spin Ticket(1)";
+			itemDef.modelID = 41993;
+			itemDef.description = "Click Claim to Get 1 Spins!";
+			itemDef.itemActions = new String[5]; // makes the options show u
+													// must have this, it
+													// defines the variable
+													// itemActions
+			itemDef.itemActions[1] = "Claim"; // first option on item
+		}
+		if (i == 19960) {
+			itemDef.name = "Spin Ticket(2)";
+			itemDef.modelID = 41993;
+			itemDef.description = "Click Claim to Get 2 Spins!";
+			itemDef.itemActions = new String[5]; // makes the options show u
+													// must have this, it
+													// defines the variable
+													// itemActions
+			itemDef.itemActions[1] = "Claim"; // first option on item
+		}
+		if (i == 19961) {
+			itemDef.name = "Spin Ticket(3)";
+			itemDef.modelID = 41993;
+			itemDef.description = "Click Claim to Get 3 Spins!";
+			itemDef.itemActions = new String[5]; // makes the options show u
+													// must have this, it
+													// defines the variable
+													// itemActions
+			itemDef.itemActions[1] = "Claim"; // first option on item
+		}
+		if (i == 19962) {
+			itemDef.name = "Spin Ticket(5)";
+			itemDef.modelID = 41993;
+			itemDef.description = "Click Claim to Get 5 Spins!";
+			itemDef.itemActions = new String[5]; // makes the options show u
+													// must have this, it
+													// defines the variable
+													// itemActions
+			itemDef.itemActions[1] = "Claim"; // first option on item
+		}
+		if (i == 19963) {
+			itemDef.name = "Spin Ticket(10)";
+			itemDef.modelID = 41993; // looks ugleeeh
+			itemDef.description = "Click Claim to Get 10 Spins!";
+			itemDef.itemActions = new String[5]; // makes the options show u
+													// must have this, it
+													// defines the variable
+													// itemActions
+			itemDef.itemActions[1] = "Claim"; // first option on item
+		}
+		if (i == 17836) {
+			itemDef.modelID = 65266;
+			itemDef.name = "Milestone cape 20";
+			itemDef.description = "A cape worn by those who've achieved at least level 20 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65298;
+			itemDef.anInt200 = 65317;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17837) {
+			itemDef.modelID = 65272;
+			itemDef.name = "Milestone cape 30";
+			itemDef.description = "A cape worn by those who've achieved at least level 30 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65306;
+			itemDef.anInt200 = 65323;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17838) {
+			itemDef.modelID = 65260;
+			itemDef.name = "Milestone cape 40";
+			itemDef.description = "A cape worn by those who've achieved at least level 40 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65296;
+			itemDef.anInt200 = 65321;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17839) {
+			itemDef.modelID = 65263;
+			itemDef.name = "Milestone cape 50";
+			itemDef.description = "A cape worn by those who've achieved at least level 50 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65301;
+			itemDef.anInt200 = 65324;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17840) {
+			itemDef.modelID = 65259;
+			itemDef.name = "Milestone cape 60";
+			itemDef.description = "A cape worn by those who've achieved at least level 60 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65304;
+			itemDef.anInt200 = 65319;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
 
-if (i == 17841) {
-itemDef.modelID = 65267;
-itemDef.name = "Milestone cape 70";
-itemDef.description = "A cape worn by those who've achieved at least level 70 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65299;
-itemDef.anInt200 = 65326;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17842) {
-itemDef.modelID = 65264;
-itemDef.name = "Milestone cape 80";
-itemDef.description = "A cape worn by those who've achieved at least level 80 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65303;
-itemDef.anInt200 = 65320;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 17843) {
-itemDef.modelID = 65265;
-itemDef.name = "Milestone cape 90";
-itemDef.description = "A cape worn by those who've achieved at least level 90 in all skills";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65293;
-itemDef.anInt200 = 65325;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 19138) {
-itemDef.modelID = 65258;
-itemDef.name = "Completionist cape";
-itemDef.description = " We'd pat you on the back, but this cape would get in the way.";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65295;
-itemDef.anInt200 = 65328;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 19139) {
-itemDef.modelID = 65269;
-itemDef.name = "Completionist hood";
-itemDef.description = "A hood worn by those who've over achieved.";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65288;
-itemDef.anInt200 = 65312;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 19140) {
-itemDef.modelID = 65270;
-itemDef.name = "Completionist cape";
-itemDef.description = "A cape worn by those who've over achieved. ";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65297;
-itemDef.anInt200 = 65316;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 19141) {
-itemDef.modelID = 65273;
-itemDef.name = "Completionist hood";
-itemDef.description = "A hood worn by those who've over achieved.";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65292;
-itemDef.anInt200 = 65310;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 19954) {
-itemDef.modelID = 65268;
-itemDef.name = "Max hood";
-itemDef.description = "A hood worn by those who've achieved 99 in all skills.";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65291;
-itemDef.anInt200 = 65313;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 19956) {
-itemDef.modelID = 65271;
-itemDef.name = "Veteran hood";
-itemDef.description = "A hood worn by veterans.";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65289;
-itemDef.anInt200 = 65314;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 19957) {
-itemDef.modelID = 65257;
-itemDef.name = "Classic cape";
-itemDef.description = "A cape worn by those who've seen the world in a different light.";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65302;
-itemDef.anInt200 = 65327;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
-if (i == 19958) {
-itemDef.modelID = 65290;
-itemDef.name = "Classic hood";
-itemDef.description = "A hood worn by classic players.";
-itemDef.modelZoom = 1385;
-itemDef.modelOffset1 = 0;
-itemDef.modelOffset2 = 24;
-itemDef.modelRotation1 = 279;
-itemDef.modelRotation1 = 948;
-itemDef.anInt165 = 65290;
-itemDef.anInt200 = 65311;
-itemDef.groundActions = new String[5];
-itemDef.groundActions[2] = "Take";
-itemDef.itemActions = new String[5];
-itemDef.itemActions[1] = "Wear";
-}
+		if (i == 17841) {
+			itemDef.modelID = 65267;
+			itemDef.name = "Milestone cape 70";
+			itemDef.description = "A cape worn by those who've achieved at least level 70 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65299;
+			itemDef.anInt200 = 65326;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17842) {
+			itemDef.modelID = 65264;
+			itemDef.name = "Milestone cape 80";
+			itemDef.description = "A cape worn by those who've achieved at least level 80 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65303;
+			itemDef.anInt200 = 65320;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 17843) {
+			itemDef.modelID = 65265;
+			itemDef.name = "Milestone cape 90";
+			itemDef.description = "A cape worn by those who've achieved at least level 90 in all skills";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65293;
+			itemDef.anInt200 = 65325;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 19138) {
+			itemDef.modelID = 65258;
+			itemDef.name = "Completionist cape";
+			itemDef.description = " We'd pat you on the back, but this cape would get in the way.";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65295;
+			itemDef.anInt200 = 65328;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 19139) {
+			itemDef.modelID = 65269;
+			itemDef.name = "Completionist hood";
+			itemDef.description = "A hood worn by those who've over achieved.";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65288;
+			itemDef.anInt200 = 65312;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 19140) {
+			itemDef.modelID = 65270;
+			itemDef.name = "Completionist cape";
+			itemDef.description = "A cape worn by those who've over achieved. ";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65297;
+			itemDef.anInt200 = 65316;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 19141) {
+			itemDef.modelID = 65273;
+			itemDef.name = "Completionist hood";
+			itemDef.description = "A hood worn by those who've over achieved.";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65292;
+			itemDef.anInt200 = 65310;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 19954) {
+			itemDef.modelID = 65268;
+			itemDef.name = "Max hood";
+			itemDef.description = "A hood worn by those who've achieved 99 in all skills.";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65291;
+			itemDef.anInt200 = 65313;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 19956) {
+			itemDef.modelID = 65271;
+			itemDef.name = "Veteran hood";
+			itemDef.description = "A hood worn by veterans.";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65289;
+			itemDef.anInt200 = 65314;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 19957) {
+			itemDef.modelID = 65257;
+			itemDef.name = "Classic cape";
+			itemDef.description = "A cape worn by those who've seen the world in a different light.";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65302;
+			itemDef.anInt200 = 65327;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
+		if (i == 19958) {
+			itemDef.modelID = 65290;
+			itemDef.name = "Classic hood";
+			itemDef.description = "A hood worn by classic players.";
+			itemDef.modelZoom = 1385;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 24;
+			itemDef.modelRotation1 = 279;
+			itemDef.modelRotation1 = 948;
+			itemDef.anInt165 = 65290;
+			itemDef.anInt200 = 65311;
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+		}
 
-if(i == 3789) {
+		if (i == 3789) {
 			itemDef.modelID = 12282;
 			itemDef.name = "Angel Wings";
 			itemDef.modelZoom = 850;
@@ -783,21 +799,21 @@ if(i == 3789) {
 			itemDef.modelRotation2 = 1020;
 			itemDef.modelOffset1 = -1;
 			itemDef.modelOffset2 = 24;
-				itemDef.stackable = false;
+			itemDef.stackable = false;
 			itemDef.membersObject = true;
 			itemDef.anInt165 = 11122;
 			itemDef.anInt200 = 11122;
 			itemDef.itemActions = new String[5];
 			itemDef.itemActions[1] = "Wear";
 		}
-		if(i == 3792) {
+		if (i == 3792) {
 			itemDef.modelID = 12252;
 			itemDef.name = "Angel Wings";
 			itemDef.modelZoom = 850;
 			itemDef.modelRotation1 = 252;
 			itemDef.modelRotation2 = 1020;
 			itemDef.modelOffset1 = -1;
-				itemDef.stackable = false;
+			itemDef.stackable = false;
 			itemDef.modelOffset2 = 24;
 			itemDef.membersObject = true;
 			itemDef.anInt165 = 11111;
@@ -824,7 +840,7 @@ if(i == 3789) {
 		}
 		if (i == 19111) {
 			itemDef.name = "TokHaar-Kal";
-		 itemDef.anInt200 = 62582;
+			itemDef.anInt200 = 62582;
 			ItemDef.needsItemThroughCharFix = true;
 			itemDef.value = 60000;
 			itemDef.anInt165 = 62575;
@@ -843,41 +859,41 @@ if(i == 3789) {
 			itemDef.modelRotation1 = 533;
 			itemDef.modelRotation2 = 333;
 		}
-		if(i == 11613) {
-	itemDef.name = "Dragon kiteshield";
-	itemDef.modelZoom = 1378;
-	itemDef.modelRotation1 = 264;
-	itemDef.modelRotation2 = 1913;
-	itemDef.modelOffset1 = 7;
-	itemDef.modelOffset2 = 58;
-	itemDef.itemActions = new String[5];
-	itemDef.itemActions[1] = "Wear";
-	itemDef.itemActions[4] = "Drop";
-	itemDef.groundActions = new String[5];
-	itemDef.groundActions[2] = "Take";
-	itemDef.modelID = 70128;
-	itemDef.anInt165 = 70672;
-	itemDef.anInt200 = 70672;
-}
+		if (i == 11613) {
+			itemDef.name = "Dragon kiteshield";
+			itemDef.modelZoom = 1378;
+			itemDef.modelRotation1 = 264;
+			itemDef.modelRotation2 = 1913;
+			itemDef.modelOffset1 = 7;
+			itemDef.modelOffset2 = 58;
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.modelID = 70128;
+			itemDef.anInt165 = 70672;
+			itemDef.anInt200 = 70672;
+		}
 
-				if (i == 20000) {
+		if (i == 20000) {
 			itemDef.modelID = 73363;
 			itemDef.name = "Arcane GodSword";
 			itemDef.description = "It's a " + itemDef.name;
-            itemDef.modelZoom = 2050;
-            itemDef.modelRotation1 = 222;
-            itemDef.modelRotation2 = 1958;
-            itemDef.modelOffset1 = 0;
-            itemDef.modelOffset2 = -28;
+			itemDef.modelZoom = 2050;
+			itemDef.modelRotation1 = 222;
+			itemDef.modelRotation2 = 1958;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = -28;
 			itemDef.anInt165 = 73362;
 			itemDef.anInt200 = 73362;
-            itemDef.groundActions = new String[5];
-            itemDef.groundActions[2] = "Take";
-            itemDef.itemActions = new String[5];
-            itemDef.itemActions[1] = "Wear";
-            itemDef.itemActions[4] = "Drop";
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
 		}
-				if (i == 20001) {
+		if (i == 20001) {
 			itemDef.modelID = 73365;
 			itemDef.name = "Divine GodSword";
 			itemDef.description = "It's a " + itemDef.name;
@@ -894,7 +910,7 @@ if(i == 3789) {
 			itemDef.itemActions[1] = "Wear";
 			itemDef.itemActions[4] = "Drop";
 		}
-						if (i == 20002) {
+		if (i == 20002) {
 			itemDef.modelID = 73367;
 			itemDef.name = "Elysian GodSword";
 			itemDef.description = "It's a " + itemDef.name;
@@ -911,7 +927,7 @@ if(i == 3789) {
 			itemDef.itemActions[1] = "Wear";
 			itemDef.itemActions[4] = "Drop";
 		}
-								if (i == 20003) {
+		if (i == 20003) {
 			itemDef.modelID = 73369;
 			itemDef.name = "Spectral GodSword";
 			itemDef.description = "It's a " + itemDef.name;
@@ -929,24 +945,24 @@ if(i == 3789) {
 			itemDef.itemActions[4] = "Drop";
 		}
 		if (i == 15444) {
-            itemDef.modelID = 6701;
-            itemDef.name = "Abyssal vine whip";
-            itemDef.description = "A weapon from the Abyss, interlaced with a vicious jade vine.";
-            itemDef.modelZoom = 900;
-            itemDef.modelRotation1 = 324;
-            itemDef.modelRotation2 = 1808;
-            itemDef.modelOffset1 = -2;
-            itemDef.modelOffset2 = 3;
-            itemDef.membersObject = true;
-            itemDef.anInt165 = 6700;
-            itemDef.anInt200 = 6700;
+			itemDef.modelID = 6701;
+			itemDef.name = "Abyssal vine whip";
+			itemDef.description = "A weapon from the Abyss, interlaced with a vicious jade vine.";
+			itemDef.modelZoom = 900;
+			itemDef.modelRotation1 = 324;
+			itemDef.modelRotation2 = 1808;
+			itemDef.modelOffset1 = -2;
+			itemDef.modelOffset2 = 3;
+			itemDef.membersObject = true;
+			itemDef.anInt165 = 6700;
+			itemDef.anInt200 = 6700;
 			itemDef.groundActions = new String[5];
 			itemDef.groundActions[2] = "Take";
 			itemDef.itemActions = new String[5];
 			itemDef.itemActions[1] = "Wear";
 			itemDef.itemActions[4] = "Drop";
-            }
-					if (i == 20004) {
+		}
+		if (i == 20004) {
 			itemDef.modelID = 62769;
 			itemDef.name = "The Sword of 1000 Truths";
 			itemDef.modelZoom = 850;
@@ -957,7 +973,7 @@ if(i == 3789) {
 			itemDef.itemActions = new String[5];
 			itemDef.itemActions[1] = "Wear";
 			itemDef.itemActions[4] = "Drop";
-            }
+		}
 
 		if (i == 15121) {
 			itemDef.modelID = 65270;
@@ -989,108 +1005,108 @@ if(i == 3789) {
 			itemDef.originalModelColors[3] = 62995;
 		}
 		if (i == 20009) {
-	itemDef.name = "Ganodermic visor";
-	itemDef.description = "It's an Ganodermic visor";
-		itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
-		itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 10935;
-	itemDef.anInt165 = 10373;
-	itemDef.anInt200 = 10523;
-	itemDef.modelZoom = 1118;
-	itemDef.modelRotation1 = 215;
-	itemDef.modelRotation2 = 175;
-	itemDef.modelOffset1 = 1;
-	itemDef.modelOffset2 = -30;
+			itemDef.name = "Ganodermic visor";
+			itemDef.description = "It's an Ganodermic visor";
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 10935;
+			itemDef.anInt165 = 10373;
+			itemDef.anInt200 = 10523;
+			itemDef.modelZoom = 1118;
+			itemDef.modelRotation1 = 215;
+			itemDef.modelRotation2 = 175;
+			itemDef.modelOffset1 = 1;
+			itemDef.modelOffset2 = -30;
 		}
 		if (i == 20010) {
-	itemDef.name = "Ganodermic poncho";
-	itemDef.description = "It's an Ganodermic poncho";
-		itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
-		itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 10919;
-	itemDef.anInt165 = 10490;
-	itemDef.anInt200 = 10664;
-	itemDef.modelZoom = 1513;
-	itemDef.modelRotation1 = 485;
-	itemDef.modelRotation2 = 13;
-	itemDef.modelOffset1 = 1;
-	itemDef.modelOffset2 = -3;
+			itemDef.name = "Ganodermic poncho";
+			itemDef.description = "It's an Ganodermic poncho";
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 10919;
+			itemDef.anInt165 = 10490;
+			itemDef.anInt200 = 10664;
+			itemDef.modelZoom = 1513;
+			itemDef.modelRotation1 = 485;
+			itemDef.modelRotation2 = 13;
+			itemDef.modelOffset1 = 1;
+			itemDef.modelOffset2 = -3;
 		}
 		if (i == 20011) {
-	itemDef.name = "Ganodermic leggings";
-	itemDef.description = "It's an Ganodermic leggings";
-		itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
-		itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 10942;
-	itemDef.anInt165 = 10486;
-	itemDef.anInt200 = 10578;
-	itemDef.modelZoom = 1513;
-	itemDef.modelRotation1 = 498;
-	itemDef.modelRotation2 = 0;
-	itemDef.modelOffset1 = 8;
-	itemDef.modelOffset2 = -18;
+			itemDef.name = "Ganodermic leggings";
+			itemDef.description = "It's an Ganodermic leggings";
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 10942;
+			itemDef.anInt165 = 10486;
+			itemDef.anInt200 = 10578;
+			itemDef.modelZoom = 1513;
+			itemDef.modelRotation1 = 498;
+			itemDef.modelRotation2 = 0;
+			itemDef.modelOffset1 = 8;
+			itemDef.modelOffset2 = -18;
 		}
 		if (i == 14011) {
-	itemDef.name = "Ganodermic Gloves";
-	itemDef.description = "It's an Ganodermic Gloves";
-		itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
-		itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 79505;
-	itemDef.anInt165 = 73082;
-	itemDef.anInt200 = 73082;
-	itemDef.modelZoom = 592;
-	itemDef.modelRotation1 = 323;
-	itemDef.modelRotation2 = 687;
-	itemDef.modelOffset1 = -3;
-	itemDef.modelOffset2 = 1;
+			itemDef.name = "Ganodermic Gloves";
+			itemDef.description = "It's an Ganodermic Gloves";
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 79505;
+			itemDef.anInt165 = 73082;
+			itemDef.anInt200 = 73082;
+			itemDef.modelZoom = 592;
+			itemDef.modelRotation1 = 323;
+			itemDef.modelRotation2 = 687;
+			itemDef.modelOffset1 = -3;
+			itemDef.modelOffset2 = 1;
 		}
 		if (i == 14013) {
-	itemDef.name = "Ganodermic Boots";
-	itemDef.description = "It's an Ganodermic Boots";
-		itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
-		itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 79506;
-	itemDef.anInt165 = 10366;
-	itemDef.anInt200 = 10494;
-	itemDef.modelZoom = 789;
-	itemDef.modelRotation1 = 290;
-	itemDef.modelRotation2 = 186;
-	itemDef.modelOffset1 = 7;
-	itemDef.modelOffset2 = 50;
+			itemDef.name = "Ganodermic Boots";
+			itemDef.description = "It's an Ganodermic Boots";
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 79506;
+			itemDef.anInt165 = 10366;
+			itemDef.anInt200 = 10494;
+			itemDef.modelZoom = 789;
+			itemDef.modelRotation1 = 290;
+			itemDef.modelRotation2 = 186;
+			itemDef.modelOffset1 = 7;
+			itemDef.modelOffset2 = 50;
 		}
 		if (i == 20012) {
-	itemDef.name = "Polypore staff";
-	itemDef.description = "It's an Polypore staff";
-		itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
-		itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 13426;
-	itemDef.anInt165 = 13417;
-	itemDef.anInt200 = 13417;
-	itemDef.modelZoom = 3750;
-	itemDef.modelRotation1 = 1454;
-	itemDef.modelRotation2 = 997;
-	itemDef.modelOffset1 = 0;
-	itemDef.modelOffset2 = 8;
+			itemDef.name = "Polypore staff";
+			itemDef.description = "It's an Polypore staff";
+			itemDef.groundActions = new String[5];
+			itemDef.groundActions[2] = "Take";
+			itemDef.itemActions = new String[5];
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 13426;
+			itemDef.anInt165 = 13417;
+			itemDef.anInt200 = 13417;
+			itemDef.modelZoom = 3750;
+			itemDef.modelRotation1 = 1454;
+			itemDef.modelRotation2 = 997;
+			itemDef.modelOffset1 = 0;
+			itemDef.modelOffset2 = 8;
 		}
-		
+
 		if (i >= 1174 && i <= 1435) {
 			itemDef.aByte154 = -10;
 		}
@@ -1109,84 +1125,84 @@ if(i == 3789) {
 			itemDef.name = "P. Ring";
 			itemDef.description = "OWNS EVERY NIGGER";
 		}
-if (i == 11607) {
-	itemDef.name = "Dragonbone full helm";
-	itemDef.modelZoom = 780;
-	itemDef.modelRotation1 = 229;
-	itemDef.modelRotation2 = 177;
-	itemDef.modelOffset1 = 1;
-	itemDef.modelOffset2 = -34;
+		if (i == 11607) {
+			itemDef.name = "Dragonbone full helm";
+			itemDef.modelZoom = 780;
+			itemDef.modelRotation1 = 229;
+			itemDef.modelRotation2 = 177;
+			itemDef.modelOffset1 = 1;
+			itemDef.modelOffset2 = -34;
 			itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
+			itemDef.groundActions[2] = "Take";
 			itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 70729;
-	itemDef.anInt165 = 70662;
-	itemDef.anInt200 = 70691;
-}
-if (i == 11608) {
-	itemDef.name = "Dragonbone platebody";
-	itemDef.modelZoom = 1758;
-	itemDef.modelRotation1 = 512;
-	itemDef.modelRotation2 = 0;
-	itemDef.modelOffset1 = 1;
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 70729;
+			itemDef.anInt165 = 70662;
+			itemDef.anInt200 = 70691;
+		}
+		if (i == 11608) {
+			itemDef.name = "Dragonbone platebody";
+			itemDef.modelZoom = 1758;
+			itemDef.modelRotation1 = 512;
+			itemDef.modelRotation2 = 0;
+			itemDef.modelOffset1 = 1;
 			itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
+			itemDef.groundActions[2] = "Take";
 			itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 70730;
-	itemDef.anInt165 = 70669;
-	itemDef.anInt200 = 70698;
-}
-if (i == 11609) {
-	itemDef.name = "Dragonbone gloves";
-	itemDef.modelZoom = 760;
-	itemDef.modelRotation1 = 552;
-	itemDef.modelRotation2 = 28;
-	itemDef.modelOffset1 = 3;
-	itemDef.modelOffset2 = 11;
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 70730;
+			itemDef.anInt165 = 70669;
+			itemDef.anInt200 = 70698;
+		}
+		if (i == 11609) {
+			itemDef.name = "Dragonbone gloves";
+			itemDef.modelZoom = 760;
+			itemDef.modelRotation1 = 552;
+			itemDef.modelRotation2 = 28;
+			itemDef.modelOffset1 = 3;
+			itemDef.modelOffset2 = 11;
 			itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
+			itemDef.groundActions[2] = "Take";
 			itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 70725;
-	itemDef.anInt165 = 70655;
-	itemDef.anInt200 = 70684;
-}
-if (i == 11610) {
-	itemDef.name = "Dragonbone boots";
-	itemDef.modelZoom = 921;
-	itemDef.modelRotation1 = 303;
-	itemDef.modelRotation2 = 257;
-	itemDef.modelOffset1 = 12;
-	itemDef.modelOffset2 = 18;
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 70725;
+			itemDef.anInt165 = 70655;
+			itemDef.anInt200 = 70684;
+		}
+		if (i == 11610) {
+			itemDef.name = "Dragonbone boots";
+			itemDef.modelZoom = 921;
+			itemDef.modelRotation1 = 303;
+			itemDef.modelRotation2 = 257;
+			itemDef.modelOffset1 = 12;
+			itemDef.modelOffset2 = 18;
 			itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
+			itemDef.groundActions[2] = "Take";
 			itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 70731;
-	itemDef.anInt165 = 70653;
-	itemDef.anInt200 = 70682;
-}
-if (i == 11611) {
-	itemDef.name = "Dragonbone platelegs";
-	itemDef.modelZoom = 1772;
-	itemDef.modelRotation1 = 512;
-	itemDef.modelRotation2 = 0;
-	itemDef.modelOffset2 = 5;
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 70731;
+			itemDef.anInt165 = 70653;
+			itemDef.anInt200 = 70682;
+		}
+		if (i == 11611) {
+			itemDef.name = "Dragonbone platelegs";
+			itemDef.modelZoom = 1772;
+			itemDef.modelRotation1 = 512;
+			itemDef.modelRotation2 = 0;
+			itemDef.modelOffset2 = 5;
 			itemDef.groundActions = new String[5];
-		itemDef.groundActions[2] = "Take";
+			itemDef.groundActions[2] = "Take";
 			itemDef.itemActions = new String[5];
-		itemDef.itemActions[1] = "Wear";
-		itemDef.itemActions[4] = "Drop";
-	itemDef.modelID = 70728;
-	itemDef.anInt165 = 70665;
-	itemDef.anInt200 = 70695;
-}
+			itemDef.itemActions[1] = "Wear";
+			itemDef.itemActions[4] = "Drop";
+			itemDef.modelID = 70728;
+			itemDef.anInt165 = 70665;
+			itemDef.anInt200 = 70695;
+		}
 
 		if (i == 9721) {
 			itemDef.name = "Overload Guide";
@@ -1242,11 +1258,11 @@ if (i == 11611) {
 			itemDef.anInt175 = 62731;
 			itemDef.anInt197 = 62727;
 			itemDef.originalModelColors = new int[2];
-  			itemDef.modifiedModelColors = new int[2];
-   			itemDef.originalModelColors[0] = 4550;
-   			itemDef.modifiedModelColors[0] = 0;
-   			itemDef.originalModelColors[1] = 4540;
-   			itemDef.modifiedModelColors[1] = 0;
+			itemDef.modifiedModelColors = new int[2];
+			itemDef.originalModelColors[0] = 4550;
+			itemDef.modifiedModelColors[0] = 0;
+			itemDef.originalModelColors[1] = 4540;
+			itemDef.modifiedModelColors[1] = 0;
 		}
 		if (i == 13354) {
 			itemDef.modelID = 62709;
@@ -1410,11 +1426,11 @@ if (i == 11611) {
 			itemDef.itemActions[1] = "Wear";
 			itemDef.itemActions[4] = "Drop";
 		}
-	if (i == 7684) {
-	itemDef.name = "Deathtouched dart";
-	itemDef.description = "When used on NPC - Kills any NPC in one strike!";
-	}
-	if (i == 13356) {
+		if (i == 7684) {
+			itemDef.name = "Deathtouched dart";
+			itemDef.description = "When used on NPC - Kills any NPC in one strike!";
+		}
+		if (i == 13356) {
 			itemDef.modelID = 62696;
 			itemDef.name = "Ancient ceremonial boots";
 			itemDef.modelZoom = 676;

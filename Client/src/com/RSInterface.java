@@ -5597,11 +5597,11 @@ public final class RSInterface {
 	}
 
 	public static void unpackCustom(StreamLoader streamLoader,
-			TextDrawingArea textDrawingAreas[]) {
+			TextDrawingArea textDrawingAreas[], RSFont[] rsFonts) {
 
 		aMRUNodes_238 = new MRUNodes(65000);
 		aClass44 = streamLoader;
-		clanChatTabs(textDrawingAreas);
+		clanChatTabs(textDrawingAreas, rsFonts);
 		BountyHunter.initialize(textDrawingAreas);
 		Curses(textDrawingAreas);
 		prayerMenu(textDrawingAreas);
@@ -7877,19 +7877,22 @@ public final class RSInterface {
 		rsinterface.valueIndexArray[0][2] = 0;
 	}
 
-	public static void clanChatTabs(TextDrawingArea[] tda) {
+	public static void clanChatTabs(TextDrawingArea[] tda, RSFont[] font) {
 		RSInterface tab = addTabInterface(18128);
-		addButton(18250, 0, "/Clan Chat/Lootshare", "Toggle lootshare");
-		addHoverButton(18129, "/Clan Chat/SPRITE", 6, 29, 29, "Join Chat", 550,
+		tab.rsFonts = font[0];
+		addToggleButton(18250, "Interfaces/Clan Chat/LS", 0, 724, 21, 26,
+				"Toggle LS/CS", 18251);
+		addTooltip(18251, "Toggle-LS/CS");
+		addHoverButton(18129, "Interfaces/Clan Chat/SPRITE", 6, 29, 29, "Join Chat", 550,
 				18130, 1);
-		addHoveredButton(18130, "/Clan Chat/SPRITE", 7, 29, 29, 18131);
-		addHoverButton(18132, "/Clan Chat/SPRITE", 9, 29, 29, "Leave Chat", -1,
+		addHoveredButton(18130, "Interfaces/Clan Chat/SPRITE", 7, 29, 29, 18131);
+		addHoverButton(18132, "Interfaces/Clan Chat/SPRITE", 9, 29, 29, "Leave Chat", -1,
 				18133, 1);
-		addHoveredButton(18133, "/Clan Chat/SPRITE", 10, 29, 29, 18134);
-		addSprite(18137, 1, "/Clan Chat/SPRITE");
+		addHoveredButton(18133, "Interfaces/Clan Chat/SPRITE", 10, 29, 29, 18134);
+		addSprite(18137, 1, "Interfaces/Clan Chat/SPRITE");
 		addText(18139, "Talking in: Not in chat", tda, 0, 0xff9b00, false, true);
 		addText(18140, "Owner: None", tda, 0, 0xff9b00, false, true);
-		tab.totalChildren(11);
+		tab.totalChildren(12);
 		tab.child(0, 16126, 0, 221);
 		tab.child(1, 16126, 0, 59);
 		tab.child(2, 18137, 0, 35);
@@ -7901,11 +7904,12 @@ public final class RSInterface {
 		tab.child(8, 18139, 64, 3);
 		tab.child(9, 18140, 70, 18);
 		tab.child(10, 18250, 155, 233);
+		tab.child(11, 18251, 143, 227);
 		/* Text area */
 		RSInterface list = addTabInterface(18143);
 		list.totalChildren(100);
 		for (int i = 18144; i <= 18244; i++) {
-			addText(i, "", tda, 0, 0xffffff, false, true);
+			addText(i, "", font, 0, 0xffffff, false, true);
 		}
 		for (int id = 18144, i = 0; id <= 18243 && i <= 99; id++, i++) {
 			list.children[i] = id;
@@ -7918,6 +7922,29 @@ public final class RSInterface {
 		list.height = 191;
 		list.width = 175;
 		list.scrollMax = 1405;
+	}
+	
+	public static void addToggleButton(int id, String spriteName, int spriteId,
+			int setconfig, int width, int height, String tooltip, int mOver) {
+		RSInterface rsi = addInterface(id);
+		rsi.sprite1 = imageLoader(spriteId, spriteName);
+		rsi.sprite2 = imageLoader(spriteId, spriteName + "h");
+		rsi.requiredValues = new int[1];
+		rsi.requiredValues[0] = 1;
+		rsi.valueCompareType = new int[1];
+		rsi.valueCompareType[0] = 1;
+		rsi.valueIndexArray = new int[1][3];
+		rsi.valueIndexArray[0][0] = 5;
+		rsi.valueIndexArray[0][1] = setconfig;
+		rsi.valueIndexArray[0][2] = 0;
+		rsi.atActionType = 4;
+		rsi.width = width;
+		rsi.mOverInterToTrigger = mOver;
+		rsi.parentID = id;
+		rsi.id = id;
+		rsi.type = 5;
+		rsi.height = height;
+		rsi.tooltip = tooltip;
 	}
 
 	public Sprite disabledHover;
@@ -8445,6 +8472,19 @@ public final class RSInterface {
 		tab.anInt239 = 0;
 	}
 
+	public static void addText(int id, String text, RSFont tda[], int idx,
+			int color, boolean centered, boolean textShadowed) {
+		RSInterface rsi = interfaceCache[id] = new RSInterface();
+		if (centered)
+			rsi.centerText = true;
+		rsi.textShadow = textShadowed;
+		rsi.rsFonts = tda[idx];
+		rsi.message = text;
+		rsi.textColor = color;
+		rsi.id = id;
+		rsi.type = 4;
+	}
+	
 	public static void addButton(int id, int sid, String spriteName,
 			String tooltip, int w, int h) {
 		RSInterface tab = interfaceCache[id] = new RSInterface();
@@ -9738,6 +9778,7 @@ public final class RSInterface {
 	public int childX[];
 	public boolean usableItemInterface;
 	public TextDrawingArea textDrawingAreas;
+	public RSFont rsFonts;
 	public int invSpritePadY;
 	public int valueCompareType[];
 	public int anInt246;

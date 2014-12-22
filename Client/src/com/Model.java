@@ -950,9 +950,6 @@ public class Model extends Animable {
 			return;
 		}
 
-		/*byte[] Byte0 = FileOperations.ReadFile(signlink.findcachedir() + "317Models/" + j + ".dat");
-			FileOperations.WriteFile(signlink.findcachedir() + "Raw/" + j + ".dat",Byte0);
-			System.out.println("Model ID: " + j + " Dumped");*/
 		Stream stream = new Stream(abyte0);
 		stream.currentOffset = abyte0.length - 18;
 		Class21 class21_1 = aClass21Array1661[j] = new Class21();
@@ -1017,7 +1014,7 @@ public class Model extends Animable {
 
 	public static void method459(int i,
 			OnDemandFetcherParent onDemandFetcherParent) {
-		aClass21Array1661 = new Class21[80000];
+		aClass21Array1661 = new Class21[90000];
 		newmodel = new boolean[100000];
 		aOnDemandFetcherParent_1662 = onDemandFetcherParent;
 	}
