@@ -3,6 +3,7 @@ package server.model.players.content.skills.impl.ConstructionObjects;
 import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 
 public class Lecterns {
@@ -11,14 +12,9 @@ public class Lecterns {
 			final int anim, final int XP, final int item, final int amount) {
 		if (!c.getItems().playerHasItem(1761, 1)
 				|| !c.getItems().playerHasItem(item, 1)) {
-			if (amount == 1)
-				c.sendMessage("<col=ff3000>You need some Soft clay and "
-						+ amount + " " + c.getItems().getItemName(item)
-						+ " to create this tablet.");
-			if (amount > 1)
-				c.sendMessage("<col=ff3000>You need some Soft clay and "
-						+ amount + " " + c.getItems().getItemName(item)
-						+ "s to create this tablet.");
+			c.sendMessage("<col=ff3000>You need some Soft clay and " + amount
+					+ " " + ItemAssistant.getItemName(item)
+					+ " to create this tablet.");
 			return;
 		}
 		c.isWalking = false;
@@ -28,18 +24,22 @@ public class Lecterns {
 			public void execute(CycleEventContainer e) {
 				if (!c.getItems().playerHasItem(1761, 1)
 						|| !c.getItems().playerHasItem(item, 1)) {
-					if (amount == 1)
+					if (amount == 1) {
+						c.getItems();
 						c.sendMessage("<col=ff3000>You need some Soft clay and "
 								+ amount
 								+ " "
-								+ c.getItems().getItemName(item)
+								+ ItemAssistant.getItemName(item)
 								+ " to create this tablet.");
-					if (amount > 1)
+					}
+					if (amount > 1) {
+						c.getItems();
 						c.sendMessage("<col=ff3000>You need some Soft clay and "
 								+ amount
 								+ " "
-								+ c.getItems().getItemName(item)
+								+ ItemAssistant.getItemName(item)
 								+ "s to create this tablet.");
+					}
 					e.stop();
 					return;
 				}
@@ -51,7 +51,7 @@ public class Lecterns {
 					c.getItems().deleteItem(item, amount);
 					c.getItems().deleteItem(1761, 1);
 					c.getItems().addItem(ID, 1);
-					c.getPA().addSkillXP2(XP, 6);
+					c.getPA().addSkillXP(XP, 6);
 				}
 
 			}

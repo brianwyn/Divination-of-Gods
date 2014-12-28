@@ -200,7 +200,7 @@ public class ItemHandler {
 		boolean EndOfFile = false;
 		BufferedReader characterfile = null;
 		try {
-			characterfile = new BufferedReader(new FileReader("Data/cfg/"
+			characterfile = new BufferedReader(new FileReader(Config.DATA_PATH + "/cfg/"
 					+ FileName));
 		} catch (FileNotFoundException fileex) {
 			Misc.println(FileName + ": file not found.");
@@ -267,7 +267,7 @@ public class ItemHandler {
 	@SuppressWarnings("resource")
 	public void loadItemPrices(String filename) {
 		try {
-			Scanner s = new Scanner(new File("Data/cfg/" + filename));
+			Scanner s = new Scanner(new File(Config.DATA_PATH + "/cfg/" + filename));
 			while (s.hasNextLine()) {
 				String[] line = s.nextLine().split(" ");
 				ItemList temp = getItemList(Integer.parseInt(line[0]));

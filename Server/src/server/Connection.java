@@ -2,13 +2,10 @@ package server;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import server.model.players.Client;
 
@@ -28,9 +25,6 @@ public class Connection {
 	public static ArrayList<String> loginLimitExceeded = new ArrayList<String>();
 	public static ArrayList<String> starterRecieved1 = new ArrayList<String>();
 	public static ArrayList<String> starterRecieved2 = new ArrayList<String>();
-	public static Collection<String> bannedUid = new ArrayList<String>();
-
-	static String uidForUser = null;
 
 	/**
 	 * Adding Ban IP
@@ -45,7 +39,7 @@ public class Connection {
 	public static void addIpToFile(String Name) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(
-					"Data/bans/IpsBanned.txt", true));
+					Config.LOG_PATH + "/bans/IpsBanned.txt", true));
 			try {
 				out.newLine();
 				out.write(Name);
@@ -67,7 +61,7 @@ public class Connection {
 	public static void addIpToMuteFile(String Name) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(
-					"Data/bans/IpsMuted.txt", true));
+					Config.LOG_PATH + "/bans/IpsMuted.txt", true));
 			try {
 				out.newLine();
 				out.write(Name);
@@ -97,7 +91,7 @@ public class Connection {
 	public static void addIpToStarterList1(String Name) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(
-					"Data/tradesandothers/starters/FirstStarterRecieved.txt",
+					Config.LOG_PATH + "/starters/FirstStarterRecieved.txt",
 					true));
 			try {
 				out.newLine();
@@ -113,7 +107,7 @@ public class Connection {
 	public static void addIpToStarterList2(String Name) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(
-					"Data/tradesandothers/starters/SecondStarterRecieved.txt",
+					Config.LOG_PATH + "/starters/SecondStarterRecieved.txt",
 					true));
 			try {
 				out.newLine();
@@ -140,7 +134,7 @@ public class Connection {
 	public static void addNameToFile(String Name) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(
-					"Data/bans/UsersBanned.txt", true));
+					Config.LOG_PATH + "/bans/UsersBanned.txt", true));
 			try {
 				out.newLine();
 				out.write(Name);
@@ -156,30 +150,16 @@ public class Connection {
 		mutedNames.add(name.toLowerCase());
 		addUserToFile(name);
 	}
-
-	public static void addUidToBanList(String UUID) {
-		bannedUid.add(UUID);
-	}
-
-	public static void addUidToFile(String UUID) {
-		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(
-					"./Data/bans/UUIDBans.txt", true));
-			try {
-				out.newLine();
-				out.write(UUID);
-			} finally {
-				out.close();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	
+	public static void addIPToIPBanFile(String IP) {
+		bannedIps.add(IP.toLowerCase());
+		addIpToFile(IP);
 	}
 
 	public static void addUserToFile(String Name) {
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(
-					"Data/bans/UsersMuted.txt", true));
+					Config.LOG_PATH + "/bans/UsersMuted.txt", true));
 			try {
 				out.newLine();
 				out.write(Name);
@@ -194,7 +174,7 @@ public class Connection {
 	public static void appendStarters() {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					"Data/tradesandothers/starters/FirstStarterRecieved.txt"));
+					Config.LOG_PATH + "/starters/FirstStarterRecieved.txt"));
 			String data = null;
 			try {
 				while ((data = in.readLine()) != null) {
@@ -211,7 +191,7 @@ public class Connection {
 	public static void appendStarters2() {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					"Data/tradesandothers/starters/SecondStarterRecieved.txt"));
+					Config.LOG_PATH + "/starters/SecondStarterRecieved.txt"));
 			String data = null;
 			try {
 				while ((data = in.readLine()) != null) {
@@ -231,29 +211,11 @@ public class Connection {
 	public static void banIps() {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					"Data/bans/IpsBanned.txt"));
+					Config.LOG_PATH + "/bans/IpsBanned.txt"));
 			String data = null;
 			try {
 				while ((data = in.readLine()) != null) {
 					addIpToBanList(data);
-				}
-			} finally {
-				in.close();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void banUid() {
-		try {
-			BufferedReader in = new BufferedReader(new FileReader(
-					"./Data/bans/UUIDBans.txt"));
-			String data;
-			try {
-				while ((data = in.readLine()) != null) {
-					addUidToBanList(data);
-					System.out.println(data);
 				}
 			} finally {
 				in.close();
@@ -269,7 +231,7 @@ public class Connection {
 	public static void banUsers() {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					"Data/bans/UsersBanned.txt"));
+					Config.LOG_PATH + "/bans/UsersBanned.txt"));
 			String data = null;
 			try {
 				while ((data = in.readLine()) != null) {
@@ -291,10 +253,7 @@ public class Connection {
 				num++;
 			}
 		}
-		if (num > 5) {
-			return true;
-		}
-		return false;
+		return (num > Config.IPS_ALLOWED);
 	}
 
 	/**
@@ -331,61 +290,6 @@ public class Connection {
 		}
 	}
 
-	@SuppressWarnings("unused")
-	public static void getUidForUser(Client c, String name) {
-		File file = new File("./Data/characters/" + name + ".txt");
-		StringBuffer contents = new StringBuffer();
-		BufferedReader reader = null;
-		boolean error = false;
-		try {
-			reader = new BufferedReader(new FileReader(file));
-			String text = null;
-			int line = 0;
-			int done = 0;
-			// repeat until all lines is read
-			while ((text = reader.readLine()) != null && done == 0) {
-				text = text.trim();
-				line += 1;
-				if (line >= 6) {
-					text = text.trim();
-					int spot = text.indexOf("=");
-					String token = text.substring(0, spot);
-					token = token.trim();
-					String token2 = text.substring(spot + 1);
-					token2 = token2.trim();
-					if (token.equalsIgnoreCase("UUID")) {
-						uidForUser = token2;
-						done = 1;
-					}
-				}
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			error = true;
-			c.sendMessage("Could not find the character file " + name + ".txt");
-		} catch (IOException e) {
-			e.printStackTrace();
-			error = true;
-			c.sendMessage("A problem occured while trying to read the character file for "
-					+ name + ".");
-		} finally {
-			try {
-				if (reader != null) {
-					reader.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		// System.out.println(macForUser);
-		if (!error) {
-			bannedUid.remove(uidForUser);
-			deleteFromFile("./Data/bans/UUIDBans.txt", uidForUser);
-			c.sendMessage("@red@Un-UUID banned user " + name
-					+ " with the UUID address of " + uidForUser + ".");
-		}
-	}
-
 	public static boolean hasRecieved1stStarter(String IP) {
 		if (starterRecieved1.contains(IP)) {
 			return true;
@@ -408,7 +312,6 @@ public class Connection {
 		banIps();
 		muteUsers();
 		muteIps();
-		banUid();
 		appendStarters();
 		appendStarters2();
 	}
@@ -426,7 +329,7 @@ public class Connection {
 	public static boolean isIPMuted(String IP) {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					"Data/bans/IpsMuted.txt"));
+					Config.LOG_PATH + "/bans/IpsMuted.txt"));
 			String data = null;
 			try {
 				while ((data = in.readLine()) != null) {
@@ -459,15 +362,10 @@ public class Connection {
 		}
 		return false;
 	}
-
-	public static boolean isUidBanned(String UUID) {
-		return bannedUid.contains(UUID);
-	}
-
 	public static void muteIps() {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					"Data/bans/IpsMuted.txt"));
+					Config.LOG_PATH + "/bans/IpsMuted.txt"));
 			String data = null;
 			try {
 				while ((data = in.readLine()) != null) {
@@ -484,7 +382,7 @@ public class Connection {
 	public static void muteUsers() {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader(
-					"Data/bans/UsersMuted.txt"));
+					Config.LOG_PATH + "/bans/UsersMuted.txt"));
 			String data = null;
 			try {
 				while ((data = in.readLine()) != null) {
@@ -515,28 +413,23 @@ public class Connection {
 	/**
 	 * Removing banned username
 	 **/
-	public static void removeNameFromBanList(String name) {
-		bannedNames.remove(name.toLowerCase());
-		deleteFromFile("Data/bans/UsersBanned.txt", name);
+	public static boolean removeNameFromBanList(String name) {
+		deleteFromFile(Config.LOG_PATH + "/bans/UsersBanned.txt", name);
+		return bannedNames.remove(name.toLowerCase());
 	}
 
 	public static void removeNameFromMuteList(String name) {
-		bannedNames.remove(name.toLowerCase());
-		deleteFromFile("Data/bans/UsersMuted.txt", name);
+		mutedNames.remove(name.toLowerCase());
+		deleteFromFile(Config.LOG_PATH + "/bans/UsersMuted.txt", name);
 	}
 
 	public static void unIPMuteUser(String name) {
 		mutedIps.remove(name);
-		deleteFromFile("Data/bans/IpsMuted.txt", name);
+		deleteFromFile(Config.LOG_PATH + "/bans/IpsMuted.txt", name);
 	}
 
 	public static void unMuteUser(String name) {
 		mutedNames.remove(name);
-		deleteFromFile("Data/bans/UsersMuted.txt", name);
-	}
-
-	public static void unUidBanUser(String name) {
-		bannedUid.remove(name);
-		deleteFromFile("./Data/bans/UUIDBans.txt", name);
+		deleteFromFile(Config.LOG_PATH + "/bans/UsersMuted.txt", name);
 	}
 }

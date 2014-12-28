@@ -1,5 +1,6 @@
 package server.model.players.content.skills.impl;
 
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 
 /**
@@ -50,8 +51,8 @@ public class PotionMixing {
 	}
 
 	public void mixPotion2(int id, int id2) {
-		String id11 = c.getItems().getItemName(id);
-		String id22 = c.getItems().getItemName(id2);
+		String id11 = ItemAssistant.getItemName(id);
+		String id22 = ItemAssistant.getItemName(id2);
 		if (id11.equalsIgnoreCase("u") || id22.equalsIgnoreCase("u")) {
 			System.out.println("NULLPOINTER POTIONMIXING! " + id11 + ", "
 					+ id22 + " ");

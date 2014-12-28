@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import server.Config;
 import server.Server;
 import server.world.Clan;
 
@@ -42,7 +43,7 @@ public class PJClans {
 	}
 
 	public void saveClan(Clan clan) {
-		try (FileWriter file = new FileWriter("./Data/Clans/" + clan.name
+		try (FileWriter file = new FileWriter(Config.PLAYERDATA_PATH + "/Clans/" + clan.name
 				+ ".json")) {
 			Gson gson = new Gson();
 			String json = gson.toJson(clan);
@@ -55,7 +56,7 @@ public class PJClans {
 	}
 
 	public void loadClans() {
-		File clanDir = new File("./Data/Clans/");
+		File clanDir = new File(Config.PLAYERDATA_PATH + "/Clans/");
 		File[] files = clanDir.listFiles();
 		int numClans = files.length;
 		int loaded = 0;

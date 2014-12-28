@@ -1,5 +1,6 @@
 package server.model.players.content;
 
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 
 /**
@@ -531,7 +532,7 @@ public class Potions {
 	}
 
 	public boolean isPotion(int itemId) {
-		String name = c.getItems().getItemName(itemId);
+		String name = ItemAssistant.getItemName(itemId);
 		return name.contains("(4)") || name.contains("(3)")
 				|| name.contains("(2)") || name.contains("(1)");
 	}

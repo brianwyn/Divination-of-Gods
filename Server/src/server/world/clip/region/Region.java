@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.util.LinkedList;
 import java.util.List;
 
+import server.Config;
 import server.model.npcs.NPC;
 import server.model.players.Client;
 import server.world.clip.StateObject;
@@ -372,7 +373,7 @@ public class Region {
 
 	public static void load() {
 		try {
-			File f = new File("Data/data/map_index");
+			File f = new File(Config.DATA_PATH + "/clipping/map_index");
 			byte[] buffer = new byte[(int) f.length()];
 			DataInputStream dis = new DataInputStream(new FileInputStream(f));
 			dis.readFully(buffer);
@@ -394,9 +395,9 @@ public class Region {
 				regions[i] = new Region(regionIds[i], isMembers[i]);
 			}
 			for (int i = 0; i < size; i++) {
-				byte[] file1 = ReadFile(("Data/data/map/"
+				byte[] file1 = ReadFile((Config.DATA_PATH + "/clipping/map/"
 						+ mapObjectsFileIds[i] + ".dat"));
-				byte[] file2 = ReadFile(("Data/data/map/" + mapGroundFileIds[i] + ".dat"));
+				byte[] file2 = ReadFile((Config.DATA_PATH + "/clipping/map/" + mapGroundFileIds[i] + ".dat"));
 				if (file1 == null || file2 == null) {
 					continue;
 				}

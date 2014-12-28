@@ -11,6 +11,7 @@ import server.Server;
 import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
+import server.model.items.ItemAssistant;
 import server.model.minigames.DominionTowerByGabbe;
 import server.model.players.Client;
 import server.model.players.Player;
@@ -1035,8 +1036,8 @@ public class NPCHandler {
 		for (int i = 0; i < maxListedNPCs; i++) {
 			NpcList[i] = null;
 		}
-		loadNPCList("Data/cfg/npc.cfg");
-		loadAutoSpawn("Data/cfg/spawn-config.cfg");
+		loadNPCList(Config.DATA_PATH + "/cfg/npc.cfg");
+		loadAutoSpawn(Config.DATA_PATH + "/cfg/spawn-config.cfg");
 	}
 
 	public NPCHandler(Client Client) {
@@ -1069,7 +1070,7 @@ public class NPCHandler {
 			return;
 		if (c.taskAmount > 1) {
 			c.taskAmount--;
-			c.getPA().addSkillXP2(npcs[i].MaxHP * Config.SLAYER_EXPERIENCE, 18);
+			c.getPA().addSkillXP(npcs[i].MaxHP * Config.SLAYER_EXPERIENCE, 18);
 		} else if (c.taskAmount == 1) {
 			c.hasGivenSlayReward = false;
 			appendSlayerRewards(i);
@@ -1100,7 +1101,7 @@ public class NPCHandler {
 					"Complete 100 Slayer tasks!");
 		}
 		if (isEasyTask(npcs[npcIndex].npcType) && c.taskType == 1) {
-			c.getPA().addSkillXP2(
+			c.getPA().addSkillXP(
 					(npcs[npcIndex].MaxHP * 8) * Config.SLAYER_EXPERIENCE, 18);
 			c.sendMessage("You completed your EASY slayer task. Please see a slayer master to get a new one.");
 			if (c.slayerTaskStreak == 0) {
@@ -1112,7 +1113,7 @@ public class NPCHandler {
 			}
 		}
 		if (isMediumTask(npcs[npcIndex].npcType) && c.taskType == 2) {
-			c.getPA().addSkillXP2(
+			c.getPA().addSkillXP(
 					(npcs[npcIndex].MaxHP * 10) * Config.SLAYER_EXPERIENCE, 18);
 			c.sendMessage("You completed your MEDIUM slayer task. Please see a slayer master to get a new one.");
 			if (c.slayerTaskStreak == 0) {
@@ -1125,7 +1126,7 @@ public class NPCHandler {
 		}
 
 		if (isHardTask(npcs[npcIndex].npcType) && c.taskType == 3) {
-			c.getPA().addSkillXP2(
+			c.getPA().addSkillXP(
 					(npcs[npcIndex].MaxHP * 12) * Config.SLAYER_EXPERIENCE, 18);
 			c.sendMessage("You completed your HARD slayer task. Please see a slayer master to get a new one.");
 			if (c.slayerTaskStreak == 0) {
@@ -1137,7 +1138,7 @@ public class NPCHandler {
 			}
 		}
 		if (isEXTREMETask(npcs[npcIndex].npcType) && c.taskType == 4) {
-			c.getPA().addSkillXP2(
+			c.getPA().addSkillXP(
 					(npcs[npcIndex].MaxHP * 14) * Config.SLAYER_EXPERIENCE, 18);
 			c.sendMessage("You completed your EXTREME slayer task. Please see a slayer master to get a new one.");
 			if (c.slayerTaskStreak == 0) {
@@ -1915,28 +1916,33 @@ public class NPCHandler {
 					if (c.getItems().playerHasItem(18337, 1)) {
 						/* NORMAL BONES */
 						if (item == 526) {
-							c.sendMessage("Your Bonecrusher grants you 600 Prayer XP..");
-							c.getPA().addSkillXP2(600, 5);
+							c.sendMessage("Your Bonecrusher grants you "
+									+ c.getPA().addSkillXP(600, 5)
+									+ " Prayer XP..");
 						}
 						/* BIG BONES */
 						if (item == 532) {
-							c.sendMessage("Your Bonecrusher grants you 1800 Prayer XP..");
-							c.getPA().addSkillXP2(1800, 5);
+							c.sendMessage("Your Bonecrusher grants you "
+									+ c.getPA().addSkillXP(1800, 5)
+									+ " Prayer XP..");
 						}
 						/* Dragon BONES */
 						if (item == 536) {
-							c.sendMessage("Your Bonecrusher grants you 8640 Prayer XP..");
-							c.getPA().addSkillXP2(8640, 5);
+							c.sendMessage("Your Bonecrusher grants you "
+									+ c.getPA().addSkillXP(8640, 5)
+									+ " Prayer XP..");
 						}
 						/* BABY DRAGON BONES */
 						if (item == 534) {
-							c.sendMessage("Your Bonecrusher grants you 3600 Prayer XP..");
-							c.getPA().addSkillXP2(3600, 5);
+							c.sendMessage("Your Bonecrusher grants you "
+									+ c.getPA().addSkillXP(3600, 5)
+									+ " Prayer XP..");
 						}
 						/* FROST DRAGON BONES */
 						if (item == 18830) {
-							c.sendMessage("Your Bonecrusher grants you 72000 Prayer XP..");
-							c.getPA().addSkillXP2(72000, 5);
+							c.sendMessage("Your Bonecrusher grants you "
+									+ c.getPA().addSkillXP(72000, 5)
+									+ " Prayer XP..");
 						}
 					} else {
 						Server.itemHandler.spawnNPCDrop(c, item, npcs[i].absX,
@@ -2068,9 +2074,10 @@ public class NPCHandler {
 			 **** Start of Dungeoneering KillDung! Author Gabbe\Ace
 			 **/
 			if (npcs[i].npcType == 8597) {
-				c.getPA().addSkillXP2(300000, 24);
 				c.dungPoints += 16;
-				c.sendMessage("You've gained 30k Dungeoneering XP & 16 Tokens for killing the huge monster!");
+				c.sendMessage("You've gained "
+						+ c.getPA().addSkillXP(300000, 24)
+						+ " Dungeoneering XP & 16 Tokens for killing the huge monster!");
 			}
 			if (npcs[i].npcType == 125) {
 				c.funPoints += 2;
@@ -2141,14 +2148,16 @@ public class NPCHandler {
 				c.sendMessage("You've gained 1 FunPoints for killing the monster!");
 			}
 			if (npcs[i].npcType == 10141) {
-				c.getPA().addSkillXP2(300000, 24);
 				c.dungPoints += 40;
-				c.sendMessage("You've gained 300k Dungeoneering XP & 40 Tokens for killing the huge monster!");
+				c.sendMessage("You've gained "
+						+ c.getPA().addSkillXP(300000, 24)
+						+ " Dungeoneering XP & 40 Tokens for killing the huge monster!");
 			}
 			if (npcs[i].npcType == 10110) {
-				c.getPA().addSkillXP2(300000, 24);
 				c.dungPoints += 40;
-				c.sendMessage("You've gained 300k Dungeoneering XP & 40 Tokens for killing the huge monster!");
+				c.sendMessage("You've gained "
+						+ c.getPA().addSkillXP(300000, 24)
+						+ " Dungeoneering XP & 40 Tokens for killing the huge monster!");
 			}
 			if (npcs[i].npcType == 8282) {
 				c.slayerPoints += 20;
@@ -2159,29 +2168,34 @@ public class NPCHandler {
 				c.sendMessage("You've gained 20 Slayer Points for killing the huge monster!");
 			}
 			if (npcs[i].npcType == 9752) {
-				c.getPA().addSkillXP2(100000, 24);
 				c.dungPoints += 20;
-				c.sendMessage("You've gained 100k Dungeoneering XP & 20 Tokens for killing the huge monster!");
+				c.sendMessage("You've gained "
+						+ c.getPA().addSkillXP(100000, 24)
+						+ " Dungeoneering XP & 20 Tokens for killing the huge monster!");
 			}
 			if (npcs[i].npcType == 10127) {
-				c.getPA().addSkillXP2(200000, 24);
 				c.dungPoints += 30;
-				c.sendMessage("You've gained 200k Dungeoneering XP & 30 Tokens for killing the huge monster!");
+				c.sendMessage("You've gained "
+						+ c.getPA().addSkillXP(200000, 24)
+						+ " Dungeoneering XP & 30 Tokens for killing the huge monster!");
 			}
 			if (npcs[i].npcType == 3068) {
-				c.getPA().addSkillXP2(22000, 24);
 				c.dungPoints += 14;
-				c.sendMessage("You've gained 22k Dungeoneering XP & 14 Tokens for killing the huge monster!");
+				c.sendMessage("You've gained "
+						+ c.getPA().addSkillXP(22000, 24)
+						+ " Dungeoneering XP & 14 Tokens for killing the huge monster!");
 			}
 			if (npcs[i].npcType == 2780) { // 3475 9492
-				c.getPA().addSkillXP2(19000, 24);
 				c.dungPoints += 13;
-				c.sendMessage("You've gained 19K Dungeoneering XP & 13 Tokens for killing the mage!");
+				c.sendMessage("You've gained "
+						+ c.getPA().addSkillXP(19000, 24)
+						+ " Dungeoneering XP & 13 Tokens for killing the mage!");
 			}
 			if (npcs[i].npcType == 111) { // 3475 9492
-				c.getPA().addSkillXP2(11000, 24);
 				c.dungPoints += 7;
-				c.sendMessage("You've gained 11K Dungeoneering XP & 7 Tokens for killing the Ice Giant!");
+				c.sendMessage("You've gained "
+						+ c.getPA().addSkillXP(11000, 24)
+						+ " Dungeoneering XP & 7 Tokens for killing the Ice Giant!");
 			}
 			if (npcs[i].npcType == 1904) { // 3475 9492
 				c.sendMessage("You gain another kill..You've now killed "
@@ -2286,17 +2300,14 @@ public class NPCHandler {
 										NPCDrops.rareDrops.get(npcs[i].npcType)[random][1],
 										c.playerId);
 						if (npcs[i].npcType == 2636) {
-							PlayerHandler.yell(""
-									+ Misc.optimizeText(c.playerName)
-									+ " just slayed Nex and received "
-									+ c.getItems().getItemName(item) + "!");
+							handleNexDeath(i, item);
 						}
 						if (npcs[i].npcType == 8133) {
 							PlayerHandler
-									.yell(""
-											+ Misc.optimizeText(c.playerName)
+									.serverMessage(Misc
+											.optimizeText(c.playerName)
 											+ " just slayed the Corporeal Beast and received "
-											+ c.getItems().getItemName(item)
+											+ ItemAssistant.getItemName(item)
 											+ "!");
 						}
 					} else {
@@ -4035,9 +4046,10 @@ public class NPCHandler {
 		Client c = (Client) PlayerHandler.players[npcs[i].killedBy];
 		if (c != null) {
 			if (c.atDemon()) {
-				c.getPA().addSkillXP2(150000, 24);
 				c.dungPoints += 80;
-				c.sendMessage("You've been given 150K Dungeoneering XP and 80 Tokens!");
+				c.sendMessage("You've been given "
+						+ c.getPA().addSkillXP(150000, 24)
+						+ " Dungeoneering XP and 80 Tokens!");
 				c.getPA().startTeleport(2411, 3530, 0, "modern");
 				return;
 			} else {
@@ -4093,16 +4105,9 @@ public class NPCHandler {
 	public void handleNexDeath(int i, int reward) {
 		Client c = (Client) PlayerHandler.players[npcs[i].killedBy];
 		if (c != null) {
-			// int reward = nexRewards[Misc.random(32)];
-			// Server.itemHandler.createGroundItem(c, reward, npcs[i].absX,
-			// npcs[i].absY, 1, c.playerId);
-
-			// if (isRareItem(reward)) {
-			PlayerHandler.yell("" + Misc.optimizeText(c.playerName)
+			PlayerHandler.serverMessage(Misc.optimizeText(c.playerName)
 					+ " just slayed Nex and received "
-					+ c.getItems().getItemName(reward) + "!");
-
-			// }
+					+ ItemAssistant.getItemName(reward) + "!");
 		}
 	}
 

@@ -45,8 +45,7 @@ public class DwarfMultiCannon {
 			n.hitUpdateRequired = true;
 			n.killerId = players.playerId;
 			n.facePlayer(players.playerId);
-			players.getPA().addSkillXP2(damage * 200, 4);
-			// n.forceChat("im hit, multi");
+			players.getPA().addSkillXP(damage * 200, 4);
 		} else {
 			if (n.underAttackBy > 0 && n.underAttackBy != players.playerId)
 				return;
@@ -57,8 +56,7 @@ public class DwarfMultiCannon {
 			n.hitUpdateRequired = true;
 			n.killerId = players.playerId;
 			n.facePlayer(players.playerId);
-			// n.forceChat("im hit, single");
-			players.getPA().addSkillXP2(damage * 200, 4);
+			players.getPA().addSkillXP(damage * 200, 4);
 		}
 		players.cannonBalls--;
 

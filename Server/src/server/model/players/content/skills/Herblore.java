@@ -1,6 +1,7 @@
 package server.model.players.content.skills;
 
 import server.Config;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.Player;
 
@@ -69,7 +70,7 @@ public class Herblore {
 						c.getItems().getItemSlot(usedWith), 1);
 				c.getItems().addItem(makePotion[slot][2], 1);
 				c.sendMessage("You make a "
-						+ c.getItems().getItemName(makePotion[slot][2]) + ".");
+						+ ItemAssistant.getItemName(makePotion[slot][2]) + ".");
 				c.getPA().addSkillXP(
 						makePotion[slot][4] * Config.HERBLORE_EXPERIENCE,
 						Player.playerHerblore);
@@ -145,7 +146,7 @@ public class Herblore {
 						.deleteItem(vial, c.getItems().getItemSlot(vial), 1);
 				c.getItems().addItem(makePotion[slot][1], 1);
 				c.sendMessage("You make a "
-						+ c.getItems().getItemName(makePotion[slot][1]) + ".");
+						+ ItemAssistant.getItemName(makePotion[slot][1]) + ".");
 				c.startAnimation(363);
 				// c.getPA().addSkillXP(makePotion[slot][4] *
 				// Config.HERBLORE_EXPERIENCE,c.playerHerblore);

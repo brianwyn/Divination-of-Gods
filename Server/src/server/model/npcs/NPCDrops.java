@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+import server.Config;
+
 /**
  * @author Sanity
  */
@@ -25,7 +27,7 @@ public class NPCDrops {
 	@SuppressWarnings("resource")
 	public static void loadConstants() {
 		try {
-			File f = new File("Data/cfg/NpcConstants.TSM");
+			File f = new File(Config.DATA_PATH + "/cfg/NpcConstants.TSM");
 			Scanner s = new Scanner(f);
 			while (s.hasNextLine()) {
 				String line = s.nextLine();
@@ -53,7 +55,7 @@ public class NPCDrops {
 			int[][][] npcDrops = new int[62585][][];
 			int[][][] rareDrops2 = new int[62585][][];
 			int[] itemRarity = new int[62585];
-			File f = new File("Data/cfg/NPCDrops.TSM");
+			File f = new File(Config.DATA_PATH + "/cfg/NPCDrops.TSM");
 			Scanner s = new Scanner(f);
 			while (s.hasNextLine()) {
 				String line = s.nextLine();

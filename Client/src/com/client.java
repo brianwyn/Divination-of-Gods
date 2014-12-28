@@ -37,6 +37,9 @@ public class client extends RSApplet {
 	 */
 
 	private static final long serialVersionUID = 1L;
+	// public static String serverip = "192.99.70.107";
+	public static String serverip = "localhost";
+	public static int port = 43594;
 	public RSFont newSmallFont, newRegularFont, newBoldFont, newFancyFont;
 	public Sprite[] chatImages = new Sprite[6];
 	public Sprite[] clanCrowns = new Sprite[9];
@@ -803,9 +806,6 @@ public class client extends RSApplet {
 	private int autocastId = 0;
 	public int MapX, MapY;
 	public static int spellID = 0;
-	public static String serverip = "192.99.70.107";
-	// public static String serverip = "localhost";
-	public static int port = 43594;
 
 	private static String intToKOrMilLongName(int i) {
 		String s = String.valueOf(i);
@@ -3704,8 +3704,7 @@ public class client extends RSApplet {
 		loggedIn = false;
 		alertHandler.alert = null;
 		loginScreenState = 0;
-		// myUsername = "";
-		// myPassword = "";
+		Resting = false;
 		unlinkMRUNodes();
 		worldController.initToNull();
 		for (int i = 0; i < 4; i++)
@@ -5690,6 +5689,7 @@ public class client extends RSApplet {
 			if (RSInterface.interfaceCache[k].parentID == backDialogID)
 				atInventoryInterfaceType = 3;
 		}
+		
 		if (l == 27) {
 			Player player = playerArray[i1];
 			if (player != null) {
@@ -5821,7 +5821,9 @@ public class client extends RSApplet {
 			sendPacket185(152, 173, 169);
 		}
 		if (l == 1048) {// Rest
-			pushMessage("Will be adding this feature soon..", 0, "");
+			Resting = !Resting;
+			stream.createFrame(185);
+			stream.writeWord(5003);
 		}
 		if (l == 1049) {// compass
 			compassRotation = 0;
@@ -7030,6 +7032,10 @@ public class client extends RSApplet {
 						delIgnore(l3);
 					}
 					if (friendsListAction == 6) {
+						long l3 = TextClass.longForName(promptInput);
+						chatJoin(l3);
+					}
+					if (friendsListAction == 7) {
 						long l3 = TextClass.longForName(promptInput);
 						chatJoin(l3);
 					}
@@ -8460,7 +8466,7 @@ public class client extends RSApplet {
 					+ (toggleFullscreen ? -35 : 161) + mapMovedX + paddingX,
 					yPaddingmapBackImage + (toggleFullscreen ? 106 : 88)
 							+ mapMovedY + paddingY, 57, 34)) {
-				menuActionName[menuActionRow] = "Rest";
+				menuActionName[menuActionRow] = Resting ? "Stand-Up" : "Rest";
 				menuActionID[menuActionRow] = 1048;
 				menuActionRow++;
 				menuActionName[menuActionRow] = "Turn run mode "
@@ -12803,13 +12809,17 @@ public class client extends RSApplet {
 				(toggleFullscreen ? 135 : 127) + mapMovedY + paddingY, 3,
 				summoningOrbs);
 	}
-
+	
+	public boolean Resting = false;
+	
 	private void createOrbs(int xdraw, int ydraw, int orbID, Sprite[] orbSprites) { // this
 																					// creates
 																					// the
 																					// orb
 		int orbIconID = ((orbToggle[orbID] && orbID == 2) || (orbID == 3 && summoningAttack)) ? 3
 				: 0;
+			if(Resting && orbID == 2)
+				orbIconID = 4;
 		int current = getOrbValues(orbID, orbSprites[orbIconID])[0];
 		int total = getOrbValues(orbID, orbSprites[orbIconID])[1];
 		double percentage = (current * 100 / total);
@@ -12868,7 +12878,7 @@ public class client extends RSApplet {
 			offsetY = 7;
 			break;
 
-		case 2:// Energy
+		case 2:// Run Energy
 			values[0] = Integer
 					.parseInt(RSInterface.interfaceCache[149].message
 							.replaceAll("%", ""));
@@ -16263,6 +16273,21 @@ public class client extends RSApplet {
 			case 36:
 				int k8 = inStream.method434();
 				byte byte0 = inStream.readSignedByte();
+				if(k8 == 1234) {
+					inputTaken = true;
+					inputDialogState = 0;
+					messagePromptRaised = true;
+					promptInput = "";
+					friendsListAction = 7;
+					aString1121 = "Please enter the clan chat's password";
+					pktType = -1;
+					return true;
+				}
+				if(k8 == 9999) {
+					Resting = false;
+					pktType = -1;
+					return true;
+				}
 				anIntArray1045[k8] = byte0;
 				if (k8 == 152) {// running
 					if (byte0 == 1)

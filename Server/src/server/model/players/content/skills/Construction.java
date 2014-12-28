@@ -10,6 +10,7 @@ import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
 import server.model.items.Item;
+import server.model.items.ItemAssistant;
 import server.model.npcs.NPCHandler;
 import server.model.players.Client;
 import server.model.players.content.skills.impl.ConstructionObjects.Rugs;
@@ -24,8 +25,9 @@ public class Construction {
 			// Executes after a while!
 			public void execute(CycleEventContainer e) {
 				c.getItems().L = 0;
-				if (c.withdrawConstructionItem(ID, amount))
-					c.getDH().itemName = "" + c.getItems().getItemName(ID) + "";
+				if (c.withdrawConstructionItem(ID, amount)) {
+					c.getDH().itemName = "" + ItemAssistant.getItemName(ID) + "";
+				}
 				c.getDH().fetched = c.getItems().L;
 				c.getDH().sendDialogues(dialogueID, 4241);
 				c.payButlerReq++;

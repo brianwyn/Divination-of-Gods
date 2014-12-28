@@ -151,28 +151,18 @@ public class LoginHandler {
 		c.setSidebarInterface(13, 17011);
 		c.setSidebarInterface(14, 3917);
 		c.setSidebarInterface(0, 2423);
-		if (c.isDonator > 0 && c.isDonator < 6 && c.playerRights > 1
-				&& c.playerRights < 5) {
-			c.setSidebarInterface(15, 12855);// donor
-		} else {
-			c.sendMessage("You need to be donator to open this tab");
-			c.setSidebarInterface(15, 1);// donor
-
+		if (c.isDonator > 0 && c.isDonator < 5 && c.playerRights == 0) {
+			c.playerRights = 4;
 		}
+		if ((c.isDonator > 0 && c.isDonator < 6) || c.isAdmin() || c.isOwner())
+			c.setSidebarInterface(15, 12855);// donor
+		else
+			c.setSidebarInterface(15, -1);
 		c.setSidebarInterface(16, 3333);// achievmenets
-		if (c.isDonator > 0 && c.isDonator < 5) {
-			c.setSidebarInterface(15, 12855);// donor
-		} else {
-			c.sendMessage("You need to be donator to open this tab");
-		}
 		c.handleSummoningOnLogin();
 		if (c.hasFollower == 6874) {
 			c.hasFollower = 6874;
 			c.yak = true;
-		}
-		if (c.isDonator > 0 && c.isDonator < 5 && c.playerRights == 0) {
-			c.playerRights = 4;
-			c.disconnected = true;
 		}
 		c.hasYakSummoned();
 		if (c.inWarriorG() && c.heightLevel == 2) {
@@ -209,7 +199,8 @@ public class LoginHandler {
 		c.getItems().resetItems(3214);
 		c.getItems().sendWeapon(
 				c.playerEquipment[Player.playerWeapon],
-				ItemAssistant.getItemName(c.playerEquipment[Player.playerWeapon]));
+				ItemAssistant
+						.getItemName(c.playerEquipment[Player.playerWeapon]));
 		c.getItems().resetBonus();
 		c.getItems().getBonus();
 		c.getPA()
@@ -219,8 +210,8 @@ public class LoginHandler {
 					c.playerEquipmentN[equip], equip);
 		c.getItems().writeBonus();
 		c.getCombat().getPlayerAnimIndex(
-				ItemAssistant.getItemName(c.playerEquipment[Player.playerWeapon])
-						.toLowerCase());
+				ItemAssistant.getItemName(
+						c.playerEquipment[Player.playerWeapon]).toLowerCase());
 		c.getPA().logIntoPM();
 		c.getPA().sendFrame75(c.npcType, 17027);
 		c.getItems().addSpecialBar(c.playerEquipment[Player.playerWeapon]);

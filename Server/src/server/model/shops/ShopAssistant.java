@@ -3,6 +3,7 @@ package server.model.shops;
 import server.Config;
 import server.Server;
 import server.model.items.Item;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.PlayerHandler;
 import server.world.ShopHandler;
@@ -61,103 +62,119 @@ public class ShopAssistant {
 		String ShopAdd = "";
 		if (c.myShopId == 7390 && c.myShopClient != null
 				&& !c.myShopClient.playerName.equals(c.playerName)) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs "
 					+ c.myShopClient.playerShopP[removeSlot] + " coins.");
 			return;
 		} else if (c.myShopId == 7390 && c.myShopClient != null
 				&& c.myShopClient.playerName.equals(c.playerName)) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + c.playerShopP[removeSlot]
 					+ " coins.");
 			return;
 		}
 		if (c.myShopId == 20) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getSpecialItemValue(removeId)
 					+ " Slayer Points!");
 			return;
 		}
 		if (c.myShopId == PK_POINT_SHOP) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getPkPointValue(removeId)
 					+ " Pk Points!");
 			return;
 		}
 		if (c.myShopId == 36) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getSpecialItemValue(removeId)
 					+ " FoG Tokens!");
 			return;
 		}
 		if (c.myShopId == 18) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getSpecialItemValue(removeId)
 					+ " Slayer Points!");
 			return;
 		}
 		if (c.myShopId == 11) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getSpecialItemValue(removeId)
 					+ " Pking Points!");
 			return;
 		}
 		if (c.myShopId == 53) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getDungShopPrice(removeId)
 					+ " coins!");
 			return;
 		}
 		if (c.myShopId == 84) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + dungShopPrices(removeId)
 					+ " Dungeoneering Tokens.");
 			return;
 		}
 		if (c.myShopId == 16) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getSpecialItemValue(removeId)
 					+ " Agility Points.");
 			return;
 		}
 		if (c.myShopId == 100) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getSpecialItemValue(removeId)
 					+ " Assault Points.");
 			return;
 		}
 		if (c.myShopId == 85) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + dungShopPrices(removeId)
 					+ " Dungeoneering Tokens.");
 			return;
 		}
 		if (c.myShopId == 55) { // NEW SHOP
-			c.sendMessage(c.getItems().getItemName(removeId)
-					+ ": currently costs " + GabbeIsAFuckingBaws(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
+					+ ": currently costs " + getDonatorPoints(removeId)
 					+ " Donator Points.");
 			return;
 		}
 		if (c.myShopId == 56) { // NEW SHOP
-			c.sendMessage(c.getItems().getItemName(removeId)
-					+ ": currently costs " + GabbeIsAFuckingBaws(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
+					+ ": currently costs " + getDonatorPoints(removeId)
 					+ " Donator Points.");
 			return;
 		}
 		if (c.myShopId == 53) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getDungShopPrice(removeId)
 					+ " coins.");
 			return;
 		}
 		if (c.myShopId == 14) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getSpecialItemValue(removeId)
 					+ " Vote Points.");
 			return;
 		}
 		if (c.myShopId == 21) {
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": currently costs " + getSpecialItemValue(removeId)
 					+ " Points.");
 			return;
@@ -172,8 +189,9 @@ public class ShopAssistant {
 		} else if (ShopValue >= 1000000) {
 			ShopAdd = " (" + (ShopValue / 1000000) + " million)";
 		}
-		c.sendMessage(c.getItems().getItemName(removeId) + ": currently costs "
-				+ ShopValue + " coins" + ShopAdd);
+
+		c.sendMessage(ItemAssistant.getItemName(removeId)
+				+ ": currently costs " + ShopValue + " coins" + ShopAdd);
 	}
 
 	public boolean buyItem(int itemID, int fromSlot, int amount) {
@@ -218,12 +236,13 @@ public class ShopAssistant {
 				}
 				resetShop(c.myShopClient);
 				c.getItems().resetItems(3823);
-				;
+
 				c.sendMessage("You just bought " + bought + " "
-						+ c.getItems().getItemName(itemID) + " for "
+						+ ItemAssistant.getItemName(itemID) + " for "
 						+ (bought * price));
+
 				c.myShopClient.sendMessage(c.playerName + " has bought "
-						+ bought + " " + c.getItems().getItemName(itemID)
+						+ bought + " " + ItemAssistant.getItemName(itemID)
 						+ " from you!");
 				c.myShopClient.sendMessage("You now have "
 						+ c.myShopClient.playerCollect
@@ -739,8 +758,7 @@ public class ShopAssistant {
 		o.playerShopP = fixArray(o.playerShopP);
 	}
 
-	public int GabbeIsAFuckingBaws(int id) { // Handles Donator shop item point
-												// prices
+	public int getDonatorPoints(int id) {
 		switch (id) {
 		case 7684:
 			return 1;
@@ -1758,9 +1776,9 @@ public class ShopAssistant {
 			}
 
 		} else if (c.myShopId == 55) { // Donor shop
-			if (c.DonorPoint >= GabbeIsAFuckingBaws(itemID)) {
+			if (c.DonorPoint >= getDonatorPoints(itemID)) {
 				if (c.getItems().freeSlots() > 0) {
-					c.DonorPoint -= GabbeIsAFuckingBaws(itemID);
+					c.DonorPoint -= getDonatorPoints(itemID);
 					c.getItems().addItem(itemID, 1);
 					c.getItems().resetItems(3823);
 				}
@@ -1768,9 +1786,9 @@ public class ShopAssistant {
 				c.sendMessage("You do not have enough Donator Points to buy this item.");
 			}
 		} else if (c.myShopId == 56) { // Donor shop
-			if (c.DonorPoint >= GabbeIsAFuckingBaws(itemID)) {
+			if (c.DonorPoint >= getDonatorPoints(itemID)) {
 				if (c.getItems().freeSlots() > 0) {
-					c.DonorPoint -= GabbeIsAFuckingBaws(itemID);
+					c.DonorPoint -= getDonatorPoints(itemID);
 					c.getItems().addItem(itemID, 1);
 					c.getItems().resetItems(3823);
 				}
@@ -1931,8 +1949,9 @@ public class ShopAssistant {
 			}
 		}
 		if (c.playerRights == 2) {
+
 			c.sendMessage("You can't sell "
-					+ c.getItems().getItemName(itemID).toLowerCase() + ".");
+					+ ItemAssistant.getItemName(itemID).toLowerCase() + ".");
 			return false;
 		}
 		if (c.myShopId == 7390) {
@@ -1957,8 +1976,9 @@ public class ShopAssistant {
 			return false;
 		for (int i : Config.ITEM_SELLABLE) {
 			if (i == itemID) {
+
 				c.sendMessage("You can't sell "
-						+ c.getItems().getItemName(itemID).toLowerCase() + ".");
+						+ ItemAssistant.getItemName(itemID).toLowerCase() + ".");
 				return false;
 			}
 		}
@@ -1966,8 +1986,9 @@ public class ShopAssistant {
 			return false;
 		for (int i : Config.ITEM_SELLABLE) {
 			if (i == itemID) {
+
 				c.sendMessage("You can't sell "
-						+ c.getItems().getItemName(itemID).toLowerCase() + ".");
+						+ ItemAssistant.getItemName(itemID).toLowerCase() + ".");
 				return false;
 			}
 		}
@@ -2003,8 +2024,9 @@ public class ShopAssistant {
 					}
 				}
 				if (IsIn == false && !c.inDung) {
+
 					c.sendMessage("You can't sell "
-							+ c.getItems().getItemName(itemID).toLowerCase()
+							+ ItemAssistant.getItemName(itemID).toLowerCase()
 							+ " to this store.");
 
 					return false;
@@ -2101,8 +2123,9 @@ public class ShopAssistant {
 	 **/
 	public void sellToShopPrice(int removeId, int removeSlot) {
 		if (c.playerRights == 2) {
+
 			c.sendMessage("You can't sell "
-					+ c.getItems().getItemName(removeId).toLowerCase() + ".");
+					+ ItemAssistant.getItemName(removeId).toLowerCase() + ".");
 			return;
 		}
 		for (int i = 0; i < Config.NOT_ALLOWED.length; i++) {
@@ -2123,8 +2146,9 @@ public class ShopAssistant {
 			}
 
 			if (i == removeId) {
+
 				c.sendMessage("You can't sell "
-						+ c.getItems().getItemName(removeId).toLowerCase()
+						+ ItemAssistant.getItemName(removeId).toLowerCase()
 						+ ".");
 				return;
 			}
@@ -2146,7 +2170,8 @@ public class ShopAssistant {
 			int shopValue = getPkPointValue(removeId);
 
 			shopValue = (int) (shopValue * 0.50);
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": shop will buy for " + shopValue + " pk points.");
 			return;
 		}
@@ -2164,7 +2189,8 @@ public class ShopAssistant {
 				} else if (ShopValue >= 1000000) {
 					ShopAdd = " (" + (ShopValue / 1000000) + " million)";
 				}
-				c.sendMessage(c.getItems().getItemName(removeId)
+
+				c.sendMessage(ItemAssistant.getItemName(removeId)
 						+ ": shop will buy for " + ShopValue + " coins"
 						+ ShopAdd);
 				return;
@@ -2175,15 +2201,17 @@ public class ShopAssistant {
 				} else if (ShopValue2 >= 1000000) {
 					ShopAdd = " (" + (ShopValue2 / 1000000) + " million)";
 				}
-				c.sendMessage(c.getItems().getItemName(removeId)
+
+				c.sendMessage(ItemAssistant.getItemName(removeId)
 						+ ": shop will buy for " + ShopValue2 + " coins"
 						+ ShopAdd);
 				return;
 			}
 		}
 		if (IsIn == false) {
+
 			c.sendMessage("You can't sell "
-					+ c.getItems().getItemName(removeId).toLowerCase()
+					+ ItemAssistant.getItemName(removeId).toLowerCase()
 					+ " to this store.");
 		} else {
 			int ShopValue = (int) Math.floor(getItemShopValue(removeId, 1,
@@ -2194,7 +2222,8 @@ public class ShopAssistant {
 			} else if (ShopValue >= 1000000) {
 				ShopAdd = " (" + (ShopValue / 1000000) + " million)";
 			}
-			c.sendMessage(c.getItems().getItemName(removeId)
+
+			c.sendMessage(ItemAssistant.getItemName(removeId)
 					+ ": shop will buy for " + ShopValue + " coins" + ShopAdd);
 		}
 	}

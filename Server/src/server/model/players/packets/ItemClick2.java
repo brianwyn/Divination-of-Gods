@@ -4,7 +4,6 @@ import server.model.players.Client;
 import server.model.players.PacketType;
 import server.model.players.content.LoyaltyHandler;
 import server.model.players.content.SlayerRing;
-import server.model.players.content.skills.RuneCraft;
 import server.model.players.content.skills.impl.Binding;
 import server.model.players.content.skills.impl.ImpLooting;
 import server.util.Misc;
@@ -82,7 +81,7 @@ public class ItemClick2 implements PacketType {
 		case 19963:
 			c.spinsLe += 10;
 			break;
-		case 1438:// Air Talisman
+		/*case 1438:// Air Talisman
 			RuneCraft.locate(c, 2985, 3292);
 			break;
 		case 1440:// Earth Talisman
@@ -99,7 +98,7 @@ public class ItemClick2 implements PacketType {
 			break;
 		case 1448:// Mind Talisman
 			RuneCraft.locate(c, 2982, 3514);
-			break;
+			break;*/
 		case 11283:
 		case 11284:
 		case 11285:

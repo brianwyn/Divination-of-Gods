@@ -26,6 +26,11 @@ public class ClanChatHandler {
 			c.sendMessage("You are already in a clan!");
 			return;
 		}
+		if (c.needClanPass) {
+			c.clanPass = name;
+			name = c.clanName;
+			c.clanName = null;
+		}
 		for (int j = 0; j < clans.length; j++) {
 			if (clans[j] != null) {
 				if (clans[j].name.equalsIgnoreCase(name)) {
@@ -33,7 +38,9 @@ public class ClanChatHandler {
 						addToClan(c.playerId, j);
 						return;
 					} else {
-						c.sendMessage("Incorrect password!");
+						c.needClanPass = true;
+						c.clanName = name;
+						c.getPA().sendFrame36(1234, 1);
 						return;
 					}
 				}
@@ -382,28 +389,21 @@ public class ClanChatHandler {
 	}
 
 	public void addToClan(int playerId, int clanId) {
-		if (clans[clanId] != null && PlayerHandler.players[playerId] != null) {
-			PlayerHandler.players[playerId].clanId = clanId;
-			PlayerHandler.players[playerId].clanName = clans[clanId].name;
-			if (clans[clanId].lootshare)
-				((Client) PlayerHandler.players[playerId]).getPA().sendFrame36(
-						724, 1);
-			else
-				((Client) PlayerHandler.players[playerId]).getPA().sendFrame36(
-						724, 0);
-			for (int j = 0; j < clans[clanId].members.length; j++) {
-				if (clans[clanId].members[j] <= 0) {
-					clans[clanId].members[j] = playerId;
-					messageToClan(
-							(PlayerHandler.players[playerId].playerRights > 0 ? "<img="
-									+ (PlayerHandler.players[playerId].playerRights - 1)
-									+ ">"
-									: "")
-									+ PlayerHandler.players[playerId].getPlayerName()
-									+ " has joined the channel.", clanId);
-					updateClanChat(clanId);
-					return;
-				}
+		Client c = (Client) PlayerHandler.players[playerId];
+		if (clans[clanId] == null && c == null)
+			return;
+		c.clanId = clanId;
+		c.clanName = clans[clanId].name;
+		c.getPA().sendFrame36(724, clans[clanId].lootshare ? 1 : 0);
+		for (int j = 0; j < clans[clanId].members.length; j++) {
+			if (clans[clanId].members[j] <= 0) {
+				clans[clanId].members[j] = playerId;
+				messageToClan((c.playerRights > 0 ? "<img="
+						+ (c.playerRights - 1) + ">" : "")
+						+ c.getPlayerName() + " has joined the channel.",
+						clanId);
+				updateClanChat(clanId);
+				break;
 			}
 		}
 	}
@@ -421,6 +421,7 @@ public class ClanChatHandler {
 			c.sendMessage("You have left the clan.");
 			c.clanId = -1;
 			c.clanName = "";
+			c.clanPass = "";
 			updateClanChat(clanId);
 			c.getPA().clearClanChat();
 			return;
@@ -439,6 +440,7 @@ public class ClanChatHandler {
 		c.sendMessage("You have left the clan.");
 		c.clanId = -1;
 		c.clanName = "";
+		c.clanPass = "";
 		updateClanChat(clanId);
 		c.getPA().clearClanChat();
 	}

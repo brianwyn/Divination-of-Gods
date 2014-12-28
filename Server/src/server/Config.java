@@ -10,10 +10,14 @@ public class Config {
 	public static String LOGOUT_MESSAGE = "Click here to logout!";
 	public static String DEATH_MESSAGE = "Oh dear you are dead!";
 	public static boolean DOUBLE_EXP = true;
-	public static final double SUMMONING_EXP_BONUS = 2.4;
+	public static final int SUMMONING_EXP_BONUS = 5;
 	public static String SERVER_NAME = "Divination of Gods";
 	public static String WELCOME_MESSAGE = "Divination of Gods";
 	public static String FORUMS = "www.divinationofgods.com";
+	public static final String LOG_PATH = "./PlayerData/Logs/";
+	public static final String DATA_PATH = "./Data/";
+	public static final String PLAYERDATA_PATH = "./PlayerData/";
+	
 
 	public static final int CLIENT_VERSION = 1;
 	public static boolean SOUND = false; // sounds enabled or disable

@@ -5,6 +5,7 @@ import server.Server;
 import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
+import server.model.items.ItemAssistant;
 import server.model.objects.Object;
 import server.model.players.Client;
 import server.model.players.content.GabbesAchievements;
@@ -40,7 +41,7 @@ public class Firemaking extends SkillHandler {
 				if (c.playerLevel[11] < l.getLevel()) {
 					c.sendMessage("You need a firemaking level of "
 							+ l.getLevel() + " to light "
-							+ c.getItems().getItemName(logId));
+							+ ItemAssistant.getItemName(logId));
 					return;
 				}
 				if (c.inBank()) {

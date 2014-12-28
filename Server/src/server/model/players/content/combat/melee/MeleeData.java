@@ -2,6 +2,7 @@ package server.model.players.content.combat.melee;
 
 import server.Config;
 import server.Server;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.Player;
 import server.model.players.PlayerHandler;
@@ -208,10 +209,10 @@ public class MeleeData {
 	}
 
 	public static int getBlockEmote(Client c) {
-		String shield = c.getItems()
+		String shield = ItemAssistant
 				.getItemName(c.playerEquipment[Player.playerShield])
 				.toLowerCase();
-		String weapon = c.getItems()
+		String weapon = ItemAssistant
 				.getItemName(c.playerEquipment[Player.playerWeapon])
 				.toLowerCase();
 		if (shield.contains("defender"))

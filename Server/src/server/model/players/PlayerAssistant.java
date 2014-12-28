@@ -5,7 +5,6 @@ import static server.Config.SINGLE_AND_MULTI_ZONES;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,6 +31,7 @@ import server.model.players.content.skills.Construction;
 import server.model.players.content.skills.Woodcutting;
 import server.model.players.packets.PathFinder;
 import server.util.Misc;
+import server.world.Position;
 import server.world.clip.region.Region;
 
 public class PlayerAssistant {
@@ -203,6 +203,25 @@ public class PlayerAssistant {
 		this.c = Client;
 	}
 
+	public boolean resetPlayerSkill(int skillId, boolean checkEq) {
+		if (c.inWild()) {
+			c.sendMessage("This command cannot be done in the wild");
+			return false;
+		}
+		if (checkEq) {
+			for (int j = 0; j < c.playerEquipment.length; j++) {
+				if (c.playerEquipment[j] > 0) {
+					c.sendMessage("Please take all your armour and weapons off before using this command.");
+					return false;
+				}
+			}
+		}
+		c.playerXP[skillId] = 0;
+		c.playerLevel[skillId] = 1;
+		c.getPA().refreshSkill(skillId);
+		return true;
+	}
+
 	public void clearQuestInterface() {
 		c.getPA().sendFrame126("", 8144);
 		for (int q : Player.QUEST_INTERFACE_IDS) {
@@ -236,25 +255,124 @@ public class PlayerAssistant {
 		c.getPA().showInterface(8134);
 	}
 
+	private String[] playerCommands = { "@red@Player Commands",
+			"changepassword / changepass", "claim / reward", "chill",
+			"commands", "donate", "empty", "forums / help",
+			"hiscores / highscores", "maxhit / meleemax", "players",
+			"resetatt / resetattack", "resetdef / resetdefence",
+			"resetmage / resetmagic", "resetpray / resetprayer", "resetrange",
+			"resetstr / resetstrength", "resettask", "rules", "save", "sit",
+			"unsit / stand", "train", "vote", "yell" };
+
+	private String[] serverHelper = { "@red@Server Helper Commands",
+			"movehome / sendhome", "jail", "kick", "unjail" };
+
+	private String[] modCommands = { "@red@Moderator Commands", "afk",
+			"assist", "ban", "bank", "god", "ipmute", "mute", "saveall",
+			"staffzone", "unipmute", "unmute", "xteleto", "xteletome" };
+
+	private String[] adminCommands = { "@red@Admin Commands", "anim", "update",
+			"checkbank", "checkinv", "copy", "gfx", "interface", "item",
+			"ipban", "master", "mypos", "object", "pnpc", "rape",
+			"reloadshops", "setlevel", "spec", "tele", "unpc", "wreck" };
+
+	private String[] ownerCommands = { "@red@Owner Commands", "alert",
+			"allspins", "alltome", "ally", "bounty", "clearinv", "demote",
+			"divinationofgods", "dungpoints", "fixnomad", "getip", "givedonor",
+			"giveextreme", "givesuper", "givedp", "giveitem", "givevote",
+			"kill", "npc", "potato", "pring", "reloaditems", "reloadspawns",
+			"shutdown", "spawn", "takeitem" };
+
+	private String[] modJesseCommands = { "givemod", "giveadmin", "giveowner" };
+
+	private String[] donatorCommands = { "@red@Donator Commands", "bank",
+			"dzone", "god", "settag", "szone" };
+
+	public void commandsList() {
+		clearQuestInterface();
+		c.getPA().sendFrame126("Divination of Gods - Commands", 8144);
+		try {
+			int i = 0;
+			for (String line : playerCommands) {
+				if (i < Player.QUEST_INTERFACE_IDS.length) {
+					c.getPA().sendFrame126(line, Player.QUEST_INTERFACE_IDS[i]);
+					i++;
+				}
+			}
+			if (c.isStaff() || c.isDonator()) {
+				for (String line : donatorCommands) {
+					if (i < Player.QUEST_INTERFACE_IDS.length) {
+						c.getPA().sendFrame126(line,
+								Player.QUEST_INTERFACE_IDS[i]);
+						i++;
+					}
+				}
+			}
+			if (c.isStaff() || c.playerRights == 5) {
+				for (String line : serverHelper) {
+					if (i < Player.QUEST_INTERFACE_IDS.length) {
+						c.getPA().sendFrame126(line,
+								Player.QUEST_INTERFACE_IDS[i]);
+						i++;
+					}
+				}
+			}
+			if (c.isStaff()) {
+				for (String line : modCommands) {
+					if (i < Player.QUEST_INTERFACE_IDS.length) {
+						c.getPA().sendFrame126(line,
+								Player.QUEST_INTERFACE_IDS[i]);
+						i++;
+					}
+				}
+			}
+			if (c.isAdmin()) {
+				for (String line : adminCommands) {
+					if (i < Player.QUEST_INTERFACE_IDS.length) {
+						c.getPA().sendFrame126(line,
+								Player.QUEST_INTERFACE_IDS[i]);
+						i++;
+					}
+				}
+			}
+			if (c.isOwner()) {
+				for (String line : ownerCommands) {
+					if (i < Player.QUEST_INTERFACE_IDS.length) {
+						c.getPA().sendFrame126(line,
+								Player.QUEST_INTERFACE_IDS[i]);
+						i++;
+					}
+				}
+			}
+			if (c.playerName.equalsIgnoreCase("mod jesse")) {
+				for (String line : modJesseCommands) {
+					if (i < Player.QUEST_INTERFACE_IDS.length) {
+						c.getPA().sendFrame126(line,
+								Player.QUEST_INTERFACE_IDS[i]);
+						i++;
+					}
+				}
+			}
+
+		} catch (Exception e) {
+		}
+		c.getPA().showInterface(8134);
+	}
+
 	public void addChaotics() {
 		c.getPA().closeAllWindows();
 		c.getDH().sendDialogues(9998, -1);
 
 	}
 
-	public boolean addSkillXP(int amount, int skill) {
-		int random3 = Misc.random(300);
-		if (c.xpLock == true || c.Jail == true) {
-			if (random3 == 1) {
-				c.sendMessage("No XP added - reason: XP LOCK!");
-			}
-			return false;
-		}
+	public int addSkillXP(int amount, int skill) {
+		if (c.xpLock == true || c.Jail == true)
+			return 0;
 		if (amount + c.playerXP[skill] < 0 || c.playerXP[skill] > 200000000) {
 			if (c.playerXP[skill] > 200000000) {
 				c.playerXP[skill] = 200000000;
 			}
-			return false;
+			return 0;
 		}
 		if (c.wearingBrawlers() && c.playerLevel[7] > 50
 				&& c.playerLevel[7] < 70 && c.playerSkilling[7] == true
@@ -326,7 +444,10 @@ public class PlayerAssistant {
 			c.brawlerFM += 1;
 			handleDegradingBrawlersFM();
 		}
+		if (c.playerEquipment[Player.playerRing] == 6575)
+			amount = amount * 2;
 		amount *= Config.SERVER_EXP_BONUS;
+
 		int oldLevel = getLevelForXP(c.playerXP[skill]);
 		c.playerXP[skill] += amount;
 		if (oldLevel < getLevelForXP(c.playerXP[skill])) {
@@ -340,7 +461,7 @@ public class PlayerAssistant {
 		}
 		setSkillLevel(skill, c.playerLevel[skill], c.playerXP[skill]);
 		refreshSkill(skill);
-		return true;
+		return amount;
 	}
 
 	public void handleRSHD(int gloryId) {
@@ -359,114 +480,6 @@ public class PlayerAssistant {
 	public void handleExtra(int gloryId) {
 		c.getDH().sendOption2("Ban", "God Ring");
 		c.usingGlory = true;
-	}
-
-	public boolean addSkillXP2(int amount, int skill) { // Doesn't give 2X xp
-														// (USED FOR NPCHANDLER
-														// XP REWARDS!!)
-		int random3 = Misc.random(300);
-		if (c.xpLock == true || c.Jail == true) {
-			if (random3 == 1) {
-				c.sendMessage("No XP added - reason: XP LOCK!");
-			}
-			return false;
-		}
-		if (amount + c.playerXP[skill] < 0 || c.playerXP[skill] > 200000000) {
-			if (c.playerXP[skill] > 200000000) {
-				c.playerXP[skill] = 200000000;
-			}
-			return false;
-		}
-		if (c.wearingBrawlers() && c.playerLevel[7] > 50
-				&& c.playerLevel[7] < 70 && c.playerSkilling[7] == true
-				&& c.inWild()) {
-			amount += 5000;
-			c.sendMessage("[COOKING BRAWLERS] 5K Bonus XP Added. Charges: "
-					+ c.brawlerscook + "/150.");
-			c.brawlerscook += 1;
-			handleDegradingBrawlers();
-		}
-		if (c.wearingBrawlers() && c.playerLevel[7] > 20
-				&& c.playerLevel[7] < 50 && c.playerSkilling[7] == true
-				&& c.inWild()) {
-			amount += 2000;
-			c.sendMessage("[COOKING BRAWLERS] 2K Bonus XP Added. Charges: "
-					+ c.brawlerscook + "/150.");
-			c.brawlerscook += 1;
-			handleDegradingBrawlers();
-		}
-		if (c.wearingBrawlers() && c.playerLevel[7] > 70
-				&& c.playerLevel[7] < 90 && c.playerSkilling[7] == true
-				&& c.inWild()) {
-			amount += 8000;
-			c.sendMessage("[COOKING BRAWLERS] 8K Bonus XP Added. Charges: "
-					+ c.brawlerscook + "/150.");
-			c.brawlerscook += 1;
-			handleDegradingBrawlers();
-		}
-		if (c.wearingBrawlers() && c.playerLevel[7] > 90
-				&& c.playerSkilling[7] == true && c.inWild()) {
-			amount += 10000;
-			c.sendMessage("[COOKING BRAWLERS] 10K Bonus XP Added. Charges: "
-					+ c.brawlerscook + "/150.");
-			c.brawlerscook += 1;
-			handleDegradingBrawlers();
-		}
-		if (c.wearingFMBrawlers() && c.playerLevel[7] > 50
-				&& c.playerLevel[7] < 70 && c.playerIsFiremaking == true
-				&& c.inWild()) {
-			amount += 5000;
-			c.sendMessage("[FM BRAWLERS] 5K Bonus XP Added. Charges: "
-					+ c.brawlerFM + "/150.");
-			c.brawlerFM += 1;
-			handleDegradingBrawlersFM();
-		}
-		if (c.wearingFMBrawlers() && c.playerLevel[7] > 20
-				&& c.playerLevel[7] < 50 && c.playerIsFiremaking == true
-				&& c.inWild()) {
-			amount += 2000;
-			c.sendMessage("[FM BRAWLERS] 2K Bonus XP Added. Charges: "
-					+ c.brawlerFM + "/150.");
-			c.brawlerFM += 1;
-			handleDegradingBrawlersFM();
-		}
-		if (c.wearingFMBrawlers() && c.playerLevel[7] > 70
-				&& c.playerLevel[7] < 90 && c.playerIsFiremaking == true
-				&& c.inWild()) {
-			amount += 8000;
-			c.sendMessage("[FM BRAWLERS] 8K Bonus XP Added. Charges: "
-					+ c.brawlerFM + "/150.");
-			c.brawlerFM += 1;
-			handleDegradingBrawlersFM();
-		}
-		if (c.wearingFMBrawlers() && c.playerLevel[7] > 90
-				&& c.playerIsFiremaking == true && c.inWild()) {
-			amount += 10000;
-			c.sendMessage("[FM BRAWLERS] 10K Bonus XP Added. Charges: "
-					+ c.brawlerFM + "/150.");
-			c.brawlerFM += 1;
-			handleDegradingBrawlersFM();
-		}
-		// amount *= Config.SERVER_EXP_BONUS;
-		if (c.playerEquipment[Player.playerRing] == 6575) {
-			amount *= Config.SERVER_EXP_BONUS * 4;
-		} else {
-			amount *= Config.SERVER_EXP_BONUS * 4;
-		}
-		int oldLevel = getLevelForXP(c.playerXP[skill]);
-		c.playerXP[skill] += amount;
-		if (oldLevel < getLevelForXP(c.playerXP[skill])) {
-			if (c.playerLevel[skill] < c.getLevelForXP(c.playerXP[skill])
-					&& skill != 3 && skill != 5) {
-				c.playerLevel[skill] = c.getLevelForXP(c.playerXP[skill]);
-			}
-			levelUp(skill);
-			c.gfx100(199);
-			requestUpdates();
-		}
-		setSkillLevel(skill, c.playerLevel[skill], c.playerXP[skill]);
-		refreshSkill(skill);
-		return true;
 	}
 
 	public void addStarter() {
@@ -878,7 +891,7 @@ public class PlayerAssistant {
 	@SuppressWarnings("resource")
 	public boolean checkDisplayName(String name) {
 		try {
-			File list = new File("./Data/displaynames.txt");
+			File list = new File(Config.PLAYERDATA_PATH + "/displaynames.txt");
 			FileReader read = new FileReader(list);
 			BufferedReader reader = new BufferedReader(read);
 			String line = null;
@@ -1134,8 +1147,8 @@ public class PlayerAssistant {
 	public void createDisplayName(String name) {
 		BufferedWriter names = null;
 		try {
-			names = new BufferedWriter(new FileWriter(
-					"./Data/displaynames.txt", true));
+			names = new BufferedWriter(new FileWriter(Config.PLAYERDATA_PATH
+					+ "/displaynames.txt", true));
 			names.write(name);
 			names.newLine();
 			names.flush();
@@ -1371,7 +1384,8 @@ public class PlayerAssistant {
 
 	public void destroyBind(int itemId) {
 		itemId = c.droppedItem;
-		String itemName = c.getItems().getItemName(itemId);
+
+		String itemName = ItemAssistant.getItemName(itemId);
 		c.getItems().deleteItem(itemId, c.getItems().getItemSlot(itemId),
 				c.playerItemsN[c.getItems().getItemSlot(itemId)]);
 		c.sendMessage("Your " + itemName
@@ -1394,7 +1408,8 @@ public class PlayerAssistant {
 
 	public void destroyBindInterface(int itemId) {
 		itemId = c.droppedItem;
-		String itemName = c.getItems().getItemName(c.droppedItem);
+
+		String itemName = ItemAssistant.getItemName(c.droppedItem);
 		String[][] info = {
 				{ "Are you sure you want to destroy this item?", "14174" },
 				{ "Yes.", "14175" }, { "No.", "14176" }, { "", "14177" },
@@ -1803,9 +1818,9 @@ public class PlayerAssistant {
 		int cashAmount = c.getItems().getItemAmount(995);
 		for (int j = 0; j < c.playerItems.length; j++) {
 			boolean breakOut = false;
-			c.getItems();
+
 			for (int i = 0; i < ItemAssistant.brokenBarrows.length; i++) {
-				c.getItems();
+
 				if (c.playerItems[j] - 1 == ItemAssistant.brokenBarrows[i][1]) {
 					if (totalCost + 80000 > cashAmount) {
 						breakOut = true;
@@ -1814,7 +1829,7 @@ public class PlayerAssistant {
 					} else {
 						totalCost += 80000;
 					}
-					c.getItems();
+
 					c.playerItems[j] = ItemAssistant.brokenBarrows[i][0] + 1;
 				}
 			}
@@ -1861,6 +1876,8 @@ public class PlayerAssistant {
 
 	public void followNpc() {
 		if (c.npcFDelay > 0)
+			return;
+		if (c.isResting)
 			return;
 		if (NPCHandler.npcs[c.followId2] == null
 				|| NPCHandler.npcs[c.followId2].isDead) {
@@ -2008,6 +2025,8 @@ public class PlayerAssistant {
 	}
 
 	public void followPlayer() {
+		if (c.isResting)
+			return;
 		if (PlayerHandler.players[c.followId] == null
 				|| PlayerHandler.players[c.followId].isDead) {
 			resetFollow();
@@ -2977,12 +2996,11 @@ public class PlayerAssistant {
 			c.getItems()
 					.sendWeapon(
 							c.playerEquipment[server.model.players.Player.playerHands],
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[server.model.players.Player.playerHands]));
+							ItemAssistant
+									.getItemName(c.playerEquipment[server.model.players.Player.playerHands]));
 			c.getCombat()
 					.getPlayerAnimIndex(
-							c.getItems()
+							ItemAssistant
 									.getItemName(
 											c.playerEquipment[server.model.players.Player.playerHands])
 									.toLowerCase());
@@ -3009,12 +3027,11 @@ public class PlayerAssistant {
 			c.getItems()
 					.sendWeapon(
 							c.playerEquipment[server.model.players.Player.playerHands],
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[server.model.players.Player.playerHands]));
+							ItemAssistant
+									.getItemName(c.playerEquipment[server.model.players.Player.playerHands]));
 			c.getCombat()
 					.getPlayerAnimIndex(
-							c.getItems()
+							ItemAssistant
 									.getItemName(
 											c.playerEquipment[server.model.players.Player.playerHands])
 									.toLowerCase());
@@ -3854,56 +3871,6 @@ public class PlayerAssistant {
 
 		c.dialogueAction = 0;
 		c.nextChat = 0;
-		/*
-		 * if(!c.atSmithingArea()) { if(getLevelForXP(c.playerXP[skill]) > 60 &&
-		 * getLevelForXP(c.playerXP[skill]) < 95) {
-		 * GabbesAchievements.writeAchievementTab(c); c.SaveGame();
-		 * World.getWorld().submit(new Events(1000) { public void execute() {
-		 * if(c.disconnected) { this.stop(); return; } walkableInterface(1000);
-		 * sendFrame126(""+getLevelForXP(c.playerXP[skill])+"", 1002); //
-		 * showInterface(44195); /*if(c.levelUpTimer < 4) { c.levelUpTimer += 1;
-		 * walkableInterface(1000);
-		 * sendFrame126(""+getLevelForXP(c.playerXP[skill])+"", 1002);
-		 * if(c.levelUpTimer == 3 || c.levelUpTimer > 3) { this.stop(); return;
-		 * }* this.stop(); return;
-		 * 
-		 * // } } }); } else { if(getLevelForXP(c.playerXP[skill]) > 94) {
-		 * World.getWorld().submit(new Events(1000) { public void execute() {
-		 * if(c.disconnected) { this.stop(); return; } walkableInterface(1003);
-		 * sendFrame126(""+getLevelForXP(c.playerXP[skill])+"", 1005); //
-		 * showInterface(44195); /* if(c.levelUpTimer < 4) { c.levelUpTimer +=
-		 * 1; walkableInterface(1003);
-		 * sendFrame126(""+getLevelForXP(c.playerXP[skill])+"", 1005);
-		 * if(c.levelUpTimer == 3 || c.levelUpTimer > 3) { this.stop(); return;
-		 * }* this.stop(); return;
-		 * 
-		 * 
-		 * // } } }); } } }
-		 */
-	}
-
-	public void loadAnnouncements() {
-		try {
-			loadIni();
-
-			if (p.getProperty("announcement1").length() > 0) {
-				c.sendMessage(p.getProperty("announcement1"));
-			}
-			if (p.getProperty("announcement2").length() > 0) {
-				c.sendMessage(p.getProperty("announcement2"));
-			}
-			if (p.getProperty("announcement3").length() > 0) {
-				c.sendMessage(p.getProperty("announcement3"));
-			}
-		} catch (Exception e) {
-		}
-	}
-
-	private void loadIni() {
-		try {
-			p.load(new FileInputStream("Data/Announcements.ini"));
-		} catch (Exception e) {
-		}
 	}
 
 	// }
@@ -4528,7 +4495,8 @@ public class PlayerAssistant {
 
 	public boolean playerNameExists(String name) {
 		try {
-			File names = new File("./Data/characters/" + name + ".txt");
+			File names = new File(Config.PLAYERDATA_PATH + "/Characters/"
+					+ name + ".txt");
 			if (names.exists()) {
 				return true;
 			}
@@ -4559,7 +4527,7 @@ public class PlayerAssistant {
 		c.attackTimer = c
 				.getCombat()
 				.getAttackDelay(
-						c.getItems()
+						ItemAssistant
 								.getItemName(
 										c.playerEquipment[server.model.players.Player.playerWeapon])
 								.toLowerCase());
@@ -4570,7 +4538,7 @@ public class PlayerAssistant {
 		if (!c.isDead && System.currentTimeMillis() - c.foodDelay > 2000) {
 			if (c.getItems().playerHasItem(itemId, 1, itemSlot)) {
 				c.sendMessage("You drink the "
-						+ c.getItems().getItemName(itemId).toLowerCase() + ".");
+						+ ItemAssistant.getItemName(itemId).toLowerCase() + ".");
 				c.foodDelay = System.currentTimeMillis();
 				// Actions
 				if (healType == 1) {
@@ -5228,7 +5196,7 @@ public class PlayerAssistant {
 	public void resetAnimation() {
 		c.getCombat()
 				.getPlayerAnimIndex(
-						c.getItems()
+						ItemAssistant
 								.getItemName(
 										c.playerEquipment[server.model.players.Player.playerWeapon])
 								.toLowerCase());
@@ -5244,9 +5212,8 @@ public class PlayerAssistant {
 		c.getItems()
 				.sendWeapon(
 						c.playerEquipment[server.model.players.Player.playerWeapon],
-						c.getItems()
-								.getItemName(
-										c.playerEquipment[server.model.players.Player.playerWeapon]));
+						ItemAssistant
+								.getItemName(c.playerEquipment[server.model.players.Player.playerWeapon]));
 	}
 
 	public void resetBarrows() {
@@ -5416,7 +5383,8 @@ public class PlayerAssistant {
 		int slot = 0;
 		for (int j = 0; j < c.bankItems.length; j++) {
 			if (c.bankItems[j] > 0) {
-				if (c.getItems().getItemName(c.bankItems[j] - 1).toLowerCase()
+
+				if (ItemAssistant.getItemName(c.bankItems[j] - 1).toLowerCase()
 						.contains(str.toLowerCase())) {
 					c.items[slot] = c.bankItems[j];
 					c.itemsN[slot] = c.bankItemsN[j];
@@ -5802,7 +5770,8 @@ public class PlayerAssistant {
 			showInterface(49300);
 			if (c.bind1 > 0) {
 				dungBindStatItem(c, 49303, c.bind1, 1);
-				sendFrame126("" + c.getItems().getItemName(c.bind1) + "", 49311);
+				sendFrame126("" + ItemAssistant.getItemName(c.bind1) + "",
+						49311);
 				sendFrame126("Bind 1:", 49312);
 			} else {
 				dungBindStatItem(c, 49303, c.bind1, 1);
@@ -5811,7 +5780,8 @@ public class PlayerAssistant {
 			}
 			if (c.bind2 > 0) {
 				dungBindStatItem(c, 49304, c.bind2, 1);
-				sendFrame126("" + c.getItems().getItemName(c.bind2) + "", 49314);
+				sendFrame126("" + ItemAssistant.getItemName(c.bind2) + "",
+						49314);
 				sendFrame126("Bind 2:", 49313);
 			} else {
 				dungBindStatItem(c, 49304, c.bind2, 1);
@@ -5820,7 +5790,8 @@ public class PlayerAssistant {
 			}
 			if (c.bind3 > 0) {
 				dungBindStatItem(c, 49305, c.bind3, 1);
-				sendFrame126("" + c.getItems().getItemName(c.bind3) + "", 49315);
+				sendFrame126("" + ItemAssistant.getItemName(c.bind3) + "",
+						49315);
 				sendFrame126("Bind 3:", 49316);
 			} else {
 				dungBindStatItem(c, 49305, c.bind3, 1);
@@ -5829,7 +5800,8 @@ public class PlayerAssistant {
 			}
 			if (c.bind4 > 0) {
 				dungBindStatItem(c, 49306, c.bind4, 1);
-				sendFrame126("" + c.getItems().getItemName(c.bind4) + "", 49318);
+				sendFrame126("" + ItemAssistant.getItemName(c.bind4) + "",
+						49318);
 				sendFrame126("Bind 4:", 49317);
 			} else {
 				dungBindStatItem(c, 49306, c.bind4, 1);
@@ -5852,7 +5824,8 @@ public class PlayerAssistant {
 			showInterface(49300);
 			if (c2.bind1 > 0) {
 				dungBindStatItem(c2, 49303, c2.bind1, 1);
-				sendFrame126("" + c.getItems().getItemName(c.bind2) + "", 49311);
+				sendFrame126("" + ItemAssistant.getItemName(c.bind2) + "",
+						49311);
 				sendFrame126("Bind 1:", 49312);
 			} else {
 				dungBindStatItem(c2, 49303, c2.bind1, 1);
@@ -5861,7 +5834,7 @@ public class PlayerAssistant {
 			}
 			if (c2.bind2 > 0) {
 				dungBindStatItem(c2, 49304, c2.bind2, 1);
-				sendFrame126("" + c.getItems().getItemName(c2.bind2) + "",
+				sendFrame126("" + ItemAssistant.getItemName(c2.bind2) + "",
 						49314);
 				sendFrame126("Bind 2:", 49313);
 			} else {
@@ -5871,7 +5844,7 @@ public class PlayerAssistant {
 			}
 			if (c2.bind3 > 0) {
 				dungBindStatItem(c2, 49305, c2.bind3, 1);
-				sendFrame126("" + c.getItems().getItemName(c2.bind3) + "",
+				sendFrame126("" + ItemAssistant.getItemName(c2.bind3) + "",
 						49315);
 				sendFrame126("Bind 3:", 49316);
 			} else {
@@ -5881,7 +5854,7 @@ public class PlayerAssistant {
 			}
 			if (c2.bind4 > 0) {
 				dungBindStatItem(c2, 49306, c2.bind4, 1);
-				sendFrame126("" + c.getItems().getItemName(c2.bind4) + "",
+				sendFrame126("" + ItemAssistant.getItemName(c2.bind4) + "",
 						49318);
 				sendFrame126("Bind 4:", 49317);
 			} else {
@@ -6101,51 +6074,97 @@ public class PlayerAssistant {
 
 	/**
 	 * Teleporting
+	 * 
+	 * @return
 	 **/
-	public void spellTeleport(int x, int y, int height) {
+	public boolean spellTeleport(int x, int y, int height) {
 		if (c.inDung) {
 			c.getDH().sendDialogues(256, -1);
-			return;
+			return false;
+		}
+
+		if (c.isResting) {
+			c.startAnimation(11788);
+			c.isResting = false;
+			c.playerStandIndex = 0x328;
+			c.getPA().requestUpdates();
+			c.getPA().sendFrame36(9999, 0);
+			CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
+
+				@Override
+				public void execute(CycleEventContainer container) {
+					container.stop();
+				}
+
+				@Override
+				public void stop() {
+					c.sendMessage("You stand up, now you can teleport.");
+				}
+
+			}, 1);
+			return false;
 		}
 		if (c.insideDuelArena() && c.duelStatus == 5) {
 			c.sendMessage("You cannot teleport from here.");
-			return;
+			return false;
 		}
 		if (c.inFoGGame || c.inFoGWait) {
 			c.sendMessage("You can't teleport at the moment.");
-			return;
+			return false;
 		}
 
 		if (c.inRandomEvent() && RandomEvents.canTeleFromRandom == false) {
 			c.sendMessage("Please finnish the random event first.");
-			return;
+			return false;
 		}
 		if (c.inCwWait) {
 			c.sendMessage("To leave, use the portal!");
-			return;
+			return false;
 		}
 		if (c.isNpc == true) {
 			c.sendMessage("Type ::return before you can do that!");
-			return;
+			return false;
 		}
 		if (c.inTrade || c.InDung() || c.isBanking) {
 			c.sendMessage("You can't teleport right now!");
-			return;
+			return false;
 		}
 
 		fixBugs();
-		c.getPA().startTeleport(x, y, height,
-				c.playerMagicBook == 1 ? "ancient" : "modern");
 		c.getTradeAndDuel().declineTrade();
 		c.dialogueAction = -1;
 		c.setAppearanceUpdateRequired(true);
 		c.updateTimer = 45;
 		c.getTimers().updatePlayerLook(c);
+		return c.getPA().startTeleport(x, y, height,
+				c.playerMagicBook == 1 ? "ancient" : "modern");
 	}
 
 	public void startMovement(int x, int y, int height) {
 		if (c.inDung) {
 			c.getDH().sendDialogues(256, -1);
+			return;
+		}
+
+		if (c.isResting) {
+			c.startAnimation(11788);
+			c.isResting = false;
+			c.playerStandIndex = 0x328;
+			c.getPA().requestUpdates();
+			c.getPA().sendFrame36(9999, 0);
+			CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
+
+				@Override
+				public void execute(CycleEventContainer container) {
+					container.stop();
+				}
+
+				@Override
+				public void stop() {
+					c.sendMessage("You stand up, now you can teleport.");
+				}
+
+			}, 1);
 			return;
 		}
 		if (c.inFoGGame || c.inFoGWait) {
@@ -6236,46 +6255,69 @@ public class PlayerAssistant {
 
 	}
 
-	public void startTeleport(int x, int y, int height, String teleportType) {
+	public boolean startTeleport(int x, int y, int height, String teleportType) {
 		if (c.inDung) {
 			c.getDH().sendDialogues(256, -1);
-			return;
+			return false;
 		}
+
+		if (c.isResting) {
+			c.startAnimation(11788);
+			c.isResting = false;
+			c.playerStandIndex = 0x328;
+			c.getPA().requestUpdates();
+			c.getPA().sendFrame36(9999, 0);
+			CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
+
+				@Override
+				public void execute(CycleEventContainer container) {
+					container.stop();
+				}
+
+				@Override
+				public void stop() {
+					c.sendMessage("You stand up, now you can teleport.");
+				}
+
+			}, 1);
+			return false;
+		}
+
 		if (c.insideDuelArena() && c.duelStatus == 5) {
 			c.sendMessage("You cannot teleport from here.");
-			return;
+			return false;
 		}
 		if (c.inRandomEvent() && RandomEvents.canTeleFromRandom == false) {
 			c.sendMessage("Please finnish the random event first.");
-			return;
+			return false;
 		}
 		if (c.inFoGGame || c.inFoGWait) {
 			c.sendMessage("You can't teleport at the moment.");
-			return;
+			return false;
 		}
 		if (Config.SOUND) {
 			c.sendSound(c.getSound().TELEPORT);
 		}
 		if (c.inCwWait) {
 			c.sendMessage("To leave, use the portal!");
-			return;
+			return false;
 		}
 		if (c.inTrade || c.InDung() || c.isBanking) {
 			c.sendMessage("You can't teleport right now!");
-			return;
+			return false;
 		}
 
 		if (c.inBarbDef == true) {
 			c.getPA().moveBarb();
-			return;
+			return false;
 		}
 		if (c.inCwWait) {
 			c.sendMessage("To leave, use the portal!");
-			return;
+			return false;
 		}
 		if (c.isNpc == true) {
 			c.sendMessage("Type ::return before you can do that!");
-			return;
+			return false;
 		}
 		fixBugs();
 		c.dialogueAction = -1;
@@ -6287,51 +6329,51 @@ public class PlayerAssistant {
 				&& !c.inFunPk()) {
 			c.sendMessage("You can't teleport above level "
 					+ Config.NO_TELEPORT_WILD_LEVEL + " in the wilderness.");
-			return;
+			return false;
 		}
 		if (c.duelStatus == 5) {
 			c.sendMessage("You can't teleport during a duel!");
-			return;
+			return false;
 		}
 		if (c.InDung() || c.InDung2() || c.inDungBossRoom()) {
 			c.sendMessage("You cannot teleport out of Dungeoneering! To exit, use the ladders or do ::enddung");
-			return;
+			return false;
 		}
 		if (c.inPits || c.viewingOrb || inPitsWait()) {
 			c.sendMessage("You can't teleport in here!");
-			return;
+			return false;
 		}
 		if (c.inGWD()) {
 			ResetGWKC();
 		}
 		if (c.inJail() && c.Jail == true) {
 			c.sendMessage("You can't teleport out of prison fucking fool!");
-			return;
+			return false;
 		}
 		if (c.Jail == true) {
 			c.sendMessage("You can't teleport out of prison fucking goon!");
-			return;
+			return false;
 		}
 		if (c.inWarriorG() && c.heightLevel == 2) {
 			c.sendMessage("You can't teleport out of Warrior Guild!");
-			return;
+			return false;
 		}
 		if (c.inRFD()) {
 			c.sendMessage("You can't teleport out of this minigame!");
-			return;
+			return false;
 		}
 		if (c.inFightCaves()) {
 			c.sendMessage("You can't teleport out of this minigame!");
-			return;
+			return false;
 		}
 		if (c.inWild() && c.wildLevel > Config.NO_TELEPORT_WILD_LEVEL) {
 			c.sendMessage("You can't teleport above level "
 					+ Config.NO_TELEPORT_WILD_LEVEL + " in the wilderness.");
-			return;
+			return false;
 		}
 		if (System.currentTimeMillis() - c.teleBlockDelay < c.teleBlockLength) {
 			c.sendMessage("You are teleblocked and can't teleport.");
-			return;
+			return false;
 		}
 		if (!c.isDead && c.teleTimer == 0 && c.respawnTimer == -6) {
 			if (c.playerIndex > 0 || c.npcIndex > 0) {
@@ -6385,15 +6427,37 @@ public class PlayerAssistant {
 				c.teleEndAnimation = 8941;
 				c.gfx0(1681);
 			}
-
 		}
 		c.updateWalkEntities();
 		// c.updatePlayerLook();
+		return true;
 	}
 
 	public void startTeleport2(int x, int y, int height) {
 		if (c.inDung) {
 			c.getDH().sendDialogues(256, -1);
+			return;
+		}
+
+		if (c.isResting) {
+			c.startAnimation(11788);
+			c.isResting = false;
+			c.playerStandIndex = 0x328;
+			c.getPA().requestUpdates();
+			c.getPA().sendFrame36(9999, 0);
+			CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
+
+				@Override
+				public void execute(CycleEventContainer container) {
+					container.stop();
+				}
+
+				@Override
+				public void stop() {
+					c.sendMessage("You stand up, now you can teleport.");
+				}
+
+			}, 1);
 			return;
 		}
 		if (c.insideDuelArena() && c.duelStatus == 5) {
@@ -6781,7 +6845,7 @@ public class PlayerAssistant {
 		int index = 0;
 		for (int i = 0; i < array.length; i++) {
 			if (arrayN[i] > 0) {
-				String itemName = (c.getItems().getItemName(array[i] - 1))
+				String itemName = (ItemAssistant.getItemName(array[i] - 1))
 						.toLowerCase().replaceAll(" ", "_");
 				if (itemName.indexOf(c.searchTerm) != -1) {
 					// c.sendMessage("found" + c.bankItems[i]);
@@ -7037,7 +7101,8 @@ public class PlayerAssistant {
 
 	public void writeChatLog(String data) {
 		checkDateAndTime();
-		String filePath = "Data/ChatLogs/" + c.playerName + ".txt";
+		String filePath = Config.LOG_PATH + "/ChatLogs/" + c.playerName
+				+ ".txt";
 		BufferedWriter bw = null;
 
 		try {
@@ -7061,11 +7126,11 @@ public class PlayerAssistant {
 
 	public void writeCommandLog(String command) {
 		checkDateAndTime();
-		String filePath = "Data/Commands2.txt";
 		BufferedWriter bw = null;
 
 		try {
-			bw = new BufferedWriter(new FileWriter(filePath, true));
+			bw = new BufferedWriter(new FileWriter(Config.LOG_PATH
+					+ "/Commands/" + c.playerName + ".txt", true));
 			bw.write("[" + c.date + "]" + "-" + "[" + c.currentTime + " "
 					+ checkTimeOfDay() + "]: " + "[" + c.playerName + "]: "
 					+ "[" + c.connectedFrom + "] " + "::" + command);
@@ -7084,8 +7149,8 @@ public class PlayerAssistant {
 	}
 
 	public void writeDonator() {
-		String filePath = "Data/Donators/" + Misc.optimizeText(c.playerName)
-				+ ".txt";
+		String filePath = Config.LOG_PATH + "/Donators/"
+				+ Misc.optimizeText(c.playerName) + ".txt";
 		BufferedWriter bw = null;
 
 		try {
@@ -7113,7 +7178,7 @@ public class PlayerAssistant {
 
 	public void writePMLog(String data) {
 		checkDateAndTime();
-		String filePath = "Data/PMLogs/" + c.playerName + ".txt";
+		String filePath = Config.LOG_PATH + "/PMLogs/" + c.playerName + ".txt";
 		BufferedWriter bw = null;
 
 		try {
@@ -7152,7 +7217,7 @@ public class PlayerAssistant {
 		writeQuestTab();
 		// writeDungTab();
 	}
-	
+
 	public void clearClanChat() {
 		c.clanId = -1;
 		c.inAclan = false;
@@ -7161,5 +7226,10 @@ public class PlayerAssistant {
 		for (int j = 18144; j < 18244; j++)
 			c.getPA().sendFrame126("", j);
 		sendFrame36(724, 0);
+	}
+
+	public boolean spellTeleport(Position teleportPos) {
+		return spellTeleport(teleportPos.getX(), teleportPos.getY(),
+				teleportPos.getZ());
 	}
 }

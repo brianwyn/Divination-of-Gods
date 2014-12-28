@@ -1,5 +1,7 @@
 package server.model.players.packets;
 
+import server.core.event.CycleEvent;
+import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
 import server.model.players.Client;
 import server.model.players.PacketType;
@@ -28,6 +30,25 @@ public class Walking implements PacketType {
 			c.getPA().moveBarb();
 			c.getPA().closeAllWindows();
 			return;
+		}
+		if(c.isResting) {
+			c.startAnimation(11788);
+			c.isResting = false;
+			c.playerStandIndex = 0x328;
+			c.getPA().requestUpdates();
+			c.getPA().sendFrame36(9999, 0);
+			CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
+
+				@Override
+				public void execute(CycleEventContainer container) {
+					container.stop();
+				}
+
+				@Override
+				public void stop() {
+				}
+
+			}, 1);
 		}
 		if(c.playerIsFiremaking) {
 			CycleEventHandler.getSingleton().stopEvents(c);

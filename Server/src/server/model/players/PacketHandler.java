@@ -18,7 +18,7 @@ import server.model.players.packets.ClickObject;
 import server.model.players.packets.ClickingButtons;
 import server.model.players.packets.ClickingInGame;
 import server.model.players.packets.ClickingStuff;
-import server.model.players.packets.Commands;
+import server.model.players.packets.Command;
 import server.model.players.packets.Dialogue;
 import server.model.players.packets.DropItem;
 import server.model.players.packets.FollowPlayer;
@@ -93,7 +93,7 @@ public class PacketHandler {
 		PacketHandler.packetId[87] = new DropItem();
 		PacketHandler.packetId[185] = new ClickingButtons();
 		PacketHandler.packetId[130] = new ClickingStuff();
-		PacketHandler.packetId[103] = new Commands();
+		PacketHandler.packetId[103] = new Command();
 		PacketHandler.packetId[214] = new MoveItems();
 		PacketHandler.packetId[237] = new MagicOnItems();
 		PacketHandler.packetId[181] = new MagicOnFloorItems();

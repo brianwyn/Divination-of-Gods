@@ -1,5 +1,7 @@
 package server.world.clip.region;
 
+import server.Config;
+
 // Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
@@ -8,7 +10,7 @@ public final class ObjectDef {
 
 	public static byte[] getBuffer(String s) {
 		try {
-			java.io.File f = new java.io.File("Data/data/object/" + s);
+			java.io.File f = new java.io.File(Config.DATA_PATH + "/clipping/object/" + s);
 			if (!f.exists())
 				return null;
 			byte[] buffer = new byte[(int) f.length()];

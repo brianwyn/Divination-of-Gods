@@ -3,7 +3,6 @@ package server.model.players.packets;
 import server.model.players.Client;
 import server.model.players.PacketType;
 import server.model.players.content.SlayerRing;
-import server.model.players.content.skills.RuneCraft;
 import server.util.Misc;
 
 /**
@@ -141,30 +140,6 @@ public class ItemClick3 implements PacketType {
 		case 1712:
 			c.getPA().handleGlory(itemId);
 			c.gloryValue = 3;
-			break;
-		case 1438:// Air Talisman
-			RuneCraft.locate(c, 2985, 3292);
-			c.getPA().startTeleport(2841, 4830, 0, "modern");
-			break;
-		case 1440:// Earth Talisman
-			RuneCraft.locate(c, 3306, 3474);
-			c.getPA().startTeleport(2655, 4830, 0, "modern");
-			break;
-		case 1442:// Fire Talisman
-			RuneCraft.locate(c, 3313, 3255);
-			c.getPA().startTeleport(2574, 4848, 0, "modern");
-			break;
-		case 1444:// Water Talisman
-			RuneCraft.locate(c, 3185, 3165);
-			c.getPA().startTeleport(2727, 4833, 0, "modern");
-			break;
-		case 1446:// Body Talisman
-			RuneCraft.locate(c, 3053, 3445);
-			c.getPA().startTeleport(2522, 4825, 0, "modern");
-			break;
-		case 1448:// Mind Talisman
-			RuneCraft.locate(c, 2982, 3514);
-			c.getPA().startTeleport(2792, 4827, 0, "modern");
 			break;
 		case 15707:
 		case 18817:

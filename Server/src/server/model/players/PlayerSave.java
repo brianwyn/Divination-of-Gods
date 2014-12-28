@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import server.Config;
 import server.model.players.content.RandomEvents; // Save the old location
 import server.util.Misc;
 
@@ -34,14 +35,14 @@ public class PlayerSave {
 		long[] friends = null;
 		int totalFriends = 0;
 		try {
-			file = new BufferedReader(new FileReader("./Data/characters/"
-					+ name + ".txt"));
+			file = new BufferedReader(new FileReader(Config.PLAYERDATA_PATH
+					+ "/Characters/" + name + ".txt"));
 			file1 = true;
 		} catch (FileNotFoundException fileex1) {
 		}
 
 		if (file1) {
-			new File("./Data/characters/" + name + ".txt");
+			new File(Config.PLAYERDATA_PATH + "/Characters/" + name + ".txt");
 		} else {
 			return null;
 		}
@@ -138,14 +139,15 @@ public class PlayerSave {
 					return 3;
 				}
 				characterfile = new BufferedReader(new FileReader(
-						"./Data/characters/" + playerName + ".txt"));
+						Config.PLAYERDATA_PATH + "/Characters/" + playerName
+								+ ".txt"));
 				File1 = true;
 			}
 		} catch (FileNotFoundException fileex1) {
 		}
 
 		if (File1) {
-			// new File ("./characters/"+playerName+".txt");
+			// new File (Config.CHAR_PATH + "/" +playerName+".txt");
 		} else {
 			Misc.println(playerName + ": character file not found.");
 			p.newPlayer = false;
@@ -336,6 +338,8 @@ public class PlayerSave {
 						p.taskType = Integer.parseInt(token2);
 					} else if (token.equals("clan-name")) {
 						p.clanName = token2;
+					} else if (token.equals("clan-pass")) {
+						p.clanPass = token2;
 					} else if (token.equals("clan-owner")) {
 						p.hasClan = Boolean.parseBoolean(token2);
 					} else if (token.equals("bankPin1")) {
@@ -847,7 +851,8 @@ public class PlayerSave {
 	}
 
 	public static boolean playerExists(String name) {
-		File file = new File("./Data/characters/" + name + ".txt");
+		File file = new File(Config.PLAYERDATA_PATH + "/Characters/" + name
+				+ ".txt");
 		return file.exists();
 	}
 
@@ -872,7 +877,8 @@ public class PlayerSave {
 		BufferedWriter characterfile = null;
 		try {
 			characterfile = new BufferedWriter(new FileWriter(
-					"./Data/characters/" + p.playerName + ".txt"));
+					Config.PLAYERDATA_PATH + "/Characters/" + p.playerName
+							+ ".txt"));
 
 			/* ACCOUNT */
 			characterfile.write("[ACCOUNT]", 0, 9);
@@ -1490,6 +1496,8 @@ public class PlayerSave {
 					.toString(p.hasBankPin).length());
 			characterfile.newLine();
 			characterfile.write("clan-name = " + p.clanName);
+			characterfile.newLine();
+			characterfile.write("clan-pass = " + p.clanPass);
 			characterfile.newLine();
 			characterfile.write("clan-owner = " + p.hasClan);
 			characterfile.newLine();

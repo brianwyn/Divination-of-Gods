@@ -1,6 +1,7 @@
 package server.model.minigames;
 
 import server.Server;
+import server.model.items.ItemAssistant;
 import server.model.npcs.NPC;
 import server.model.npcs.NPCHandler;
 import server.model.players.Client;
@@ -69,7 +70,7 @@ public class PestControl {
 				if (c.getItems().playerHasItem(id2))
 					c.getItems().deleteItem(id2, 1);
 				else {
-					c.sendMessage("You need a " + c.getItems().getItemName(id2)
+					c.sendMessage("You need a " + ItemAssistant.getItemName(id2)
 							+ " for this.");
 					return;
 				}
@@ -77,7 +78,7 @@ public class PestControl {
 			if (c.getItems().freeSlots() > 0 || id2 != 0) {
 				c.Commendations -= cost;
 				c.getItems().addItem(id, amount);
-				c.sendMessage("You receive a " + c.getItems().getItemName(id)
+				c.sendMessage("You receive a " + ItemAssistant.getItemName(id)
 						+ ".");
 			} else
 				c.sendMessage("Your inventory is full.");

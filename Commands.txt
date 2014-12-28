@@ -1,0 +1,20 @@
+Player Commands
+	"changepassword / changepass", "claim / reward", "chill", "commands", "donate", "empty", "forums / help", "hiscores / highscores",
+	"maxhit / meleemax", "players", "resetatt / resetattack", "resetdef / resetdefence", "resetmage / resetmagic", "resetpray / resetprayer",
+	"resetrange","resetstr / resetstrength" "resettask", "rules", "save", "sit", "unsit / stand", "train", "vote", "yell"
+Moderator Commands
+	"afk", "assist", "ban", "bank", "god", "ipmute", "mute", "saveall", "staffzone", "unipmute",
+	"unmute", "xteleto", "xteletome"
+Admin Commands
+	"anim", "botupdate", "update", "checkbank", "checkinv", "copy", "gfx", "interface", "item", "ipban", "master", "mypos", 
+	"object", "pnpc", "rape", "reloadshops", "setlevel", "spec", "tele", "unpc"
+Owner Commands
+	"alert", "allspins", "alltome", "ally", "bounty", "clearinv", "demote", "divinationofgods", "dungpoints", "fixnomad", 
+	"getip", "givedonor", "giveextreme", "givesuper", "givedp", "giveitem", "givevote", "kill",
+	"npc", "potato", "pring", "reloaditems", "reloadspawns", "shutdown", "spawn", "takeitem", 
+Mod Jesse only
+	"givemod", "giveadmin", "giveowner", 
+Donator Commands
+	"bank", "dzone", "god" isDonator = 2, "settag" isDonator = 4, "szone"
+Server Helper Commands
+	"movehome / sendhome", "jail", "kick",  "unjail",

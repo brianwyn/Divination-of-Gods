@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import server.Config;
 import server.Server;
 import server.model.objects.Objects;
 import server.model.players.Client;
@@ -44,8 +45,8 @@ public class ObjectHandler {
 	public boolean[] activated = { false, false, false, false, false, false };
 
 	public ObjectHandler() {
-		loadGlobalObjects("Data/cfg/global-objects.cfg");
-		loadDoorConfig("Data/cfg/doors.cfg");
+		loadGlobalObjects(Config.DATA_PATH + "/cfg/global-objects.cfg");
+		loadDoorConfig(Config.DATA_PATH + "/cfg/doors.cfg");
 	}
 
 	/**

@@ -6,6 +6,7 @@ import server.Config;
 import server.Server;
 import server.model.items.GameItem;
 import server.model.items.Item;
+import server.model.items.ItemAssistant;
 import server.util.Misc;
 
 public class TradeAndDuel {
@@ -91,20 +92,24 @@ public class TradeAndDuel {
 		String itemId = "";
 		for (GameItem item : stakedItems) {
 			if (Item.itemStackable[item.id] || Item.itemIsNote[item.id]) {
-				itemId += c.getItems().getItemName(item.id) + " x "
+
+				itemId += ItemAssistant.getItemName(item.id) + " x "
 						+ Misc.format(item.amount) + "\\n";
 			} else {
-				itemId += c.getItems().getItemName(item.id) + "\\n";
+
+				itemId += ItemAssistant.getItemName(item.id) + "\\n";
 			}
 		}
 		c.getPA().sendFrame126(itemId, 6516);
 		itemId = "";
 		for (GameItem item : o.getTradeAndDuel().stakedItems) {
 			if (Item.itemStackable[item.id] || Item.itemIsNote[item.id]) {
-				itemId += c.getItems().getItemName(item.id) + " x "
+
+				itemId += ItemAssistant.getItemName(item.id) + " x "
 						+ Misc.format(item.amount) + "\\n";
 			} else {
-				itemId += c.getItems().getItemName(item.id) + "\\n";
+
+				itemId += ItemAssistant.getItemName(item.id) + "\\n";
 			}
 		}
 		c.getPA().sendFrame126(itemId, 6517);
@@ -161,10 +166,12 @@ public class TradeAndDuel {
 					SendAmount = "" + Misc.format(item.amount);
 				}
 				if (Count == 0) {
-					SendTrade = c.getItems().getItemName(item.id);
+
+					SendTrade = ItemAssistant.getItemName(item.id);
 				} else {
+
 					SendTrade = SendTrade + "\\n"
-							+ c.getItems().getItemName(item.id);
+							+ ItemAssistant.getItemName(item.id);
 				}
 
 				if (item.stackable) {
@@ -193,10 +200,12 @@ public class TradeAndDuel {
 				}
 				// SendAmount = SendAmount;
 				if (Count == 0) {
-					SendTrade = c.getItems().getItemName(item.id);
+
+					SendTrade = ItemAssistant.getItemName(item.id);
 				} else {
+
 					SendTrade = SendTrade + "\\n"
-							+ c.getItems().getItemName(item.id);
+							+ ItemAssistant.getItemName(item.id);
 				}
 				if (item.stackable) {
 					SendTrade = SendTrade + " x " + SendAmount;
@@ -628,9 +637,9 @@ public class TradeAndDuel {
 					c.getItems().addItem(item.id, item.amount);
 					// WRITES TRADELOGS!!
 					c.getTradeLog().tradeReceived(
-							c.getItems().getItemName(item.id), item.amount);
+							ItemAssistant.getItemName(item.id), item.amount);
 					o.getTradeLog().tradeGive(
-							c.getItems().getItemName(item.id), item.amount);
+							ItemAssistant.getItemName(item.id), item.amount);
 				}
 			}
 			c.getPA().removeAllWindows();
@@ -1046,16 +1055,14 @@ public class TradeAndDuel {
 		}
 		if (i == 16
 				&& (c.getItems().is2handed(
-						c.getItems()
-								.getItemName(
-										c.playerEquipment[Player.playerWeapon])
+						ItemAssistant.getItemName(
+								c.playerEquipment[Player.playerWeapon])
 								.toLowerCase(),
 						c.playerEquipment[Player.playerWeapon]) && c.getItems()
 						.freeSlots() == 0)
 				|| (o.getItems().is2handed(
-						c.getItems()
-								.getItemName(
-										c.playerEquipment[Player.playerWeapon])
+						ItemAssistant.getItemName(
+								c.playerEquipment[Player.playerWeapon])
 								.toLowerCase(),
 						c.playerEquipment[Player.playerWeapon]) && o.getItems()
 						.freeSlots() == 0)) {
@@ -1274,9 +1281,9 @@ public class TradeAndDuel {
 			c.getItems().removeItem(13);
 		}
 		if ((c.duelRule[16] && c.getItems().is2handed(
-				c.getItems()
-						.getItemName(c.playerEquipment[Player.playerWeapon])
-						.toLowerCase(), c.playerEquipment[Player.playerWeapon]))) {
+				ItemAssistant.getItemName(
+						c.playerEquipment[Player.playerWeapon]).toLowerCase(),
+				c.playerEquipment[Player.playerWeapon]))) {
 			c.getItems().removeItem(3);
 		}
 		c.duelStatus = 5;

@@ -6,6 +6,7 @@ import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
 
+import server.Connection;
 import server.model.players.Client;
 
 public class ChannelHandler extends SimpleChannelHandler {
@@ -20,6 +21,7 @@ public class ChannelHandler extends SimpleChannelHandler {
 			if (client != null) {
 				client.disconnected = true;
 			}
+			Connection.removeIpFromLoginList(client.connectedFrom);
 			session = null;
 		}
 	}

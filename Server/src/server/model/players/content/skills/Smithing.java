@@ -4,6 +4,7 @@ import server.Config;
 import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.Player;
 import server.model.players.content.GabbesAchievements;
@@ -1506,28 +1507,41 @@ public class Smithing {
 			if (maketimes > 1
 					&& c.getItems().playerHasItem(toremove, toremove2 * 2)) {
 				c.sendMessage("You make some "
-						+ c.getItems().getItemName(toadd) + "s");
+						+ ItemAssistant.getItemName(toadd) + "s");
 			} else {
-				c.sendMessage("You make a " + c.getItems().getItemName(toadd));
+				c.sendMessage("You make a " + ItemAssistant.getItemName(toadd));
 			}
 			while (maketimes > 0) {
 				if (c.getItems().playerHasItem(toremove, toremove2)) {
 					c.getItems().deleteItem2(toremove, toremove2);
-					if (c.getItems().getItemName(toadd).contains("bolt")) {
+					c.getItems();
+					if (ItemAssistant.getItemName(toadd).contains("bolt")) {
 						c.getItems().addItem(toadd, 10);
-					} else if (c.getItems().getItemName(toadd).contains("nail")) {
-						c.getItems().addItem(toadd, 15);
-					} else if (c.getItems().getItemName(toadd)
-							.contains("arrow")) {
-						c.getItems().addItem(toadd, 15);
-					} else if (c.getItems().getItemName(toadd)
-							.contains("knife")) {
-						c.getItems().addItem(toadd, 5);
-					} else if (c.getItems().getItemName(toadd)
-							.contains("cannon")) {
-						c.getItems().addItem(toadd, 4);
 					} else {
-						c.getItems().addItem(toadd, 1);
+						c.getItems();
+						if (ItemAssistant.getItemName(toadd).contains("nail")) {
+							c.getItems().addItem(toadd, 15);
+						} else {
+							c.getItems();
+							if (ItemAssistant.getItemName(toadd).contains(
+									"arrow")) {
+								c.getItems().addItem(toadd, 15);
+							} else {
+								c.getItems();
+								if (ItemAssistant.getItemName(toadd).contains(
+										"knife")) {
+									c.getItems().addItem(toadd, 5);
+								} else {
+									c.getItems();
+									if (ItemAssistant.getItemName(toadd)
+											.contains("cannon")) {
+										c.getItems().addItem(toadd, 4);
+									} else {
+										c.getItems().addItem(toadd, 1);
+									}
+								}
+							}
+						}
 					}
 					c.getPA().addSkillXP(xp * Config.SMITHING_EXPERIENCE, 13);
 					c.getPA().refreshSkill(13);
@@ -1582,27 +1596,48 @@ public class Smithing {
 
 	public void readInput(int level, String type, Client c, int amounttomake) {
 
-		if (c.getItems().getItemName(Integer.parseInt(type)).contains("Bronze")) {
+		c.getItems();
+		if (ItemAssistant.getItemName(Integer.parseInt(type))
+				.contains("Bronze")) {
 			CheckBronze(c, level, amounttomake, type);
-		} else if (c.getItems().getItemName(Integer.parseInt(type))
-				.contains("Iron")) {
-			CheckIron(c, level, amounttomake, type);
-		} else if (c.getItems().getItemName(Integer.parseInt(type))
-				.contains("Steel")) {
-			CheckSteel(c, level, amounttomake, type);
-		} else if (c.getItems().getItemName(Integer.parseInt(type))
-				.contains("Mith")) {
-			CheckMith(c, level, amounttomake, type);
-		} else if (c.getItems().getItemName(Integer.parseInt(type))
-				.contains("Adam")
-				|| c.getItems().getItemName(Integer.parseInt(type))
-						.contains("Addy")) {
-			CheckAddy(c, level, amounttomake, type);
-		} else if (c.getItems().getItemName(Integer.parseInt(type))
-				.contains("Rune")
-				|| c.getItems().getItemName(Integer.parseInt(type))
-						.contains("Runite")) {
-			CheckRune(c, level, amounttomake, type);
+		} else {
+			c.getItems();
+			if (ItemAssistant.getItemName(Integer.parseInt(type)).contains(
+					"Iron")) {
+				CheckIron(c, level, amounttomake, type);
+			} else {
+				c.getItems();
+				if (ItemAssistant.getItemName(Integer.parseInt(type)).contains(
+						"Steel")) {
+					CheckSteel(c, level, amounttomake, type);
+				} else {
+					c.getItems();
+					if (ItemAssistant.getItemName(Integer.parseInt(type))
+							.contains("Mith")) {
+						CheckMith(c, level, amounttomake, type);
+					} else {
+						c.getItems();
+						c.getItems();
+						if (ItemAssistant.getItemName(Integer.parseInt(type))
+								.contains("Adam")
+								|| ItemAssistant.getItemName(
+										Integer.parseInt(type))
+										.contains("Addy")) {
+							CheckAddy(c, level, amounttomake, type);
+						} else {
+							c.getItems();
+							c.getItems();
+							if (ItemAssistant.getItemName(
+									Integer.parseInt(type)).contains("Rune")
+									|| ItemAssistant.getItemName(
+											Integer.parseInt(type)).contains(
+											"Runite")) {
+								CheckRune(c, level, amounttomake, type);
+							}
+						}
+					}
+				}
+			}
 		}
 		c.sendMessage("Item: " + type);
 	}

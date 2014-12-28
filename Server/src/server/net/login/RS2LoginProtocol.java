@@ -1,5 +1,6 @@
 package server.net.login;
 
+import java.net.InetSocketAddress;
 import java.security.SecureRandom;
 
 import org.jboss.netty.buffer.ChannelBuffer;
@@ -40,6 +41,8 @@ public class RS2LoginProtocol extends FrameDecoder {
 		cl.outStream.packetEncryption = outCipher;
 		cl.saveCharacter = false;
 		cl.isActive = true;
+		String IP = ((InetSocketAddress) channel.getRemoteAddress())
+				.getAddress().getHostAddress();
 		if (Connection.isNamedBanned(cl.playerName)) {
 			returnCode = 4;
 		}
@@ -52,6 +55,12 @@ public class RS2LoginProtocol extends FrameDecoder {
 		if (Server.UpdateServer) {
 			returnCode = 14;
 		}
+		Connection.addIpToLoginList(IP);
+		
+		if(Connection.checkLoginList(IP)) {
+			returnCode = 16;
+		}
+		
 		if (returnCode == 2) {
 			int load = PlayerSave.loadGame(cl, cl.playerName, cl.playerPass);
 			if (load == 0)

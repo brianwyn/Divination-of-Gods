@@ -1138,8 +1138,8 @@ public class UseItem {
 				|| c.getHerblore().checkItem(useWith, 1)
 				|| c.getHerblore().checkItem(itemUsed, 5))
 			c.getHerblore().handlePotMaking(itemUsed, useWith);
-		if (c.getItems().getItemName(itemUsed).contains("(")
-				&& c.getItems().getItemName(useWith).contains("("))
+		if (ItemAssistant.getItemName(itemUsed).contains("(")
+				&& ItemAssistant.getItemName(useWith).contains("("))
 			c.getPotMixing().mixPotion2(itemUsed, useWith);
 		if (itemUsed == 1733 || useWith == 1733)
 			c.getCrafting().handleLeather(itemUsed, useWith);

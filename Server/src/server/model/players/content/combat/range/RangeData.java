@@ -1,5 +1,6 @@
 package server.model.players.content.combat.range;
 
+import server.model.items.ItemAssistant;
 import server.model.npcs.NPCHandler;
 import server.model.players.Client;
 import server.model.players.Player;
@@ -72,21 +73,21 @@ public class RangeData {
 			return false;
 		}
 		if (!correctAmmo(weapon, playerArrows)) {
-			boolean addS = !c.getItems().getItemName(playerArrows)
-					.endsWith("s")
-					&& !c.getItems().getItemName(playerArrows).endsWith("(e)");
+			boolean addS = !ItemAssistant.getItemName(playerArrows).endsWith(
+					"s")
+					&& !ItemAssistant.getItemName(playerArrows).endsWith("(e)");
 			String add = addS ? "s" : "";
 			boolean vowel = false;
-			if (c.getItems().getItemName(weapon).startsWith("A")
-					|| c.getItems().getItemName(weapon).startsWith("E")
-					|| c.getItems().getItemName(weapon).startsWith("I")
-					|| c.getItems().getItemName(weapon).startsWith("O")
-					|| c.getItems().getItemName(weapon).startsWith("U"))
+			if (ItemAssistant.getItemName(weapon).startsWith("A")
+					|| ItemAssistant.getItemName(weapon).startsWith("E")
+					|| ItemAssistant.getItemName(weapon).startsWith("I")
+					|| ItemAssistant.getItemName(weapon).startsWith("O")
+					|| ItemAssistant.getItemName(weapon).startsWith("U"))
 				vowel = true;
 			String add2 = vowel ? "an" : "a";
 			c.sendMessage("You can not use "
-					+ c.getItems().getItemName(playerArrows) + "" + add
-					+ " with " + add2 + " " + c.getItems().getItemName(weapon)
+					+ ItemAssistant.getItemName(playerArrows) + "" + add
+					+ " with " + add2 + " " + ItemAssistant.getItemName(weapon)
 					+ ".");
 			return false;
 		}

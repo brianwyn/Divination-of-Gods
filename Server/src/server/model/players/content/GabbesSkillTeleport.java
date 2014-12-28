@@ -204,10 +204,4 @@ public class GabbesSkillTeleport {
 		}
 
 	}
-
-	public static void openInterface(Client c) {
-		c.getPA().showInterface(33000);
-		c.getPA().sendFrame126(
-				"@whi@Total Level: " + c.getPA().getTotalLevel() + "", 33041);
-	}
 }

@@ -14,26 +14,18 @@ public class DialogueHandler {
 		if (random > -1 && random < 50) {
 			c.getDH().sendDialogues(2525, 1);
 			RandomEvents.pheasentId = 2459;
-		} else {
-			if (random > 49 && random < 100) {
-				RandomEvents.pheasentId = 2460;
-				c.getDH().sendDialogues(2526, 1);
-			} else {
-				if (random > 99 && random < 145) {
-					RandomEvents.pheasentId = 2461;
-					c.getDH().sendDialogues(2527, 1);
-				} else {
-					if (random > 143 && random < 200) {
-						RandomEvents.pheasentId = 2462;
-						c.getDH().sendDialogues(2528, 1);
-					} else {
-						if (random > 199 && random < 211) {
-							RandomEvents.pheasentId = 2462;
-							c.getDH().sendDialogues(2528, 1);
-						}
-					}
-				}
-			}
+		} else if (random > 49 && random < 100) {
+			RandomEvents.pheasentId = 2460;
+			c.getDH().sendDialogues(2526, 1);
+		} else if (random > 99 && random < 145) {
+			RandomEvents.pheasentId = 2461;
+			c.getDH().sendDialogues(2527, 1);
+		} else if (random > 143 && random < 200) {
+			RandomEvents.pheasentId = 2462;
+			c.getDH().sendDialogues(2528, 1);
+		} else if (random > 199 && random < 211) {
+			RandomEvents.pheasentId = 2462;
+			c.getDH().sendDialogues(2528, 1);
 		}
 	}
 
@@ -1281,12 +1273,6 @@ public class DialogueHandler {
 					"No thanks I'm good for now.");
 			c.dialogueAction = 120;
 			c.nextChat = -1;
-			break;
-		case 1552:
-			sendNpcChat3("Ho, ho ho!", "Christmas is around the corner!",
-					"Here take these goodies!", c.talkingNpc, "Santa");
-			c.nextChat = 0;
-			// c.santaPrize = 1;
 			break;
 		case 19995:
 			sendNpcChat3("Thanks for donating!",

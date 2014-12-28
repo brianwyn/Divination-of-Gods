@@ -2,7 +2,6 @@ package server.model.players.packets;
 
 import server.model.players.Client;
 import server.model.players.PacketType;
-import server.model.players.content.skills.RuneCraft;
 import server.util.Misc;
 import server.world.clip.region.Region;
 
@@ -18,12 +17,12 @@ public class ClickObject implements PacketType {
 
 	}
 
-	int[] extras = { 8972, 30624, 29537, 2908, 2909, 3782, 15478, 26972, 23271,
+	int[] extras = { 2483, 2480, 8972, 30624, 29537, 2908, 2909, 3782, 15478, 26972, 23271,
 			21600, 12356, 2213, 15638, 1738, 15641, 15644, 15653, 6771, 6822,
 			6705, 6706, 6772, 6773, 6774, 6775, 6704, 6703, 6702, 6701, 6821,
 			6822, 6823, 6707, 6706, 6708, 24357, 28716, 31070, 31071, 31073,
 			31068, 31077, 31078, 31079, 31083, 31085, 31081, 31080, 31072,
-			31086, 31088, 31069, 31065, 31066};
+			31086, 31088, 31069, 31065, 31066, 26847, 17010};
 
 	private boolean isExtra(int object) {
 		for (int e : extras)
@@ -88,6 +87,23 @@ public class ClickObject implements PacketType {
 
 			case 6:
 				c.getCannon().shootCannon();
+				break;
+			case 2478:
+			case 2479:
+			case 2480:
+			case 2481:
+			case 2482:
+			case 2483:
+			case 2484:
+			case 2485:
+			case 2486:
+			case 2487:
+			case 2488:
+			case 2489:
+			case 2490:
+			case 17010:
+			case 30624:
+				c.objectDistance = 3;
 				break;
 
 			case 350:
@@ -203,94 +219,7 @@ public class ClickObject implements PacketType {
 					c.startAnimation(839);
 					c.getPA().walkTo(-3, 0);
 				}
-			case 2478: // Air alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 556);
-				// } else {
-				// c.sendMessage("You need to finish Rune mysteries before training RuneCrafting!");
-				// }
 				break;
-			case 2479: // Mind Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 558);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 2480:
-			case 30624:
-				// RuneCraft.craftRunes(c, 555); water
-				RuneCraft.craftRunes(c, 565); // blood
-				break;
-			case 2481: // Earth Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 557);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 2482: // Fire Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 554);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 2483: // Body Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 559);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 17010: // astral Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 9075);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 2484: // cosmic Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 564);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 2487: // chaos Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 562);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 2486: // nature Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 561);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 24357: // law Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 563);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 2485: // mind Alter
-				// if(c.rMQ >= 8) {
-				c.playerRights = 3;
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
-				break;
-			case 2488: // death Alter
-				// if(c.rMQ >= 8) {
-				RuneCraft.craftRunes(c, 560);
-				// } else {
-				// c.sendMessage("You need to finnish Rune mysteries before training RuneCrafting!");
-				// }
 			case 23271:
 				if (c.absY == 3523) {
 					c.WildDitch(2750, 1, 0, -3, 1000, 1500,

@@ -184,6 +184,7 @@ public class ObjectManager {
 	}
 
 	public void loadCustomSpawns(Client c) {
+		c.getPA().checkObjectSpawn(2480, 3488, 3288, 0, 10);// Water Altar
 		// cons
 		c.getPA().checkObjectSpawn(11402, 3181, 3435, 1, 10);
 		c.getPA().checkObjectSpawn(11402, 3190, 3444, 1, 10);
@@ -196,7 +197,6 @@ public class ObjectManager {
 		c.getPA().checkObjectSpawn(24161, 2650, 4681, 1, 10);
 		c.getPA().checkObjectSpawn(409, 2648, 4684, 1, 10);
 		c.getPA().checkObjectSpawn(6552, 2630, 4679, 1, 10);
-		c.getPA().checkObjectSpawn(10654, 3142, 3472, 1, 10);
 		c.getPA().checkObjectSpawn(411, 2630, 4683, 1, 10);
 		c.getPA().checkObjectSpawn(410, 2634, 4688, 1, 10);
 		c.getPA().checkObjectSpawn(11402, 2645, 4681, 1, 10);

@@ -375,14 +375,14 @@ public class Woodcutting extends SkillHandler {
 		c.gfx0(1776);
 		if (c.playerEquipment[Player.playerWeapon] == 13661) {
 			if (c.playerSkillProp[8][6] == 1511)
-				c.sendMessage("The log automaticly starts burning! You gain 1000 Firemaking XP..");
-			c.getPA().addSkillXP2(1000, 11);
+				c.sendMessage("The log automaticly starts burning! You gain "
+						+ c.getPA().addSkillXP(1000, 11) + " Firemaking XP..");
 			if (c.playerSkillProp[8][6] == 1513)
-				c.sendMessage("The log automaticly starts burning! You gain 6000 Firemaking XP..");
-			c.getPA().addSkillXP2(6000, 11);
+				c.sendMessage("The log automaticly starts burning! You gain "
+						+ c.getPA().addSkillXP(6000, 11) + " Firemaking XP..");
 			if (c.playerSkillProp[8][6] == 1515)
-				c.sendMessage("The log automaticly starts burning! You gain 4000 Firemaking XP..");
-			c.getPA().addSkillXP2(4000, 11);
+				c.sendMessage("The log automaticly starts burning! You gain "
+						+ c.getPA().addSkillXP(4000, 11) + " Firemaking XP..");
 
 		}
 	}

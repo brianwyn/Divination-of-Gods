@@ -4,6 +4,7 @@ import server.Config;
 import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.Player;
 import server.model.players.PlayerHandler;
@@ -399,9 +400,8 @@ public class AttackPlayer {
 					c.usingMagic = true;
 				}
 				c.attackTimer = c.getCombat().getAttackDelay(
-						c.getItems()
-								.getItemName(
-										c.playerEquipment[Player.playerWeapon])
+						ItemAssistant.getItemName(
+								c.playerEquipment[Player.playerWeapon])
 								.toLowerCase());
 
 				if ((!c.goodDistance(c.getX(), c.getY(),
@@ -487,13 +487,10 @@ public class AttackPlayer {
 				if (c.playerLevel[3] > 0 && !c.isDead
 						&& PlayerHandler.players[i].playerLevel[3] > 0) {
 					if (!c.usingMagic) {
-						c.startAnimation(c
-								.getCombat()
-								.getWepAnim(
-										c.getItems()
-												.getItemName(
-														c.playerEquipment[Player.playerWeapon])
-												.toLowerCase()));
+						c.startAnimation(c.getCombat().getWepAnim(
+								ItemAssistant.getItemName(
+										c.playerEquipment[Player.playerWeapon])
+										.toLowerCase()));
 						c.mageFollow = false;
 					} else {
 						c.startAnimation(c.MAGIC_SPELLS[c.spellId][2]);
@@ -514,14 +511,11 @@ public class AttackPlayer {
 																					// delay
 					c.followId = PlayerHandler.players[c.playerIndex].playerId;
 					c.getPA().followPlayer();
-					c.hitDelay = c
-							.getCombat()
-							.getHitDelay(
-									i,
-									c.getItems()
-											.getItemName(
-													c.playerEquipment[Player.playerWeapon])
-											.toLowerCase());
+					c.hitDelay = c.getCombat().getHitDelay(
+							i,
+							ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
+									.toLowerCase());
 					c.delayedDamage = Misc.random(c.getCombat()
 							.calculateMeleeMaxHit());
 					c.projectileStage = 0;
@@ -548,14 +542,11 @@ public class AttackPlayer {
 					c.lastWeaponUsed = c.playerEquipment[Player.playerWeapon];
 					c.lastArrowUsed = c.playerEquipment[Player.playerArrows];
 					c.gfx100(c.getCombat().getRangeStartGFX());
-					c.hitDelay = c
-							.getCombat()
-							.getHitDelay(
-									i,
-									c.getItems()
-											.getItemName(
-													c.playerEquipment[Player.playerWeapon])
-											.toLowerCase());
+					c.hitDelay = c.getCombat().getHitDelay(
+							i,
+							ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
+									.toLowerCase());
 					c.projectileStage = 1;
 					c.oldPlayerIndex = i;
 					c.getCombat().fireProjectilePlayer();
@@ -570,14 +561,11 @@ public class AttackPlayer {
 					c.gfx100(c.getCombat().getRangeStartGFX());
 					if (c.fightMode == 2)
 						c.attackTimer--;
-					c.hitDelay = c
-							.getCombat()
-							.getHitDelay(
-									i,
-									c.getItems()
-											.getItemName(
-													c.playerEquipment[Player.playerWeapon])
-											.toLowerCase());
+					c.hitDelay = c.getCombat().getHitDelay(
+							i,
+							ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
+									.toLowerCase());
 					c.projectileStage = 1;
 					c.oldPlayerIndex = i;
 					c.getCombat().fireProjectilePlayer();
@@ -611,14 +599,11 @@ public class AttackPlayer {
 						c.followId = c.playerIndex;
 						c.followDistance = 5;
 					}
-					c.hitDelay = c
-							.getCombat()
-							.getHitDelay(
-									i,
-									c.getItems()
-											.getItemName(
-													c.playerEquipment[Player.playerWeapon])
-											.toLowerCase());
+					c.hitDelay = c.getCombat().getHitDelay(
+							i,
+							ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
+									.toLowerCase());
 					c.oldPlayerIndex = i;
 					c.oldSpellId = c.spellId;
 					c.spellId = 0;

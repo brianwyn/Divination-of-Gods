@@ -308,7 +308,7 @@ public class Summoning {
 				for (int i : Config.ITEM_SELLABLE) {
 					if (i == itemID) {
 						c.sendMessage("You can't store untradeable item: "
-								+ c.getItems().getItemName(itemID)
+								+ ItemAssistant.getItemName(itemID)
 										.toLowerCase() + ".");
 						openInterface(c);
 						return;
@@ -318,7 +318,7 @@ public class Summoning {
 				for (int i : Config.ITEM_TRADEABLE) {
 					if (i == itemID) {
 						c.sendMessage("You can't store untradeable item: "
-								+ c.getItems().getItemName(itemID)
+								+ ItemAssistant.getItemName(itemID)
 										.toLowerCase() + ".");
 						openInterface(c);
 						return;
@@ -328,7 +328,7 @@ public class Summoning {
 				for (int i : Config.RUNE_ECC) {
 					if (i == itemID) {
 						c.sendMessage("You can't store untradeable item: "
-								+ c.getItems().getItemName(itemID)
+								+ ItemAssistant.getItemName(itemID)
 										.toLowerCase() + ".");
 						openInterface(c);
 						return;

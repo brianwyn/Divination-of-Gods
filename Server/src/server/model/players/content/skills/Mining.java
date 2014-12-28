@@ -4,6 +4,7 @@ import server.Config;
 import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
+import server.model.items.ItemAssistant;
 import server.model.objects.Object;
 import server.model.players.Client;
 import server.model.players.Player;
@@ -93,7 +94,7 @@ public class Mining {
 		int reward = gems[Misc.random(4)];
 		if (c.getItems().freeSlots() > 1)
 			c.getItems().addItem(reward, 1);
-		c.sendMessage("You found a " + c.getItems().getItemName(reward) + "!");
+		c.sendMessage("You found a " + ItemAssistant.getItemName(reward) + "!");
 		lastGem = Misc.random(20);
 	}
 

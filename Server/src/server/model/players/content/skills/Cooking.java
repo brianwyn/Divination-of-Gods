@@ -4,6 +4,7 @@ import server.Config;
 import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.Player;
 import server.util.Misc;
@@ -68,7 +69,7 @@ public class Cooking extends SkillHandler {
 						|| Misc.random(c.playerSkillProp[7][6]) > Misc
 								.random(c.playerSkillProp[7][2])) {
 					c.sendMessage("You successfully cook the "
-							+ c.getItems().getItemName(c.playerSkillProp[7][0])
+							+ ItemAssistant.getItemName(c.playerSkillProp[7][0])
 									.toLowerCase() + ".");
 					if (Config.SOUND) {
 						c.sendSound(c.getSound().COOKITEM);
@@ -77,7 +78,7 @@ public class Cooking extends SkillHandler {
 					c.getItems().addItem(c.playerSkillProp[7][4], 1);
 				} else {
 					c.sendMessage("Oops! You accidentally burnt the "
-							+ c.getItems().getItemName(c.playerSkillProp[7][0])
+							+ ItemAssistant.getItemName(c.playerSkillProp[7][0])
 									.toLowerCase() + "!");
 					c.getItems().addItem(c.playerSkillProp[7][3], 1);
 				}
@@ -255,6 +256,6 @@ public class Cooking extends SkillHandler {
 		c.getPA().sendFrame164(1743);
 		c.getPA().sendFrame246(13716, 190, item);
 		c.getPA().sendFrame126(
-				"\\n\\n\\n\\n\\n" + c.getItems().getItemName(item) + "", 13717);
+				"\\n\\n\\n\\n\\n" + ItemAssistant.getItemName(item) + "", 13717);
 	}
 }

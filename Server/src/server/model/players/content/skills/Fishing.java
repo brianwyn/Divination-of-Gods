@@ -1,5 +1,6 @@
 package server.model.players.content.skills;
 
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.util.Misc;
 
@@ -45,21 +46,19 @@ public class Fishing {
 							c.getPA().addSkillXP(c.fishXP, 10);
 						c.fishtimer = Misc.random(fishtime(c.fishies,
 								c.fishreqt));
-						// c.sendMessage("You catch a " +
-						// c.getItems().getItemName(c.fishies).toLowerCase());
 					}
 				} else {
 					c.fishing = false;
 					c.sendMessage("You need a fishing level of " + c.fishreqt
 							+ " to fish for "
-							+ c.getItems().getItemName(c.fishies));
+							+ ItemAssistant.getItemName(c.fishies));
 					c.stopPlayerSkill = false;
 				}
 			} else {
 				c.fishing = false;
 				c.sendMessage("You need a "
-						+ c.getItems().getItemName(c.fishitem) + " to fish "
-						+ c.getItems().getItemName(c.fishies));
+						+ ItemAssistant.getItemName(c.fishitem) + " to fish "
+						+ ItemAssistant.getItemName(c.fishies));
 				c.stopPlayerSkill = false;
 			}
 		}

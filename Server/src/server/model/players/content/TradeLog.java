@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
 
+import server.Config;
 import server.model.players.Client;
 import server.model.players.PlayerHandler;
 
@@ -30,22 +31,20 @@ public class TradeLog {
 		Client o = (Client) PlayerHandler.players[c.tradeWith];
 		Calendar C = Calendar.getInstance();
 		try {
-			BufferedWriter bItem = new BufferedWriter(
-					new FileWriter("data/tradesandothers/trades/gave/"
-							+ c.playerName + ".txt", true));
-			try {
-				bItem.newLine();
-				bItem.write("Year : " + C.get(Calendar.YEAR) + "\tMonth : "
-						+ C.get(Calendar.MONTH) + "\tDay : "
-						+ C.get(Calendar.DAY_OF_MONTH));
-				bItem.newLine();
-				bItem.write("Gave " + itemAmount + " " + itemName + " To "
-						+ o.playerName);
-				bItem.newLine();
-				bItem.write("--------------------------------------------------");
-			} finally {
-				bItem.close();
-			}
+			BufferedWriter bItem = new BufferedWriter(new FileWriter(
+					Config.LOG_PATH + "/trades/gave/" + c.playerName + ".txt",
+					true));
+			bItem.newLine();
+			bItem.write("Year : " + C.get(Calendar.YEAR) + "\tMonth : "
+					+ C.get(Calendar.MONTH) + "\tDay : "
+					+ C.get(Calendar.DAY_OF_MONTH));
+			bItem.newLine();
+			bItem.write("Gave " + itemAmount + " " + itemName + " To "
+					+ o.playerName);
+			bItem.newLine();
+			bItem.write("--------------------------------------------------");
+			bItem.flush();
+			bItem.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -60,7 +59,7 @@ public class TradeLog {
 		Calendar C = Calendar.getInstance();
 		try {
 			BufferedWriter bItem = new BufferedWriter(new FileWriter(
-					"data/tradesandothers/trades/received/" + c.playerName
+					Config.LOG_PATH + "/trades/received/" + c.playerName
 							+ ".txt", true));
 			try {
 				bItem.newLine();

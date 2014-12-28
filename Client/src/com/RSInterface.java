@@ -8776,23 +8776,18 @@ public final class RSInterface {
 		Interface.childX[26] = 0;
 		Interface.childY[26] = 0;
 		Interface = addInterface(27650);
-		/*
-		 * addSprite(19146, 1, "Equipment/aura"); addAura(10794);
-		 * addButton(29145, 2, "Equipment/aura", 36, 36, "Remove", 1);
-		 */
+		
 		addButton(27651, 6, "Interfaces/Equipment/BOX", "Lock/Unlock XP",
-				27659, 1, 26, 33);
-		addTooltip(27659, "Locks/unlocks your EXP"); // dw just finnish i dont
-														// really care about
-														// that small thing ^^
+				27659, 1, 40, 40);
+		addTooltip(27659, "Locks/unlocks your EXP");
 		addButton(27653, 1, "Interfaces/Equipment/BOX", "Show Equipment Stats",
-				27655, 1, 40, 39);
+				27655, 1, 40, 40);
 		addTooltip(27655, "Show Equipment Stats");
 		addButton(27654, 2, "Interfaces/Equipment/BOX", "Items Kept On Death",
-				27657, 1, 40, 39);
+				27657, 1, 40, 40);
 		addTooltip(27657, "Shows items kept on death.");
 		setChildren(10, Interface);//
-		setBounds(27651, 84, 215, 0, Interface);
+		setBounds(27651, 76, 205, 0, Interface);
 		setBounds(27653, 29, 205, 1, Interface);
 		setBounds(27654, 124, 205, 2, Interface);
 		setBounds(27659, 39, 240, 3, Interface);
@@ -8801,40 +8796,8 @@ public final class RSInterface {
 		setBounds(29145, 37, 5, 6, Interface);
 		setBounds(19146, 37, 5, 7, Interface);
 		setBounds(10794, 39, 7, 8, Interface);
-	}/*
-	 * public static void EquipmentTab(TextDrawingArea[] wid) { RSInterface
-	 * Interface = interfaceCache[1644]; addSprite(15101, 0, "Equipment/bl");
-	 * addSprite(15102, 1, "Equipment/bl"); addSprite(15109, 2, "Equipment/bl");
-	 * addSprite(15110, 3, "Equipment/bl"); removeSomething(15103);
-	 * removeSomething(15104); Interface.children[23] = 15101;
-	 * Interface.childX[23] = 40; Interface.childY[23] = 205;
-	 * Interface.children[24] = 15102; Interface.childX[24] = 110;
-	 * Interface.childY[24] = 205; Interface.children[25] = 15109;
-	 * Interface.childX[25] = 39; Interface.childY[25] = 240;
-	 * Interface.children[26] = 27650; Interface.childX[26] = 0;
-	 * Interface.childY[26] = 0; Interface = addInterface(27650);
-	 * addSprite(27665, 0, "Equipment/aura"); addSprite(19146, 1,
-	 * "Equipment/aura"); addAura(10794); addButton(29145, 2, "Equipment/aura",
-	 * 36, 36, "Remove", 1); addHoverButton(27651, "Equipment/CUSTOM", 1, 40,
-	 * 40, "Show Equipment Screen", 0, 27652, 1, 0); addHoveredButton(27652,
-	 * "Equipment/CUSTOM", 5, 40, 40, 27653); addHoverButton(27657,
-	 * "Equipment/CUSTOM", 2, 40, 40, "Items Kept on Death", 0, 27658, 1, 0);
-	 * addHoveredButton(27658, "Equipment/CUSTOM", 4, 40, 40, 27659);
-	 * addHoverButton(27654, "Equipment/CUSTOM", 9, 40, 40, "Toolbelt", 0,
-	 * 27655, 1, 0); addHoveredButton(27655, "Equipment/CUSTOM", 10, 40, 40,
-	 * 27656); //addHoverButton(27662, "Equipment/CUSTOM", 3, 40, 45,
-	 * "Price Checker", 0, 27663, 1, 0); //addHoveredButton(27663,
-	 * "Equipment/CUSTOM", 6, 40, 45, 27664); setChildren(9, Interface);
-	 * //setBounds(27665, 37, 4, 0, Interface); setBounds(27651, 21, 210, 0,
-	 * Interface); setBounds(27652, 21, 210, 1, Interface); setBounds(27657, 75,
-	 * 210, 2, Interface); setBounds(27658, 75, 210, 3, Interface);
-	 * setBounds(27654, 129, 210, 4, Interface); setBounds(27655, 129, 210, 5,
-	 * Interface); setBounds(29145, 37, 5, 6, Interface); setBounds(19146, 37,
-	 * 5, 7, Interface); setBounds(10794, 39, 7, 8, Interface);
-	 * //setBounds(27662, 127, 2, 6, Interface); //setBounds(27663, 127, 2, 7,
-	 * Interface); //setBounds(27665, 37, 4, 6, Interface); }
-	 */
-
+	}
+	
 	public static void addAura(int i) {
 		RSInterface rsinterface = interfaceCache[i] = new RSInterface();
 		rsinterface.itemActions = new String[5];

@@ -1,6 +1,7 @@
 package server.model.players.content.combat.magic;
 
 import server.Config;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.Player;
 import server.model.players.PlayerHandler;
@@ -77,7 +78,7 @@ public class MagicRequirements extends MagicData {
 																			// required
 			if (c.playerEquipment[Player.playerWeapon] != staffRequired) {
 				c.sendMessage("You need a "
-						+ c.getItems().getItemName(staffRequired).toLowerCase()
+						+ ItemAssistant.getItemName(staffRequired).toLowerCase()
 						+ " to cast this spell.");
 				return false;
 			}

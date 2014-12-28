@@ -16,8 +16,8 @@ import server.model.players.Client;
 import server.model.players.PacketType;
 import server.model.players.Player;
 import server.model.players.PlayerHandler;
+import server.model.players.content.CustomInterfaces;
 import server.model.players.content.GabbesAchievements;
-import server.model.players.content.GabbesSkillTeleport;
 import server.model.players.content.GabbesXPLamp;
 import server.model.players.content.LoyaltyHandler;
 import server.model.players.content.PartyRoom;
@@ -30,6 +30,7 @@ import server.model.players.content.skills.Construction;
 import server.model.players.content.skills.Cooking;
 import server.model.players.content.skills.Dungeoneering;
 import server.model.players.content.skills.Prayer;
+import server.model.players.content.skills.Runecrafting;
 import server.model.players.content.skills.Smithing;
 import server.model.players.content.skills.Summoning;
 import server.model.players.content.skills.impl.Cons;
@@ -75,7 +76,6 @@ public class ClickingButtons implements PacketType {
 		LoyaltyHandler.HandleLoyaltyMisc(c, packetType, packetSize);
 		DrHousesShop.handleButtons(c, packetType, packetSize);
 		DominionTowerByGabbe.handleInterfacesButtons(c, packetType, packetSize);
-		GabbesSkillTeleport.handleButtons(c, packetType, packetSize);
 		AutoCasting.handleButtons(c, packetType, packetSize, actionButtonId);
 
 		// int actionButtonId = c.getInStream().readShort();
@@ -86,9 +86,12 @@ public class ClickingButtons implements PacketType {
 			Misc.println(c.playerName + " - actionbutton: " + actionButtonId);
 		}
 
+		if (Runecrafting.handleRCButton(c, actionButtonId))
+			return;
 		if (Summoning.createPouch(c, actionButtonId))
 			return;
-
+		if (CustomInterfaces.clickButton(c, actionButtonId))
+			return;
 		for (int i = 0; i < c.qCAB.length; i++) {
 			if (actionButtonId == c.qCAB[i][0]) {
 				for (int j = 0; j < c.qCS.length; j++) {
@@ -104,11 +107,20 @@ public class ClickingButtons implements PacketType {
 		}
 
 		switch (actionButtonId) { // 7002
-		
+
 		case 70212:
 			Server.clanChat.leaveClan(c.playerId, c.clanId);
 			break;
-			
+
+		case 19139:// Right click run orb rest option
+			c.isResting = !c.isResting;
+			c.stopMovement();
+			c.startAnimation(c.isResting ? 5713 : 11788);
+			c.playerStandIndex = c.isResting ? 11787 : 0x328;
+			if (!c.isResting)
+				c.getPA().sendFrame36(9999, 0);
+			c.getPA().requestUpdates();
+			break;
 		case 71074:
 			if (Server.clanChat.isOwner(c)) {
 				if (System.currentTimeMillis() - c.lastEmote >= 1500) {
@@ -119,7 +131,7 @@ public class ClickingButtons implements PacketType {
 					c.lastEmote = System.currentTimeMillis();
 				}
 			} else {
-				if (c.clanId > 0)
+				if (c.clanId > -1)
 					c.sendMessage("Only the owner of the clan has the power to do that.");
 				else
 					c.sendMessage("You must be in a clan to use this button.");
@@ -257,6 +269,7 @@ public class ClickingButtons implements PacketType {
 		case 177144:
 		case 39178:
 		case 213018:
+		case 199071:
 			c.getPA().closeAllWindows();
 			break;
 		case 187130:
@@ -1046,19 +1059,7 @@ public class ClickingButtons implements PacketType {
 		 */
 		case 20174:
 			c.getDH().sendDialogues(119, 8275);
-			// crafting + fletching interface:
-			// case 89223: //Deposit Inventory old client
-			/*
-			 * case 66117: switch(c.hasFollower) { case 6870: //wolpertinger
-			 * if(c.getItems().playerHasItem(12437, 1)) {
-			 * c.getItems().deleteItem(12437, 1); c.gfx0(1311);
-			 * if(c.playerLevel[6] > c.getLevelForXP(c.playerXP[6]))
-			 * c.playerLevel[6] = c.getLevelForXP(c.playerXP[6]); else
-			 * c.playerLevel[6] += (c.getLevelForXP(c.playerXP[6]) * .1);
-			 * c.getPA().refreshSkill(6);
-			 * c.sendMessage("Your Magic bonus has increased!"); } else
-			 * c.sendMessage("You don't have a scroll for that NPC!"); break;
-			 */
+			break;
 		case 150:
 			if (c.autoRet == 0)
 				c.autoRet = 1;
@@ -1442,11 +1443,6 @@ public class ClickingButtons implements PacketType {
 			break;
 
 		case 108003:
-			/*
-			 * if (c.isDonator == 1) { c.setSidebarInterface(4, 27620); } else {
-			 * c.sendMessage("You must be an donator to view this tab!");
-			 * return; }
-			 */
 			if (c.xpLock == false) {
 				c.xpLock = true;
 				c.sendMessage("<col=255>Your XP is now LOCKED!</col>");
@@ -3128,9 +3124,9 @@ public class ClickingButtons implements PacketType {
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 1)) {
 					c.getItems().deleteItem(2996, 1);
-					c.getPA().addSkillXP2(20000, 16);
 					c.getPA().refreshSkill(16);
-					c.sendMessage("You receive 20000 Agility XP.");
+					c.sendMessage("You receive "
+							+ c.getPA().addSkillXP(20000, 16) + " Agility XP.");
 					return;
 				} else {
 					c.sendMessage("You don't have enough Agility tickets.");
@@ -3351,9 +3347,9 @@ public class ClickingButtons implements PacketType {
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 5)) {
 					c.getItems().deleteItem(2996, 5);
-					c.getPA().addSkillXP2(110000, 16);
 					c.getPA().refreshSkill(16);
-					c.sendMessage("You receive 110000 Agility XP.");
+					c.sendMessage("You receive "
+							+ c.getPA().addSkillXP(110000, 16) + " Agility XP.");
 					return;
 				} else {
 					c.sendMessage("You don't have enough Agility tickets.");
@@ -3565,9 +3561,9 @@ public class ClickingButtons implements PacketType {
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 10)) {
 					c.getItems().deleteItem(2996, 10);
-					c.getPA().addSkillXP2(220000, 16);
 					c.getPA().refreshSkill(16);
-					c.sendMessage("You receive 220000 Agility XP.");
+					c.sendMessage("You receive "
+							+ c.getPA().addSkillXP(220000, 16) + " Agility XP.");
 					return;
 				} else {
 					c.sendMessage("You don't have enough Agility tickets.");
@@ -3756,9 +3752,9 @@ public class ClickingButtons implements PacketType {
 				c.getPA().closeAllWindows();
 				if (c.getItems().playerHasItem(2996, 15)) {
 					c.getItems().deleteItem(2996, 15);
-					c.getPA().addSkillXP2(330000, 16);
 					c.getPA().refreshSkill(16);
-					c.sendMessage("You receive 330000 Agility XP.");
+					c.sendMessage("You receive "
+							+ c.getPA().addSkillXP(330000, 16) + " Agility XP.");
 					return;
 				} else {
 					c.sendMessage("You don't have enough Agility tickets.");
@@ -5274,12 +5270,7 @@ public class ClickingButtons implements PacketType {
 		 */case 51013:
 		case 6004:
 		case 117162:
-			/*
-			 * c.getDH().sendOption5("Crafting & Hunter", "Mining & Smithing",
-			 * "Fishing & Cooking", "Woodcutting & Firemaking",
-			 * "Farming & Herblore");
-			 */
-			GabbesSkillTeleport.openInterface(c);
+			CustomInterfaces.openSkillInterface(c);
 			break;
 
 		case 117186:

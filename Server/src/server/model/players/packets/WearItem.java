@@ -1,5 +1,6 @@
 package server.model.players.packets;
 
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.PacketType;
 import server.model.players.Player;
@@ -10,7 +11,6 @@ import server.model.players.Player;
 
 public class WearItem implements PacketType {
 
-	@SuppressWarnings("unused")
 	@Override
 	public void processPacket(Client c, int packetType, int packetSize) {
 		c.wearId = c.getInStream().readUnsignedWord();
@@ -19,10 +19,8 @@ public class WearItem implements PacketType {
 		c.getPA().resetAutocast();
 		c.getItems().sendWeapon(
 				c.playerEquipment[Player.playerWeapon],
-				c.getItems()
+				ItemAssistant
 						.getItemName(c.playerEquipment[Player.playerWeapon]));
-
-		int oldCombatTimer = c.attackTimer;
 		if (c.wearId == 4565) {
 			c.basket = true;
 		} else {
@@ -53,20 +51,17 @@ public class WearItem implements PacketType {
 			c.degWep = true;
 			c.sendMessage("Your now wearing a normal VLS, it might degrade!");
 		}
-		if (c.wearSlot == c.playerEquipment[Player.playerWeapon]) {
-
-		}
-		// c.attackTimer = oldCombatTimer;
 		if (c.isNpc == true) {
 			c.sendMessage("Type ::unpc before you do that!");
-		} else {
-			if (c.isNpc == false) {
-				c.getItems().wearItem(c.wearId, c.wearSlot);
-				c.getItems().sendWeapon(
-						c.playerEquipment[Player.playerWeapon],
-						c.getItems().getItemName(
-								c.playerEquipment[Player.playerWeapon]));
-			}
+			return;
+		}
+		if (c.isNpc == false) {
+			c.getItems().wearItem(c.wearId, c.wearSlot);
+			c.getItems()
+					.sendWeapon(
+							c.playerEquipment[Player.playerWeapon],
+							ItemAssistant
+									.getItemName(c.playerEquipment[Player.playerWeapon]));
 		}
 	}
 }

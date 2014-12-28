@@ -1,6 +1,7 @@
 package server.model.players.content.combat.magic;
 
 import server.Config;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 
 public class NonCombatSpells extends MagicRequirements {
@@ -29,7 +30,7 @@ public class NonCombatSpells extends MagicRequirements {
 			return;
 		}
 		if ((!c.getItems().playerHasItem(item[0], 1))) {
-			c.sendMessage("You need some " + c.getItems().getItemName(item[0])
+			c.sendMessage("You need some " + ItemAssistant.getItemName(item[0])
 					+ " to cast this spell!");
 			return;
 		}
@@ -38,7 +39,7 @@ public class NonCombatSpells extends MagicRequirements {
 		c.startAnimation(722);
 		c.getPA().addSkillXP(100 * c.getItems().getItemAmount(item[0]), 6);
 		c.sendMessage("You use your magic power to convert bones into "
-				+ c.getItems().getItemName(item[1]).toLowerCase().toLowerCase()
+				+ ItemAssistant.getItemName(item[1]).toLowerCase().toLowerCase()
 				+ "" + (item[1] != 1963 ? ("e") : ("")) + "s!");
 		c.getCombat().resetPlayerAttack();
 	}
@@ -137,7 +138,7 @@ public class NonCombatSpells extends MagicRequirements {
 			if (itemID == data[i][0]) {
 				if (!c.getItems().playerHasItem(data[i][2], data[i][3])) {
 					c.sendMessage("You haven't got enough "
-							+ c.getItems().getItemName(data[i][2])
+							+ ItemAssistant.getItemName(data[i][2])
 									.toLowerCase() + " to cast this spell!");
 					return;
 				}

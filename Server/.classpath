@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="punish/" kind="src" path="Data"/>
-	<classpathentry kind="src" path="Data/punish"/>
-	<classpathentry kind="src" path="Eco Reset"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="deps/commons-compress-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="deps/commons-dbcp-1.4.jar"/>

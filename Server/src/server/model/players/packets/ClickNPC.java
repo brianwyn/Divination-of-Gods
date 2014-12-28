@@ -1,6 +1,7 @@
 package server.model.players.packets;
 
 import server.Config;
+import server.model.items.ItemAssistant;
 import server.model.npcs.NPCHandler;
 import server.model.players.Client;
 import server.model.players.PacketType;
@@ -117,14 +118,12 @@ public class ClickNPC implements PacketType {
 					&& usingBow
 					&& !c.getCombat().usingCrystalBow() && !usingCross) {
 				c.sendMessage("You can't use "
-						+ c.getItems()
-								.getItemName(
-										c.playerEquipment[Player.playerArrows])
+						+ ItemAssistant.getItemName(
+								c.playerEquipment[Player.playerArrows])
 								.toLowerCase()
 						+ "s with a "
-						+ c.getItems()
-								.getItemName(
-										c.playerEquipment[Player.playerWeapon])
+						+ ItemAssistant.getItemName(
+								c.playerEquipment[Player.playerWeapon])
 								.toLowerCase() + ".");
 				c.stopMovement();
 				c.getCombat().resetPlayerAttack();

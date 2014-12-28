@@ -4,6 +4,7 @@ import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
 import server.model.items.Item;
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 import server.model.players.Player;
 
@@ -283,7 +284,7 @@ public class Timers {
 							.isFullBody(c.playerEquipment[Player.playerChest]);
 					c.getCombat()
 							.getPlayerAnimIndex(
-									c.getItems()
+									ItemAssistant
 											.getItemName(
 													c.playerEquipment[Player.playerWeapon])
 											.toLowerCase());

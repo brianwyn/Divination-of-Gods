@@ -125,26 +125,6 @@ public class Server {
 
 	public static int totalExecution2 = 0;
 
-	/*
-	 * public static void main(java.lang.String args[]) throws
-	 * NullPointerException, IOException { System.setOut(new
-	 * Logger(System.out)); System.setErr(new Logger(System.err));
-	 * System.out.println
-	 * ("[Divinationofgods.com] Launching Divination of Gods..");
-	 * World.getWorld(); //WebsiteHighScores.checkConnection(); if
-	 * (!Config.DisableMYSQL) {
-	 * System.out.println("Initing MySQL Connections..."); MySQL.init(); }
-	 * 
-	 * try {
-	 * 
-	 * //new RS2Server().start(); /* GrandExchange.loading = true;
-	 * GE.loadSellers(); GE.loadBuyers(); GrandExchange.loading = false;
-	 * System.out.println("Total offers loaded " + GE.totalOffers);* } catch
-	 * (Exception ex) {
-	 * System.out.println("[divinationofgods.com] Error starting the server..."
-	 * ); ex.printStackTrace(); System.exit(1); } System.gc(); }
-	 */
-	// ENGINE DISABLED
 	/**
 	 * Starts the server.
 	 */

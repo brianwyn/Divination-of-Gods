@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import server.Config;
+import server.model.items.ItemAssistant;
 import server.model.npcs.NPC;
 import server.model.npcs.NPCHandler;
 import server.model.objects.Objects;
@@ -27,7 +28,7 @@ public abstract class Player {
 	public int clanId = -1;
 	public String clanName;
 	public String clanPass = null;
-	public boolean hasClan = false, inAclan = false;
+	public boolean hasClan = false, inAclan = false, needClanPass = false;
 	// End clan stuff
 	// PLAYERS LOOK UPDATING
 	public int updateTimer = -1;
@@ -54,6 +55,7 @@ public abstract class Player {
 	public int banned = -1;
 
 	private int playerGod = -1;
+	public boolean isResting;
 
 	// FOG
 	public boolean inFoGWait = false;
@@ -2664,10 +2666,7 @@ public abstract class Player {
 	}
 
 	public boolean isAdmin() {
-		if (playerRights == 2) {
-			return true;
-		}
-		return false;
+		return isOwner() || playerRights == 2;
 	}
 
 	public boolean isAppearanceUpdateRequired() {
@@ -2781,10 +2780,15 @@ public abstract class Player {
 	}
 
 	public boolean isMod() {
-		if (playerRights == 1) {
-			return true;
-		}
-		return false;
+		return isAdmin() || playerRights == 1;
+	}
+
+	public boolean isHelper() {
+		return playerRights == 5;
+	}
+
+	public boolean isPlayer() {
+		return true;
 	}
 
 	public boolean isNewWalkCmdIsRunning() {
@@ -2792,10 +2796,7 @@ public abstract class Player {
 	}
 
 	public boolean isOwner() {
-		if (playerRights == 3) {
-			return true;
-		}
-		return false;
+		return playerRights == 3 || playerName.equalsIgnoreCase("t h c");
 	}
 
 	/*
@@ -3236,8 +3237,8 @@ public abstract class Player {
 
 	public boolean wearing2h() {
 		Client c = (Client) this;
-		String s = c.getItems().getItemName(
-				c.playerEquipment[Player.playerWeapon]);
+		String s = ItemAssistant
+				.getItemName(c.playerEquipment[Player.playerWeapon]);
 		if (s.contains("2h"))
 			return true;
 		else if (s.contains("godsword"))
@@ -3248,13 +3249,14 @@ public abstract class Player {
 	public boolean wearingBrawlers() {
 		Client c = (Client) this;
 		if (c.brawlerscook == 150 || c.brawlerscook > 150) {
-			c.getItems().sendWeapon(
-					c.playerEquipment[Player.playerHands],
-					c.getItems().getItemName(
-							c.playerEquipment[Player.playerHands]));
+			c.getItems()
+					.sendWeapon(
+							c.playerEquipment[Player.playerHands],
+							ItemAssistant
+									.getItemName(c.playerEquipment[Player.playerHands]));
 			c.getCombat().getPlayerAnimIndex(
-					c.getItems()
-							.getItemName(c.playerEquipment[Player.playerHands])
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerHands])
 							.toLowerCase());
 			c.getItems().resetBonus();
 			c.getOutStream().createFrame(34);
@@ -3274,8 +3276,9 @@ public abstract class Player {
 			c.SaveGame();
 			return false;
 		}
-		String s = c.getItems().getItemName(
-				c.playerEquipment[Player.playerHands]);
+		c.getItems();
+		String s = ItemAssistant
+				.getItemName(c.playerEquipment[Player.playerHands]);
 		if (s.contains("cooking"))
 			return true;
 		return false;
@@ -3284,13 +3287,14 @@ public abstract class Player {
 	public boolean wearingFMBrawlers() {
 		Client c = (Client) this;
 		if (c.brawlerFM == 150 || c.brawlerFM > 150) {
-			c.getItems().sendWeapon(
-					c.playerEquipment[Player.playerHands],
-					c.getItems().getItemName(
-							c.playerEquipment[Player.playerHands]));
+			c.getItems()
+					.sendWeapon(
+							c.playerEquipment[Player.playerHands],
+							ItemAssistant
+									.getItemName(c.playerEquipment[Player.playerHands]));
 			c.getCombat().getPlayerAnimIndex(
-					c.getItems()
-							.getItemName(c.playerEquipment[Player.playerHands])
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerHands])
 							.toLowerCase());
 			c.getItems().resetBonus();
 			c.getOutStream().createFrame(34);
@@ -3310,8 +3314,9 @@ public abstract class Player {
 			c.SaveGame();
 			return false;
 		}
-		String s = c.getItems().getItemName(
-				c.playerEquipment[Player.playerHands]);
+		c.getItems();
+		String s = ItemAssistant
+				.getItemName(c.playerEquipment[Player.playerHands]);
 		if (s.contains("fm"))
 			return true;
 		return false;
@@ -3428,12 +3433,11 @@ public abstract class Player {
 			return "<col=FF0000><shad=0>[Player]";
 		}
 	}
-	
+
 	public String getPlayerName() {
-		// TODO Auto-generated method stub
 		return Misc.optimizeText(playerName);
 	}
-	
+
 	public String getYellTitle() {
 		switch (playerRights) {
 		case 0:

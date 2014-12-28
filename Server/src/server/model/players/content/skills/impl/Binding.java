@@ -1,5 +1,6 @@
 package server.model.players.content.skills.impl;
 
+import server.model.items.ItemAssistant;
 import server.model.players.Client;
 
 public class Binding {
@@ -277,7 +278,7 @@ public class Binding {
 				c.getItems().deleteItem2(getBindedItems()[i][0], 1);
 				c.getItems().addItem(getBindedItems()[i][1], 1);
 				c.sendMessage("You have bounded the "
-						+ c.getItems().getItemName(getBindedItems()[i][0])
+						+ ItemAssistant.getItemName(getBindedItems()[i][0])
 						+ ".");
 			}
 		}
@@ -288,7 +289,7 @@ public class Binding {
 	}
 
 	public static boolean isBindable(final Client c, int itemId) {
-		String name = c.getItems().getItemName(itemId);
+		String name = ItemAssistant.getItemName(itemId);
 		return name.contains("Novite") || name.contains("novite")
 				|| name.contains("bathus") || name.contains("Bathus")
 				|| name.contains("marmaros") || name.contains("Marmaros")

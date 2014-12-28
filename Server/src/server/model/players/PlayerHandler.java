@@ -27,7 +27,6 @@ public class PlayerHandler {
 					return;
 				}
 				all.spinsLe += 1;
-				all.sendMessage("<shad=6081134>Gabbe has just given you a free spin on the Squeal of Fortune!");
 				all.getPA().sendFrame126("" + p.spinsLe + "", 48508);
 				all.getPA().sendFrame126("" + p.spinsLe + "", 16510);
 			}
@@ -114,7 +113,7 @@ public class PlayerHandler {
 		return (int) Math.round(count);
 	}
 
-	public static void yell(String message) {
+	public static void serverMessage(String message) {
 		for (int j = 0; j < PlayerHandler.players.length; j++) {
 			if (PlayerHandler.players[j] != null) {
 				Client c2 = (Client) PlayerHandler.players[j];

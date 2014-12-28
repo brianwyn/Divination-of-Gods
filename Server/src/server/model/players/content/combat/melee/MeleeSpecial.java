@@ -1,5 +1,6 @@
 package server.model.players.content.combat.melee;
 
+import server.model.items.ItemAssistant;
 import server.model.npcs.NPC;
 import server.model.npcs.NPCHandler;
 import server.model.players.Client;
@@ -54,14 +55,11 @@ public class MeleeSpecial {
 			c.specDamage = 1.40;
 			c.hitDelay = 5;
 			c.attackTimer -= 7;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			if (c.fightMode == 2)
 				if (c.playerIndex > 0)
 					c.getCombat().fireProjectilePlayer();
@@ -71,14 +69,11 @@ public class MeleeSpecial {
 		case 10887:
 			c.gfx0(1027);
 			c.startAnimation(5870);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			c.specDamage = 1.20;
 			c.specAccuracy = 1.85;
 			break;
@@ -87,14 +82,11 @@ public class MeleeSpecial {
 			c.gfx0(1835);
 			c.specAccuracy = 1.25;
 			c.specEffect = 6;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 
 		case 13907: // Vesta spear (deg)
@@ -102,40 +94,31 @@ public class MeleeSpecial {
 			c.gfx0(1835);
 			c.specAccuracy = 1.25;
 			c.specEffect = 6;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 
 		case 13899: // Vesta LongSword
 			c.startAnimation(10502);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase() + 1);
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase() + 1);
 			c.specDamage = 1.35;
 			c.specAccuracy = 2.00;
 			break;
 
 		case 13901: // Vesta LongSword (deg)
 			c.startAnimation(10502);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase() + 1);
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase() + 1);
 			c.specDamage = 1.35;
 			c.specAccuracy = 2.00;
 			break;
@@ -143,14 +126,11 @@ public class MeleeSpecial {
 		case 13902: // Statius
 			c.startAnimation(10505);
 			c.gfx0(1840);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase() + 1);
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase() + 1);
 			c.specDamage = 1.35;
 			c.specAccuracy = 2.25;
 			break;
@@ -158,28 +138,22 @@ public class MeleeSpecial {
 		case 13904: // Statius warhammer (Deg)
 			c.startAnimation(10505);
 			c.gfx0(1840);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase() + 1);
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase() + 1);
 			c.specDamage = 1.35;
 			c.specAccuracy = 2.25;
 			break;
 		case 1305: // dragon long
 			c.gfx100(248);
 			c.startAnimation(1058);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			c.specAccuracy = 1.10;
 			c.specDamage = 1.20;
 			break;
@@ -190,14 +164,11 @@ public class MeleeSpecial {
 		case 5698:
 			c.gfx100(252);
 			c.startAnimation(1062);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			c.doubleHit = true;
 			c.specAccuracy = 1.30;
 			c.specDamage = 1.05;
@@ -206,14 +177,11 @@ public class MeleeSpecial {
 		case 11730:
 			c.gfx100(1224);
 			c.startAnimation(7072);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			c.doubleHit = true;
 			c.ssSpec = true;
 			c.specAccuracy = 1.30;
@@ -226,14 +194,11 @@ public class MeleeSpecial {
 			c.startAnimation(10961);
 			c.usingClaws = true;
 			c.doubleHit = true;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 
 		case 4151: // whip
@@ -246,14 +211,11 @@ public class MeleeSpecial {
 			}
 			c.specAccuracy = 1.10;
 			c.startAnimation(1658);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 
 		case 20000: // spirit gs
@@ -261,56 +223,44 @@ public class MeleeSpecial {
 			c.specDamage = 2.25;
 			c.specAccuracy = 2.85;
 			c.gfx0(1222);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 		case 20001: // spirit gs
 			c.startAnimation(7074);
 			c.specDamage = 2.25;
 			c.specAccuracy = 2.85;
 			c.gfx0(1222);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 		case 20002: // spirit gs
 			c.startAnimation(7074);
 			c.specDamage = 2.25;
 			c.specAccuracy = 2.85;
 			c.gfx0(1222);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 		case 20003: // spirit gs
 			c.startAnimation(7074);
 			c.specDamage = 2.25;
 			c.specAccuracy = 2.85;
 			c.gfx0(1222);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 
 		case 11694: // ags
@@ -318,27 +268,21 @@ public class MeleeSpecial {
 			c.specDamage = 1.25;
 			c.specAccuracy = 1.85;
 			c.gfx0(1222);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 		case 11700:
 			c.startAnimation(7070);
 			c.gfx0(1221);
 			c.specAccuracy = 1.25;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			c.specEffect = 2;
 			break;
 
@@ -354,14 +298,11 @@ public class MeleeSpecial {
 			c.specDamage = 6.38;
 			c.specAccuracy = 6.99;
 			c.ssSpec = true;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 
 			break;
 
@@ -370,14 +311,11 @@ public class MeleeSpecial {
 			c.gfx0(1223);
 			c.specDamage = 1.10;
 			c.specAccuracy = 1.5;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			c.specEffect = 3;
 			break;
 
@@ -386,14 +324,11 @@ public class MeleeSpecial {
 			c.gfx0(1220);
 			c.specAccuracy = 1.25;
 			c.specEffect = 4;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 
 		case 1249:
@@ -408,14 +343,11 @@ public class MeleeSpecial {
 		case 3204: // d hally
 			c.gfx100(282);
 			c.startAnimation(1203);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			if (NPCHandler.npcs[i] != null && c.npcIndex > 0) {
 				if (!c.goodDistance(c.getX(), c.getY(),
 						NPCHandler.npcs[i].getX(), NPCHandler.npcs[i].getY(), 1)) {
@@ -436,14 +368,11 @@ public class MeleeSpecial {
 
 		case 4153: // maul
 			c.startAnimation(1667);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			/*
 			 * if (c.playerIndex > 0) gmaulPlayer(i); else gmaulNpc(i);
 			 */
@@ -454,28 +383,22 @@ public class MeleeSpecial {
 			c.gfx100(347);
 			c.specEffect = 1;
 			c.startAnimation(1872);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			break;
 
 		case 1434: // mace
 			c.startAnimation(1060);
 			c.gfx100(251);
 			c.specMaxHitIncrease = 3;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase()) + 1;
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase()) + 1;
 			c.specDamage = 1.35;
 			c.specAccuracy = 1.15;
 			break;
@@ -488,14 +411,11 @@ public class MeleeSpecial {
 			c.lastWeaponUsed = weapon;
 			c.startAnimation(426);
 			c.gfx100(250);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			c.projectileStage = 1;
 			if (c.fightMode == 2)
 				c.attackTimer--;
@@ -510,14 +430,11 @@ public class MeleeSpecial {
 			c.lastWeaponUsed = weapon;
 			c.startAnimation(426);
 			c.gfx100(250);
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			c.projectileStage = 1;
 			if (c.fightMode == 2)
 				c.attackTimer--;
@@ -533,14 +450,11 @@ public class MeleeSpecial {
 			c.startAnimation(1074);
 			c.hitDelay = 3;
 			c.projectileStage = 1;
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			if (c.fightMode == 2)
 				c.attackTimer--;
 			if (c.playerIndex > 0)
@@ -563,14 +477,11 @@ public class MeleeSpecial {
 			c.startAnimation(426);
 			c.projectileStage = 1;
 			c.gfx100(c.getCombat().getRangeStartGFX());
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			if (c.fightMode == 2)
 				c.attackTimer--;
 			if (c.playerIndex > 0)
@@ -594,14 +505,11 @@ public class MeleeSpecial {
 			c.startAnimation(426);
 			c.projectileStage = 1;
 			c.gfx100(c.getCombat().getRangeStartGFX());
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			if (c.fightMode == 2)
 				c.attackTimer--;
 			if (c.playerIndex > 0)
@@ -625,14 +533,11 @@ public class MeleeSpecial {
 			c.startAnimation(426);
 			c.projectileStage = 1;
 			c.gfx100(c.getCombat().getRangeStartGFX());
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			if (c.fightMode == 2)
 				c.attackTimer--;
 			if (c.playerIndex > 0)
@@ -659,14 +564,11 @@ public class MeleeSpecial {
 			c.startAnimation(426);
 			c.projectileStage = 1;
 			c.gfx100(c.getCombat().getRangeStartGFX());
-			c.hitDelay = c
-					.getCombat()
-					.getHitDelay(
-							i,
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.hitDelay = c.getCombat().getHitDelay(
+					i,
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			if (c.fightMode == 2)
 				c.attackTimer--;
 			if (c.playerIndex > 0)

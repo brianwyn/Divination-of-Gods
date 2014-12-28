@@ -363,12 +363,9 @@ public class ItemAssistant {
 		}
 		c.updateRequired = true;
 		c.setAppearanceUpdateRequired(true);
-		c.isFullHelm = Item
-				.isFullHelm(c.playerEquipment[Player.playerHat]);
-		c.isFullMask = Item
-				.isFullMask(c.playerEquipment[Player.playerHat]);
-		c.isFullBody = Item
-				.isFullBody(c.playerEquipment[Player.playerChest]);
+		c.isFullHelm = Item.isFullHelm(c.playerEquipment[Player.playerHat]);
+		c.isFullMask = Item.isFullMask(c.playerEquipment[Player.playerHat]);
+		c.isFullBody = Item.isFullBody(c.playerEquipment[Player.playerChest]);
 	}
 
 	/**
@@ -400,7 +397,6 @@ public class ItemAssistant {
 			c.sendMessage("Failed to bank item. Try relogging.");
 			return false;
 		}
-		c.getDungeoneering();
 		if (Dungeoneering.antiSmuggle(c, itemID)) {
 			return false;
 		}
@@ -1044,7 +1040,7 @@ public class ItemAssistant {
 	}
 
 	public void degradeItem(int ID, int slot, int amount) {
-		String itemName = c.getItems().getItemName(ID);
+		String itemName = ItemAssistant.getItemName(ID);
 		boolean d = false;
 		if (c.playerEquipment[slot] == ID) {
 			c.playerEquipment[slot] = -1;
@@ -1054,12 +1050,10 @@ public class ItemAssistant {
 			resetBonus();
 			getBonus();
 			writeBonus();
-			c.getCombat()
-					.getPlayerAnimIndex(
-							c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
-									.toLowerCase());
+			c.getCombat().getPlayerAnimIndex(
+					ItemAssistant.getItemName(
+							c.playerEquipment[Player.playerWeapon])
+							.toLowerCase());
 			c.getOutStream().createFrame(34);
 			c.getOutStream().writeWord(6);
 			c.getOutStream().writeWord(1688);
@@ -1238,12 +1232,6 @@ public class ItemAssistant {
 		resetItems(3214);
 	}
 
-	/*
-	 * Checks if the users inventory contains items. If it contains items, get
-	 * the item count/free space. Checks if the users inventory contains gold.
-	 * If it contains gold, get the gold count. Made by some randomm guy from
-	 * r-s
-	 */
 	public void depositInventory() {
 		for (int i = 0; i < c.playerItems.length; i++) {
 			c.getDungeoneering();
@@ -1251,76 +1239,12 @@ public class ItemAssistant {
 				return;
 			}
 		}
-		final boolean debugging = false;
-		boolean containsItems = false;
-		int itemCount = 0;
-		boolean containsGold = false;
-		int goldCount = 0;
-		int inventorySpace = c.getItems().freeSlots();
-		int totalInventorySpace = 28;
-		int usedInventorySpace = totalInventorySpace - inventorySpace;
-		String tmp[] = new String[2];
-		/* User has no items to deposit */
-		if (usedInventorySpace == 0) {
-			c.sendMessage("You have no items to deposit!");
-			return;
+		boolean allDep = true;
+		for (int i = 0; i < c.playerItems.length; i++) {
+			if(c.playerItems[i] > 0 && !c.getItems().bankItem(c.playerItems[i], i, c.playerItemsN[i]))
+				allDep = false;
 		}
-		if (usedInventorySpace > 0) {
-			containsItems = true;
-			itemCount = usedInventorySpace;
-			if (c.getItems().playerHasItem(995)) {
-				containsGold = true;
-			}
-		}
-		if (containsGold) {
-			goldCount = c.getItems().getItemAmount(995);
-		}
-		/* Used for debugging, just change the boolean to true if you wish */
-		if (debugging) {
-			c.sendMessage("Used Inventory Space: " + usedInventorySpace + ".");
-			c.sendMessage("Contains Items: " + containsItems);
-			c.sendMessage("Contains Gold: " + containsGold);
-			c.sendMessage("Gold Amount: " + goldCount);
-		}
-		/* Calculate the Strings before they're put to use */
-		if (goldCount == 1) {
-			tmp[0] = "gold coin";
-		}
-		if (goldCount > 1) {
-			tmp[0] = "gold coins";
-		}
-		if (itemCount > 0) {
-			if (containsGold) {
-				itemCount -= 1;
-				c.getItems().bankItem(995, c.getItems().getItemSlot(995),
-						goldCount);
-				c.sendMessage("You deposit <shad=2320482>" + goldCount + " "
-						+ tmp[0] + " into your bank.");
-			}
-			/* Calculate the Strings before they're put to use */
-			if (itemCount == 1) {
-				tmp[1] = "item";
-			}
-			if (itemCount > 1) {
-				tmp[1] = "items";
-			}
-			for (int i = 0; i < c.playerItems.length; i++) {
-				c.getItems().bankItem(c.playerItems[i], i, c.playerItemsN[i]);
-			}
-			/*
-			 * Make sure the user doesn't recieve a message containing a null
-			 * String
-			 */
-			if (tmp[1] != null) {
-				if (containsGold) {
-					c.sendMessage("<shad=2320482>You also deposit " + itemCount
-							+ " " + tmp[1] + " into your bank.");
-				} else if (!containsGold) {
-					c.sendMessage("<shad=2320482>You deposit " + itemCount
-							+ " " + tmp[1] + " into your bank.");
-				}
-			}
-		}
+		c.sendMessage(allDep ? "You deposit your inventory." : "You could not deposit all your items.");
 	}
 
 	public boolean dropableItem(int itemId) {
@@ -3198,12 +3122,10 @@ public class ItemAssistant {
 					resetBonus();
 					getBonus();
 					writeBonus();
-					c.getCombat()
-							.getPlayerAnimIndex(
-									c.getItems()
-											.getItemName(
-													c.playerEquipment[Player.playerWeapon])
-											.toLowerCase());
+					c.getCombat().getPlayerAnimIndex(
+							ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
+									.toLowerCase());
 					c.getOutStream().createFrame(34);
 					c.getOutStream().writeWord(6);
 					c.getOutStream().writeWord(1688);
@@ -3241,12 +3163,10 @@ public class ItemAssistant {
 						resetBonus();
 						getBonus();
 						writeBonus();
-						c.getCombat()
-								.getPlayerAnimIndex(
-										c.getItems()
-												.getItemName(
-														c.playerEquipment[Player.playerWeapon])
-												.toLowerCase());
+						c.getCombat().getPlayerAnimIndex(
+								ItemAssistant.getItemName(
+										c.playerEquipment[Player.playerWeapon])
+										.toLowerCase());
 						c.getOutStream().createFrame(34);
 						c.getOutStream().writeWord(6);
 						c.getOutStream().writeWord(1688);
@@ -4426,9 +4346,8 @@ public class ItemAssistant {
 				getBonus();
 				writeBonus();
 				c.getCombat().getPlayerAnimIndex(
-						c.getItems()
-								.getItemName(
-										c.playerEquipment[Player.playerWeapon])
+						ItemAssistant.getItemName(
+								c.playerEquipment[Player.playerWeapon])
 								.toLowerCase());
 				c.getPA().requestUpdates();
 				c.isFullHelm = Item
@@ -4475,17 +4394,17 @@ public class ItemAssistant {
 				c.flushOutStream();
 				c.playerEquipment[targetSlot] = wearID;
 				c.playerEquipmentN[targetSlot] = wearAmount;
-				c.getItems().sendWeapon(
-						c.playerEquipment[Player.playerWeapon],
-						c.getItems().getItemName(
-								c.playerEquipment[Player.playerWeapon]));
+				c.getItems()
+						.sendWeapon(
+								c.playerEquipment[Player.playerWeapon],
+								ItemAssistant
+										.getItemName(c.playerEquipment[Player.playerWeapon]));
 				c.getItems().resetBonus();
 				c.getItems().getBonus();
 				c.getItems().writeBonus();
 				c.getCombat().getPlayerAnimIndex(
-						c.getItems()
-								.getItemName(
-										c.playerEquipment[Player.playerWeapon])
+						ItemAssistant.getItemName(
+								c.playerEquipment[Player.playerWeapon])
 								.toLowerCase());
 				c.updateRequired = true;
 				c.setAppearanceUpdateRequired(true);

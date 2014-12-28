@@ -59,7 +59,7 @@ public class Agility {
 	public Client client;
 	public int agtimer = 10;
 	public int ticketsid = 2996;
-	public static boolean bonus = false;
+	public boolean bonus = false;
 
 	public boolean isBalance = false;
 

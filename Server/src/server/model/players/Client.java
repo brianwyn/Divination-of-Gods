@@ -60,7 +60,6 @@ import server.net.Packet;
 import server.net.Packet.Type;
 import server.util.Misc;
 import server.util.Stream;
-import server.world.ClanChatHandler;
 import server.world.LoginHandler;
 
 public class Client extends Player {
@@ -546,6 +545,15 @@ public class Client extends Player {
 	 * ((getLevelForXP(playerXP[0])) * 0.325) + ((getLevelForXP(playerXP[2])) *
 	 * 0.325)); } return combatLevel; }
 	 */
+
+	public static boolean isInteger(String s) {
+		try {
+			Integer.parseInt(s);
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		return true;
+	}
 
 	public void achievementInterface(final String taskName) {
 		CycleEventHandler.getSingleton().addEvent(this, new CycleEvent() {
@@ -1207,6 +1215,7 @@ public class Client extends Player {
 		}
 		PlayerSave.saveGame(this);
 
+		Connection.removeIpFromLoginList(connectedFrom);
 		Misc.println("[DEREGISTERED]: " + Misc.optimizeText(playerName) + "");
 		PlayerSave.saveGame(this);
 		saveCharacter = true;
@@ -1984,12 +1993,13 @@ public class Client extends Player {
 						setHitUpdateRequired(true);
 						dealDamage(Misc.random(15) + 1);
 						updateRequired = true;
-						getItems().sendWeapon(
-								playerEquipment[playerWeapon],
-								getItems().getItemName(
-										playerEquipment[playerWeapon]));
+						getItems()
+								.sendWeapon(
+										playerEquipment[playerWeapon],
+										ItemAssistant
+												.getItemName(playerEquipment[playerWeapon]));
 						getCombat().getPlayerAnimIndex(
-								getItems().getItemName(
+								ItemAssistant.getItemName(
 										playerEquipment[playerWeapon])
 										.toLowerCase());
 						getItems().resetBonus();
@@ -2668,11 +2678,18 @@ public class Client extends Player {
 			}
 		}
 
-		if (isMuted) {
-			sendMessage("You are currently muted.");
-		} else if (Connection.isIPMuted(connectedFrom)) {
-			sendMessage("You are currently IP-Muted.");
+		if (!Connection.isMuted(this) && !Connection.isIPMuted(connectedFrom)
+				&& isMuted)
+			isMuted = false;
+		else if ((Connection.isMuted(this) || Connection
+				.isIPMuted(connectedFrom)) && !isMuted)
+			isMuted = true;
+
+		if (isMuted || Connection.isIPMuted(connectedFrom)) {
+			sendMessage(Connection.isIPMuted(connectedFrom) ? "You are currently IP-Muted."
+					: "You are currently muted.");
 		}
+
 		if (InDungv() || InDung || inDung) {
 			inDung = true;
 			InDung = true;
@@ -2717,18 +2734,6 @@ public class Client extends Player {
 	/**
 	 * End of Skill Constructors
 	 */
-
-	public boolean isOwner() {
-		return (playerName.equalsIgnoreCase("gabbe") /*
-													 * ||
-													 * playerName.equalsIgnoreCase
-													 * ("Leroy")
-													 */);
-	}
-
-	public boolean isPlayer() {
-		return true;
-	}
 
 	public void ItemKeptInfo(int Lose) {
 		for (int i = 17109; i < 17131; i++) {
@@ -2829,46 +2834,44 @@ public class Client extends Player {
 	}
 
 	public void logout() {
-		if (playerRights >= 2) {
-
-		} else {
+		if (!isStaff()) {
 			SQL.saveHighScore(this);
 			SQL.destroyConnection();
-			PvPHandler.handleLogout(this);
-			Server.clanChat.removeIdFromClan(clanId, playerId);
-			if (inDung) {
-				if (Partner.equalsIgnoreCase("None")) {
-					getDungeoneering();
-					Dungeoneering.deleteKeys(this);
-					Server.npcHandler.killAllDungNPCs(this);
-				} else {
-					for (Player p : PlayerHandler.players) {
-						if (p != null) {
-							Client ALLPLAYERS = (Client) p;
-							if (ALLPLAYERS.playerName.equalsIgnoreCase(Partner)) {
-								Client c2 = (Client) p;
-								if (c2.inDung && inDung) {
-									c2.getPA().leaveDung(c2);
-									getPA().leaveDung(this);
-									c2.sendMessage("Your partner has logged out. The dungeon has been abandoned.");
-									getDungeoneering();
-									Dungeoneering.deleteKeys(this);
-									Server.npcHandler.killAllDungNPCs(this);
-									getDungeoneering();
-									Dungeoneering.deleteKeys(c2);
-									Server.npcHandler.killAllDungNPCs(c2);
-									getDungeoneering();
-									Dungeoneering.newDungeon(c2, false);
-									getDungeoneering();
-									Dungeoneering.newDungeon(this, false);
-								}
+		} else
+			LoginHandler.handleStaffTabLogin(this);
+		PvPHandler.handleLogout(this);
+		Server.clanChat.removeIdFromClan(clanId, playerId);
+		if (inDung) {
+			if (Partner.equalsIgnoreCase("None")) {
+				getDungeoneering();
+				Dungeoneering.deleteKeys(this);
+				Server.npcHandler.killAllDungNPCs(this);
+			} else {
+				for (Player p : PlayerHandler.players) {
+					if (p != null) {
+						Client ALLPLAYERS = (Client) p;
+						if (ALLPLAYERS.playerName.equalsIgnoreCase(Partner)) {
+							Client c2 = (Client) p;
+							if (c2.inDung && inDung) {
+								c2.getPA().leaveDung(c2);
+								getPA().leaveDung(this);
+								c2.sendMessage("Your partner has logged out. The dungeon has been abandoned.");
+								getDungeoneering();
+								Dungeoneering.deleteKeys(this);
+								Server.npcHandler.killAllDungNPCs(this);
+								getDungeoneering();
+								Dungeoneering.deleteKeys(c2);
+								Server.npcHandler.killAllDungNPCs(c2);
+								getDungeoneering();
+								Dungeoneering.newDungeon(c2, false);
+								getDungeoneering();
+								Dungeoneering.newDungeon(this, false);
 							}
 						}
 					}
 				}
 			}
 		}
-		;
 
 		if (cannonIsShooting && hasCannon) {
 			bankCannonBalls = true;
@@ -2883,8 +2886,6 @@ public class Client extends Player {
 		PlayerHandler.sendGlobalMessage("Players Online: @gre@"
 				+ (PlayerHandler.getPlayerCount()) + "", 39155);
 		CycleEventHandler.getSingleton().stopEvents(this);
-		LoginHandler.handleStaffTabLogin(this);
-		// HiscoresHandler.hiscoresHandler(this);
 		if (System.currentTimeMillis() - logoutDelay > 10000) {
 			PlayerSave.saveGame(this);
 			if (hasFollower > 0) {
@@ -2903,10 +2904,10 @@ public class Client extends Player {
 			saveCharacter = true;
 			outStream.createFrame(109);
 			properLogout = true;
+			Connection.removeIpFromLoginList(connectedFrom);
 		} else {
 			sendMessage("You must wait a few seconds from being out of combat before you can do this.");
 		}
-		// }
 	}
 
 	public void makesnow() {

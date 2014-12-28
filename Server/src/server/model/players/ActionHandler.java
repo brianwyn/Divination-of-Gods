@@ -2,12 +2,14 @@ package server.model.players;
 
 import server.Config;
 import server.Server;
+import server.model.items.ItemAssistant;
 import server.model.npcs.NPCHandler;
 import server.model.objects.Object;
 import server.model.players.content.CrystalChest;
 import server.model.players.content.skills.Agility;
 import server.model.players.content.skills.ConstructionEvents;
 import server.model.players.content.skills.Firemaking;
+import server.model.players.content.skills.Runecrafting;
 import server.model.players.content.skills.Woodcutting;
 import server.model.players.content.skills.impl.Cons;
 import server.model.players.content.skills.impl.ConstructionObjects.Bank;
@@ -17,7 +19,6 @@ import server.model.players.content.skills.impl.ConstructionObjects.Lecterns;
 import server.model.players.content.skills.impl.ConstructionObjects.Telescopes;
 import server.model.shops.ShopAssistant;
 import server.util.Misc;
-import server.util.ScriptManager;
 
 public class ActionHandler {
 
@@ -54,8 +55,8 @@ public class ActionHandler {
 		if (c.fishitem != -1) {
 			if (!c.getItems().playerHasItem(c.fishitem)) {
 				c.sendMessage("You need a "
-						+ c.getItems().getItemName(c.fishitem)
-						+ " to fish for " + c.getItems().getItemName(c.fishies));
+						+ ItemAssistant.getItemName(c.fishitem)
+						+ " to fish for " + ItemAssistant.getItemName(c.fishies));
 				c.fishing = false;
 				return;
 			}
@@ -276,7 +277,8 @@ public class ActionHandler {
 			c.sendMessage("To delete your PIN type ::delete ");
 			break;
 		case 1552: // SANTA
-			if (c.getItems().freeSlots() < 4) {
+			c.sendMessage("Sorry but the holiday event has ended.");
+			/*if (c.getItems().freeSlots() < 4) {
 				c.sendMessage("You need atleast 4 free inventory slots to talk to Santa!");
 				return;
 			}
@@ -290,7 +292,7 @@ public class ActionHandler {
 				c.getItems().addItem(3062, 1);
 				c.getItems().addItem(10025, 1);
 				c.santaPrize = 1;
-			}
+			}*/
 			break;
 		case 9713:
 			if (c.playerXP[24] >= 104273167) {
@@ -834,7 +836,6 @@ public class ActionHandler {
 			c.sendMessage("You have " + c.magePoints + " points.");
 			break;
 		default:
-			ScriptManager.callFunc("npcClick1_" + npcType, c, npcType);
 			if (c.playerRights == 3)
 				Misc.println("First Click Npc : " + npcType);
 			break;
@@ -846,14 +847,21 @@ public class ActionHandler {
 		c.clickObjectType = 0;
 
 		c.turnPlayerTo(obX, obY);
-		// c.sendMessage("Object type: " + objectType);
 		if (Woodcutting.playerTrees(c, objectType)) {
 			Woodcutting.attemptData(c, objectType, obX, obY);
 			return;
 		}
 		c.getMining().startMining(c.objectX, c.objectY,
 				c.clickObjectType, objectType);
+		if (Runecrafting.validAltar(c.objectId)) {
+			Runecrafting.craftRunes(c, c.objectId);
+			return;
+		}
 		switch (objectType) {
+		
+		case 26847:
+			Runecrafting.handleZMI(c);
+			break;
 		case 25819:
 			if (c.absY == 3502) {
 				if (c.absX == 2740)
@@ -3333,8 +3341,8 @@ public class ActionHandler {
 		if (c.fishitem != -1) {
 			if (!c.getItems().playerHasItem(c.fishitem)) {
 				c.sendMessage("You need a "
-						+ c.getItems().getItemName(c.fishitem)
-						+ " to fish for " + c.getItems().getItemName(c.fishies));
+						+ ItemAssistant.getItemName(c.fishitem)
+						+ " to fish for " + ItemAssistant.getItemName(c.fishies));
 				c.fishing = false;
 				return;
 			}
@@ -3732,7 +3740,6 @@ public class ActionHandler {
 			c.getThieving().stealFromNPC(npcType);
 			break;
 		default:
-			ScriptManager.callFunc("npcClick2_" + npcType, c, npcType);
 			if (c.playerRights == 3)
 				Misc.println("Second Click Npc : " + npcType);
 			break;
@@ -3955,8 +3962,6 @@ public class ActionHandler {
 			// Mining.prospectNothing(c);
 			break;
 		default:
-			ScriptManager.callFunc("objectClick2_" + objectType, c, objectType,
-					obX, obY);
 			break;
 		}
 	}
@@ -4104,8 +4109,6 @@ public class ActionHandler {
 		}
 		switch (objectType) {
 		default:
-			ScriptManager.callFunc("objectClick3_" + objectType, c, objectType,
-					obX, obY);
 			break;
 		}
 	}

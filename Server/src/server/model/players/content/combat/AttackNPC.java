@@ -5,6 +5,7 @@ import server.Server;
 import server.core.event.CycleEvent;
 import server.core.event.CycleEventContainer;
 import server.core.event.CycleEventHandler;
+import server.model.items.ItemAssistant;
 import server.model.npcs.NPCHandler;
 import server.model.players.Client;
 import server.model.players.Player;
@@ -329,9 +330,8 @@ public class AttackNPC {
 					c.usingMagic = true;
 				}
 				c.attackTimer = c.getCombat().getAttackDelay(
-						c.getItems()
-								.getItemName(
-										c.playerEquipment[Player.playerWeapon])
+						ItemAssistant.getItemName(
+								c.playerEquipment[Player.playerWeapon])
 								.toLowerCase());
 				c.specAccuracy = 1.0;
 				c.specDamage = 1.0;
@@ -398,14 +398,12 @@ public class AttackNPC {
 						&& c.playerEquipment[Player.playerWeapon] != 18357
 						&& c.playerEquipment[Player.playerWeapon] != 15241) {
 					c.sendMessage("You can't use "
-							+ c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerArrows])
+							+ ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerArrows])
 									.toLowerCase()
 							+ "s with a "
-							+ c.getItems()
-									.getItemName(
-											c.playerEquipment[Player.playerWeapon])
+							+ ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
 									.toLowerCase() + ".");
 					c.stopMovement();
 					c.npcIndex = 0;
@@ -464,13 +462,10 @@ public class AttackNPC {
 				if (c.playerLevel[3] > 0 && !c.isDead
 						&& NPCHandler.npcs[i].MaxHP > 0) {
 					if (!c.usingMagic) {
-						c.startAnimation(c
-								.getCombat()
-								.getWepAnim(
-										c.getItems()
-												.getItemName(
-														c.playerEquipment[Player.playerWeapon])
-												.toLowerCase()));
+						c.startAnimation(c.getCombat().getWepAnim(
+								ItemAssistant.getItemName(
+										c.playerEquipment[Player.playerWeapon])
+										.toLowerCase()));
 						if (Server.npcHandler.getNPCs()[i].attackTimer < 9) {
 							NPCHandler.startAnimation(c.getCombat()
 									.npcDefenceAnim(i), i);
@@ -487,14 +482,11 @@ public class AttackNPC {
 																					// delay
 					c.followId2 = NPCHandler.npcs[i].npcId;
 					c.getPA().followNpc();
-					c.hitDelay = c
-							.getCombat()
-							.getHitDelay(
-									i,
-									c.getItems()
-											.getItemName(
-													c.playerEquipment[Player.playerWeapon])
-											.toLowerCase());
+					c.hitDelay = c.getCombat().getHitDelay(
+							i,
+							ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
+									.toLowerCase());
 					c.projectileStage = 0;
 					c.oldNpcIndex = i;
 				}
@@ -510,14 +502,11 @@ public class AttackNPC {
 					c.lastArrowUsed = c.playerEquipment[Player.playerArrows];
 					c.lastWeaponUsed = c.playerEquipment[Player.playerWeapon];
 					c.gfx100(c.getCombat().getRangeStartGFX());
-					c.hitDelay = c
-							.getCombat()
-							.getHitDelay(
-									i,
-									c.getItems()
-											.getItemName(
-													c.playerEquipment[Player.playerWeapon])
-											.toLowerCase());
+					c.hitDelay = c.getCombat().getHitDelay(
+							i,
+							ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
+									.toLowerCase());
 					c.projectileStage = 1;
 					c.oldNpcIndex = i;
 					if (c.playerEquipment[Player.playerWeapon] >= 4212
@@ -546,14 +535,11 @@ public class AttackNPC {
 					c.getItems().deleteEquipment();
 					c.gfx100(c.getCombat().getRangeStartGFX());
 					c.lastArrowUsed = 0;
-					c.hitDelay = c
-							.getCombat()
-							.getHitDelay(
-									i,
-									c.getItems()
-											.getItemName(
-													c.playerEquipment[Player.playerWeapon])
-											.toLowerCase());
+					c.hitDelay = c.getCombat().getHitDelay(
+							i,
+							ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
+									.toLowerCase());
 					c.projectileStage = 1;
 					c.oldNpcIndex = i;
 					if (c.fightMode == 2)
@@ -585,14 +571,11 @@ public class AttackNPC {
 								c.getCombat().getStartHeight(),
 								c.getCombat().getEndHeight(), i + 1, 50);
 					}
-					c.hitDelay = c
-							.getCombat()
-							.getHitDelay(
-									i,
-									c.getItems()
-											.getItemName(
-													c.playerEquipment[Player.playerWeapon])
-											.toLowerCase());
+					c.hitDelay = c.getCombat().getHitDelay(
+							i,
+							ItemAssistant.getItemName(
+									c.playerEquipment[Player.playerWeapon])
+									.toLowerCase());
 					c.oldNpcIndex = i;
 					c.oldSpellId = c.spellId;
 					c.spellId = 0;
