@@ -2709,8 +2709,6 @@ public class Client extends Player {
 			getTimers().GWDTimer(this);
 		if (skullTimer > 0)
 			getTimers().skullTimer(this);
-		if (yellTimer > 0)
-			getTimers().YellTimer(this);
 
 		if (hasFollower == 4241) {
 			hasFollower = -1;

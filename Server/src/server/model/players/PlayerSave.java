@@ -358,8 +358,6 @@ public class PlayerSave {
 						p.cwGames = Integer.parseInt(token2);
 					} else if (token.equals("cwKills")) {
 						p.cwKills = Integer.parseInt(token2);
-					} else if (line.startsWith("displayName")) {
-						p.displayName = token2;
 					} else if (token.equals("blackMark")) {
 						p.blackMark = Integer.parseInt(token2);
 					} else if (token.equals("hasBankPin")) {
@@ -1521,11 +1519,6 @@ public class PlayerSave {
 			characterfile.write(Integer.toString(p.blackMark), 0, Integer
 					.toString(p.blackMark).length());
 			characterfile.newLine();
-			if (p.displayName != null) {
-				characterfile.write("displayName = ", 0, 14);
-				characterfile.write(p.displayName, 0, p.displayName.length());
-				characterfile.newLine();
-			}
 			characterfile.write("cw-games = ", 0, 11);
 			characterfile.write(Integer.toString(p.cwGames), 0, Integer
 					.toString(p.cwGames).length());

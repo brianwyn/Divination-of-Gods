@@ -323,30 +323,4 @@ public class Timers {
 		}, 2);
 
 	}
-
-	public void YellTimer(final Client c) {
-		CycleEventHandler.getSingleton().addEvent(c, new CycleEvent() {
-			@Override
-			public void execute(CycleEventContainer container) {
-				if (c.disconnected) {
-					container.stop();
-					return;
-				}
-				if (c.yellTimer > 0) {
-					c.yellTimer--;
-				}
-				if (c.yellTimer == 0 || c.yellTimer == 1 || c.yellTimer < 0) {
-					c.yellTimer = 0;
-					c.sendMessage("You're now able to send another yell message.");
-					container.stop();
-				}
-			}
-
-			@Override
-			public void stop() {
-
-			}
-		}, 2);
-
-	}
 }

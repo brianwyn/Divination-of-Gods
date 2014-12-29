@@ -19,6 +19,11 @@ public class CustomInterfaces {
 				33041);
 	}
 
+	public static void openMinigameInterface(Client player) {
+
+		player.getPA().showInterface(42000);
+	}
+
 	public static boolean clickButton(Client player, int clicked) {
 		Teleport teleportButton = getTeleport(clicked);
 		OpenInterface interfaceButton = getInterface(clicked);
@@ -29,6 +34,10 @@ public class CustomInterfaces {
 			return true;
 		}
 		if (teleportButton != null) {
+			if(teleportButton.getTeleportTo().getX() < 0 || teleportButton.getTeleportTo().getY() < 0 ) {
+				player.sendMessage("<col=11141120>This feature is coming soon!");
+				return true;
+			}
 			player.getPA().spellTeleport(teleportButton.getTeleportTo());
 			player.sendMessage("You teleport to the "
 					+ teleportButton.toString().toLowerCase() + " area.");
@@ -71,7 +80,19 @@ public class CustomInterfaces {
 		HUNTER(128255, new Position(2591, 4318, 0)),
 		SUMMONING(129007, new Position(2208, 5347, 0)),
 		DUNGEONEERING(129011, new Position(2419, 3528, 0)),
-		COOKING(128239, new Position(2613, 3398, 0));
+		COOKING(128239, new Position(2613, 3398, 0)),
+		DUEL_ARENA(164021, new Position(3358, 3270, 0)),
+		BARROWS(164022, new Position(3565, 3314, 0)),
+		WARRIORS_GUILD(164023, new Position(2865, 3546, 0)),
+		PEST_CONTROL(164024, new Position(2662, 2650, 0)),
+		FIGHT_CAVES(164025, new Position(2438, 5172, 0)),
+		FIST_OF_GUTHIX(164026, new Position(-1, -1, -1)),
+		CASTLE_WARS(164027, new Position(-1, -1, -1)),
+		BARB_ASSAULT(164028, new Position(1895, 5408, 0)),
+		DOMINION_TOWER(164029, new Position(3222, 3222, 0)),
+		RFD(164030, new Position(3217, 9621, 0)),
+		NOMAD(164031, new Position(2967, 3206, 0)),
+		;
 
 		private int buttonId;
 		private Position teleportTo;

@@ -5222,12 +5222,7 @@ public class ClickingButtons implements PacketType {
 		case 4143:
 		case 50245:
 		case 117123:
-			c.getPA().showInterface(42000);
-			/*
-			 * c.getDH().sendOption5("Assault", "Recipe for Disaster", "Nomad",
-			 * "Dominion Tower", "@red@Castle Wars"); c.teleAction = 199;
-			 * c.setSidebarInterface(6, 45200);
-			 */
+			CustomInterfaces.openMinigameInterface(c);
 			break;
 
 		case 50253:

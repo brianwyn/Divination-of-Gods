@@ -42,6 +42,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-Server/Data/
+Server/PlayerData/
+Server/Data/clipping/
 Server/bin/
 Client/bin/

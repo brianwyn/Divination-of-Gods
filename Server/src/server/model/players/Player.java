@@ -1102,7 +1102,6 @@ public abstract class Player {
 	public boolean isFullBody = false;
 	public boolean isFullHelm = false;
 	public boolean isFullMask = false;
-	public String displayName = "notset";
 	private boolean chatTextUpdateRequired = false;
 	private byte chatText[] = new byte[4096];
 	private byte chatTextSize = 0;
@@ -1483,30 +1482,10 @@ public abstract class Player {
 		playerProps.writeWord(playerTurn90CCWIndex); // turn90CCWAnimIndex
 		playerProps.writeWord(playerRunIndex); // runAnimIndex
 
-		playerProps.writeQWord(Misc.playerNameToInt64(displayName));
+		playerProps.writeQWord(Misc.playerNameToInt64(playerName));
 
 		int calculateCombatLevel = ((Client) this).getCombatLevel();
-		/*
-		 * int mag = (int) ((getLevelForXP(playerXP[6])) * 1.5); int ran = (int)
-		 * ((getLevelForXP(playerXP[4])) * 1.5); int attstr = (int) ((double)
-		 * (getLevelForXP(playerXP[0])) + (double)
-		 * (getLevelForXP(playerXP[2])));
-		 * 
-		 * combatLevel = 0; if (ran > attstr) { combatLevel = (int)
-		 * (((getLevelForXP(playerXP[1])) * 0.25) +
-		 * ((getLevelForXP(playerXP[3])) * 0.25) + ((getLevelForXP(playerXP[5]))
-		 * * 0.125) + ((getLevelForXP(playerXP[4])) * 0.4875)); } else if (mag >
-		 * attstr) { combatLevel = (int) (((getLevelForXP(playerXP[1])) * 0.25)
-		 * + ((getLevelForXP(playerXP[3])) * 0.25) +
-		 * ((getLevelForXP(playerXP[5])) * 0.125) +
-		 * ((getLevelForXP(playerXP[6])) * 0.4875)); } else { combatLevel =
-		 * (int) (((getLevelForXP(playerXP[1])) * 0.25) +
-		 * ((getLevelForXP(playerXP[3])) * 0.25) + ((getLevelForXP(playerXP[5]))
-		 * * 0.125) + ((getLevelForXP(playerXP[0])) * 0.325) +
-		 * ((getLevelForXP(playerXP[2])) * 0.325)); }
-		 */
 		playerProps.writeByte(calculateCombatLevel); // combat level
-		// if(playerName.equalsIgnoreCase("jal knight"))// Dem cheap hax.
 		playerProps.writeByte(playerRights);// Player Rights
 		playerProps.writeWord(playerTitle);
 		str.writeByteC(playerProps.currentOffset);

@@ -1,0 +1,13 @@
+Mining - Copper/Tin timers off
+Firemaking - Bonfire XP off
+Woodcutting - twisting trees on spawn.
+Summoning - Level req shows regardless of level
+----
+Herblore - Any sec. ingrediant can be used for pots.
+Thieving - Ardy stalls don't work.
+Dungeoneering - XP and token message incorrect.
+Crafting - Flax doesn't work?
+Fishing - Animated fishing spot at fishing docks
+Runecrafting - Just crap?
+No access to Kalphite queen.
+Slayer - No rewards for finishing tasks?

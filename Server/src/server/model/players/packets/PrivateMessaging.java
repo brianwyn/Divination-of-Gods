@@ -38,14 +38,14 @@ public class PrivateMessaging implements PacketType {
 						for (int i2 = 1; i2 < Config.MAX_PLAYERS; i2++) {
 							if (PlayerHandler.players[i2] != null
 									&& PlayerHandler.players[i2].isActive
-									&& Misc.playerNameToInt64(PlayerHandler.players[i2].displayName) == friendToAdd) {
+									&& Misc.playerNameToInt64(PlayerHandler.players[i2].playerName) == friendToAdd) {
 								Client o = (Client) PlayerHandler.players[i2];
 								if (o != null) {
 									if (PlayerHandler.players[i2].privateChat == 0
 											|| (PlayerHandler.players[i2].privateChat == 1 && o
 													.getPA()
 													.isInPM(Misc
-															.playerNameToInt64(c.displayName)))) {
+															.playerNameToInt64(c.playerName)))) {
 										c.getPA().loadPM(friendToAdd, 1);
 										break;
 									}
@@ -73,17 +73,17 @@ public class PrivateMessaging implements PacketType {
 					for (int i2 = 1; i2 < Config.MAX_PLAYERS; i2++) {
 						if (PlayerHandler.players[i2] != null
 								&& PlayerHandler.players[i2].isActive
-								&& Misc.playerNameToInt64(PlayerHandler.players[i2].displayName) == sendMessageToFriendId) {
+								&& Misc.playerNameToInt64(PlayerHandler.players[i2].playerName) == sendMessageToFriendId) {
 							Client o = (Client) PlayerHandler.players[i2];
 							if (o != null) {
 								if (PlayerHandler.players[i2].privateChat == 0
 										|| (PlayerHandler.players[i2].privateChat == 1 && o
 												.getPA()
 												.isInPM(Misc
-														.playerNameToInt64(c.displayName)))) {
+														.playerNameToInt64(c.playerName)))) {
 									o.getPA()
 											.sendPM(Misc
-													.playerNameToInt64(c.displayName),
+													.playerNameToInt64(c.playerName),
 													c.playerRights, pmchatText,
 													pmchatTextSize);
 									pmSent = true;
@@ -110,7 +110,7 @@ public class PrivateMessaging implements PacketType {
 						Client o = (Client) PlayerHandler.players[i2];
 						if (o != null) {
 							if (c.friends[i1] == Misc
-									.playerNameToInt64(PlayerHandler.players[i2].displayName)) {
+									.playerNameToInt64(PlayerHandler.players[i2].playerName)) {
 								o.getPA().updatePM(c.playerId, 0);
 								break;
 							}

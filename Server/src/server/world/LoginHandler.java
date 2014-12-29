@@ -73,9 +73,7 @@ public class LoginHandler {
 		if (c.inBarbDef) {
 			Server.barbDefence.endGame(c, false);
 		}
-		if (c.displayName.equalsIgnoreCase("notset")) {
-			c.displayName = c.playerName;
-		}
+
 		c.outStream.createFrame(249);
 		c.outStream.writeByteA(1); // 1 for members, zero for free
 		c.outStream.writeWordBigEndianA(c.playerId);

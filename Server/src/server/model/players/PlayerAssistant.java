@@ -888,25 +888,6 @@ public class PlayerAssistant {
 		c.currentTime = hour + ":" + minute + ":" + second;
 	}
 
-	@SuppressWarnings("resource")
-	public boolean checkDisplayName(String name) {
-		try {
-			File list = new File(Config.PLAYERDATA_PATH + "/displaynames.txt");
-			FileReader read = new FileReader(list);
-			BufferedReader reader = new BufferedReader(read);
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				if (line.equalsIgnoreCase(name)) {
-					return true;
-				}
-			}
-			reader.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
 	public boolean checkEmpty(int[] array) {
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] != 0)
@@ -1144,25 +1125,6 @@ public class PlayerAssistant {
 		}, 1);
 	}
 
-	public void createDisplayName(String name) {
-		BufferedWriter names = null;
-		try {
-			names = new BufferedWriter(new FileWriter(Config.PLAYERDATA_PATH
-					+ "/displaynames.txt", true));
-			names.write(name);
-			names.newLine();
-			names.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (names != null) {
-				try {
-					names.close();
-				} catch (IOException e2) {
-				}
-			}
-		}
-	}
 
 	// }
 	public void createObjectHints(int x, int y, int height, int pos) {
@@ -6991,7 +6953,7 @@ public class PlayerAssistant {
 		if (o == null)
 			return;
 
-		sendFrame126("Inventory of " + Misc.formatPlayerName(o.displayName),
+		sendFrame126("Inventory of " + Misc.formatPlayerName(o.getPlayerName()),
 				2806);
 
 		c.getPA().sendFrame248(2800, 3213);
